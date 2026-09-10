@@ -1,0 +1,1682 @@
+﻿<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Directrices de Marca — DGP Centro Mecánico</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800;900&family=Roboto:wght@300;400;500;700&family=Oswald:wght@500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --blue:    #124B8F;
+    --blue-dk: #0d3870;
+    --blue-lt: #1a5fad;
+    --green:   #7DB919;
+    --green-dk:#5e8d10;
+    --red:     #D32027;
+    --gray:    #2D2D2D;
+    --gray-md: #6b6b6b;
+    --gray-lt: #e8edf3;
+    --gray-bg: #f4f6f9;
+    --white:   #FFFFFF;
+    --border:  #d0d9e8;
+
+    --font-title: 'Montserrat', sans-serif;
+    --font-body:  'Roboto', sans-serif;
+    --font-alt:   'Oswald', sans-serif;
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--white);
+    color: var(--gray);
+    font-family: var(--font-body);
+    font-size: 15px;
+    line-height: 1.65;
+  }
+
+  /* ─── UTILS ─── */
+  .container { max-width: 1080px; margin: 0 auto; padding: 0 48px; }
+  .tag {
+    display: inline-block;
+    font-family: var(--font-title);
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: .18em;
+    text-transform: uppercase;
+    color: var(--green);
+    margin-bottom: 10px;
+  }
+  .sec-label {
+    font-family: var(--font-body);
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: .22em;
+    text-transform: uppercase;
+    color: var(--blue);
+    display: block;
+    margin-bottom: 10px;
+  }
+  h2.sec-title {
+    font-family: var(--font-title);
+    font-weight: 800;
+    font-size: clamp(28px, 3.5vw, 44px);
+    color: var(--blue);
+    line-height: 1.1;
+    letter-spacing: -.02em;
+  }
+  h2.sec-title span.gr { color: var(--green); }
+  h2.sec-title span.rd { color: var(--red); }
+
+  .rule-note {
+    background: #eef3fb;
+    border-left: 4px solid var(--blue);
+    padding: 16px 20px;
+    font-size: 13.5px;
+    line-height: 1.7;
+    color: var(--gray);
+    border-radius: 0 4px 4px 0;
+  }
+  .rule-note strong { color: var(--blue); }
+
+  .rule-note.green { background: #f2f9e4; border-left-color: var(--green); }
+  .rule-note.green strong { color: var(--green-dk); }
+
+  .rule-note.red { background: #fdf0f0; border-left-color: var(--red); }
+  .rule-note.red strong { color: var(--red); }
+
+  /* ─── COVER ─── */
+  #cover {
+    background: var(--blue);
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    position: relative;
+    overflow: hidden;
+    padding: 80px 0;
+  }
+
+  #cover::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background:
+      radial-gradient(ellipse at 80% 20%, rgba(125,185,25,.18) 0%, transparent 55%),
+      radial-gradient(ellipse at 10% 90%, rgba(18,75,143,.5) 0%, transparent 50%);
+    pointer-events: none;
+  }
+
+  /* Grid lines */
+  #cover::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image:
+      linear-gradient(rgba(255,255,255,.04) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(255,255,255,.04) 1px, transparent 1px);
+    background-size: 60px 60px;
+    pointer-events: none;
+  }
+
+  .cover-inner { position: relative; z-index: 2; }
+
+  .cover-eyebrow {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 36px;
+  }
+  .cover-eyebrow-line {
+    width: 40px; height: 2px;
+    background: var(--green);
+  }
+  .cover-eyebrow span {
+    font-family: var(--font-body);
+    font-size: 12px;
+    font-weight: 500;
+    letter-spacing: .25em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,.65);
+  }
+
+  .cover-title {
+    font-family: var(--font-title);
+    font-weight: 900;
+    font-size: clamp(44px, 7vw, 96px);
+    color: var(--white);
+    line-height: .95;
+    letter-spacing: -.03em;
+  }
+  .cover-title .accent { color: var(--green); }
+
+  .cover-subtitle {
+    font-family: var(--font-body);
+    font-size: clamp(15px, 1.6vw, 18px);
+    color: rgba(255,255,255,.7);
+    margin-top: 20px;
+    max-width: 520px;
+    line-height: 1.65;
+  }
+
+  .cover-divider {
+    width: 60px; height: 3px;
+    background: var(--green);
+    margin: 32px 0;
+  }
+
+  .cover-stats {
+    display: flex;
+    gap: 56px;
+    flex-wrap: wrap;
+  }
+  .cover-stat .num {
+    font-family: var(--font-title);
+    font-weight: 800;
+    font-size: 36px;
+    color: var(--white);
+    line-height: 1;
+    display: block;
+  }
+  .cover-stat .num span { color: var(--green); }
+  .cover-stat .lbl {
+    font-size: 12px;
+    color: rgba(255,255,255,.5);
+    font-weight: 400;
+    letter-spacing: .08em;
+    text-transform: uppercase;
+    margin-top: 4px;
+    display: block;
+  }
+
+  /* Logo flotante en cover */
+  .cover-logo-area {
+    position: absolute;
+    right: 8%;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 3;
+    text-align: center;
+    opacity: .92;
+  }
+
+  .cover-logo-circle {
+    width: 220px;
+    height: 220px;
+    background: transparent;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    filter: drop-shadow(0 14px 36px rgba(0,0,0,.5));
+  }
+
+  .cover-logo-inner {
+    width: 210px;
+    height: 210px;
+    display: block;
+  }
+
+  .cover-bottom-bar {
+    position: absolute;
+    bottom: 0; left: 0; right: 0;
+    height: 4px;
+    background: linear-gradient(90deg, var(--green) 0%, var(--blue-lt) 60%, var(--green) 100%);
+  }
+
+  /* ─── NAV ─── */
+  nav {
+    background: var(--white);
+    border-bottom: 1px solid var(--border);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    box-shadow: 0 2px 12px rgba(18,75,143,.07);
+  }
+  .nav-inner {
+    display: flex;
+    align-items: center;
+    gap: 0;
+    overflow-x: auto;
+    padding: 0 48px;
+  }
+  .nav-inner a {
+    font-family: var(--font-title);
+    font-size: 11.5px;
+    font-weight: 600;
+    letter-spacing: .1em;
+    text-transform: uppercase;
+    color: var(--gray-md);
+    text-decoration: none;
+    padding: 16px 20px;
+    white-space: nowrap;
+    border-bottom: 3px solid transparent;
+    transition: color .15s, border-color .15s;
+  }
+  .nav-inner a:hover { color: var(--blue); border-color: var(--green); }
+
+  /* ─── SECTIONS ─── */
+  section {
+    padding: 88px 0;
+    border-bottom: 1px solid var(--border);
+  }
+  section:last-of-type { border-bottom: none; }
+  section.alt-bg { background: var(--gray-bg); }
+
+  .section-header { margin-bottom: 52px; }
+
+  /* ─── IDENTIDAD ─── */
+  .identity-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 24px;
+    margin-bottom: 32px;
+  }
+
+  .identity-card {
+    background: var(--gray-bg);
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    padding: 36px;
+    position: relative;
+    overflow: hidden;
+  }
+  .identity-card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 3px;
+    background: var(--blue);
+  }
+  .identity-card.green-accent::before { background: var(--green); }
+
+  .identity-card-title {
+    font-family: var(--font-title);
+    font-weight: 700;
+    font-size: 13px;
+    text-transform: uppercase;
+    letter-spacing: .12em;
+    color: var(--blue);
+    margin-bottom: 12px;
+  }
+  .identity-card.green-accent .identity-card-title { color: var(--green-dk); }
+
+  .identity-card p {
+    font-size: 14.5px;
+    color: var(--gray);
+    line-height: 1.75;
+  }
+
+  .pillars-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2px;
+    background: var(--border);
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    overflow: hidden;
+    margin-bottom: 32px;
+  }
+  .pillar {
+    background: var(--white);
+    padding: 32px 28px;
+  }
+  .pillar-num {
+    font-family: var(--font-title);
+    font-weight: 900;
+    font-size: 48px;
+    color: var(--gray-lt);
+    line-height: 1;
+    margin-bottom: 12px;
+  }
+  .pillar-title {
+    font-family: var(--font-title);
+    font-weight: 700;
+    font-size: 16px;
+    text-transform: uppercase;
+    color: var(--blue);
+    margin-bottom: 8px;
+    letter-spacing: .04em;
+  }
+  .pillar p { font-size: 13.5px; color: var(--gray-md); line-height: 1.65; }
+
+  /* LOGO SECTION */
+  .logo-versions {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2px;
+    background: var(--border);
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    overflow: hidden;
+    margin-bottom: 24px;
+  }
+  .logo-ver {
+    padding: 56px 32px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+  }
+  .logo-ver.on-white { background: var(--white); }
+  .logo-ver.on-blue  { background: var(--blue); }
+  .logo-ver.on-gray  { background: #f0f0f0; }
+
+  .logo-ver-label {
+    font-family: var(--font-body);
+    font-size: 11px;
+    letter-spacing: .15em;
+    text-transform: uppercase;
+    font-weight: 500;
+  }
+  .logo-ver.on-white .logo-ver-label { color: var(--gray-md); }
+  .logo-ver.on-blue  .logo-ver-label { color: rgba(255,255,255,.55); }
+  .logo-ver.on-gray  .logo-ver-label { color: var(--gray-md); }
+
+  .logo-box {
+    width: 150px; height: 150px;
+    background: transparent;
+    display: flex; align-items: center; justify-content: center;
+  }
+
+  /* Logo image */
+  .logo-svg-el { width: 150px; height: 150px; display: block; }
+
+  /* ─── COLORS ─── */
+  .palette {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 0;
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    overflow: hidden;
+    margin-bottom: 32px;
+  }
+  .color-swatch { height: 180px; }
+  .color-data {
+    padding: 20px 18px;
+    background: var(--white);
+    border-top: 1px solid var(--border);
+  }
+  .color-name {
+    font-family: var(--font-title);
+    font-weight: 700;
+    font-size: 13.5px;
+    color: var(--gray);
+    margin-bottom: 4px;
+  }
+  .color-role {
+    font-size: 11.5px;
+    color: var(--gray-md);
+    line-height: 1.5;
+    margin-bottom: 12px;
+  }
+  .color-hex {
+    font-family: 'Roboto', monospace;
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--gray);
+    background: var(--gray-bg);
+    padding: 4px 10px;
+    border-radius: 3px;
+    display: inline-block;
+  }
+
+  .color-usage-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+  }
+
+  .color-use-card {
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    overflow: hidden;
+  }
+  .color-use-header {
+    padding: 16px 20px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+  .color-dot { width: 16px; height: 16px; border-radius: 50%; flex-shrink: 0; }
+  .color-use-title {
+    font-family: var(--font-title);
+    font-weight: 700;
+    font-size: 13px;
+    text-transform: uppercase;
+    letter-spacing: .08em;
+  }
+  .color-use-body { padding: 0 20px 20px; }
+  .color-use-body p { font-size: 13px; color: var(--gray-md); line-height: 1.65; }
+
+  /* ─── TYPOGRAPHY ─── */
+  .typo-two-col {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 24px;
+    margin-bottom: 32px;
+  }
+
+  .typo-card {
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    overflow: hidden;
+  }
+
+  .typo-card-header {
+    background: var(--blue);
+    padding: 20px 28px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  .typo-card-header.green { background: var(--green); }
+
+  .typo-card-header p {
+    font-family: var(--font-title);
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: .18em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,.85);
+  }
+  .typo-card-header .type-name {
+    font-size: 14px;
+    color: var(--white);
+    font-weight: 700;
+  }
+
+  .typo-card-body { padding: 32px 28px; background: var(--white); }
+
+  .typo-specimen-title {
+    font-family: var(--font-title);
+    font-weight: 800;
+    font-size: 54px;
+    color: var(--blue);
+    line-height: .95;
+    letter-spacing: -.02em;
+    margin: 16px 0;
+    text-transform: uppercase;
+  }
+
+  .typo-specimen-body {
+    font-family: var(--font-body);
+    font-size: 16px;
+    color: var(--gray);
+    line-height: 1.75;
+    margin: 16px 0;
+  }
+
+  .typo-weights { display: flex; flex-direction: column; gap: 8px; margin-top: 20px; }
+  .typo-weight-row {
+    display: flex;
+    align-items: baseline;
+    gap: 16px;
+    padding: 10px 0;
+    border-bottom: 1px solid var(--gray-lt);
+  }
+  .typo-weight-row:last-child { border-bottom: none; }
+  .weight-label {
+    font-size: 11px;
+    color: var(--gray-md);
+    width: 120px;
+    flex-shrink: 0;
+    font-family: var(--font-body);
+    letter-spacing: .08em;
+    text-transform: uppercase;
+  }
+
+  .typo-scale {
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    overflow: hidden;
+  }
+  .typo-scale-header {
+    background: var(--gray-bg);
+    padding: 14px 24px;
+    display: grid;
+    grid-template-columns: 120px 1fr 120px;
+    gap: 16px;
+    border-bottom: 1px solid var(--border);
+  }
+  .typo-scale-header span {
+    font-family: var(--font-title);
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: .15em;
+    text-transform: uppercase;
+    color: var(--gray-md);
+  }
+  .scale-row {
+    padding: 18px 24px;
+    display: grid;
+    grid-template-columns: 120px 1fr 120px;
+    gap: 16px;
+    align-items: center;
+    border-bottom: 1px solid var(--gray-bg);
+  }
+  .scale-row:last-child { border-bottom: none; }
+  .scale-name {
+    font-family: var(--font-body);
+    font-size: 11.5px;
+    color: var(--gray-md);
+    text-transform: uppercase;
+    letter-spacing: .08em;
+  }
+  .scale-spec {
+    font-family: 'Roboto', monospace;
+    font-size: 11px;
+    color: var(--gray-md);
+    text-align: right;
+  }
+
+  /* ─── TONE ─── */
+  .tone-pillars {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2px;
+    background: var(--border);
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    overflow: hidden;
+    margin-bottom: 32px;
+  }
+  .tone-pillar {
+    background: var(--white);
+    padding: 32px 28px;
+  }
+  .tone-pillar-icon {
+    width: 40px; height: 40px;
+    border-radius: 8px;
+    background: var(--blue);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 20px;
+    margin-bottom: 16px;
+  }
+  .tone-pillar-icon.green { background: var(--green); }
+  .tone-pillar-title {
+    font-family: var(--font-title);
+    font-weight: 700;
+    font-size: 15px;
+    text-transform: uppercase;
+    letter-spacing: .06em;
+    color: var(--gray);
+    margin-bottom: 8px;
+  }
+  .tone-pillar p { font-size: 13px; color: var(--gray-md); line-height: 1.65; }
+
+  .tone-examples {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 24px;
+    margin-bottom: 32px;
+  }
+  .tone-ex {
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    overflow: hidden;
+  }
+  .tone-ex-header {
+    padding: 14px 20px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    border-bottom: 1px solid var(--border);
+  }
+  .tone-ex-header.ok  { background: #f2f9e4; }
+  .tone-ex-header.bad { background: #fdf0f0; }
+  .tone-ex-indicator {
+    font-family: var(--font-title);
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: .15em;
+    text-transform: uppercase;
+  }
+  .tone-ex-header.ok  .tone-ex-indicator { color: var(--green-dk); }
+  .tone-ex-header.bad .tone-ex-indicator { color: var(--red); }
+  .tone-ex-body { padding: 20px; background: var(--white); }
+  .tone-ex-quote {
+    font-family: var(--font-title);
+    font-weight: 600;
+    font-size: 15px;
+    color: var(--gray);
+    line-height: 1.5;
+    margin-bottom: 10px;
+    font-style: italic;
+  }
+  .tone-ex-reason { font-size: 12.5px; color: var(--gray-md); line-height: 1.6; }
+
+  .vocab-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+  }
+  .vocab-card {
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    overflow: hidden;
+  }
+  .vocab-header {
+    background: var(--blue);
+    padding: 14px 20px;
+  }
+  .vocab-header.green { background: var(--green); }
+  .vocab-header.gray  { background: var(--gray); }
+  .vocab-header p {
+    font-family: var(--font-title);
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: .15em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,.85);
+  }
+  .vocab-body { padding: 20px; }
+  .vocab-body ul { list-style: none; display: flex; flex-direction: column; gap: 8px; }
+  .vocab-body li {
+    font-size: 13.5px;
+    color: var(--gray);
+    display: flex; align-items: flex-start; gap: 8px;
+    line-height: 1.5;
+  }
+  .vocab-body li::before {
+    content: '—';
+    color: var(--green);
+    flex-shrink: 0;
+    font-weight: 700;
+  }
+
+  /* ─── VISUAL ─── */
+  .visual-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 24px;
+    margin-bottom: 32px;
+  }
+  .visual-card {
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    overflow: hidden;
+  }
+  .visual-card-header {
+    padding: 18px 24px;
+    display: flex; align-items: center; gap: 12px;
+    border-bottom: 1px solid var(--border);
+  }
+  .visual-card-header.ok  { background: #f2f9e4; }
+  .visual-card-header.bad { background: #fdf0f0; }
+  .visual-icon { font-size: 18px; }
+  .visual-card-title {
+    font-family: var(--font-title);
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: .15em;
+    text-transform: uppercase;
+  }
+  .visual-card-header.ok  .visual-card-title { color: var(--green-dk); }
+  .visual-card-header.bad .visual-card-title { color: var(--red); }
+  .visual-card-body { padding: 20px 24px; background: var(--white); }
+  .visual-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    padding: 10px 0;
+    border-bottom: 1px solid var(--gray-bg);
+    font-size: 13.5px;
+    color: var(--gray);
+    line-height: 1.55;
+  }
+  .visual-item:last-child { border-bottom: none; padding-bottom: 0; }
+  .vi-dot {
+    width: 7px; height: 7px; border-radius: 50%;
+    margin-top: 6px; flex-shrink: 0;
+  }
+  .vi-dot.ok  { background: var(--green); }
+  .vi-dot.bad { background: var(--red); }
+
+  /* ─── SERVICIOS ─── */
+  .services-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 16px;
+    margin-bottom: 32px;
+  }
+  .service-card {
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    padding: 24px;
+    position: relative;
+    background: var(--white);
+    transition: border-color .2s, box-shadow .2s;
+  }
+  .service-card:hover {
+    border-color: var(--blue);
+    box-shadow: 0 4px 20px rgba(18,75,143,.1);
+  }
+  .service-card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0;
+    width: 4px; height: 100%;
+    background: var(--green);
+    border-radius: 6px 0 0 6px;
+  }
+  .service-name {
+    font-family: var(--font-title);
+    font-weight: 700;
+    font-size: 14px;
+    text-transform: uppercase;
+    letter-spacing: .06em;
+    color: var(--blue);
+    margin-bottom: 8px;
+  }
+  .service-desc { font-size: 13px; color: var(--gray-md); line-height: 1.6; }
+
+  .service-highlight {
+    background: var(--blue);
+    border-radius: 8px;
+    padding: 36px;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 36px;
+    margin-bottom: 24px;
+  }
+  .sh-num {
+    font-family: var(--font-title);
+    font-weight: 900;
+    font-size: 42px;
+    color: var(--white);
+    line-height: 1;
+    margin-bottom: 4px;
+  }
+  .sh-num span { color: var(--green); }
+  .sh-label {
+    font-size: 12px;
+    color: rgba(255,255,255,.6);
+    text-transform: uppercase;
+    letter-spacing: .1em;
+    font-weight: 500;
+  }
+  .sh-desc {
+    font-size: 13px;
+    color: rgba(255,255,255,.75);
+    margin-top: 8px;
+    line-height: 1.55;
+  }
+
+  /* ─── REDES ─── */
+  .redes-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 24px;
+    margin-bottom: 32px;
+  }
+  .redes-card {
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    overflow: hidden;
+  }
+  .redes-card-header {
+    background: var(--blue);
+    padding: 18px 24px;
+  }
+  .redes-card-header.green { background: var(--green); }
+  .redes-card-title {
+    font-family: var(--font-title);
+    font-weight: 700;
+    font-size: 14px;
+    text-transform: uppercase;
+    letter-spacing: .1em;
+    color: var(--white);
+  }
+  .redes-card-sub { font-size: 12px; color: rgba(255,255,255,.6); margin-top: 3px; }
+  .redes-card-body { padding: 20px 24px; background: var(--white); }
+  .redes-item {
+    display: flex; align-items: flex-start; gap: 10px;
+    padding: 10px 0;
+    border-bottom: 1px solid var(--gray-bg);
+    font-size: 13.5px;
+    line-height: 1.55;
+    color: var(--gray);
+  }
+  .redes-item:last-child { border-bottom: none; padding-bottom: 0; }
+  .ri-dot {
+    width: 8px; height: 8px; flex-shrink: 0;
+    background: var(--blue); margin-top: 6px; border-radius: 0;
+  }
+  .ri-dot.green { background: var(--green); }
+
+  .metrics-bar {
+    background: var(--gray-bg);
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    padding: 28px 36px;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 0;
+    margin-bottom: 24px;
+  }
+  .metric { text-align: center; padding: 0 20px; border-right: 1px solid var(--border); }
+  .metric:last-child { border-right: none; }
+  .metric-num {
+    font-family: var(--font-title);
+    font-weight: 900;
+    font-size: 40px;
+    color: var(--blue);
+    line-height: 1;
+    margin-bottom: 4px;
+  }
+  .metric-num span { color: var(--green); }
+  .metric-label {
+    font-size: 11px;
+    color: var(--gray-md);
+    text-transform: uppercase;
+    letter-spacing: .1em;
+    font-weight: 500;
+  }
+
+  /* ─── FOOTER ─── */
+  footer {
+    background: var(--blue);
+    padding: 56px 0;
+    position: relative;
+    overflow: hidden;
+  }
+  footer::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image:
+      linear-gradient(rgba(255,255,255,.03) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(255,255,255,.03) 1px, transparent 1px);
+    background-size: 48px 48px;
+  }
+  .footer-inner {
+    position: relative; z-index: 1;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 32px;
+  }
+  .footer-name {
+    font-family: var(--font-title);
+    font-weight: 800;
+    font-size: 24px;
+    color: var(--white);
+    letter-spacing: -.01em;
+  }
+  .footer-name span { color: var(--green); }
+  .footer-tagline {
+    font-size: 13px;
+    color: rgba(255,255,255,.55);
+    margin-top: 4px;
+    font-weight: 400;
+  }
+  .footer-meta {
+    text-align: right;
+  }
+  .footer-meta p {
+    font-size: 12px;
+    color: rgba(255,255,255,.45);
+    line-height: 1.7;
+  }
+  .footer-bar {
+    height: 3px;
+    background: linear-gradient(90deg, var(--green), var(--blue-lt), var(--green));
+    position: absolute;
+    bottom: 0; left: 0; right: 0;
+  }
+
+  /* ─── PRINT ─── */
+  @media print {
+    nav { display: none; }
+    section { page-break-inside: avoid; }
+    #cover { min-height: auto; page-break-after: always; }
+  }
+
+  /* ─── RESPONSIVE ─── */
+  @media (max-width: 768px) {
+    .container { padding: 0 20px; }
+    .identity-grid,
+    .typo-two-col,
+    .tone-examples,
+    .visual-grid,
+    .redes-grid { grid-template-columns: 1fr; }
+    .pillars-grid,
+    .tone-pillars { grid-template-columns: 1fr; }
+    .services-grid { grid-template-columns: 1fr 1fr; }
+    .service-highlight { grid-template-columns: 1fr; }
+    .metrics-bar { grid-template-columns: 1fr 1fr; }
+    .logo-versions { grid-template-columns: 1fr; }
+    .palette { grid-template-columns: 1fr 1fr; }
+    .cover-logo-area { display: none; }
+    .vocab-grid { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ═══ COVER ═══ -->
+<section id="cover">
+  <div class="container cover-inner">
+    <div class="cover-eyebrow">
+      <div class="cover-eyebrow-line"></div>
+      <span>Manual de Identidad Corporativa · Villa María, Córdoba</span>
+    </div>
+
+    <h1 class="cover-title">
+      DIRECTRICES<br>
+      DE <span class="accent">MARCA</span>
+    </h1>
+
+    <p class="cover-subtitle">
+      Guía oficial de identidad visual y comunicación para DGP Centro Mecánico — el socio estratégico para el mantenimiento de flotas agropecuarias.
+    </p>
+
+    <div class="cover-divider"></div>
+
+    <div class="cover-stats">
+      <div class="cover-stat">
+        <span class="num">20<span>+</span></span>
+        <span class="lbl">Años de trayectoria</span>
+      </div>
+      <div class="cover-stat">
+        <span class="num">B<span>2B</span></span>
+        <span class="lbl">Foco corporativo</span>
+      </div>
+      <div class="cover-stat">
+        <span class="num">360<span>°</span></span>
+        <span class="lbl">Servicio + Repuestos</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Logo flotante -->
+  <div class="cover-logo-area">
+    <div class="cover-logo-circle">
+      <img class="cover-logo-inner" src="logo-dgp.png" alt="DGP Centro MecÃ¡nico" style="display:block;"/>
+    </div>
+  </div>
+
+  <div class="cover-bottom-bar"></div>
+</section>
+
+<!-- ═══ NAV ═══ -->
+<nav>
+  <div class="nav-inner">
+    <a href="#identidad">01 · Identidad</a>
+    <a href="#colores">02 · Colores</a>
+    <a href="#tipografia">03 · Tipografía</a>
+    <a href="#tono">04 · Tono de Voz</a>
+    <a href="#visual">05 · Estilo Visual</a>
+    <a href="#servicios">06 · Servicios</a>
+    <a href="#redes">07 · Redes Sociales</a>
+  </div>
+</nav>
+
+<!-- ═══ 01 IDENTIDAD ═══ -->
+<section id="identidad">
+  <div class="container">
+    <div class="section-header">
+      <span class="sec-label">// 01 — Identidad de Marca</span>
+      <h2 class="sec-title">POSICIONAMIENTO<br><span class="gr">CORPORATIVO</span></h2>
+    </div>
+
+    <div class="identity-grid">
+      <div class="identity-card">
+        <p class="identity-card-title">Posicionamiento</p>
+        <p>DGP no es solo un taller mecánico. Es el <strong>socio estratégico e integral para el mantenimiento de flotas agropecuarias</strong>. La garantía de que las herramientas de trabajo de las empresas —las pick-ups— no se detienen, respaldados por disponibilidad inmediata de repuestos propios.</p>
+      </div>
+      <div class="identity-card green-accent">
+        <p class="identity-card-title">Promesa de Marca</p>
+        <p><strong>Eficiencia técnica, transparencia absoluta en los diagnósticos y minimización del tiempo de inactividad de los vehículos.</strong> Las empresas compran tiempo; DGP lo protege.</p>
+      </div>
+    </div>
+
+    <div class="pillars-grid">
+      <div class="pillar">
+        <div class="pillar-num">01</div>
+        <p class="pillar-title">Eficiencia Técnica</p>
+        <p>Diagnóstico preciso y resolución en el menor tiempo posible. Cada hora de inactividad de una flota es un costo directo para la empresa cliente.</p>
+      </div>
+      <div class="pillar">
+        <div class="pillar-num">02</div>
+        <p class="pillar-title">Transparencia Total</p>
+        <p>Comunicación clara del diagnóstico, los tiempos y los costos. Los gerentes de flota necesitan datos confiables para tomar decisiones de negocio.</p>
+      </div>
+      <div class="pillar">
+        <div class="pillar-num">03</div>
+        <p class="pillar-title">Stock Propio</p>
+        <p>La ventaja competitiva clave: casa de repuestos integrada. Cero esperas por piezas, precios directos y disponibilidad inmediata garantizada.</p>
+      </div>
+    </div>
+
+    <!-- Logo -->
+    <div style="margin-top:56px;">
+      <span class="sec-label" style="margin-bottom:16px; display:block;">// Logotipo — Versiones de uso</span>
+      <div class="logo-versions">
+        <div class="logo-ver on-white">
+          <div class="logo-box">
+            <img class="logo-svg-el" src="logo-dgp.png" alt="DGP Centro MecÃ¡nico" style="display:block;"/>
+          </div>
+          <p class="logo-ver-label">Sobre fondo blanco</p>
+        </div>
+        <div class="logo-ver on-blue">
+          <div class="logo-box">
+            <img class="logo-svg-el" src="logo-dgp.png" alt="DGP Centro MecÃ¡nico" style="display:block;"/>
+          </div>
+          <p class="logo-ver-label">Sobre fondo azul corporativo</p>
+        </div>
+        <div class="logo-ver on-gray">
+          <div class="logo-box">
+            <img class="logo-svg-el" src="logo-dgp.png" alt="DGP Centro MecÃ¡nico" style="display:block;"/>
+          </div>
+          <p class="logo-ver-label">Sobre fondo gris claro</p>
+        </div>
+      </div>
+    </div>
+
+    <div style="margin-top:16px; display:grid; grid-template-columns:1fr 1fr; gap:16px;">
+      <div class="rule-note">
+        <strong>Espacio de protección:</strong> Mantener un margen libre alrededor del logo equivalente al radio de la letra "D". No superponer texto ni elementos sobre el logotipo.
+      </div>
+      <div class="rule-note red">
+        <strong>Usos prohibidos:</strong> No distorsionar proporciones. No cambiar colores corporativos. No rotar. No usar sobre fondos con bajo contraste. No eliminar los elementos de hoja verde.
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ 02 COLORES ═══ -->
+<section id="colores" class="alt-bg">
+  <div class="container">
+    <div class="section-header">
+      <span class="sec-label">// 02 — Paleta de Colores</span>
+      <h2 class="sec-title">SISTEMA DE<br><span class="gr">COLOR</span></h2>
+    </div>
+
+    <div class="palette">
+      <div class="color-col">
+        <div class="color-swatch" style="background:#124B8F;"></div>
+        <div class="color-data">
+          <p class="color-name">Azul Corporativo</p>
+          <p class="color-role">Dominante. Encabezados, fondos de presentación, elementos estructurales.</p>
+          <p class="color-hex">#124B8F</p>
+        </div>
+      </div>
+      <div class="color-col">
+        <div class="color-swatch" style="background:#7DB919;"></div>
+        <div class="color-data">
+          <p class="color-name">Verde Agro</p>
+          <p class="color-role">Acento. Íconos, viñetas, botones de contacto y turno.</p>
+          <p class="color-hex">#7DB919</p>
+        </div>
+      </div>
+      <div class="color-col">
+        <div class="color-swatch" style="background:#D32027;"></div>
+        <div class="color-data">
+          <p class="color-name">Rojo Motor</p>
+          <p class="color-role">Restringido. Solo para alertas, stock inmediato y CTAs urgentes.</p>
+          <p class="color-hex">#D32027</p>
+        </div>
+      </div>
+      <div class="color-col">
+        <div class="color-swatch" style="background:#2D2D2D;"></div>
+        <div class="color-data">
+          <p class="color-name">Gris Asfalto</p>
+          <p class="color-role">Texto general, encabezados secundarios, cuerpo técnico.</p>
+          <p class="color-hex">#2D2D2D</p>
+        </div>
+      </div>
+      <div class="color-col">
+        <div class="color-swatch" style="background:#FFFFFF; border-bottom:1px solid #e0e0e0;"></div>
+        <div class="color-data">
+          <p class="color-name">Blanco</p>
+          <p class="color-role">Fondos limpios. El diseño debe respirar para transmitir orden y transparencia.</p>
+          <p class="color-hex">#FFFFFF</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="color-usage-grid">
+      <div class="color-use-card">
+        <div class="color-use-header" style="background:#eef3fb;">
+          <div class="color-dot" style="background:#124B8F;"></div>
+          <p class="color-use-title" style="color:#124B8F;">Azul — El Respaldo</p>
+        </div>
+        <div class="color-use-body">
+          <p>Transmite los 20 años de trayectoria y la seriedad de un servicio premium. Es el color de la confianza institucional. Usar en encabezados de presentaciones a empresas, menú del sitio web, fondos de secciones de portada y elementos estructurales de alto impacto.</p>
+        </div>
+      </div>
+      <div class="color-use-card">
+        <div class="color-use-header" style="background:#f2f9e4;">
+          <div class="color-dot" style="background:#7DB919;"></div>
+          <p class="color-use-title" style="color:#5e8d10;">Verde — El Sector Agro</p>
+        </div>
+        <div class="color-use-body">
+          <p>Conecta directamente con el campo y las empresas agrícolas. Refuerza el posicionamiento en el sector agropecuario. Usar en íconos de servicios, viñetas de listas, botones "Solicitar Turno" y "Contacto", y elementos decorativos de acento.</p>
+        </div>
+      </div>
+      <div class="color-use-card">
+        <div class="color-use-header" style="background:#fdf0f0;">
+          <div class="color-dot" style="background:#D32027;"></div>
+          <p class="color-use-title" style="color:#D32027;">Rojo — La Inmediatez</p>
+        </div>
+        <div class="color-use-body">
+          <p><strong>Uso estratégicamente restringido.</strong> Reservar únicamente para: alertas de "Stock Inmediato", avisos de tiempo de respuesta urgente, promociones de repuestos y llamados a la acción de alta prioridad. El exceso neutraliza su impacto.</p>
+        </div>
+      </div>
+      <div class="color-use-card">
+        <div class="color-use-header" style="background:#f4f4f4;">
+          <div class="color-dot" style="background:#2D2D2D;"></div>
+          <p class="color-use-title" style="color:#2D2D2D;">Gris + Blanco — La Transparencia</p>
+        </div>
+        <div class="color-use-body">
+          <p>El espacio blanco no es vacío; es un valor de marca. Fondos limpios y texto en gris transmiten la calidad de un taller premium y ordenado. Evitar saturar composiciones; dejar que los colores corporativos respiren en espacios amplios.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ 03 TIPOGRAFÍA ═══ -->
+<section id="tipografia">
+  <div class="container">
+    <div class="section-header">
+      <span class="sec-label">// 03 — Sistema Tipográfico</span>
+      <h2 class="sec-title">TIPO<span class="gr">GRAFÍA</span><br>CORPORATIVA</h2>
+    </div>
+
+    <div class="typo-two-col">
+      <div class="typo-card">
+        <div class="typo-card-header">
+          <p>Tipografía Principal</p>
+          <p class="type-name">Montserrat</p>
+        </div>
+        <div class="typo-card-body">
+          <p style="font-size:11px; color:var(--gray-md); font-family:var(--font-body); text-transform:uppercase; letter-spacing:.12em; margin-bottom:16px;">Títulos · Subtítulos · UI Principal</p>
+          <p class="typo-specimen-title">FLOTA<br>ACTIVA</p>
+          <div class="typo-weights">
+            <div class="typo-weight-row">
+              <span class="weight-label">ExtraBold 800</span>
+              <span style="font-family:var(--font-title); font-weight:800; font-size:22px; color:var(--blue); text-transform:uppercase;">SERVICIO INTEGRAL</span>
+            </div>
+            <div class="typo-weight-row">
+              <span class="weight-label">Bold 700</span>
+              <span style="font-family:var(--font-title); font-weight:700; font-size:22px; text-transform:uppercase;">Chequeo General</span>
+            </div>
+            <div class="typo-weight-row">
+              <span class="weight-label">SemiBold 600</span>
+              <span style="font-family:var(--font-title); font-weight:600; font-size:18px;">Solicitar Turno →</span>
+            </div>
+          </div>
+          <div style="margin-top:20px;" class="rule-note">
+            <strong>Aplicación:</strong> Letreros del taller, menú del sitio web, títulos de presentaciones corporativas y anuncios de autopartes. La geometría de Montserrat evoca ingeniería y solidez.
+          </div>
+        </div>
+      </div>
+
+      <div class="typo-card">
+        <div class="typo-card-header green">
+          <p>Tipografía Secundaria</p>
+          <p class="type-name">Roboto</p>
+        </div>
+        <div class="typo-card-body">
+          <p style="font-size:11px; color:var(--gray-md); font-family:var(--font-body); text-transform:uppercase; letter-spacing:.12em; margin-bottom:16px;">Cuerpo · Datos Técnicos · Documentos</p>
+          <p class="typo-specimen-body">Reemplazamos los inyectores para evitar un fallo catastrófico en plena cosecha. Diagnóstico OBD completo, revisión del sistema de combustible y prueba de presión de riel.</p>
+          <div class="typo-weights">
+            <div class="typo-weight-row">
+              <span class="weight-label">Medium 500</span>
+              <span style="font-family:var(--font-body); font-weight:500; font-size:15px;">Stock inmediato — Repuesto original</span>
+            </div>
+            <div class="typo-weight-row">
+              <span class="weight-label">Regular 400</span>
+              <span style="font-family:var(--font-body); font-weight:400; font-size:15px; color:var(--gray-md);">Descripción técnica del servicio realizado en el vehículo.</span>
+            </div>
+            <div class="typo-weight-row">
+              <span class="weight-label">Light 300</span>
+              <span style="font-family:var(--font-body); font-weight:300; font-size:14px; color:var(--gray-md);">Notas adicionales de presupuesto y seguimiento.</span>
+            </div>
+          </div>
+          <div style="margin-top:20px;" class="rule-note green">
+            <strong>Aplicación:</strong> Presupuestos, descripciones de repuestos en web, manuales de procedimiento y correos a clientes. Optimizada para lectura técnica en pantalla y papel.
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="typo-scale">
+      <div class="typo-scale-header">
+        <span>Elemento</span>
+        <span>Muestra</span>
+        <span>Especificación</span>
+      </div>
+      <div class="scale-row">
+        <span class="scale-name">Display / H1</span>
+        <span style="font-family:var(--font-title); font-weight:900; font-size:52px; color:var(--blue); line-height:1; text-transform:uppercase;">DGP</span>
+        <span class="scale-spec">Montserrat 900 · 52px+</span>
+      </div>
+      <div class="scale-row">
+        <span class="scale-name">Titular / H2</span>
+        <span style="font-family:var(--font-title); font-weight:800; font-size:32px; color:var(--blue); text-transform:uppercase;">Gestión de Flotas</span>
+        <span class="scale-spec">Montserrat 800 · 32px</span>
+      </div>
+      <div class="scale-row">
+        <span class="scale-name">Subtítulo / H3</span>
+        <span style="font-family:var(--font-title); font-weight:700; font-size:22px; text-transform:uppercase;">Service Toyota Hilux</span>
+        <span class="scale-spec">Montserrat 700 · 22px</span>
+      </div>
+      <div class="scale-row">
+        <span class="scale-name">Cuerpo</span>
+        <span style="font-family:var(--font-body); font-size:15px; color:var(--gray);">Stock disponible inmediatamente para su flota.</span>
+        <span class="scale-spec">Roboto 400 · 15–16px</span>
+      </div>
+      <div class="scale-row">
+        <span class="scale-name">UI / Etiqueta</span>
+        <span style="font-family:var(--font-title); font-size:11px; font-weight:700; letter-spacing:.15em; text-transform:uppercase; color:var(--green);">STOCK INMEDIATO</span>
+        <span class="scale-spec">Montserrat 700 · 11px</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ 04 TONO ═══ -->
+<section id="tono" class="alt-bg">
+  <div class="container">
+    <div class="section-header">
+      <span class="sec-label">// 04 — Tono de Voz B2B</span>
+      <h2 class="sec-title">COMUNICACIÓN<br><span class="gr">CORPORATIVA</span></h2>
+    </div>
+
+    <div class="tone-pillars">
+      <div class="tone-pillar">
+        <div class="tone-pillar-icon">🔩</div>
+        <p class="tone-pillar-title">Técnico pero Claro</p>
+        <p>Precisión de ingeniería traducida al impacto comercial. No explicar solo la falla; explicar las consecuencias de no resolverla a tiempo durante la temporada de cosecha.</p>
+      </div>
+      <div class="tone-pillar">
+        <div class="tone-pillar-icon green">⚡</div>
+        <p class="tone-pillar-title">Enfocado en Soluciones</p>
+        <p>Las empresas compran tiempo. Enfatizar siempre el stock inmediato, la velocidad del diagnóstico y la especialización en pick-ups de trabajo agropecuario.</p>
+      </div>
+      <div class="tone-pillar">
+        <div class="tone-pillar-icon">🏛️</div>
+        <p class="tone-pillar-title">Autoridad Seria</p>
+        <p>20 años de trayectoria respaldan cada comunicación. Tono de asesor corporativo. Sin jerga juvenil ni humor forzado. Perfil de consultor técnico de confianza.</p>
+      </div>
+    </div>
+
+    <div class="tone-examples">
+      <div class="tone-ex">
+        <div class="tone-ex-header ok">
+          <span style="font-size:16px;">✓</span>
+          <p class="tone-ex-indicator">Correcto — Comunicación B2B</p>
+        </div>
+        <div class="tone-ex-body">
+          <p class="tone-ex-quote">"Reemplazamos los inyectores para evitar un fallo catastrófico en plena cosecha. Con nuestro stock propio, la unidad estuvo operativa en menos de 48 horas."</p>
+          <p class="tone-ex-reason">Explica la consecuencia comercial del problema, destaca la ventaja del stock propio y cuantifica el tiempo de resolución. Lenguaje técnico y corporativo.</p>
+        </div>
+      </div>
+      <div class="tone-ex">
+        <div class="tone-ex-header bad">
+          <span style="font-size:16px;">✗</span>
+          <p class="tone-ex-indicator">Incorrecto — Evitar</p>
+        </div>
+        <div class="tone-ex-body">
+          <p class="tone-ex-quote">"Le cambiamos unas piezas que andaban mal. ¡Quedó como nuevo! 🔥 Cualquier consulta mandanos un mensajito al whatsapp."</p>
+          <p class="tone-ex-reason">Lenguaje informal que erosiona la credibilidad ante gerentes de flota. No transmite expertise técnico ni la magnitud del servicio. Emojis fuera de contexto corporativo.</p>
+        </div>
+      </div>
+      <div class="tone-ex">
+        <div class="tone-ex-header ok">
+          <span style="font-size:16px;">✓</span>
+          <p class="tone-ex-indicator">Correcto — Propuesta de valor</p>
+        </div>
+        <div class="tone-ex-body">
+          <p class="tone-ex-quote">"Servicio de mantenimiento preventivo para flotas agropecuarias: diagnóstico técnico completo, repuestos originales en stock y cronograma de intervención para no interferir con la operación."</p>
+          <p class="tone-ex-reason">Presenta la solución completa. Menciona los tres pilares (diagnóstico, stock, tiempos). Posiciona a DGP como socio operativo, no como un servicio puntual.</p>
+        </div>
+      </div>
+      <div class="tone-ex">
+        <div class="tone-ex-header bad">
+          <span style="font-size:16px;">✗</span>
+          <p class="tone-ex-indicator">Incorrecto — Evitar</p>
+        </div>
+        <div class="tone-ex-body">
+          <p class="tone-ex-quote">"¡Hola a todos! Hoy les contamos que hacemos service de autos. ¡No olviden seguirnos para más contenido!"</p>
+          <p class="tone-ex-reason">Sin propuesta de valor. Sin diferenciación. Sin foco en el cliente B2B. Este tipo de mensaje activa el modo "scroll" en un gerente de flota. No informa, no convierte.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="vocab-grid">
+      <div class="vocab-card">
+        <div class="vocab-header">
+          <p>// Verbos de posicionamiento</p>
+        </div>
+        <div class="vocab-body">
+          <ul>
+            <li>Garantizamos la operatividad de su flota</li>
+            <li>Minimizamos el tiempo de inactividad</li>
+            <li>Diagnosticamos con precisión técnica</li>
+            <li>Aseguramos stock disponible inmediato</li>
+            <li>Coordinamos el cronograma de service</li>
+          </ul>
+        </div>
+      </div>
+      <div class="vocab-card">
+        <div class="vocab-header green">
+          <p>// Términos técnicos preferidos</p>
+        </div>
+        <div class="vocab-body">
+          <ul>
+            <li>Flota agropecuaria / pick-ups de trabajo</li>
+            <li>Diagnóstico OBD / escáner de fábrica</li>
+            <li>Reprogramación ECU / inyectores</li>
+            <li>Mantenimiento preventivo / correctivo</li>
+            <li>Tiempo de inactividad (downtime)</li>
+          </ul>
+        </div>
+      </div>
+      <div class="vocab-card">
+        <div class="vocab-header gray">
+          <p>// Frases de marca B2B</p>
+        </div>
+        <div class="vocab-body">
+          <ul>
+            <li>"Su flota no se detiene"</li>
+            <li>"Stock propio. Respuesta inmediata."</li>
+            <li>"20 años respaldando operaciones"</li>
+            <li>"Socio técnico de su empresa"</li>
+            <li>"Diagnóstico transparente, resultado garantizado"</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ 05 ESTILO VISUAL ═══ -->
+<section id="visual">
+  <div class="container">
+    <div class="section-header">
+      <span class="sec-label">// 05 — Estilo Fotográfico y Visual</span>
+      <h2 class="sec-title">IDENTIDAD<br><span class="gr">VISUAL</span></h2>
+    </div>
+
+    <div class="visual-grid">
+      <div class="visual-card">
+        <div class="visual-card-header ok">
+          <span class="visual-icon">✓</span>
+          <p class="visual-card-title">Imágenes que usar</p>
+        </div>
+        <div class="visual-card-body">
+          <div class="visual-item">
+            <div class="vi-dot ok"></div>
+            <span>Pick-ups de trabajo pesado (Hilux, Amarok, Frontier, Ranger) bien iluminadas en entornos agropecuarios o rutas rurales de Córdoba.</span>
+          </div>
+          <div class="visual-item">
+            <div class="vi-dot ok"></div>
+            <span>Interior del taller limpio y ordenado, mostrando tecnología de diagnóstico avanzado: scanners OBD, bancos de prueba de inyectores, equipos de carga de A/C.</span>
+          </div>
+          <div class="visual-item">
+            <div class="vi-dot ok"></div>
+            <span>Planos detalle (macro) de repuestos originales en caja, etiquetas de marca, y herramientas de precisión. Refuerzan la ventaja del stock propio.</span>
+          </div>
+          <div class="visual-item">
+            <div class="vi-dot ok"></div>
+            <span>Personal con uniformes limpios y estandarizados: polo o mameluco con logo DGP en Azul Corporativo (#124B8F) y detalles en Verde Agro (#7DB919).</span>
+          </div>
+          <div class="visual-item">
+            <div class="vi-dot ok"></div>
+            <span>Planos picado del motor en trabajo, mostrando manos con guantes y herramientas correctas. Luz natural o iluminación profesional de taller.</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="visual-card">
+        <div class="visual-card-header bad">
+          <span class="visual-icon">✗</span>
+          <p class="visual-card-title">Imágenes a evitar</p>
+        </div>
+        <div class="visual-card-body">
+          <div class="visual-item">
+            <div class="vi-dot bad"></div>
+            <span>Fotos de banco de imágenes genéricas de mecánicos con overoles sucios, manchados de grasa de manera exagerada y posando artificialmente.</span>
+          </div>
+          <div class="visual-item">
+            <div class="vi-dot bad"></div>
+            <span>Talleres oscuros, desorganizados, con herramientas tiradas. Contradicen directamente el posicionamiento de taller premium y ordenado.</span>
+          </div>
+          <div class="visual-item">
+            <div class="vi-dot bad"></div>
+            <span>Imágenes de autos deportivos, de lujo o de competición. DGP se especializa en pick-ups agropecuarias; el material visual debe reflejarlo.</span>
+          </div>
+          <div class="visual-item">
+            <div class="vi-dot bad"></div>
+            <span>Filtros excesivos, ediciones con saturación extrema, efectos de "vintage" o estética informal en redes sociales.</span>
+          </div>
+          <div class="visual-item">
+            <div class="vi-dot bad"></div>
+            <span>Personal sin uniforme o con ropa informal. La estandarización visual del equipo es parte de la promesa de servicio premium.</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Guía de uniformes -->
+    <div class="rule-note" style="margin-bottom:24px;">
+      <strong>Uniformes del equipo:</strong> Polo o mameluco en color Azul Corporativo (#124B8F). Logo DGP bordado en pecho izquierdo, color completo. Detalle en Verde Agro (#7DB919) en vivos o bordados secundarios. Botas de seguridad. Guantes de nitrilo o cuero según tarea. El objetivo es transmitir profesionalismo y pertenencia institucional.
+    </div>
+
+    <!-- Composición digital -->
+    <div style="background:var(--blue); border-radius:8px; padding:40px; color:var(--white);">
+      <p style="font-family:var(--font-title); font-size:11px; font-weight:700; letter-spacing:.2em; text-transform:uppercase; color:rgba(255,255,255,.55); margin-bottom:20px;">// Guía de composición para piezas digitales</p>
+      <div style="display:grid; grid-template-columns:1fr 1fr 1fr; gap:32px;">
+        <div>
+          <p style="font-family:var(--font-title); font-weight:700; font-size:14px; text-transform:uppercase; color:var(--green); margin-bottom:8px; letter-spacing:.08em;">Jerarquía</p>
+          <p style="font-size:13px; color:rgba(255,255,255,.75); line-height:1.65;">Título grande (Montserrat ExtraBold) → subtítulo o dato técnico → cuerpo descriptivo → CTA en verde. El ojo debe fluir de arriba a abajo sin esfuerzo.</p>
+        </div>
+        <div>
+          <p style="font-family:var(--font-title); font-weight:700; font-size:14px; text-transform:uppercase; color:var(--green); margin-bottom:8px; letter-spacing:.08em;">Espacio</p>
+          <p style="font-size:13px; color:rgba(255,255,255,.75); line-height:1.65;">Márgenes mínimos de 32px en todos los lados. El espacio en blanco comunica orden y calidad. Nunca saturar una pieza con texto e imágenes a la vez.</p>
+        </div>
+        <div>
+          <p style="font-family:var(--font-title); font-weight:700; font-size:14px; text-transform:uppercase; color:var(--green); margin-bottom:8px; letter-spacing:.08em;">Contraste</p>
+          <p style="font-size:13px; color:rgba(255,255,255,.75); line-height:1.65;">Texto blanco sobre fondos azules. Texto gris oscuro sobre fondos blancos. Nunca texto amarillo o verde sobre blanco (contraste insuficiente).</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ 06 SERVICIOS ═══ -->
+<section id="servicios" class="alt-bg">
+  <div class="container">
+    <div class="section-header">
+      <span class="sec-label">// 06 — Catálogo de Servicios</span>
+      <h2 class="sec-title">OFERTA<br><span class="gr">TÉCNICA</span></h2>
+    </div>
+
+    <div class="service-highlight">
+      <div class="sh-item">
+        <p class="sh-num">20<span>+</span></p>
+        <p class="sh-label">Años de trayectoria</p>
+        <p class="sh-desc">Experiencia acumulada en mantenimiento especializado de pick-ups agropecuarias y utilitarios.</p>
+      </div>
+      <div class="sh-item">
+        <p class="sh-num"><span>360°</span></p>
+        <p class="sh-label">Servicio integral</p>
+        <p class="sh-desc">Taller mecánico y casa de repuestos bajo el mismo techo. Diagnóstico, reparación y repuesto en una sola visita.</p>
+      </div>
+      <div class="sh-item">
+        <p class="sh-num">0<span>h</span></p>
+        <p class="sh-label">Espera por repuestos</p>
+        <p class="sh-desc">Stock inmediato propio. Ventaja competitiva clave frente a talleres que dependen de proveedores externos.</p>
+      </div>
+    </div>
+
+    <div class="services-grid">
+      <div class="service-card">
+        <p class="service-name">Diagnóstico OBD</p>
+        <p class="service-desc">Lectura completa de códigos de falla con escáner de fábrica. Informe técnico detallado para la empresa cliente.</p>
+      </div>
+      <div class="service-card">
+        <p class="service-name">Mantenimiento Preventivo</p>
+        <p class="service-desc">Cronograma de service adaptado a la operación de cada flota. Coordinación para minimizar tiempos de inactividad.</p>
+      </div>
+      <div class="service-card">
+        <p class="service-name">Inyectores</p>
+        <p class="service-desc">Reemplazo y reprogramación de inyectores. Prevención de fallos catastróficos en períodos de alta demanda operativa.</p>
+      </div>
+      <div class="service-card">
+        <p class="service-name">Sistema de A/C</p>
+        <p class="service-desc">Servicio completo de aire acondicionado vehicular: diagnóstico, carga, reparación de fugas y reemplazo de componentes.</p>
+      </div>
+      <div class="service-card">
+        <p class="service-name">Service por Marca</p>
+        <p class="service-desc">Especialización en Toyota Hilux, Nissan Frontier, VW Amarok, Ford Ranger y BMW. Procedimientos específicos por modelo.</p>
+      </div>
+      <div class="service-card">
+        <p class="service-name">Frenos y Seguridad</p>
+        <p class="service-desc">Cambio de pastillas, discos y líquido de frenos. Control integral del sistema de frenado y ABS.</p>
+      </div>
+      <div class="service-card">
+        <p class="service-name">Iluminación</p>
+        <p class="service-desc">Reemplazo y upgrade de sistema de iluminación: faros LED, antiniebla y luces de trabajo para operaciones nocturnas.</p>
+      </div>
+      <div class="service-card">
+        <p class="service-name">Velocidad Crucero</p>
+        <p class="service-desc">Activación e instalación del control de velocidad crucero en vehículos compatibles. Mejora la eficiencia en rutas largas.</p>
+      </div>
+      <div class="service-card">
+        <p class="service-name">Tarjeta Virtual</p>
+        <p class="service-desc">Historial digital del vehículo. Acceso inmediato al estado técnico de cada unidad de la flota desde cualquier dispositivo.</p>
+      </div>
+      <div class="service-card">
+        <p class="service-name">Reprogramación ECU</p>
+        <p class="service-desc">Calibración y reprogramación de la unidad de control del motor. Optimización de performance y cumplimiento de parámetros de fábrica.</p>
+      </div>
+      <div class="service-card">
+        <p class="service-name">Kit Altura &amp; Ensanche</p>
+        <p class="service-desc">Instalación de kit de elevación y ensanchamiento para condiciones de campo. Mejora del desempeño off-road en terrenos agropecuarios.</p>
+      </div>
+      <div class="service-card" style="border-color:var(--red);">
+        <p class="service-name" style="color:var(--red);">Casa de Repuestos</p>
+        <p class="service-desc"><strong>Diferencial clave:</strong> Stock propio de repuestos originales y alternativos de alta calidad. Precios directos y disponibilidad garantizada sin esperas.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ 07 REDES SOCIALES ═══ -->
+<section id="redes">
+  <div class="container">
+    <div class="section-header">
+      <span class="sec-label">// 07 — Guía de Redes Sociales</span>
+      <h2 class="sec-title">ESTRATEGIA<br><span class="gr">DIGITAL</span></h2>
+    </div>
+
+    <div class="metrics-bar">
+      <div class="metric">
+        <p class="metric-num">734</p>
+        <p class="metric-label">Seguidores actuales</p>
+      </div>
+      <div class="metric">
+        <p class="metric-num">4<span>.878</span></p>
+        <p class="metric-label">Mejor Reel (vistas)</p>
+      </div>
+      <div class="metric">
+        <p class="metric-num">B<span>2B</span></p>
+        <p class="metric-label">Audiencia objetivo</p>
+      </div>
+      <div class="metric">
+        <p class="metric-num">3<span>x</span></p>
+        <p class="metric-label">Mayor alcance en Reels</p>
+      </div>
+    </div>
+
+    <div class="redes-grid">
+      <div class="redes-card">
+        <div class="redes-card-header">
+          <p class="redes-card-title">Contenido Prioritario — Reels</p>
+          <p class="redes-card-sub">Mayor alcance orgánico · Formato vertical 9:16</p>
+        </div>
+        <div class="redes-card-body">
+          <div class="redes-item">
+            <div class="ri-dot"></div>
+            <span><strong>Service especializado por modelo:</strong> Toyota Hilux, Nissan Frontier, Ford Ranger. Mostrar el proceso técnico completo con planos del diagnóstico y el resultado.</span>
+          </div>
+          <div class="redes-item">
+            <div class="ri-dot"></div>
+            <span><strong>Presentación del equipamiento tecnológico:</strong> Scanners OBD, banco de inyectores, equipos de carga A/C. Demuestra inversión en tecnología.</span>
+          </div>
+          <div class="redes-item">
+            <div class="ri-dot"></div>
+            <span><strong>"Antes del temporal / antes de la cosecha":</strong> Serie de contenido sobre el chequeo preventivo que toda empresa agropecuaria debería hacer a su flota.</span>
+          </div>
+          <div class="redes-item">
+            <div class="ri-dot"></div>
+            <span><strong>Stock y repuestos:</strong> Videos cortos mostrando disponibilidad de repuestos originales, reforzando la ventaja competitiva clave.</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="redes-card">
+        <div class="redes-card-header green">
+          <p class="redes-card-title">Contenido de Autoridad — Posts</p>
+          <p class="redes-card-sub">Posicionamiento como expertos · Formato cuadrado 1:1</p>
+        </div>
+        <div class="redes-card-body">
+          <div class="redes-item">
+            <div class="ri-dot green"></div>
+            <span><strong>Datos técnicos con impacto comercial:</strong> "Un inyector fuera de spec consume hasta 15% más combustible en 10.000 km." Educación que genera necesidad.</span>
+          </div>
+          <div class="redes-item">
+            <div class="ri-dot green"></div>
+            <span><strong>Casos de éxito con flota:</strong> Con autorización del cliente, mostrar el desafío técnico, la solución aplicada y el tiempo de resolución. Lenguaje de estudio de caso.</span>
+          </div>
+          <div class="redes-item">
+            <div class="ri-dot green"></div>
+            <span><strong>Alertas de temporada:</strong> "Con la cosecha de soja a 30 días, ¿su flota está lista?" Contenido que conecta con el ciclo agropecuario provincial.</span>
+          </div>
+          <div class="redes-item">
+            <div class="ri-dot green"></div>
+            <span><strong>Incorporación de tecnología:</strong> Presentación del nuevo equipamiento. Refuerza la inversión continua en tecnología de diagnóstico avanzado.</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="rule-note" style="margin-bottom:16px;">
+      <strong>Frecuencia recomendada:</strong> Mínimo 3 Reels por semana. Publicar entre las 18:00 y 21:00hs (hora argentina) de martes a jueves. El contenido técnico con datos cuantificables obtiene mayor engagement de audiencia B2B.
+    </div>
+
+    <div class="rule-note green">
+      <strong>Bio del perfil (sugerencia):</strong> "DGP Centro Mecánico · Servicio especializado en flotas agropecuarias · 20 años de trayectoria · Stock propio de repuestos · Villa María, Córdoba · 📅 Reservá turno:" — Transmite posicionamiento B2B desde el primer punto de contacto.
+    </div>
+  </div>
+</section>
+
+<!-- ═══ FOOTER ═══ -->
+<footer>
+  <div class="container footer-inner">
+    <div class="footer-brand">
+      <p class="footer-name">DGP <span>Centro Mecánico</span></p>
+      <p class="footer-tagline">Socio estratégico para flotas agropecuarias · Villa María, Córdoba</p>
+    </div>
+    <div class="footer-meta">
+      <p>Manual de Identidad Corporativa</p>
+      <p>Versión 2025 · Uso interno</p>
+      <p style="margin-top:8px;">@dgpcentromecanico · Lunes a Viernes 08:00–17:00hs</p>
+    </div>
+  </div>
+  <div class="footer-bar"></div>
+</footer>
+
+</body>
+</html>
