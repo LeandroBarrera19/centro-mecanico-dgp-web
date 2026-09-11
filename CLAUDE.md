@@ -122,6 +122,7 @@ Estas no se discuten y no se "mejoran":
   se te pida, mostrás el resultado y esperás.
 - Antes de editar archivos, **proponé el plan y esperá aprobación.**
 - Un commit de git por tarea, con mensaje descriptivo en castellano.
+- Los mensajes de commit son solo la línea de asunto, en castellano. Sin líneas de atribución, firmas ni identificadores de sesión.
 - No refactorices ni "limpies" código que la tarea no toca.
 - No borres archivos sin preguntar.
 
