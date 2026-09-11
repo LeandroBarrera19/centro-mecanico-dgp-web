@@ -4,7 +4,7 @@ import path from 'path';
 import { fileURLToPath } from 'url';
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
-const screenshotsDir = path.join(__dirname, 'temporary screenshots');
+const screenshotsDir = path.join(__dirname, '..', 'temporary screenshots');
 if (!fs.existsSync(screenshotsDir)) fs.mkdirSync(screenshotsDir, { recursive: true });
 
 const url = process.argv[2] || 'http://localhost:3000';
