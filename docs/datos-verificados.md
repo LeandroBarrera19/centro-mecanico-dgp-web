@@ -36,7 +36,7 @@ Incorrecto: "20 años de trayectoria", "más de dos décadas".
 | Teléfono fijo | No hay |
 | Correo público | centrodgpsas@gmail.com |
 | Contacto para flotas y particulares | Recepción general, por WhatsApp. **No se nombra a ninguna persona.** |
-| Ficha de Google Maps | `TODO_DATO: URL de la ficha (Compartir → Copiar enlace)` |
+| Ficha de Google Maps | `https://maps.google.com/?cid=3644390957274807803` (verificada por el propietario el 2026-09-10) |
 
 Nota: la dirección "Ramos Mejía 1775" que aparece en documentos internos es un
 error del sistema. **No usarla.**
@@ -59,7 +59,7 @@ automático de WhatsApp Business (a configurar por el propietario).
 | Dominio | `centromecanicodgp.com.ar` |
 | Variante canónica | **Sin `www`**. `https://centromecanicodgp.com.ar` |
 | `www.centromecanicodgp.com.ar` | Debe redirigir (301) a la versión sin `www` |
-| Estado | Sin registrar todavía (lo tramita el contador en NIC Argentina) |
+| Estado | Sin registrar al 2026-09-10 (lo tramita el contador en NIC Argentina). **Decisión: se escribe igual en el HTML.** |
 | Hosting | Cloudflare Pages, publicando la carpeta `public/` |
 | Correo con dominio | No, por decisión del propietario |
 
@@ -70,7 +70,7 @@ automático de WhatsApp Business (a configurar por el propietario).
 | Instagram | https://www.instagram.com/dgpcentromecanico |
 | Facebook | https://www.facebook.com/dgpcentromecanico |
 | LinkedIn | https://www.linkedin.com/company/centromecanicodgp |
-| Google Maps | `TODO_DATO: URL de la ficha` |
+| Google Maps | https://maps.google.com/?cid=3644390957274807803 |
 
 No hay otras redes. No enlazar ninguna otra.
 
@@ -80,7 +80,7 @@ No hay otras redes. No enlazar ninguna otra.
 |---|---|
 | Puntuación | 4,9 |
 | Cantidad al 2026-09-07 | 131 |
-| Cómo publicarla | "Más de 130 reseñas" o "4,9 en Google", **nunca un número exacto escrito a mano** |
+| Cómo publicarla | **"Más de 130 opiniones en Google"**. Nunca un número exacto escrito a mano. |
 | Reseñas negativas | 2 (una de 3 estrellas de 2022, una de 1 estrella de 2023) |
 | Nombre de reseñadores en el sitio | Nombre + inicial del apellido ("Daniel C.") |
 | Texto de reseñas en el sitio | Extractos de una o dos frases, con enlace a la ficha para leer completas |
@@ -195,8 +195,10 @@ Descripción verificada (se vio un ejemplar):
 - La tienen **todos los clientes**, no solo flotas.
 - Sale del sistema de gestión Anubis.
 
-Nombre a usar en el sitio: `TODO_DATO: confirmar "Libreta del vehículo" vs
-"Tarjeta Virtual" (el HTML actual dice Tarjeta Virtual; el PDF dice Libreta)`.
+Nombre a usar en el sitio: **Libreta digital del vehículo**, con esta
+descripción debajo: "Historial de reparaciones de cada vehículo. Se escanea el
+código QR pegado en el vehículo y se abre desde el celular, sin instalar nada."
+No usar "Tarjeta Virtual".
 
 ## 15. Chequeo de 25 puntos
 
