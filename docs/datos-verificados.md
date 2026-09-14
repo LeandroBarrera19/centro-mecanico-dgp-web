@@ -102,7 +102,8 @@ No hay otras redes. No enlazar ninguna otra.
 
 | Campo | Valor |
 |---|---|
-| Formas de pago | Efectivo, transferencia, tarjetas, cuenta corriente para empresas |
+| Formas de pago | Efectivo, transferencia bancaria, tarjeta de crédito y de débito, cuenta corriente para empresas |
+| Cuotas | Solo las que ofrece la tarjeta de crédito del cliente. **DGP no otorga financiación propia ni crédito a clientes.** No escribir "financiación", "planes de pago" ni "crédito propio". |
 | Empresas / flotas | Cuenta corriente con pago a 30 días |
 | Condiciones para flotas | Se negocian con cada empresa al contactarse. **No publicar umbral mínimo de vehículos.** |
 | Factura | `TODO_DATO: confirmar si se puede decir "factura A" en el sitio` |
