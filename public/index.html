@@ -1655,7 +1655,7 @@
     </div>
 
     <div class="footer-bottom">
-      <p>© 2025 Centro Mecánico DGP · Todos los derechos reservados.</p>
+      <p>© <span id="anio-copyright">2026</span> Centro Mecánico DGP · Todos los derechos reservados.</p>
       <p>Especialistas en flotas agropecuarias · Villa María, Córdoba</p>
     </div>
   </div>
@@ -1706,6 +1706,10 @@
     });
   }, { threshold: 0.1 });
   document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+</script>
+<script>
+  // Año del copyright
+  document.getElementById('anio-copyright').textContent = new Date().getFullYear();
 </script>
 
 </body>
