@@ -177,8 +177,8 @@ devuelve nada. (Con límites de palabra: sin `-w`, "egr" coincide con
 Apariciones a corregir:
 
 1. Franja de marcas foco: quedan Toyota, Volkswagen y Ford. Chevrolet sale de
-   ahí y se agrega a la lista secundaria, encabezada "También atendemos",
-   al principio de la lista.
+   ahí. Chevrolet se agrega al principio de la lista secundaria (la lista no
+   tiene un orden detectable; se decidió durante la ejecución).
 2. Tarjeta "Service por Marca": sale ", Chevrolet S10" de la enumeración de
    modelos y sale " del agro" de la frase siguiente. Queda: "Toyota Hilux,
    VW Amarok, Ford Ranger. Especialistas en las principales pick-ups."
