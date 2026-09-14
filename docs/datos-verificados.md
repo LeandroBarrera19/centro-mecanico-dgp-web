@@ -19,9 +19,16 @@ ficha de Google Maps observada el 2026-09-07.
 | Experiencia del equipo | Los dueños tienen más de 20 años en el rubro con distintas firmas |
 | Razón social / CUIT | **No se publican** por decisión del propietario |
 
-**Cómo escribir la trayectoria (obligatorio):** siempre en dos partes
-verificables. Correcto: "Equipo con más de 20 años en el rubro. DGP, desde 2022."
-Incorrecto: "20 años de trayectoria", "más de dos décadas".
+**Cómo escribir la trayectoria (obligatorio):**
+
+1. **Nunca** atribuir los 20 años a DGP. Prohibidas: "20 años de trayectoria",
+   "más de dos décadas", "20 años respaldando", y "+20 años" sin aclarar de
+   quién son.
+2. Los 20 años son del **equipo**, y siempre se dice así: "un equipo con más de
+   20 años en el rubro", "+20 años de experiencia del equipo".
+3. **"desde 2022"** tiene que aparecer al menos una vez en la página, en la
+   sección que habla de la trayectoria. No hace falta repetirlo en cada
+   mención: alcanza con que ninguna mención atribuya los 20 años a DGP.
 
 ## 2. Ubicación y contacto
 
