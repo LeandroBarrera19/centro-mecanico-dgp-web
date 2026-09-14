@@ -189,16 +189,33 @@ Tarea 4. La reescritura del posicionamiento es M3.
 
 ## Tarea 13 — Garantía
 
-Eliminar `garantía absoluta` y cualquier variante ("garantía total",
-"garantía sobre cada trabajo" sin condiciones).
+Sale la palabra "absoluta" y cualquier variante que prometa una garantía sin
+alcance definido. Una garantía sin plazo ni alcance no es una garantía: es una
+frase, y es la que un cliente va a citar en un reclamo.
 
-Texto de reemplazo, exacto:
+Dos cambios:
 
-> Garantía sobre repuestos y trabajos realizados. Ante cualquier inconveniente,
-> el cliente trae el vehículo, se revisa, y un profesional determina si
-> corresponde a la mano de obra o a un repuesto fallado.
+<h3> de la tarjeta 04 de "¿Por qué elegirnos?":
+Presupuestos claros. Garantía absoluta. → Presupuestos claros. Garantía de repuestos y trabajos.
+Párrafo de esa misma tarjeta, reemplazo de tramo:
+garantía absoluta sobre cada trabajo → garantía sobre los repuestos y los trabajos realizados
+No se toca "Atención completamente personalizada" en esa frase: es M3.
 
-**Hecho cuando:** `grep -ni "absoluta" public/index.html` no devuelve nada.
+Se quedan como están:
+
+"Cinco pasos que garantizan…" (subtítulo del proceso): es el verbo, no la
+garantía comercial. Anotado para M3: "garantizan un resultado sin sorpresas"
+es una promesa a revisar.
+"05. Entrega y garantía" (título del paso 05): es el nombre de la etapa.
+"garantía por el trabajo realizado" (párrafo del paso 05): es precisa. Solo
+cambia "tarjeta virtual", en la Tarea 14.
+"100% garantizados" dentro de una reseña: se resuelve en la Tarea 10, al
+recortar el texto a una o dos frases.
+
+La descripción completa del proceso de garantía (datos-verificados.md §9) no
+entra en una tarjeta. Va en M3 o en la página de flotas.
+
+Hecho cuando: grep -n -i "absoluta\|absoluto" vuelve vacío.
 
 ## Tarea 14 — Libreta digital del vehículo
 
