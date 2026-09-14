@@ -158,8 +158,10 @@ Tres correcciones:
 En la tarjeta o pestaña "Reprogramación Electrónica", eliminar toda mención a
 `DPF Off`, `EGR Off`, `Stage 1` y `Stage 2`.
 
-El texto queda: `Reprogramación y calibración de la unidad de control del motor
-(ECU).` Sin más detalle.
+La tarjeta "Reprogramación Electrónica" se elimina completa. No se reescribe: la
+tarjeta "Reprogramación ECU" ya cubre la reprogramación legítima, y reescribirla
+dejaría dos tarjetas gemelas. La frase "eliminación de restricciones" también
+sale: es el mismo servicio dicho de otra forma.
 
 **Hecho cuando:** `grep -n -i -w "dpf\|egr\|stage" public/index.html` no
 devuelve nada. (Con límites de palabra: sin `-w`, "egr" coincide con
