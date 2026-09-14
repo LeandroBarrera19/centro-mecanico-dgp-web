@@ -174,6 +174,19 @@ devuelve nada. (Con límites de palabra: sin `-w`, "egr" coincide con
 - La lista de marcas adicionales se conserva, pero encabezada de forma que no
   las presente como especialidad. Encabezado: `También atendemos`.
 
+Apariciones a corregir:
+
+1. Franja de marcas foco: quedan Toyota, Volkswagen y Ford. Chevrolet sale de
+   ahí y se agrega a la lista secundaria, encabezada "También atendemos",
+   al principio de la lista.
+2. Tarjeta "Service por Marca": sale ", Chevrolet S10" de la enumeración de
+   modelos y sale " del agro" de la frase siguiente. Queda: "Toyota Hilux,
+   VW Amarok, Ford Ranger. Especialistas en las principales pick-ups."
+
+Motivo del corte de "del agro": restringe el público al sector agropecuario,
+por el mismo criterio que sacó "agropecuarias" de las descripciones en la
+Tarea 4. La reescritura del posicionamiento es M3.
+
 ## Tarea 13 — Garantía
 
 Eliminar `garantía absoluta` y cualquier variante ("garantía total",
