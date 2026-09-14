@@ -161,8 +161,9 @@ En la tarjeta o pestaña "Reprogramación Electrónica", eliminar toda mención 
 El texto queda: `Reprogramación y calibración de la unidad de control del motor
 (ECU).` Sin más detalle.
 
-**Hecho cuando:** `grep -ni "dpf\|egr\|stage" public/index.html` no devuelve
-nada.
+**Hecho cuando:** `grep -n -i -w "dpf\|egr\|stage" public/index.html` no
+devuelve nada. (Con límites de palabra: sin `-w`, "egr" coincide con
+"integrada", "integridad" e "integrales".)
 
 ## Tarea 12 — Marcas
 
