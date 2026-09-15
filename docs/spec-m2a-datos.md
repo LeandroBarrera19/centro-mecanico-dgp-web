@@ -232,9 +232,12 @@ La tarjeta que hoy se llama **"Tarjeta Virtual"** pasa a llamarse
 3. Captura de página completa, con scroll previo para que se vean todas las
    secciones.
 4. Listar **todos** los `TODO_DATO` que queden en `public/index.html`.
-5. Un solo commit, con este mensaje exacto:
-   `Corrección de datos: nombre, contacto, horario, dominio y trayectoria`
-   Verificá los bytes de la tilde como en M1.
+5. Sin commit propio. M2a usa un commit por tarea, no uno solo al final: la
+   Tarea 15 es únicamente verificación sobre el estado ya commiteado.
+   Si alguna verificación falla, la corrección va en un commit propio con su
+   propio mensaje.
+6. Listar todos los commits de M2a con `git log --oneline` desde 50a83b8, y
+   confirmar que cada tarea tiene el suyo.
 
 ---
 
