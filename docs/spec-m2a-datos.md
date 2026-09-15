@@ -225,6 +225,9 @@ La tarjeta que hoy se llama **"Tarjeta Virtual"** pasa a llamarse
 > Historial de reparaciones de cada vehículo. Se escanea el código QR pegado en
 > el vehículo y se abre desde el celular, sin instalar nada.
 
+En el paso 05 del proceso (línea 1204), el tramo tu tarjeta virtual pasa a tu
+libreta digital. En minúscula y corto, porque está dentro de una oración.
+
 ## Tarea 15 — Verificación final y commit
 
 1. `JSON.parse` del bloque JSON-LD completo, sin errores. Mostrarlo.
