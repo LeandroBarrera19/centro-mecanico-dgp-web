@@ -140,18 +140,41 @@ cifra. Sacar el número: la frase queda `Servicios especializados`.
 
 ## Tarea 10 — Reseñas
 
-Tres correcciones:
+La tarea está partida en 10a y 10b, con un commit cada una. Las cinco reseñas
+fueron verificadas contra la ficha de Google Maps: los textos son reales. Quedan
+sin verificar las fechas (las cinco dicen "octubre 2025") y la etiqueta "Local
+Guide" de Daniel, Alberto y Carlos. Hasta que se verifiquen, no se tocan.
 
-1. El total: reemplazar `127 opiniones` por `Más de 130 opiniones en Google`.
+### Tarea 10a — Puntuación, total y enlace a la ficha
+
+1. El total: `127 opiniones en Google` pasa a `Más de 130 opiniones en Google`.
    No volver a escribir un número exacto de reseñas en ningún lugar del sitio.
-2. Los nombres: dejar **nombre + inicial del apellido** (`Daniel C.`), no el
-   apellido completo.
-3. El texto de cada reseña: recortar a **una o dos frases como máximo**,
-   conservando las palabras originales del autor (no reescribirlas), y agregar
-   debajo del bloque un enlace a la ficha de Google Maps con el texto
-   `Ver todas las opiniones en Google`.
-   El enlace es `https://maps.google.com/?cid=3644390957274807803`, con
-   `target="_blank"` y `rel="noopener"`.
+2. La puntuación: `4.9` pasa a `4,9`, con coma.
+3. El enlace: no se agrega uno nuevo. El botón existente "Ver reseñas en Google"
+   pasa a apuntar a `https://maps.google.com/?cid=3644390957274807803`, con el
+   texto `Ver todas las opiniones en Google`, `target="_blank"` y
+   `rel="noopener"`. Su `aria-label` se alinea con el texto visible. Queda un
+   solo enlace a la ficha en la sección.
+
+### Tarea 10b — Texto de las reseñas
+
+1. Los nombres: nombre + inicial del apellido, en el `.t-name` visible y en los
+   comentarios HTML de cada tarjeta: `Daniel C.`, `Alberto R.`, `Carlos G.`,
+   `Franco G.`.
+2. El texto: una o dos frases como máximo, conservando las palabras originales
+   del autor. Solo hace falta recortar la reseña de Daniel C., que queda con sus
+   frases tercera y cuarta ("Hicieron un diagnóstico minucioso… reparaciones
+   innecesarias."). El recorte no incluye "100% garantizados". Las otras tres ya
+   tienen una o dos frases y quedan como están.
+3. La reseña de Nico G. no se publica. Es real, pero dice "más de 10 años
+   trabajando con ellos" y la misma página dice "desde 2022": el visitante ve
+   una contradicción que no tiene cómo resolver. Queda en la ficha, donde está
+   en su contexto. La tarjeta se borra entera y su lugar queda vacío. La grilla
+   de cuatro tarjetas se revisa en M3.
+4. Las fechas y las etiquetas "Local Guide" no se tocan: esperan verificación.
+5. El comentario "⚠️ REEMPLAZAR el texto de cada reseña con las reales de tu
+   perfil de Google Business" se borra: era una nota del generador y ya cumplió
+   su función.
 
 ## Tarea 11 — Servicios que no se publican
 
