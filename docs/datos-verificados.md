@@ -91,6 +91,8 @@ No hay otras redes. No enlazar ninguna otra.
 | Reseñas negativas | 2 (una de 3 estrellas de 2022, una de 1 estrella de 2023) |
 | Nombre de reseñadores en el sitio | Nombre + inicial del apellido ("Daniel C.") |
 | Texto de reseñas en el sitio | Extractos de una o dos frases, con enlace a la ficha para leer completas |
+| Reseñas publicadas en el sitio | Cuatro, verificadas una por una contra la ficha por Ramiro el 2026-09-10. Las fechas también están verificadas. |
+| Etiqueta "Local Guide" | **No se usa.** No publicar esa condición de ningún reseñador. |
 
 **Prohibido** agregar `AggregateRating` o `Review` al JSON-LD (ver CLAUDE.md §4).
 
