@@ -219,7 +219,12 @@ Respuestas del usuario a las preguntas del módulo, y lo que se hizo con cada un
 | Spec corregida: Tarea 3, punto 7 (el PNG se borra en la Tarea 4). P-002 respondida | `71af91c` |
 | P-003 a: la imagen para compartir pasa a ser una placa institucional sin foto | `a3e29bd` |
 | P-003 b: foto actual del hero bloqueada para publicar; F-01 a requisito | `645d5ac` |
-| P-004: `public/favicon.png` borrado (nada lo referenciaba) | "Sin favicon sin uso" |
+| P-004: `public/favicon.png` borrado (nada lo referenciaba) | `b9056a4` |
+| P-005: el subconjunto symbols se queda; en M2c las estrellas pasan a SVG en línea y se elimina | este commit |
+
+**Pendiente para M2c (P-005).** Las estrellas `★` de `.g-star` y `.t-star` pasan
+a SVG en línea, y se eliminan `public/assets/fonts/roboto-symbols.woff2` y su
+`@font-face`. Ahorro esperado: 20,6 KB en cada carga.
 
 **Placa para compartir.** `public/assets/og-placa.jpg`: 1200×630, fondo
 `#124B8F` y el logo centrado a 480 px (40 % del ancho), sin texto. JPEG 80,
