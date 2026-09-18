@@ -39,3 +39,19 @@ for (const f of FORMATOS_HERO) {
 // F-01 o F-07 (docs/brief-fotografico.md).
 await generar(HERO, path.join(ASSETS, 'og-image.jpg'),
   s => s.resize({ width: 1200, height: 630, fit: 'cover', position: 'centre' }).jpeg({ quality: 80 }));
+
+// ── Logo ─────────────────────────────────────────────────────────────────────
+// Sin pérdida en los dos formatos: los píxeles visibles quedan idénticos.
+const LOGO = path.join(SRC, 'logo-dgp-original.png');
+await generar(LOGO, path.join(ASSETS, 'logo-dgp.png'),
+  s => s.png({ compressionLevel: 9, adaptiveFiltering: true }));
+await generar(LOGO, path.join(ASSETS, 'logo-dgp.webp'),
+  s => s.webp({ lossless: true, effort: 6 }));
+
+// ── Favicon ──────────────────────────────────────────────────────────────────
+const FAVICON = path.join(SRC, 'favicon-original.png');
+const PUBLIC = path.join(RAIZ, 'public');
+await generar(FAVICON, path.join(PUBLIC, 'favicon-32.png'),
+  s => s.resize(32, 32).png({ compressionLevel: 9, adaptiveFiltering: true }));
+await generar(FAVICON, path.join(PUBLIC, 'apple-touch-icon.png'),
+  s => s.resize(180, 180).png({ compressionLevel: 9, adaptiveFiltering: true }));

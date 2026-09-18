@@ -64,6 +64,20 @@ estado y ejecuta. No borra la pregunta: el historial sirve.
   María, Córdoba") describe esta foto; cuando se rehaga la imagen con F-01 o
   F-07 va a necesitar un texto nuevo, que no escribo yo.
 
+### P-004 — ¿Se borra `public/favicon.png`?
+- **Estado:** abierta
+- **Bloquea:** no bloquea.
+- **Qué falta:** confirmar si se borra `public/favicon.png`, que quedó sin uso.
+- **Contexto:** en la Tarea 5 de M2b los enlaces del `<head>` pasaron a
+  `favicon-32.png` (32×32, 3,0 KB) y `apple-touch-icon.png` (180×180, 34,8 KB).
+  Ya nada referencia a `favicon.png` (35 KB): `grep` sobre `public/` y `tools/`
+  vuelve vacío. La spec no dice que se borre, y `CLAUDE.md` §7 dice que no se
+  borran archivos sin preguntar. Una copia idéntica quedó en
+  `assets-src/favicon-original.png`, que es de donde el script genera los
+  íconos.
+- **Qué hice mientras tanto:** nada. El archivo sigue en `public/`. No afecta la
+  carga de la página, porque ningún navegador lo pide.
+
 ---
 
 ## Respondidas

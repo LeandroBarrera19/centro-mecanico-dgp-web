@@ -7,8 +7,8 @@
   <meta name="description" content="Servicio especializado en pick-ups y utilitarios. Diagnóstico OBD, stock propio de repuestos y un equipo con más de 20 años en el rubro. En Villa María, Córdoba.">
 
   <!-- ── FAVICON ── -->
-  <link rel="icon" type="image/png" sizes="180x180" href="favicon.png">
-  <link rel="apple-touch-icon" sizes="180x180" href="favicon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
   <meta name="theme-color" content="#124B8F">
 
   <!-- ── RENDIMIENTO ── -->
@@ -981,6 +981,7 @@
       .footer-grid { grid-template-columns: 1fr; }
       .footer-brand { display: grid; grid-template-columns: auto 1fr; gap: 0 16px; align-items: start; }
       .footer-brand img { grid-row: 1 / 4; width: 44px; height: 44px; }
+      .footer-brand picture { grid-row: 1 / 4; }
       .section-title { font-size: 1.65rem; }
       .why-grid { max-width: 100%; }
     }
@@ -1007,7 +1008,10 @@
   <div class="container">
     <nav class="navbar-inner" aria-label="Menú principal">
       <a href="#inicio" class="navbar-logo">
-        <img src="assets/logo-dgp.png" alt="Centro Mecánico DGP">
+        <picture>
+          <source type="image/webp" srcset="assets/logo-dgp.webp">
+          <img src="assets/logo-dgp.png" alt="Centro Mecánico DGP" width="428" height="428">
+        </picture>
         <div class="navbar-logo-text">
           Centro Mecánico DGP
           <span>Villa María, Córdoba</span>
@@ -1611,7 +1615,10 @@
     <div class="footer-grid">
 
       <div class="footer-brand">
-        <img src="assets/logo-dgp.png" alt="Centro Mecánico DGP">
+        <picture>
+          <source type="image/webp" srcset="assets/logo-dgp.webp">
+          <img src="assets/logo-dgp.png" alt="Centro Mecánico DGP" width="428" height="428">
+        </picture>
         <div class="footer-brand-name">Centro Mecánico DGP</div>
         <div class="footer-brand-sub">Villa María, Córdoba</div>
         <p class="footer-tagline">"Socio estratégico para flotas agropecuarias"</p>
