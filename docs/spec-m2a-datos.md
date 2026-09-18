@@ -140,10 +140,10 @@ cifra. Sacar el número: la frase queda `Servicios especializados`.
 
 ## Tarea 10 — Reseñas
 
-La tarea está partida en 10a y 10b, con un commit cada una. Las cinco reseñas
-fueron verificadas contra la ficha de Google Maps: los textos son reales. Quedan
-sin verificar las fechas (las cinco dicen "octubre 2025") y la etiqueta "Local
-Guide" de Daniel, Alberto y Carlos. Hasta que se verifiquen, no se tocan.
+La tarea está partida en 10a, 10b y 10c, con un commit cada una. Las cinco
+reseñas fueron verificadas contra la ficha de Google Maps el 2026-09-10: los
+textos y las fechas son reales. La etiqueta "Local Guide" no se publica (ver
+Tarea 10c).
 
 ### Tarea 10a — Puntuación, total y enlace a la ficha
 
@@ -171,10 +171,24 @@ Guide" de Daniel, Alberto y Carlos. Hasta que se verifiquen, no se tocan.
    una contradicción que no tiene cómo resolver. Queda en la ficha, donde está
    en su contexto. La tarjeta se borra entera y su lugar queda vacío. La grilla
    de cuatro tarjetas se revisa en M3.
-4. Las fechas y las etiquetas "Local Guide" no se tocan: esperan verificación.
+4. Verificado el 2026-09-10: las cinco reseñas y sus fechas son reales,
+   confirmadas contra la ficha una por una. La etiqueta "Local Guide" se
+   elimina (ver Tarea 10c).
 5. El comentario "⚠️ REEMPLAZAR el texto de cada reseña con las reales de tu
    perfil de Google Business" se borra: era una nota del generador y ya cumplió
    su función.
+
+### Tarea 10c — Etiqueta "Local Guide"
+
+Se elimina de las tres opiniones que la tienen. Era texto suelto dentro del
+`<div class="t-date">`, sin elemento propio: sale solo el tramo
+`Local Guide · `, y la fecha queda. Las fechas no se tocan: están verificadas.
+
+Motivo: es una condición de la cuenta de Google del reseñador que el sitio no
+puede verificar ni mantener actualizada, y atribuirla a una persona real sin
+confirmarla es publicar un dato de un tercero que no controlamos.
+
+Hecho cuando: `grep -rn -i "local.\?guide" public/` vuelve vacío.
 
 ## Tarea 11 — Servicios que no se publican
 
