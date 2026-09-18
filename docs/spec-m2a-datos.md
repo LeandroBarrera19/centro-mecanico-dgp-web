@@ -278,6 +278,12 @@ libreta digital. En minúscula y corto, porque está dentro de una oración.
    propio mensaje.
 6. Listar todos los commits de M2a con `git log --oneline` desde 50a83b8, y
    confirmar que cada tarea tiene el suyo.
+7. Verificación semántica del JSON-LD, no solo sintáctica: `url`, `image`,
+   `logo` y `hasMap` empiezan con `https://` y son direcciones válidas (se
+   construyen con `new URL()`, tienen dominio y no tienen espacios);
+   `telephone` está en formato E.164 (`+` y de 8 a 15 dígitos, sin espacios ni
+   guiones). `JSON.parse` y validator.schema.org no detectan un valor que es
+   válido como texto pero absurdo como dato.
 
 ---
 
