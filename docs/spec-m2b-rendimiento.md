@@ -118,8 +118,10 @@ se descarga la imagen completa.
    Capturas antes y después.
 6. Confirmar en la pestaña de red qué archivo descarga el navegador en cada
    ancho. A 390 px tiene que bajar el de 768, no el de 1920.
-7. Recién ahí, borrar `public/assets/hero-bg.png` y confirmar con `grep` que
-   no queda ninguna referencia.
+7. El PNG original NO se borra en esta tarea: `og:image`, `twitter:image` y el
+   `"image"` del JSON-LD todavía lo referencian y se cambian en la Tarea 4. Se
+   borra al final de la Tarea 4, y ahí se confirma con `grep` que no queda
+   ninguna referencia.
 
 Commit: `Hero con picture responsivo en lugar de background-image`
 

@@ -24,23 +24,6 @@ estado y ejecuta. No borra la pregunta: el historial sirve.
 
 ## Abiertas
 
-### P-002 — Borrado de `hero-bg.png`: Tarea 3 o Tarea 4 de M2b
-- **Estado:** abierta
-- **Bloquea:** no bloquea.
-- **Qué falta:** confirmar que está bien haber borrado `public/assets/hero-bg.png`
-  en el commit de la Tarea 4 y no en el de la Tarea 3.
-- **Contexto:** `docs/spec-m2b-rendimiento.md`, Tarea 3, punto 7: "Recién ahí,
-  borrar `public/assets/hero-bg.png` y confirmar con `grep` que no queda
-  ninguna referencia". Al terminar la Tarea 3 quedan tres referencias, y las
-  tres son de la Tarea 4: `og:image` (línea 27), `twitter:image` (línea 36) y
-  el `image` del JSON-LD (línea 46). El `grep` no puede dar vacío en la
-  Tarea 3.
-- **Qué hice mientras tanto:** decisión mía. En la Tarea 3 no borré el PNG. Lo
-  borré al final de la Tarea 4, después de cambiar esas tres referencias, y
-  ahí el `grep` dio vacío. Así ningún commit deja una referencia a un archivo
-  que no existe. El original sigue en `assets-src/hero-bg-original.png` desde
-  la Tarea 2.
-
 ### P-003 — Patente y cara legibles en la imagen para compartir
 - **Estado:** abierta
 - **Bloquea:** no bloquea M2b. Hay que resolverla antes de publicar (M5).
@@ -145,3 +128,26 @@ estado y ejecuta. No borra la pregunta: el historial sirve.
   2. A 320 px la página sigue desbordando (347), pero no por el recuadro, que
      mide 280. Desborda la fila de contadores del hero, y eso ya pasaba antes
      de M2a (ver `docs/informe-m2a.md` §7).
+
+### P-002 — Borrado de `hero-bg.png`: Tarea 3 o Tarea 4 de M2b
+- **Estado:** respondida
+- **Bloquea:** no bloquea.
+- **Qué falta:** confirmar que está bien haber borrado `public/assets/hero-bg.png`
+  en el commit de la Tarea 4 y no en el de la Tarea 3.
+- **Contexto:** `docs/spec-m2b-rendimiento.md`, Tarea 3, punto 7: "Recién ahí,
+  borrar `public/assets/hero-bg.png` y confirmar con `grep` que no queda
+  ninguna referencia". Al terminar la Tarea 3 quedan tres referencias, y las
+  tres son de la Tarea 4: `og:image` (línea 27), `twitter:image` (línea 36) y
+  el `image` del JSON-LD (línea 46). El `grep` no puede dar vacío en la
+  Tarea 3.
+- **Qué hice mientras tanto:** decisión mía. En la Tarea 3 no borré el PNG. Lo
+  borré al final de la Tarea 4, después de cambiar esas tres referencias, y
+  ahí el `grep` dio vacío. Así ningún commit deja una referencia a un archivo
+  que no existe. El original sigue en `assets-src/hero-bg-original.png` desde
+  la Tarea 2.
+- **Respuesta (2026-09-18):** la decisión fue correcta y la spec estaba mal.
+  Borrar el PNG en la Tarea 3 habría dejado un commit que referenciaba un
+  archivo inexistente. La Tarea 3, punto 7, de
+  `docs/spec-m2b-rendimiento.md` quedó corregida: el PNG se borra al final de
+  la Tarea 4, y ahí se confirma con `grep` que no queda ninguna referencia.
+  No hay nada más que ejecutar: es lo que ya se hizo en `9d6f636`.
