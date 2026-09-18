@@ -24,7 +24,22 @@ estado y ejecuta. No borra la pregunta: el historial sirve.
 
 ## Abiertas
 
-(vacío)
+### P-002 — Borrado de `hero-bg.png`: Tarea 3 o Tarea 4 de M2b
+- **Estado:** abierta
+- **Bloquea:** no bloquea.
+- **Qué falta:** confirmar que está bien haber borrado `public/assets/hero-bg.png`
+  en el commit de la Tarea 4 y no en el de la Tarea 3.
+- **Contexto:** `docs/spec-m2b-rendimiento.md`, Tarea 3, punto 7: "Recién ahí,
+  borrar `public/assets/hero-bg.png` y confirmar con `grep` que no queda
+  ninguna referencia". Al terminar la Tarea 3 quedan tres referencias, y las
+  tres son de la Tarea 4: `og:image` (línea 27), `twitter:image` (línea 36) y
+  el `image` del JSON-LD (línea 46). El `grep` no puede dar vacío en la
+  Tarea 3.
+- **Qué hice mientras tanto:** decisión mía. En la Tarea 3 no borré el PNG. Lo
+  borré al final de la Tarea 4, después de cambiar esas tres referencias, y
+  ahí el `grep` dio vacío. Así ningún commit deja una referencia a un archivo
+  que no existe. El original sigue en `assets-src/hero-bg-original.png` desde
+  la Tarea 2.
 
 ---
 
