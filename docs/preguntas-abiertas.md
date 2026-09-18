@@ -41,6 +41,29 @@ estado y ejecuta. No borra la pregunta: el historial sirve.
   que no existe. El original sigue en `assets-src/hero-bg-original.png` desde
   la Tarea 2.
 
+### P-003 — Patente y cara legibles en la imagen para compartir
+- **Estado:** abierta
+- **Bloquea:** no bloquea M2b. Hay que resolverla antes de publicar (M5).
+- **Qué falta:** ¿la imagen para compartir se deja como está hasta que lleguen
+  F-01 o F-07, o hay que tapar la patente y la cara?
+- **Contexto:** `public/assets/og-image.jpg` (Tarea 4 de M2b) es el recorte
+  centrado de la imagen actual del hero, como pidió la spec. En el hero la foto
+  queda bajo una capa azul al 70–93 % y casi no se distingue, pero la imagen
+  para compartir va sin capa y se ve entera: la patente **"AF 456 JL"** se lee
+  sin esfuerzo, y la cara del conductor se ve a través del parabrisas.
+  `docs/brief-fotografico.md` prohíbe en todas las fotos del sitio las
+  patentes legibles y las caras sin permiso. El logo TOYOTA de la parrilla es
+  la marca del vehículo, no de un cliente, así que la regla de logos de
+  clientes no aplica. La foto muestra una pick-up en el campo, no el taller.
+  Esta imagen es la que WhatsApp muestra cuando alguien comparte el enlace. El
+  sitio todavía no está publicado.
+- **Qué hice mientras tanto:** generé la imagen tal como pide la spec (1200×630,
+  recorte centrado, 158 KB) y no la retoqué. No tapé nada por mi cuenta. El
+  encuadre en sí está bien: el recorte solo quita 20 px arriba y abajo. El
+  `og:image:alt` ("Centro Mecánico DGP — Pick-up en campo agropecuario, Villa
+  María, Córdoba") describe esta foto; cuando se rehaga la imagen con F-01 o
+  F-07 va a necesitar un texto nuevo, que no escribo yo.
+
 ---
 
 ## Respondidas

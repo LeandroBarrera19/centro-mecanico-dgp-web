@@ -33,3 +33,9 @@ for (const f of FORMATOS_HERO) {
       s => f.aplicar(s.resize({ width: ancho, withoutEnlargement: true })));
   }
 }
+
+// ── Imagen para compartir (F-10) ─────────────────────────────────────────────
+// Recorte centrado de 1200×630 de la imagen del hero. Se rehace cuando lleguen
+// F-01 o F-07 (docs/brief-fotografico.md).
+await generar(HERO, path.join(ASSETS, 'og-image.jpg'),
+  s => s.resize({ width: 1200, height: 630, fit: 'cover', position: 'centre' }).jpeg({ quality: 80 }));
