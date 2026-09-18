@@ -118,11 +118,28 @@ Estas no se discuten y no se "mejoran":
 
 ## 7. Cómo trabajar
 
-- **Una tarea por vez.** Si la especificación tiene diez puntos, hacés el que
-  se te pida, mostrás el resultado y esperás.
-- Antes de editar archivos, **proponé el plan y esperá aprobación.**
+Hay dos modos. La instrucción de cada módulo dice cuál se usa; si no lo dice,
+es el modo por tarea.
+
+**Modo por tarea** (para lo que necesita criterio humano: textos, decisiones
+comerciales, borrado de contenido):
+- Una tarea por vez. Proponé el plan, esperá aprobación, ejecutá, mostrá.
+
+**Modo módulo completo** (para lo verificable con herramientas: rutas, formato,
+rendimiento, estructura):
+- Ejecutás todas las tareas de la spec de corrido, sin pedir aprobación entre
+  una y otra.
+- No frenás por una duda: la anotás en `docs/preguntas-abiertas.md` (ver §9) y
+  seguís con lo que sí podés hacer.
+- Solo frenás del todo si la duda bloquea el resto del módulo, o si algo es
+  irreversible y no está cubierto por la spec.
+- Al terminar, informe completo: qué se hizo, qué se verificó, qué quedó
+  anotado.
+
+En los dos modos:
 - Un commit de git por tarea, con mensaje descriptivo en castellano.
-- Los mensajes de commit son solo la línea de asunto, en castellano. Sin líneas de atribución, firmas ni identificadores de sesión.
+- Los mensajes de commit son solo la línea de asunto. Sin líneas de
+  atribución, firmas ni identificadores de sesión.
 - No refactorices ni "limpies" código que la tarea no toca.
 - No borres archivos sin preguntar.
 
@@ -142,12 +159,39 @@ comando que lo comprueba.
 
 ---
 
-## 9. Cuándo parar y preguntar
+## 9. Huecos de información: nunca se tapan
 
-Frená y preguntá, en vez de decidir, cuando:
+**Un hueco de información no se rellena nunca.** Ni con una suposición, ni con
+una generalidad, ni con un texto de relleno que "suene bien", ni con lo que
+suele ponerse en sitios parecidos. Si el dato no está, no se escribe.
 
+Es un hueco cuando:
 - Falta un dato y no está en `docs/datos-verificados.md`.
-- La especificación se contradice con este archivo.
-- La tarea requiere una dependencia, un framework o un paso de compilación.
-- Hace falta borrar o renombrar algo que ya existe.
-- Encontrás un problema fuera del alcance de la tarea actual (anotalo y seguí).
+- La spec da un texto que no encaja donde hay que ponerlo.
+- La spec y este archivo se contradicen.
+- Hay que elegir entre dos opciones y ninguna está dictada.
+- Hace falta borrar, renombrar o mover algo que la spec no menciona.
+- Una instrucción es ambigua o no se puede cumplir tal como está escrita.
+
+**Qué hacer con un hueco:**
+
+1. Anotalo en `docs/preguntas-abiertas.md`, con el formato de ese archivo.
+2. Si el resto de la tarea se puede hacer sin ese dato, hacelo, y dejá en el
+   código el marcador `TODO_DATO: <qué falta>` donde iría.
+3. Si no se puede, dejá esa tarea sin hacer y seguí con la siguiente.
+4. Nunca declares hecha una tarea que tiene un hueco sin resolver.
+
+**Está prohibido:**
+- Inventar un texto, una cifra, un nombre o una URL que no esté en
+  `docs/datos-verificados.md`.
+- Sustituir un dato faltante por una frase genérica ("calidad garantizada",
+  "amplia experiencia", "los mejores profesionales").
+- Escribir un valor "de ejemplo" o "provisorio" que se vea como definitivo.
+- Decidir por tu cuenta y presentarlo como decisión del usuario. Si tuviste que
+  decidir, escribilo como decisión tuya y anotala.
+- Borrar un marcador o un comentario de advertencia que dejó otro, sin
+  confirmarlo.
+
+Un módulo que termina con diez preguntas anotadas y ocho tareas hechas está
+mejor ejecutado que uno que termina con dieciocho tareas hechas y tres datos
+inventados.
