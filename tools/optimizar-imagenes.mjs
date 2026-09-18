@@ -35,12 +35,16 @@ for (const f of FORMATOS_HERO) {
 }
 
 // ── Logo ─────────────────────────────────────────────────────────────────────
-// Sin pérdida en los dos formatos: los píxeles visibles quedan idénticos.
+// El de 428 px solo lo usa el "logo" del JSON-LD (Google pide al menos
+// 112×112); va sin pérdida. La página muestra el de 96 px: el doble de los
+// 48 px de la barra de navegación, para pantallas de densidad 2.
 const LOGO = path.join(SRC, 'logo-dgp-original.png');
 await generar(LOGO, path.join(ASSETS, 'logo-dgp.png'),
   s => s.png({ compressionLevel: 9, adaptiveFiltering: true }));
-await generar(LOGO, path.join(ASSETS, 'logo-dgp.webp'),
-  s => s.webp({ lossless: true, effort: 6 }));
+await generar(LOGO, path.join(ASSETS, 'logo-dgp-96.png'),
+  s => s.resize(96, 96).png({ compressionLevel: 9, adaptiveFiltering: true }));
+await generar(LOGO, path.join(ASSETS, 'logo-dgp-96.webp'),
+  s => s.resize(96, 96).webp({ lossless: true, effort: 6 }));
 
 // ── Imagen para compartir (F-10) ─────────────────────────────────────────────
 // Placa institucional sin foto: el logo centrado, al 40 % del ancho, sobre el

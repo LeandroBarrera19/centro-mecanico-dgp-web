@@ -220,7 +220,26 @@ Respuestas del usuario a las preguntas del módulo, y lo que se hizo con cada un
 | P-003 a: la imagen para compartir pasa a ser una placa institucional sin foto | `a3e29bd` |
 | P-003 b: foto actual del hero bloqueada para publicar; F-01 a requisito | `645d5ac` |
 | P-004: `public/favicon.png` borrado (nada lo referenciaba) | `b9056a4` |
-| P-005: el subconjunto symbols se queda; en M2c las estrellas pasan a SVG en línea y se elimina | este commit |
+| P-005: el subconjunto symbols se queda; en M2c las estrellas pasan a SVG en línea y se elimina | `9ac6a9f` |
+| Tarea agregada: logo al tamaño en que se muestra, y medición de la Tarea 7 repetida | este commit |
+
+**Logo de 96 px.** `logo-dgp-96.webp` (13,1 KB) y `logo-dgp-96.png` (16,3 KB,
+respaldo), sin pérdida a partir del original, con `width="96" height="96"`,
+en la barra y en el pie. Son 96 px: el doble de los 48 px de la barra. En el
+pie de escritorio el logo se muestra a 52 px, que a densidad 2 piden 104: se
+amplía un 8 %, y con zoom apenas se nota. `logo-dgp.webp` de 428 px se borró,
+porque ya no lo usaba nada. `logo-dgp.png` de 428 px se queda: lo usa el
+`"logo"` del JSON-LD, y Google pide que ese logo mida al menos 112×112. En
+las capturas de página completa a 1440 y 390 px solo cambian los píxeles de
+las dos cajas del logo; el alto de la página es el mismo.
+
+Medición vigente, repitiendo la de la Tarea 7 (`docs/medicion-m2b.md`):
+
+| Configuración | Antes de M2b | Cierre de M2b | Con logo de 96 px |
+|---|---|---|---|
+| 390 px | 5.860 KB | 297 KB | **231 KB (−96,1 %)** |
+| 390 px, densidad 3 | 5.860 KB | 334 KB | 267 KB (−95,4 %) |
+| 1440 px | 5.860 KB | 385 KB | 319 KB (−94,6 %) |
 
 **Pendiente para M2c (P-005).** Las estrellas `★` de `.g-star` y `.t-star` pasan
 a SVG en línea, y se eliminan `public/assets/fonts/roboto-symbols.woff2` y su
