@@ -4,6 +4,15 @@ Spec: `docs/spec-m2b-rendimiento.md`. Modo: módulo completo.
 Cerrado el 2026-09-18. Último commit del módulo antes de este informe: `29f9e97`.
 Mediciones completas en `docs/medicion-m2b.md`.
 
+> **BLOQUEANTE DE M5 (2026-09-18).** La foto actual del hero no se puede
+> publicar: muestra la patente "AF 456 JL" legible y la cara del conductor.
+> En pantalla quedan bajo la capa oscura, pero cada archivo
+> (`hero-bg-*.avif`, `.webp`, `.jpg`) se sirve limpio y cualquiera puede
+> abrirlo. **El sitio no se publica hasta que F-01 la reemplace.** F-01 pasó
+> de prioridad 1 a requisito en `docs/brief-fotografico.md`. Ver P-007.
+
+Los cambios hechos después del cierre están en la sección 8.
+
 ---
 
 ## 1. Tareas y commits
@@ -165,7 +174,7 @@ quedó idéntico píxel a píxel al de la Tarea 5 en el hero (390, 768, 1440 y
 | Id | Tema | Bloquea | Qué hice |
 |---|---|---|---|
 | P-002 | `hero-bg.png` se borró en la Tarea 4, no en la 3 | no | Decisión mía: en la Tarea 3 quedaban tres referencias que eran de la Tarea 4 |
-| P-003 | Patente "AF 456 JL" y cara del conductor legibles en `og-image.jpg` | no; antes de M5 sí | Generada como pide la spec, sin retocar |
+| P-003 | Patente "AF 456 JL" y cara del conductor legibles en `og-image.jpg` | no; antes de M5 sí | Respondida: placa institucional (`a3e29bd`) y foto del hero bloqueada (P-007) |
 | P-004 | ¿Se borra `public/favicon.png`, que quedó sin uso? | no | Nada; sigue en `public/` |
 | P-005 | Subconjunto symbols de Roboto (★), fuera de "latin y latin-ext" | no | Decisión mía: incluido, para que las estrellas no cambien |
 
@@ -200,3 +209,22 @@ quedó idéntico píxel a píxel al de la Tarea 5 en el hero (390, 768, 1440 y
 - El desborde de la fila de contadores del hero por debajo de ~350 px sigue
   como estaba. Es de M2c, y tiene que quedar resuelto para cualquier texto de
   los contadores, porque M3 puede cambiarlos.
+
+## 8. Después del cierre (2026-09-18)
+
+Respuestas del usuario a las preguntas del módulo, y lo que se hizo con cada una.
+
+| Qué | Commit |
+|---|---|
+| Spec corregida: Tarea 3, punto 7 (el PNG se borra en la Tarea 4). P-002 respondida | `71af91c` |
+| P-003 a: la imagen para compartir pasa a ser una placa institucional sin foto | `a3e29bd` |
+| P-003 b: foto actual del hero bloqueada para publicar; F-01 a requisito | este commit |
+
+**Placa para compartir.** `public/assets/og-placa.jpg`: 1200×630, fondo
+`#124B8F` y el logo centrado a 480 px (40 % del ancho), sin texto. JPEG 80,
+35,9 KB. El logo original mide 428 px, así que para llegar al 40 % se amplía
+un 12 %; con zoom no se ve pérdida. `og:image`, `twitter:image` y el `image`
+del JSON-LD apuntan a la placa. `og-image.jpg`, el recorte con la patente, se
+borró de `public/`. El JSON-LD pasa `JSON.parse` y la verificación semántica.
+El `og:image:alt` describía la foto y quedó como `TODO_DATO` (P-006).
+

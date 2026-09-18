@@ -75,11 +75,17 @@ para los chicos. Cualquier celular de los últimos años lo cumple de sobra.
 
 ## Los huecos
 
-Prioridad **1** = sin esto no se publica. **2** = mejora clara. **3** = si se
-puede.
+**Requisito** = el sitio no se publica hasta que esta foto exista; no hay
+alternativa de rediseño. Prioridad **1** = sin esto no se publica. **2** =
+mejora clara. **3** = si se puede.
 
 ### F-01 · Hero — el taller desde adentro
-- **Prioridad:** 1
+- **Prioridad:** requisito (antes 1; elevada el 2026-09-18)
+- **Por qué es requisito:** la foto provisoria del hero muestra una patente
+  legible y la cara de una persona. En pantalla quedan bajo la capa oscura,
+  pero el archivo se sirve limpio y cualquiera puede abrirlo. Esa foto está
+  bloqueada para publicar, y el sitio no se publica hasta que F-01 la
+  reemplace (bloqueante de M5, ver P-007 en `docs/preguntas-abiertas.md`).
 - **Proporción:** 16:9 horizontal · mínimo 2400 px de ancho
 - **Qué muestra:** una vista amplia del taller en funcionamiento. Varios boxes
   a la vez, con vehículos en los elevadores. Tiene que dar la sensación de
@@ -90,7 +96,7 @@ puede.
 - **Cuidado:** sobre esta foto va texto encima con una capa oscura. Evitá que
   el centro tenga detalles importantes: van a quedar tapados. Dejá el interés
   visual en los tercios laterales.
-- **Reemplaza a:** la imagen actual del hero.
+- **Reemplaza a:** la imagen actual del hero, que no se puede publicar.
 
 ### F-02 · Pick-up en el elevador
 - **Prioridad:** 1
@@ -185,7 +191,7 @@ un mismo cliente, así que es cuestión de estar atento el día que pase.
 
 | Id | Prioridad | Estado |
 |---|---|---|
-| F-01 | 1 | pendiente |
+| F-01 | requisito | pendiente · bloquea M5 |
 | F-02 | 1 | pendiente |
 | F-03 | 1 | pendiente |
 | F-04 | 2 | pendiente |

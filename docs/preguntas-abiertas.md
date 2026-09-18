@@ -24,29 +24,6 @@ estado y ejecuta. No borra la pregunta: el historial sirve.
 
 ## Abiertas
 
-### P-003 — Patente y cara legibles en la imagen para compartir
-- **Estado:** abierta
-- **Bloquea:** no bloquea M2b. Hay que resolverla antes de publicar (M5).
-- **Qué falta:** ¿la imagen para compartir se deja como está hasta que lleguen
-  F-01 o F-07, o hay que tapar la patente y la cara?
-- **Contexto:** `public/assets/og-image.jpg` (Tarea 4 de M2b) es el recorte
-  centrado de la imagen actual del hero, como pidió la spec. En el hero la foto
-  queda bajo una capa azul al 70–93 % y casi no se distingue, pero la imagen
-  para compartir va sin capa y se ve entera: la patente **"AF 456 JL"** se lee
-  sin esfuerzo, y la cara del conductor se ve a través del parabrisas.
-  `docs/brief-fotografico.md` prohíbe en todas las fotos del sitio las
-  patentes legibles y las caras sin permiso. El logo TOYOTA de la parrilla es
-  la marca del vehículo, no de un cliente, así que la regla de logos de
-  clientes no aplica. La foto muestra una pick-up en el campo, no el taller.
-  Esta imagen es la que WhatsApp muestra cuando alguien comparte el enlace. El
-  sitio todavía no está publicado.
-- **Qué hice mientras tanto:** generé la imagen tal como pide la spec (1200×630,
-  recorte centrado, 158 KB) y no la retoqué. No tapé nada por mi cuenta. El
-  encuadre en sí está bien: el recorte solo quita 20 px arriba y abajo. El
-  `og:image:alt` ("Centro Mecánico DGP — Pick-up en campo agropecuario, Villa
-  María, Córdoba") describe esta foto; cuando se rehaga la imagen con F-01 o
-  F-07 va a necesitar un texto nuevo, que no escribo yo.
-
 ### P-004 — ¿Se borra `public/favicon.png`?
 - **Estado:** abierta
 - **Bloquea:** no bloquea.
@@ -91,6 +68,24 @@ estado y ejecuta. No borra la pregunta: el historial sirve.
   al usuario, así que no lo escribo yo.
 - **Qué hice mientras tanto:** dejé
   `content="TODO_DATO: texto alternativo de la placa institucional (logo sobre azul)"`.
+
+### P-007 — BLOQUEANTE DE M5: la foto actual del hero no se puede publicar
+- **Estado:** abierta
+- **Bloquea:** **M5 (publicación).** El sitio no se publica hasta que F-01
+  reemplace la foto actual del hero.
+- **Qué falta:** la foto F-01 (`docs/brief-fotografico.md`), que pasó de
+  prioridad 1 a requisito.
+- **Contexto:** la foto provisoria del hero (`assets-src/hero-bg-original.png`
+  y sus versiones `public/assets/hero-bg-*.avif`, `.webp` y `.jpg`) muestra la
+  patente "AF 456 JL" legible y la cara del conductor. En pantalla quedan bajo
+  la capa oscura, pero cada archivo se sirve limpio y cualquiera puede
+  abrirlo. Decisión del usuario del 2026-09-18, al responder P-003.
+- **Qué hice mientras tanto:** la imagen para compartir ya no usa esta foto
+  (P-003 a, commit `a3e29bd`). El hero la sigue usando hasta que llegue F-01:
+  M2b no crea huecos de imagen, y no hay otra foto del taller en
+  `public/assets/`. Cuando llegue F-01, se reemplaza el original en
+  `assets-src/`, se corre `node tools/optimizar-imagenes.mjs` y se borran las
+  versiones de la foto actual.
 
 ---
 
@@ -164,3 +159,36 @@ estado y ejecuta. No borra la pregunta: el historial sirve.
   `docs/spec-m2b-rendimiento.md` quedó corregida: el PNG se borra al final de
   la Tarea 4, y ahí se confirma con `grep` que no queda ninguna referencia.
   No hay nada más que ejecutar: es lo que ya se hizo en `9d6f636`.
+
+### P-003 — Patente y cara legibles en la imagen para compartir
+- **Estado:** respondida
+- **Bloquea:** no bloquea M2b. Hay que resolverla antes de publicar (M5).
+- **Qué falta:** ¿la imagen para compartir se deja como está hasta que lleguen
+  F-01 o F-07, o hay que tapar la patente y la cara?
+- **Contexto:** `public/assets/og-image.jpg` (Tarea 4 de M2b) es el recorte
+  centrado de la imagen actual del hero, como pidió la spec. En el hero la foto
+  queda bajo una capa azul al 70–93 % y casi no se distingue, pero la imagen
+  para compartir va sin capa y se ve entera: la patente **"AF 456 JL"** se lee
+  sin esfuerzo, y la cara del conductor se ve a través del parabrisas.
+  `docs/brief-fotografico.md` prohíbe en todas las fotos del sitio las
+  patentes legibles y las caras sin permiso. El logo TOYOTA de la parrilla es
+  la marca del vehículo, no de un cliente, así que la regla de logos de
+  clientes no aplica. La foto muestra una pick-up en el campo, no el taller.
+  Esta imagen es la que WhatsApp muestra cuando alguien comparte el enlace. El
+  sitio todavía no está publicado.
+- **Qué hice mientras tanto:** generé la imagen tal como pide la spec (1200×630,
+  recorte centrado, 158 KB) y no la retoqué. No tapé nada por mi cuenta. El
+  encuadre en sí está bien: el recorte solo quita 20 px arriba y abajo. El
+  `og:image:alt` ("Centro Mecánico DGP — Pick-up en campo agropecuario, Villa
+  María, Córdoba") describe esta foto; cuando se rehaga la imagen con F-01 o
+  F-07 va a necesitar un texto nuevo, que no escribo yo.
+- **Respuesta (2026-09-18):** se resuelve en dos partes.
+  a) La imagen para compartir pasa a ser una placa institucional sin foto:
+  1200×630, fondo `#124B8F` y el logo centrado al 40 % del ancho, sin texto.
+  Hecho en `a3e29bd`: `public/assets/og-placa.jpg` (35,9 KB), con
+  `og:image`, `twitter:image` y el `image` del JSON-LD apuntando a ella, y
+  `og-image.jpg` borrado. El `og:image:alt` quedó como `TODO_DATO` (P-006).
+  b) La foto actual del hero queda bloqueada para publicar: el sitio no se
+  publica hasta que F-01 la reemplace. Anotado como bloqueante de M5 en
+  P-007, en `docs/informe-m2b.md` y en `docs/brief-fotografico.md` (F-01 pasa
+  a requisito).
