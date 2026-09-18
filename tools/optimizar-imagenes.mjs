@@ -34,12 +34,6 @@ for (const f of FORMATOS_HERO) {
   }
 }
 
-// ── Imagen para compartir (F-10) ─────────────────────────────────────────────
-// Recorte centrado de 1200×630 de la imagen del hero. Se rehace cuando lleguen
-// F-01 o F-07 (docs/brief-fotografico.md).
-await generar(HERO, path.join(ASSETS, 'og-image.jpg'),
-  s => s.resize({ width: 1200, height: 630, fit: 'cover', position: 'centre' }).jpeg({ quality: 80 }));
-
 // ── Logo ─────────────────────────────────────────────────────────────────────
 // Sin pérdida en los dos formatos: los píxeles visibles quedan idénticos.
 const LOGO = path.join(SRC, 'logo-dgp-original.png');
@@ -47,6 +41,17 @@ await generar(LOGO, path.join(ASSETS, 'logo-dgp.png'),
   s => s.png({ compressionLevel: 9, adaptiveFiltering: true }));
 await generar(LOGO, path.join(ASSETS, 'logo-dgp.webp'),
   s => s.webp({ lossless: true, effort: 6 }));
+
+// ── Imagen para compartir (F-10) ─────────────────────────────────────────────
+// Placa institucional sin foto: el logo centrado, al 40 % del ancho, sobre el
+// azul corporativo. Así no se publica ningún dato de terceros (ver P-003).
+const PLACA = path.join(ASSETS, 'og-placa.jpg');
+const logoPlaca = await sharp(LOGO).resize(480, 480).png().toBuffer();
+await sharp({ create: { width: 1200, height: 630, channels: 3, background: '#124B8F' } })
+  .composite([{ input: logoPlaca, gravity: 'centre' }])
+  .jpeg({ quality: 80 })
+  .toFile(PLACA);
+console.log(`${kb(fs.statSync(PLACA).size)}  1200×630  ${path.relative(RAIZ, PLACA)}`);
 
 // ── Favicon ──────────────────────────────────────────────────────────────────
 const FAVICON = path.join(SRC, 'favicon-original.png');

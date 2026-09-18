@@ -79,6 +79,19 @@ estado y ejecuta. No borra la pregunta: el historial sirve.
   prefiere no servirlo, alcanza con borrar su `@font-face` y el archivo: se
   ahorran 20,6 KB y las estrellas cambian de forma según el dispositivo.
 
+### P-006 — Texto alternativo de la placa para compartir
+- **Estado:** abierta
+- **Bloquea:** no bloquea. Hay que resolverla antes de publicar (M5).
+- **Qué falta:** el texto del `og:image:alt` para la placa institucional (el
+  logo sobre el azul corporativo).
+- **Contexto:** `public/index.html`, línea 30. La imagen para compartir pasó a
+  ser `assets/og-placa.jpg` (resolución de P-003). El `og:image:alt` anterior
+  ("Centro Mecánico DGP — Pick-up en campo agropecuario, Villa María,
+  Córdoba") describía la foto del hero y ya no corresponde. Es texto de cara
+  al usuario, así que no lo escribo yo.
+- **Qué hice mientras tanto:** dejé
+  `content="TODO_DATO: texto alternativo de la placa institucional (logo sobre azul)"`.
+
 ---
 
 ## Respondidas
