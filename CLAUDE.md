@@ -49,6 +49,14 @@ se contrasta contra la ficha de Google Maps del negocio y le hace daño real.
 Lo mismo aplica a rutas de archivo: si referenciás `imagenes/foo.webp`,
 verificá antes con `ls` que el archivo exista.
 
+**Las imágenes siguen la misma regla.** Nunca insertes una foto que no esté en
+`public/assets/`. No busques, no descargues y no generes imágenes de stock, de
+catálogo ni de ninguna otra fuente: todas las fotos de este sitio son del
+taller real. Si un lugar del diseño necesita una foto que todavía no existe,
+dejás el hueco reservado según `docs/brief-fotografico.md`, con su marcador
+`TODO_IMAGEN: <id del hueco>`, y seguís. Un hueco visible es correcto; una foto
+ajena que finge ser del taller, no.
+
 ---
 
 ## 3. Stack y restricciones técnicas
