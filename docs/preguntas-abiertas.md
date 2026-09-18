@@ -78,6 +78,24 @@ estado y ejecuta. No borra la pregunta: el historial sirve.
 - **Qué hice mientras tanto:** nada. El archivo sigue en `public/`. No afecta la
   carga de la página, porque ningún navegador lo pide.
 
+### P-005 — Tercer subconjunto de Roboto (symbols) para las estrellas
+- **Estado:** abierta
+- **Bloquea:** no bloquea.
+- **Qué falta:** confirmar que se queda `roboto-symbols.woff2` (20,6 KB), aunque
+  la spec pide solo latin y latin-ext.
+- **Contexto:** `docs/spec-m2b-rendimiento.md`, Tarea 6, punto 2: "subconjunto
+  **latin** y **latin-ext**". Las estrellas `★` (U+2605) de `.g-star` y
+  `.t-star` (recuadro de Google y tarjetas de reseñas) no están en ninguno de
+  los dos: Google las servía desde el subconjunto symbols de Roboto, y era el
+  segundo archivo de Roboto que bajaba antes de M2b. Sin ese archivo, las
+  estrellas se dibujarían con la fuente del sistema de cada dispositivo. La
+  Tarea 8 dice que cualquier diferencia visual es un error.
+- **Qué hice mientras tanto:** decisión mía. Descargué el subconjunto symbols y
+  lo declaré solo en peso 400, que es el único en que aparecen estrellas. Con
+  eso el render quedó idéntico píxel a píxel al de antes, a 1440 y 390 px. Si se
+  prefiere no servirlo, alcanza con borrar su `@font-face` y el archivo: se
+  ahorran 20,6 KB y las estrellas cambian de forma según el dispositivo.
+
 ---
 
 ## Respondidas
