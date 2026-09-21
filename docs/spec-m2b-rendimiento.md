@@ -150,8 +150,10 @@ el enlace.
 4. Verificar que el JSON-LD sigue pasando `JSON.parse` y la verificación
    semántica del paso 7 de la Tarea 15 de M2a.
 
-**Nota:** el recorte centrado puede cortar mal la foto. Mostrame la imagen
-generada; si queda mal encuadrada, anotalo en `preguntas-abiertas.md` y seguí.
+**Nota:** al ser una placa sin fotografía, no hay recorte ni encuadre que
+revisar. Si en M3 se reemplaza por una foto, esa foto tiene que cumplir todas
+las reglas de `docs/brief-fotografico.md`, porque la imagen para compartir se
+descarga entera, sin las capas que la oscurecen en pantalla.
 
 Commit: `Imagen dedicada para compartir en redes`
 
@@ -253,6 +255,8 @@ El PNG de 428 px se conserva: lo usa el campo "logo" del JSON-LD, y Google
 pide un mínimo de 112×112 para ese campo.
 
 Al terminar, rehacer la medición de la Tarea 7 con el resultado.
+
+Commit: `Logo al tamano en que se muestra`
 
 ---
 
