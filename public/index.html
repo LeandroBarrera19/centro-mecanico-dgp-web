@@ -99,8 +99,6 @@
     @font-face { font-family: 'Roboto'; font-style: normal; font-weight: 400; font-stretch: 100%; font-display: swap; src: url('assets/fonts/roboto-latin-ext.woff2') format('woff2'); unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF; }
     @font-face { font-family: 'Roboto'; font-style: normal; font-weight: 500; font-stretch: 100%; font-display: swap; src: url('assets/fonts/roboto-latin-ext.woff2') format('woff2'); unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF; }
     @font-face { font-family: 'Roboto'; font-style: normal; font-weight: 700; font-stretch: 100%; font-display: swap; src: url('assets/fonts/roboto-latin-ext.woff2') format('woff2'); unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF; }
-    /* Subconjunto symbols: solo lo usan las estrellas (★) de las reseñas, en peso 400. */
-    @font-face { font-family: 'Roboto'; font-style: normal; font-weight: 400; font-stretch: 100%; font-display: swap; src: url('assets/fonts/roboto-symbols.woff2') format('woff2'); unicode-range: U+0001-000C, U+000E-001F, U+007F-009F, U+20DD-20E0, U+20E2-20E4, U+2150-218F, U+2190, U+2192, U+2194-2199, U+21AF, U+21E6-21F0, U+21F3, U+2218-2219, U+2299, U+22C4-22C6, U+2300-243F, U+2440-244A, U+2460-24FF, U+25A0-27BF, U+2800-28FF, U+2921-2922, U+2981, U+29BF, U+29EB, U+2B00-2BFF, U+4DC0-4DFF, U+FFF9-FFFB, U+10140-1018E, U+10190-1019C, U+101A0, U+101D0-101FD, U+102E0-102FB, U+10E60-10E7E, U+1D2C0-1D2D3, U+1D2E0-1D37F, U+1F000-1F0FF, U+1F100-1F1AD, U+1F1E6-1F1FF, U+1F30D-1F30F, U+1F315, U+1F31C, U+1F31E, U+1F320-1F32C, U+1F336, U+1F378, U+1F37D, U+1F382, U+1F393-1F39F, U+1F3A7-1F3A8, U+1F3AC-1F3AF, U+1F3C2, U+1F3C4-1F3C6, U+1F3CA-1F3CE, U+1F3D4-1F3E0, U+1F3ED, U+1F3F1-1F3F3, U+1F3F5-1F3F7, U+1F408, U+1F415, U+1F41F, U+1F426, U+1F43F, U+1F441-1F442, U+1F444, U+1F446-1F449, U+1F44C-1F44E, U+1F453, U+1F46A, U+1F47D, U+1F4A3, U+1F4B0, U+1F4B3, U+1F4B9, U+1F4BB, U+1F4BF, U+1F4C8-1F4CB, U+1F4D6, U+1F4DA, U+1F4DF, U+1F4E3-1F4E6, U+1F4EA-1F4ED, U+1F4F7, U+1F4F9-1F4FB, U+1F4FD-1F4FE, U+1F503, U+1F507-1F50B, U+1F50D, U+1F512-1F513, U+1F53E-1F54A, U+1F54F-1F5FA, U+1F610, U+1F650-1F67F, U+1F687, U+1F68D, U+1F691, U+1F694, U+1F698, U+1F6AD, U+1F6B2, U+1F6B9-1F6BA, U+1F6BC, U+1F6C6-1F6CF, U+1F6D3-1F6D7, U+1F6E0-1F6EA, U+1F6F0-1F6F3, U+1F6F7-1F6FC, U+1F700-1F7FF, U+1F800-1F80B, U+1F810-1F847, U+1F850-1F859, U+1F860-1F887, U+1F890-1F8AD, U+1F8B0-1F8BB, U+1F8C0-1F8C1, U+1F900-1F90B, U+1F93B, U+1F946, U+1F984, U+1F996, U+1F9E9, U+1FA00-1FA6F, U+1FA70-1FA7C, U+1FA80-1FA89, U+1FA8F-1FAC6, U+1FACE-1FADC, U+1FADF-1FAE9, U+1FAF0-1FAF8, U+1FB00-1FBFF; }
 
     /* ── RESET ── */
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
@@ -896,6 +894,11 @@
     }
     .google-stars-row { display: flex; gap: 1px; align-items: center; }
     .g-star { color: #FBBC04; font-size: 1.1rem; line-height: 1; }
+    /* Estrellas en SVG: mismo ancho que ocupaba el carácter ★ que reemplazan, para que nada alrededor se mueva. */
+    .g-star, .t-star { display: block; height: 1em; fill: currentColor; flex-shrink: 0; }
+    .g-star { width: 14.671875px; }
+    .t-star { width: 13.328125px; }
+    .svg-defs { position: absolute; width: 0; height: 0; overflow: hidden; }
     .google-count-text { font-size: 0.8rem; color: var(--gris-medio); white-space: nowrap; }
     .testimonials-grid {
       display: grid;
@@ -1463,6 +1466,7 @@
 
 <!-- ═══════════════════════════════ TESTIMONIOS ═══════════════════════════════ -->
 <section class="testimonials" id="resenas">
+  <svg class="svg-defs" aria-hidden="true" focusable="false"><symbol id="estrella" viewBox="0 0 100 120"><path d="M51.3 17.6L61.5 49.0L94.5 49.0L67.8 68.4L78.0 99.7L51.3 80.3L24.6 99.7L34.8 68.4L8.1 49.0L41.1 49.0Z"/></symbol></svg>
   <div class="container">
     <div class="section-header center">
       <span class="eyebrow-label">Lo que dicen nuestros clientes</span>
@@ -1479,8 +1483,8 @@
           <path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" fill="#EA4335"/>
         </svg>
         <span class="google-score-num">4,9</span>
-        <div class="google-stars-row">
-          <span class="g-star">★</span><span class="g-star">★</span><span class="g-star">★</span><span class="g-star">★</span><span class="g-star">★</span>
+        <div class="google-stars-row" role="img" aria-label="Puntuación 4,9 de 5">
+          <svg class="g-star" aria-hidden="true"><use href="#estrella"/></svg><svg class="g-star" aria-hidden="true"><use href="#estrella"/></svg><svg class="g-star" aria-hidden="true"><use href="#estrella"/></svg><svg class="g-star" aria-hidden="true"><use href="#estrella"/></svg><svg class="g-star" aria-hidden="true"><use href="#estrella"/></svg>
         </div>
         <span class="google-count-text">Más de 130 opiniones en Google</span>
       </div>
@@ -1491,7 +1495,7 @@
       <!-- Daniel C. -->
       <div class="t-card fade-in">
         <div class="t-card-top">
-          <div class="t-stars"><span class="t-star">★</span><span class="t-star">★</span><span class="t-star">★</span><span class="t-star">★</span><span class="t-star">★</span></div>
+          <div class="t-stars" role="img" aria-label="5 de 5"><svg class="t-star" aria-hidden="true"><use href="#estrella"/></svg><svg class="t-star" aria-hidden="true"><use href="#estrella"/></svg><svg class="t-star" aria-hidden="true"><use href="#estrella"/></svg><svg class="t-star" aria-hidden="true"><use href="#estrella"/></svg><svg class="t-star" aria-hidden="true"><use href="#estrella"/></svg></div>
           <svg class="t-google-g" width="18" height="18" viewBox="0 0 24 24" aria-hidden="true"><path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4"/><path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"/><path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z" fill="#FBBC05"/><path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" fill="#EA4335"/></svg>
         </div>
         <p class="t-text">Hicieron un diagnóstico minucioso y me explicaron con claridad cuál era el verdadero problema. No intentaron inflar el precio ni vender reparaciones innecesarias.</p>
@@ -1507,7 +1511,7 @@
       <!-- Alberto R. -->
       <div class="t-card fade-in delay-1">
         <div class="t-card-top">
-          <div class="t-stars"><span class="t-star">★</span><span class="t-star">★</span><span class="t-star">★</span><span class="t-star">★</span><span class="t-star">★</span></div>
+          <div class="t-stars" role="img" aria-label="5 de 5"><svg class="t-star" aria-hidden="true"><use href="#estrella"/></svg><svg class="t-star" aria-hidden="true"><use href="#estrella"/></svg><svg class="t-star" aria-hidden="true"><use href="#estrella"/></svg><svg class="t-star" aria-hidden="true"><use href="#estrella"/></svg><svg class="t-star" aria-hidden="true"><use href="#estrella"/></svg></div>
           <svg class="t-google-g" width="18" height="18" viewBox="0 0 24 24" aria-hidden="true"><path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4"/><path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"/><path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z" fill="#FBBC05"/><path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" fill="#EA4335"/></svg>
         </div>
         <p class="t-text">DGP cuenta con profesionales de confianza, cumplen con los tiempos, usan lubricantes y repuestos de calidad, cuentan con la tecnología necesaria para los vehículos actuales.</p>
@@ -1523,7 +1527,7 @@
       <!-- Carlos G. -->
       <div class="t-card fade-in">
         <div class="t-card-top">
-          <div class="t-stars"><span class="t-star">★</span><span class="t-star">★</span><span class="t-star">★</span><span class="t-star">★</span><span class="t-star">★</span></div>
+          <div class="t-stars" role="img" aria-label="5 de 5"><svg class="t-star" aria-hidden="true"><use href="#estrella"/></svg><svg class="t-star" aria-hidden="true"><use href="#estrella"/></svg><svg class="t-star" aria-hidden="true"><use href="#estrella"/></svg><svg class="t-star" aria-hidden="true"><use href="#estrella"/></svg><svg class="t-star" aria-hidden="true"><use href="#estrella"/></svg></div>
           <svg class="t-google-g" width="18" height="18" viewBox="0 0 24 24" aria-hidden="true"><path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4"/><path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"/><path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z" fill="#FBBC05"/><path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" fill="#EA4335"/></svg>
         </div>
         <p class="t-text">Este equipo de trabajo atiende, atendió y atenderá mis vehículos. Un equipo fantástico.</p>
@@ -1539,7 +1543,7 @@
       <!-- Franco G. -->
       <div class="t-card fade-in delay-1">
         <div class="t-card-top">
-          <div class="t-stars"><span class="t-star">★</span><span class="t-star">★</span><span class="t-star">★</span><span class="t-star">★</span><span class="t-star">★</span></div>
+          <div class="t-stars" role="img" aria-label="5 de 5"><svg class="t-star" aria-hidden="true"><use href="#estrella"/></svg><svg class="t-star" aria-hidden="true"><use href="#estrella"/></svg><svg class="t-star" aria-hidden="true"><use href="#estrella"/></svg><svg class="t-star" aria-hidden="true"><use href="#estrella"/></svg><svg class="t-star" aria-hidden="true"><use href="#estrella"/></svg></div>
           <svg class="t-google-g" width="18" height="18" viewBox="0 0 24 24" aria-hidden="true"><path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4"/><path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"/><path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z" fill="#FBBC05"/><path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" fill="#EA4335"/></svg>
         </div>
         <p class="t-text">Gente muy responsable, cuidadosa con el vehículo, entrega en tiempo y forma, precios de los trabajos acordes a la situación. Lo recomiendo.</p>
