@@ -410,11 +410,13 @@
       backdrop-filter: blur(4px);
       -webkit-backdrop-filter: blur(4px);
     }
+    /* Columnas que pueden encogerse y texto que puede partirse: la fila no empuja el ancho de la página, diga lo que diga cada contador. */
     .hero-stats-inner {
       display: grid;
-      grid-template-columns: repeat(4, 1fr);
+      grid-template-columns: repeat(4, minmax(0, 1fr));
     }
     .stat-item {
+      min-width: 0;
       padding: 28px 24px;
       border-right: 1px solid rgba(255,255,255,0.12);
     }
@@ -426,10 +428,12 @@
       color: var(--verde);
       line-height: 1;
       margin-bottom: 6px;
+      overflow-wrap: anywhere;
     }
     .stat-label {
       font-size: 0.82rem;
       color: rgba(255,255,255,0.88);
+      overflow-wrap: anywhere;
     }
 
     /* ── WHY US ── */
@@ -1004,7 +1008,7 @@
       .process-steps { grid-template-columns: repeat(3, 1fr); gap: 40px; }
       .process-steps::before { display: none; }
       .contact-inner { grid-template-columns: 1fr; gap: 44px; }
-      .hero-stats-inner { grid-template-columns: repeat(2, 1fr); }
+      .hero-stats-inner { grid-template-columns: repeat(2, minmax(0, 1fr)); }
       .stat-item:nth-child(2) { border-right: none; }
       .testimonials-grid { grid-template-columns: repeat(2, 1fr); }
     }
@@ -1027,7 +1031,7 @@
       .services-grid { grid-template-columns: 1fr; }
       .tab-panel.active { grid-template-columns: 1fr; }
       .process-steps { grid-template-columns: 1fr; }
-      .hero-stats-inner { grid-template-columns: repeat(2, 1fr); }
+      .hero-stats-inner { grid-template-columns: repeat(2, minmax(0, 1fr)); }
       .hero-ctas { flex-direction: column; }
       .btn-primary, .btn-outline { justify-content: center; }
       .footer-bottom { flex-direction: column; gap: 6px; text-align: center; }

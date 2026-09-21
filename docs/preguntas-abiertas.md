@@ -95,6 +95,28 @@ estado y ejecuta. No borra la pregunta: el historial sirve.
   cuatro no es de 5 estrellas, hay que corregir tanto las estrellas visibles
   como la etiqueta.
 
+### P-011 — Contadores del hero partidos a mitad de palabra por debajo de 390 px
+- **Estado:** abierta
+- **Bloquea:** no bloquea. Es de M3, junto con el contador `08–17:30hs`.
+- **Qué falta:** decidir si se acepta cómo se ven los contadores entre 320 y
+  389 px, o qué se cambia en M3.
+- **Contexto:** la Tarea 6 de M2c arregló el desborde como pide la spec:
+  columnas `minmax(0, 1fr)`, `min-width: 0` y `overflow-wrap: anywhere`, sin
+  achicar el texto. La página ya no desborda a ningún ancho, ni con 30
+  caracteres en un contador. La contracara es que, cuando una palabra no entra
+  en la celda, se parte donde se termina el lugar. Con 1,9 rem y 24 px de
+  relleno a cada lado:
+  - a 320 y 340 px: "STOC / K" y "17:30 / hs" (320) o "17:30h / s" (340);
+  - a 360 px: "17:30h / s". Antes del arreglo, a 360 entraba entero porque las
+    columnas eran desiguales (160 y 167 px); ahora las dos miden 160.
+  - a 390 px y más: igual que antes.
+  Capturas: `temporary screenshots/m2c-t6-contadores-*.png`.
+- **Qué hice mientras tanto:** nada más que lo que pide la spec. No achiqué el
+  texto (la spec lo prohíbe) ni cambié la cantidad de columnas o el relleno:
+  eso es diseño y no está dictado. Opciones para M3: menos relleno lateral por
+  debajo de 390 px, una sola columna en pantallas angostas, un tamaño de letra
+  que dependa del ancho de la pantalla (no del texto), o contadores más cortos.
+
 ---
 
 ## Respondidas
