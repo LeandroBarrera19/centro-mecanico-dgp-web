@@ -11,7 +11,8 @@ Mediciones completas en `docs/medicion-m2b.md`.
 > abrirlo. **El sitio no se publica hasta que F-01 la reemplace.** F-01 pasó
 > de prioridad 1 a requisito en `docs/brief-fotografico.md`. Ver P-007.
 
-Los cambios hechos después del cierre están en la sección 8.
+Los cambios hechos después del cierre están en la sección 8. El cierre
+definitivo, con la spec y el brief sincronizados, es del 2026-09-21 (sección 9).
 
 ---
 
@@ -27,7 +28,8 @@ Los cambios hechos después del cierre están en la sección 8.
 | 5 | Logo PNG sin pérdida + WebP con `<picture>`; `favicon-32.png` y `apple-touch-icon.png` | `35ec7d3` |
 | 6 | Montserrat y Roboto desde `assets/fonts/`; sin enlaces a Google Fonts | `fa95e91` |
 | 7 | Medición final | `29f9e97` |
-| 8 | Verificación de cierre y este informe | este commit |
+| 8 | Verificación de cierre y este informe | `f477158` |
+| 9 | Logo de 96 px y medición repetida (tarea agregada después del cierre, ver §8) | `d261495` |
 
 ## 2. Resultado
 
@@ -210,7 +212,7 @@ quedó idéntico píxel a píxel al de la Tarea 5 en el hero (390, 768, 1440 y
   como estaba. Es de M2c, y tiene que quedar resuelto para cualquier texto de
   los contadores, porque M3 puede cambiarlos.
 
-## 8. Después del cierre (2026-09-18)
+## 8. Después del cierre (2026-09-18 al 2026-09-21)
 
 Respuestas del usuario a las preguntas del módulo, y lo que se hizo con cada una.
 
@@ -221,7 +223,7 @@ Respuestas del usuario a las preguntas del módulo, y lo que se hizo con cada un
 | P-003 b: foto actual del hero bloqueada para publicar; F-01 a requisito | `645d5ac` |
 | P-004: `public/favicon.png` borrado (nada lo referenciaba) | `b9056a4` |
 | P-005: el subconjunto symbols se queda; en M2c las estrellas pasan a SVG en línea y se elimina | `9ac6a9f` |
-| Tarea agregada: logo al tamaño en que se muestra, y medición de la Tarea 7 repetida | este commit |
+| Tarea agregada: logo al tamaño en que se muestra, y medición de la Tarea 7 repetida | `d261495` |
 
 **Logo de 96 px.** `logo-dgp-96.webp` (13,1 KB) y `logo-dgp-96.png` (16,3 KB,
 respaldo), sin pérdida a partir del original, con `width="96" height="96"`,
@@ -251,5 +253,24 @@ a SVG en línea, y se eliminan `public/assets/fonts/roboto-symbols.woff2` y su
 un 12 %; con zoom no se ve pérdida. `og:image`, `twitter:image` y el `image`
 del JSON-LD apuntan a la placa. `og-image.jpg`, el recorte con la patente, se
 borró de `public/`. El JSON-LD pasa `JSON.parse` y la verificación semántica.
-El `og:image:alt` describía la foto y quedó como `TODO_DATO` (P-006).
+El `og:image:alt` describía la foto y quedó como `TODO_DATO` (P-006), hasta
+que se respondió P-006 (sección 9).
 
+## 9. Cierre definitivo (2026-09-21)
+
+| Qué | Commit |
+|---|---|
+| Spec sincronizada: Tarea 4, punto 1 (placa institucional en lugar del recorte) y Tarea 9 nueva (logo de 96 px). Brief: F-10 pasa a "resuelta" con la placa | `3b0bd5b` |
+| P-006 respondida: `og:image:alt` = "Logotipo de Centro Mecánico DGP" | `4fad11c` |
+
+`grep -rn "TODO_DATO" public/` vuelve vacío después de `4fad11c`.
+
+**M2b queda cerrado.** De sus preguntas, P-002 a P-006 están respondidas. Sigue
+abierta una sola:
+
+- **P-007, bloqueante de M5.** El sitio no se publica hasta que F-01 reemplace
+  la foto actual del hero.
+
+Pasan a M2c: las estrellas en SVG en línea y el borrado de
+`roboto-symbols.woff2` (P-005), y el desborde de los contadores del hero por
+debajo de ~350 px (§7).
