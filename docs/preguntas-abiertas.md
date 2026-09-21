@@ -42,22 +42,6 @@ estado y ejecuta. No borra la pregunta: el historial sirve.
   `assets-src/`, se corre `node tools/optimizar-imagenes.mjs` y se borran las
   versiones de la foto actual.
 
-### P-009 — Nivel de los títulos de columna del pie
-- **Estado:** abierta
-- **Bloquea:** no bloquea.
-- **Qué falta:** confirmar el nivel de "Navegación", "Servicios" y "Contacto"
-  en el pie. Antes eran `<h5>`.
-- **Contexto:** la Tarea 4 dice que pasan "al nivel que corresponda según lo
-  que tengan encima". Encima está el `<h2>` "¿Necesitás atención para tu
-  flota?", de la sección de contacto. Sin saltos caben dos opciones: `<h3>`
-  (colgando de ese h2, que es lo que dice la letra de la spec) o `<h2>` (el
-  pie es una región propia, fuera del `<main>`, y sus columnas no son partes
-  de la sección de contacto).
-- **Qué hice mientras tanto:** decisión mía. Los puse en `<h3>`, siguiendo la
-  letra de la spec, con la clase `footer-col-title`, que tiene el mismo estilo
-  de antes. Si se prefiere `<h2>`, es cambiar las tres etiquetas: el aspecto
-  no depende del nivel.
-
 ### P-011 — Contadores del hero partidos a mitad de palabra por debajo de 390 px
 - **Estado:** abierta
 - **Bloquea:** no bloquea. Es de M3, junto con el contador `08–17:30hs`.
@@ -307,3 +291,24 @@ estado y ejecuta. No borra la pregunta: el historial sirve.
   el gris explícito y más especificidad que `.service-card-title`, así que el
   rojo no puede volver a aparecer por un cambio en el orden del CSS. El
   recuadro y la etiqueta rojos de la tarjeta no se tocaron.
+
+### P-009 — Nivel de los títulos de columna del pie
+- **Estado:** respondida
+- **Bloquea:** no bloquea.
+- **Qué falta:** confirmar el nivel de "Navegación", "Servicios" y "Contacto"
+  en el pie. Antes eran `<h5>`.
+- **Contexto:** la Tarea 4 dice que pasan "al nivel que corresponda según lo
+  que tengan encima". Encima está el `<h2>` "¿Necesitás atención para tu
+  flota?", de la sección de contacto. Sin saltos caben dos opciones: `<h3>`
+  (colgando de ese h2, que es lo que dice la letra de la spec) o `<h2>` (el
+  pie es una región propia, fuera del `<main>`, y sus columnas no son partes
+  de la sección de contacto).
+- **Qué hice mientras tanto:** decisión mía. Los puse en `<h3>`, siguiendo la
+  letra de la spec, con la clase `footer-col-title`, que tiene el mismo estilo
+  de antes. Si se prefiere `<h2>`, es cambiar las tres etiquetas: el aspecto
+  no depende del nivel.
+- **Respuesta (2026-09-21):** van en `<h2>`. La spec estaba mal redactada: el
+  pie es una región propia, fuera del `<main>`, y con `<h3>` un lector de
+  pantalla lee sus títulos como subsecciones de "Contacto". Se cambiaron las
+  tres etiquetas y se mantuvo la clase `footer-col-title`. El aspecto no
+  cambió.
