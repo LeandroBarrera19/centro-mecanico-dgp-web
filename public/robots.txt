@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://centromecanicodgp.com.ar/sitemap.xml
