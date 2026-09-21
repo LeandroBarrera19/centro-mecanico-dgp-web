@@ -133,8 +133,15 @@ Hoy `og:image`, `twitter:image` y el `image` del JSON-LD apuntan al PNG de
 5,5 MB, de 2752×1536. Eso es lo que WhatsApp descarga cuando alguien comparte
 el enlace.
 
-1. Generar `public/assets/og-image.jpg`: **1200×630**, recorte centrado de la
-   imagen original, JPEG calidad 80. Objetivo: menos de 300 KB.
+1. Generar `public/assets/og-placa.jpg`: 1200×630, fondo sólido #124B8F con
+   el logo centrado ocupando alrededor del 40% del ancho. Sin texto, sin
+   fotografía, sin personas ni vehículos.
+
+   Motivo: la primera versión se generó recortando la foto del hero y en el
+   recorte quedaban legibles una patente y la cara de una persona, sin la capa
+   oscura que las tapa en pantalla (ver P-003). La imagen para compartir se
+   descarga entera y no admite capas encima, así que no puede contener nada
+   que el brief fotográfico prohíba.
 2. Apuntar a esa imagen, con URL absoluta sobre `https://centromecanicodgp.com.ar`:
    - `og:image`
    - `twitter:image`
@@ -233,6 +240,19 @@ Commit: `Medicion final de rendimiento`
 8. Informe de cierre en `docs/informe-m2b.md`.
 
 Sin commit propio salvo el informe: `Informe de cierre de M2b`
+
+---
+
+## Tarea 9 — Logo al tamaño en que se muestra
+
+El logo se servía a 428 px de ancho para mostrarse a 48. Generar una versión
+de 96 px (el doble, para pantallas de densidad 2) en WebP con PNG de respaldo,
+y servir esa en el navbar y en el pie.
+
+El PNG de 428 px se conserva: lo usa el campo "logo" del JSON-LD, y Google
+pide un mínimo de 112×112 para ese campo.
+
+Al terminar, rehacer la medición de la Tarea 7 con el resultado.
 
 ---
 

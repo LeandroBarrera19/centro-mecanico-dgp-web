@@ -169,12 +169,18 @@ mejora clara. **3** = si se puede.
   este hueco queda vacío y no pasa nada.
 
 ### F-10 · Imagen para compartir
-- **Prioridad:** 1
+- **Prioridad:** resuelta
 - **Proporción:** 1200×630 exactos
-- **Qué es:** la imagen que aparece cuando alguien comparte el enlace por
-  WhatsApp. Se genera recortando F-01 o F-07, no hace falta una toma propia.
-- **Cuidado:** el recorte de 1200×630 es más panorámico que la foto original.
-  Hay que revisar que el encuadre resultante no quede raro.
+- **Qué es:** `assets/og-placa.jpg`, una placa institucional: fondo azul
+  corporativo con el logo centrado. Es la imagen que aparece cuando alguien
+  comparte el enlace por WhatsApp.
+- **Por qué una placa y no una foto:** la imagen se descarga entera, sin las
+  capas de CSS que oscurecen el hero. Cualquier foto usada acá muestra sin
+  filtro lo que tenga: patentes, caras, logos de clientes. Una placa nunca
+  tiene ese problema y nunca queda desactualizada.
+- **Cuándo se revisa:** en M3, si para entonces existe una foto que cumpla
+  todas las reglas del brief. La placa es la opción por defecto, no un
+  provisorio.
 
 ---
 
@@ -200,6 +206,6 @@ un mismo cliente, así que es cuestión de estar atento el día que pase.
 | F-07 | 2 | pendiente |
 | F-08 | 2 | pendiente |
 | F-09 | 3 | pendiente |
-| F-10 | 1 | pendiente (se deriva de F-01 o F-07) |
+| F-10 | resuelta | resuelta: placa institucional (`og-placa.jpg`) |
 
 El agente actualiza esta tabla cuando un hueco se llena.
