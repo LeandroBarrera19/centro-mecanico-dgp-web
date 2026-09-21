@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="es-AR">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -121,6 +121,24 @@
     .btn-cta:focus-visible {
       outline-color: #fff;
     }
+
+    /* ── ENLACE DE SALTO: invisible hasta recibir foco con el teclado ── */
+    .skip-link {
+      position: fixed;
+      top: 8px;
+      left: 8px;
+      z-index: 1100;
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 700;
+      font-size: 0.95rem;
+      background: #124B8F;
+      color: #fff;
+      padding: 12px 20px;
+      border-radius: 6px;
+      transform: translateY(-200%);
+    }
+    .skip-link:focus { transform: none; }
+    #contenido-principal:focus { outline: none; }
 
     /* ── VARIABLES ── */
     :root {
@@ -1018,6 +1036,8 @@
 </head>
 <body>
 
+<a class="skip-link" href="#contenido-principal">Saltar al contenido</a>
+
 <!-- ═══════════════════════════════ NAVBAR ═══════════════════════════════ -->
 <header class="navbar" id="navbar">
   <div class="container">
@@ -1055,7 +1075,7 @@
   </div>
 </header>
 
-<main id="contenido-principal">
+<main id="contenido-principal" tabindex="-1">
 
 <!-- ═══════════════════════════════ HERO ═══════════════════════════════ -->
 <section class="hero" id="inicio">
