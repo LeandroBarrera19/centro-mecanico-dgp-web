@@ -162,6 +162,9 @@ comando que lo comprueba.
 - ¿Creaste un archivo? Mostrá que existe.
 - ¿Corregiste el JSON-LD? Mostrá el bloque final completo.
 - ¿Dijiste que el sitio carga? Levantá un servidor local y confirmalo.
+- Las verificaciones visuales y de desborde recorren todas las pestañas,
+  menús desplegables y estados ocultos, no solo lo que se ve al cargar la
+  página. Un error dentro de una pestaña cerrada es un error igual.
 
 "Debería funcionar" no es una respuesta aceptable.
 
