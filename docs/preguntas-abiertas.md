@@ -58,6 +58,24 @@ estado y ejecuta. No borra la pregunta: el historial sirve.
   tipo que la Tarea 6 de M2c: columnas `minmax(0, 1fr)`, o un punto de corte
   intermedio para la grilla del proceso.
 
+### P-014 — Texto de la spec de M2c para P-009 y P-011
+- **Estado:** abierta
+- **Bloquea:** no bloquea.
+- **Qué falta:** el texto nuevo de dos puntos de `docs/spec-m2c-tecnica.md`,
+  que quedaron desfasados con las respuestas del 2026-09-21:
+  1. Tarea 4, punto 2: "los `<h5>` del pie pasan al nivel que corresponda
+     según lo que tengan encima". Por P-009 van en `<h2>`, porque el pie es
+     una región propia.
+  2. Tarea 6, punto 2: "Corregir con maquetación, no achicando el texto a
+     medida…". Por P-011, por debajo de 390 px el número achica su
+     tipografía de forma progresiva con `clamp()`, y `overflow-wrap:
+     anywhere` queda como red de seguridad. El punto 3 ("solo por debajo de
+     390 px") y el 4 (anchos verificados, ahora con 375) también cambian.
+- **Contexto:** la spec tiene que decir lo que se hizo. El texto de la spec no
+  lo escribo yo.
+- **Qué hice mientras tanto:** nada en la spec. El código ya sigue las
+  respuestas.
+
 ---
 
 ## Respondidas
@@ -320,7 +338,7 @@ estado y ejecuta. No borra la pregunta: el historial sirve.
   después del guion, igual que a 390 px antes de M2c. La prueba de 30
   caracteres no desborda. A 390 px y más, idéntico a antes.
 
-### P-012 — La pestaña "Repuestos" desborda en pantallas de hasta 480 px
+### P-012 — La pestaña "Repuestos" desborda en pantallas de hasta 480 px (en realidad, hasta 613)
 - **Estado:** respondida
 - **Bloquea:** no bloquea. No está en la spec de M2c.
 - **Qué falta:** decidir en qué módulo se corrige.
