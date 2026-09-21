@@ -79,22 +79,6 @@ estado y ejecuta. No borra la pregunta: el historial sirve.
   de antes. Si se prefiere `<h2>`, es cambiar las tres etiquetas: el aspecto
   no depende del nivel.
 
-### P-010 — La puntuación de cada reseña publicada no está en los datos verificados
-- **Estado:** abierta
-- **Bloquea:** no bloquea.
-- **Qué falta:** confirmar en `docs/datos-verificados.md` que las cuatro reseñas
-  publicadas son de 5 estrellas.
-- **Contexto:** la Tarea 5 de M2c pide `aria-label="5 de 5"` en las estrellas de
-  cada reseña. El sitio muestra cinco estrellas en las cuatro tarjetas desde
-  antes de M2a, y `datos-verificados.md` §6 dice que las reseñas se verificaron
-  una por una contra la ficha, pero no registra cuántas estrellas tiene cada
-  una. Solo registra el 4,9 general y las dos negativas (3 y 1 estrellas), que
-  no son de las publicadas.
-- **Qué hice mientras tanto:** puse `aria-label="5 de 5"`, como dicta la spec.
-  Repite lo que ya se ve en pantalla y no agrega ningún dato. Si alguna de las
-  cuatro no es de 5 estrellas, hay que corregir tanto las estrellas visibles
-  como la etiqueta.
-
 ### P-011 — Contadores del hero partidos a mitad de palabra por debajo de 390 px
 - **Estado:** abierta
 - **Bloquea:** no bloquea. Es de M3, junto con el contador `08–17:30hs`.
@@ -297,3 +281,23 @@ estado y ejecuta. No borra la pregunta: el historial sirve.
 - **Respuesta (2026-09-21):** el `og:image:alt` queda "Logotipo de Centro
   Mecánico DGP", que es exactamente lo que muestra la placa. Reemplaza el
   `TODO_DATO`.
+
+### P-010 — La puntuación de cada reseña publicada no está en los datos verificados
+- **Estado:** respondida
+- **Bloquea:** no bloquea.
+- **Qué falta:** confirmar en `docs/datos-verificados.md` que las cuatro reseñas
+  publicadas son de 5 estrellas.
+- **Contexto:** la Tarea 5 de M2c pide `aria-label="5 de 5"` en las estrellas de
+  cada reseña. El sitio muestra cinco estrellas en las cuatro tarjetas desde
+  antes de M2a, y `datos-verificados.md` §6 dice que las reseñas se verificaron
+  una por una contra la ficha, pero no registra cuántas estrellas tiene cada
+  una. Solo registra el 4,9 general y las dos negativas (3 y 1 estrellas), que
+  no son de las publicadas.
+- **Qué hice mientras tanto:** puse `aria-label="5 de 5"`, como dicta la spec.
+  Repite lo que ya se ve en pantalla y no agrega ningún dato. Si alguna de las
+  cuatro no es de 5 estrellas, hay que corregir tanto las estrellas visibles
+  como la etiqueta.
+- **Respuesta (2026-09-21):** Ramiro verificó contra la ficha que las cuatro
+  reseñas publicadas tienen 5 estrellas. `aria-label="5 de 5"` en cada una es
+  correcto. Quedó registrado en `docs/datos-verificados.md` §6 (commit
+  `5dc7a66`). No hubo que cambiar nada en `public/`.
