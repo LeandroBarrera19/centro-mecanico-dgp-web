@@ -24,19 +24,6 @@ estado y ejecuta. No borra la pregunta: el historial sirve.
 
 ## Abiertas
 
-### P-006 — Texto alternativo de la placa para compartir
-- **Estado:** abierta
-- **Bloquea:** no bloquea. Hay que resolverla antes de publicar (M5).
-- **Qué falta:** el texto del `og:image:alt` para la placa institucional (el
-  logo sobre el azul corporativo).
-- **Contexto:** `public/index.html`, línea 30. La imagen para compartir pasó a
-  ser `assets/og-placa.jpg` (resolución de P-003). El `og:image:alt` anterior
-  ("Centro Mecánico DGP — Pick-up en campo agropecuario, Villa María,
-  Córdoba") describía la foto del hero y ya no corresponde. Es texto de cara
-  al usuario, así que no lo escribo yo.
-- **Qué hice mientras tanto:** dejé
-  `content="TODO_DATO: texto alternativo de la placa institucional (logo sobre azul)"`.
-
 ### P-007 — BLOQUEANTE DE M5: la foto actual del hero no se puede publicar
 - **Estado:** abierta
 - **Bloquea:** **M5 (publicación).** El sitio no se publica hasta que F-01
@@ -199,3 +186,19 @@ estado y ejecuta. No borra la pregunta: el historial sirve.
   **Para M2c:** las estrellas `★` de las reseñas (`.g-star` y `.t-star`) pasan
   a SVG en línea, y ahí se eliminan `roboto-symbols.woff2` y su `@font-face`.
   Bajar 20,6 KB para un solo carácter no conviene.
+
+### P-006 — Texto alternativo de la placa para compartir
+- **Estado:** respondida
+- **Bloquea:** no bloquea. Hay que resolverla antes de publicar (M5).
+- **Qué falta:** el texto del `og:image:alt` para la placa institucional (el
+  logo sobre el azul corporativo).
+- **Contexto:** `public/index.html`, línea 30. La imagen para compartir pasó a
+  ser `assets/og-placa.jpg` (resolución de P-003). El `og:image:alt` anterior
+  ("Centro Mecánico DGP — Pick-up en campo agropecuario, Villa María,
+  Córdoba") describía la foto del hero y ya no corresponde. Es texto de cara
+  al usuario, así que no lo escribo yo.
+- **Qué hice mientras tanto:** dejé
+  `content="TODO_DATO: texto alternativo de la placa institucional (logo sobre azul)"`.
+- **Respuesta (2026-09-21):** el `og:image:alt` queda "Logotipo de Centro
+  Mecánico DGP", que es exactamente lo que muestra la placa. Reemplaza el
+  `TODO_DATO`.
