@@ -42,25 +42,21 @@ estado y ejecuta. No borra la pregunta: el historial sirve.
   `assets-src/`, se corre `node tools/optimizar-imagenes.mjs` y se borran las
   versiones de la foto actual.
 
-### P-012 — La pestaña "Repuestos" desborda en pantallas de hasta 480 px
+### P-013 — La página desborda entre 481 y 487 px
 - **Estado:** abierta
-- **Bloquea:** no bloquea. No está en la spec de M2c.
+- **Bloquea:** no bloquea.
 - **Qué falta:** decidir en qué módulo se corrige.
-- **Contexto:** con la pestaña "Repuestos" de Nuestros Servicios abierta, la
-  página mide 602 px de ancho a 320 y a 390 px, y aparece scroll horizontal.
-  Las otras cuatro pestañas no desbordan, y a 768 y 1440 px no desborda
-  ninguna. Ya pasaba antes de M2c: lo medí sobre `5bbabf4`. La causa es la
-  regla `#tab-repuestos.tab-panel.active { grid-template-columns: repeat(4,
-  1fr); }` (línea ~684 de `public/index.html`). Por el `id` pesa más que las
-  reglas `.tab-panel.active` de los media queries, que pasan a 3, 2 y 1
-  columna, así que esa pestaña se queda en 4 columnas a cualquier ancho. Lo
-  encontré en la Tarea 9, porque la auditoría de contraste abre cada pestaña.
-  Las capturas de verificación de M2c no lo muestran: se sacan con la primera
-  pestaña abierta.
-- **Qué hice mientras tanto:** nada. La regla repite el valor base (4
-  columnas), así que parece que sobra, pero borrarla o cambiarla no está en
-  la spec de M2c. La herramienta de contraste recorta la captura al ancho de
-  la ventana para poder medir igual.
+- **Contexto:** entre 481 y 487 px de ancho la página mide 488 px y aparece
+  scroll horizontal, con cualquier pestaña de servicios. Lo que sobresale es
+  la grilla de "Nuestro proceso de trabajo": en el media query de 900 px pasa
+  a `repeat(3, 1fr)` con `gap: 40px`, cada paso (`div.step`) no baja de
+  130 px, y recién el media query de 480 px la pasa a una columna. Ya pasaba
+  antes de M2c (medido sobre `5bbabf4`). Las verificaciones de M2a a M2c no lo
+  vieron, porque solo miden a 320, 390, 768, 1440 y 1920 px. Lo encontré al
+  medir la pestaña "Repuestos" ancho por ancho (P-012).
+- **Qué hice mientras tanto:** nada, porque no estaba pedido. Sería del mismo
+  tipo que la Tarea 6 de M2c: columnas `minmax(0, 1fr)`, o un punto de corte
+  intermedio para la grilla del proceso.
 
 ---
 
@@ -323,3 +319,38 @@ estado y ejecuta. No borra la pregunta: el historial sirve.
   partida y ningún desborde. "08–17:30hs" va en dos renglones, cortado
   después del guion, igual que a 390 px antes de M2c. La prueba de 30
   caracteres no desborda. A 390 px y más, idéntico a antes.
+
+### P-012 — La pestaña "Repuestos" desborda en pantallas de hasta 480 px
+- **Estado:** respondida
+- **Bloquea:** no bloquea. No está en la spec de M2c.
+- **Qué falta:** decidir en qué módulo se corrige.
+- **Contexto:** con la pestaña "Repuestos" de Nuestros Servicios abierta, la
+  página mide 602 px de ancho a 320 y a 390 px, y aparece scroll horizontal.
+  Las otras cuatro pestañas no desbordan, y a 768 y 1440 px no desborda
+  ninguna. Ya pasaba antes de M2c: lo medí sobre `5bbabf4`. La causa es la
+  regla `#tab-repuestos.tab-panel.active { grid-template-columns: repeat(4,
+  1fr); }` (línea ~684 de `public/index.html`). Por el `id` pesa más que las
+  reglas `.tab-panel.active` de los media queries, que pasan a 3, 2 y 1
+  columna, así que esa pestaña se queda en 4 columnas a cualquier ancho. Lo
+  encontré en la Tarea 9, porque la auditoría de contraste abre cada pestaña.
+  Las capturas de verificación de M2c no lo muestran: se sacan con la primera
+  pestaña abierta.
+- **Qué hice mientras tanto:** nada. La regla repite el valor base (4
+  columnas), así que parece que sobra, pero borrarla o cambiarla no está en
+  la spec de M2c. La herramienta de contraste recorta la captura al ancho de
+  la ventana para poder medir igual.
+- **Respuesta (2026-09-21):** corregir el desborde. Al medir ancho por ancho
+  (de 470 a 700 px) apareció un error en el dato de esta pregunta: la pestaña
+  no desbordaba solo a 480 px o menos, sino **de 320 a 613 px**. Sus cuatro
+  columnas no bajan de 130 px cada una y, con los espacios, necesitan 614 px.
+  Arreglarlo solo a 480 px o menos dejaba el desborde entre 481 y 613.
+  **Decisión mía:** la regla con `id` se repite dentro de los media queries
+  existentes, con las columnas de las demás pestañas:
+  `#tab-repuestos.tab-panel.active { grid-template-columns: repeat(2, 1fr); }`
+  en el de 768 px y `… { grid-template-columns: 1fr; }` en el de 480 px. Por
+  encima de 768 px no cambia nada: 4 columnas, como antes. Alternativa, si se
+  prefiere: borrar la regla con `id`. Así "Repuestos" se comportaría como las
+  demás pestañas a cualquier ancho, pero entre 769 y 1200 px pasaría de 4 a 3
+  columnas. Verificado: la pestaña ya no desborda por sí misma a ningún ancho
+  entre 320 y 1440 px. Solo queda el desborde de 481 a 487 px, que es de toda
+  la página (P-013).

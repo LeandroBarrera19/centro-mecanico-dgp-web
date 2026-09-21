@@ -681,6 +681,8 @@
       grid-template-columns: repeat(4, 1fr);
       gap: 18px;
     }
+    /* Por el id, esta regla pesa más que .tab-panel.active de los media queries:
+       en 768 y 480 px se repite con las columnas de las demás pestañas (P-012). */
     #tab-repuestos.tab-panel.active {
       grid-template-columns: repeat(4, 1fr);
     }
@@ -1017,6 +1019,7 @@
       .navbar-toggle { display: flex; }
       .services-grid { grid-template-columns: repeat(2, 1fr); }
       .tab-panel.active { grid-template-columns: repeat(2, 1fr); }
+      #tab-repuestos.tab-panel.active { grid-template-columns: repeat(2, 1fr); }
       .brands-strip-inner { gap: 4px 8px; }
       .brands-intro { width: 100%; text-align: center; margin-right: 0; margin-bottom: 4px; }
       .footer-grid { grid-template-columns: 1fr; }
@@ -1030,6 +1033,7 @@
       .container { padding: 0 20px; }
       .services-grid { grid-template-columns: 1fr; }
       .tab-panel.active { grid-template-columns: 1fr; }
+      #tab-repuestos.tab-panel.active { grid-template-columns: 1fr; }
       .process-steps { grid-template-columns: 1fr; }
       .hero-stats-inner { grid-template-columns: repeat(2, minmax(0, 1fr)); }
       .hero-ctas { flex-direction: column; }
