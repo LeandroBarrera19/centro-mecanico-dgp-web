@@ -117,6 +117,26 @@ estado y ejecuta. No borra la pregunta: el historial sirve.
   debajo de 390 px, una sola columna en pantallas angostas, un tamaño de letra
   que dependa del ancho de la pantalla (no del texto), o contadores más cortos.
 
+### P-012 — La pestaña "Repuestos" desborda en pantallas de hasta 480 px
+- **Estado:** abierta
+- **Bloquea:** no bloquea. No está en la spec de M2c.
+- **Qué falta:** decidir en qué módulo se corrige.
+- **Contexto:** con la pestaña "Repuestos" de Nuestros Servicios abierta, la
+  página mide 602 px de ancho a 320 y a 390 px, y aparece scroll horizontal.
+  Las otras cuatro pestañas no desbordan, y a 768 y 1440 px no desborda
+  ninguna. Ya pasaba antes de M2c: lo medí sobre `5bbabf4`. La causa es la
+  regla `#tab-repuestos.tab-panel.active { grid-template-columns: repeat(4,
+  1fr); }` (línea ~684 de `public/index.html`). Por el `id` pesa más que las
+  reglas `.tab-panel.active` de los media queries, que pasan a 3, 2 y 1
+  columna, así que esa pestaña se queda en 4 columnas a cualquier ancho. Lo
+  encontré en la Tarea 9, porque la auditoría de contraste abre cada pestaña.
+  Las capturas de verificación de M2c no lo muestran: se sacan con la primera
+  pestaña abierta.
+- **Qué hice mientras tanto:** nada. La regla repite el valor base (4
+  columnas), así que parece que sobra, pero borrarla o cambiarla no está en
+  la spec de M2c. La herramienta de contraste recorta la captura al ancho de
+  la ventana para poder medir igual.
+
 ---
 
 ## Respondidas
