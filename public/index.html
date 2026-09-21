@@ -536,8 +536,8 @@
       border-color: #D32027;
       border-left-color: #D32027;
     }
-    /* Misma especificidad que .service-card-title, que va después y gana: esta regla no se aplica, igual que antes de M2c (P-008). */
-    :where(.service-card--highlight) .service-card-title { color: #D32027; }
+    /* Título de la tarjeta destacada en el mismo gris que las demás: el rojo se reserva para alertas (P-008). */
+    .service-card--highlight .service-card-title { color: var(--gris); }
     .badge-highlight {
       display: inline-block;
       font-family: 'Montserrat', sans-serif;

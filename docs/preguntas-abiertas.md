@@ -42,27 +42,6 @@ estado y ejecuta. No borra la pregunta: el historial sirve.
   `assets-src/`, se corre `node tools/optimizar-imagenes.mjs` y se borran las
   versiones de la foto actual.
 
-### P-008 — El título de "Casa de Repuestos" nunca se vio en rojo
-- **Estado:** abierta
-- **Bloquea:** no bloquea. Es una decisión de color, que va a M3.
-- **Qué falta:** decidir si el título de la tarjeta destacada "Casa de
-  Repuestos" (pestaña "Repuestos" de Nuestros Servicios) tiene que verse en
-  rojo `#D32027`, como pretendía el CSS, o en el gris de las demás tarjetas,
-  como se vio siempre.
-- **Contexto:** antes de M2c, la regla `.service-card--highlight h4 { color:
-  #D32027; }` tenía la misma especificidad que `.service-card h4`, que está
-  más abajo en el CSS y la pisaba. El título salía gris (`#2D2D2D`). Al pasar
-  los estilos de etiqueta a clases (Tarea 4), la regla roja empezó a ganar y
-  el título se puso rojo. Lo detecté al comparar el estilo computado de los
-  37 encabezados con todas las pestañas visibles; en las capturas no aparecía,
-  porque esa pestaña está oculta.
-- **Qué hice mientras tanto:** decisión mía. Dejé el aspecto de antes: la regla
-  pasó a `:where(.service-card--highlight) .service-card-title`, con la misma
-  especificidad que `.service-card-title`, así que sigue sin aplicarse, con un
-  comentario que remite a esta pregunta. Si en M3 se quiere el rojo, alcanza
-  con sacar el `:where( )`. El recuadro rojo y la etiqueta roja de la tarjeta
-  no cambian en ningún caso.
-
 ### P-009 — Nivel de los títulos de columna del pie
 - **Estado:** abierta
 - **Bloquea:** no bloquea.
@@ -301,3 +280,30 @@ estado y ejecuta. No borra la pregunta: el historial sirve.
   reseñas publicadas tienen 5 estrellas. `aria-label="5 de 5"` en cada una es
   correcto. Quedó registrado en `docs/datos-verificados.md` §6 (commit
   `5dc7a66`). No hubo que cambiar nada en `public/`.
+
+### P-008 — El título de "Casa de Repuestos" nunca se vio en rojo
+- **Estado:** respondida
+- **Bloquea:** no bloquea. Es una decisión de color, que va a M3.
+- **Qué falta:** decidir si el título de la tarjeta destacada "Casa de
+  Repuestos" (pestaña "Repuestos" de Nuestros Servicios) tiene que verse en
+  rojo `#D32027`, como pretendía el CSS, o en el gris de las demás tarjetas,
+  como se vio siempre.
+- **Contexto:** antes de M2c, la regla `.service-card--highlight h4 { color:
+  #D32027; }` tenía la misma especificidad que `.service-card h4`, que está
+  más abajo en el CSS y la pisaba. El título salía gris (`#2D2D2D`). Al pasar
+  los estilos de etiqueta a clases (Tarea 4), la regla roja empezó a ganar y
+  el título se puso rojo. Lo detecté al comparar el estilo computado de los
+  37 encabezados con todas las pestañas visibles; en las capturas no aparecía,
+  porque esa pestaña está oculta.
+- **Qué hice mientras tanto:** decisión mía. Dejé el aspecto de antes: la regla
+  pasó a `:where(.service-card--highlight) .service-card-title`, con la misma
+  especificidad que `.service-card-title`, así que sigue sin aplicarse, con un
+  comentario que remite a esta pregunta. Si en M3 se quiere el rojo, alcanza
+  con sacar el `:where( )`. El recuadro rojo y la etiqueta roja de la tarjeta
+  no cambian en ningún caso.
+- **Respuesta (2026-09-21):** se queda en gris. El manual de marca reserva el
+  rojo para alertas. La regla pasó a
+  `.service-card--highlight .service-card-title { color: var(--gris); }`, con
+  el gris explícito y más especificidad que `.service-card-title`, así que el
+  rojo no puede volver a aparecer por un cambio en el orden del CSS. El
+  recuadro y la etiqueta rojos de la tarjeta no se tocaron.
