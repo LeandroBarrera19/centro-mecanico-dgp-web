@@ -1040,6 +1040,12 @@
       .google-badge { flex-wrap: wrap; justify-content: center; max-width: 100%; row-gap: 4px; }
       .google-count-text { flex-basis: 100%; text-align: center; }
     }
+    /* Por debajo de 390 px, el número de los contadores se achica con el ancho de la pantalla:
+       de 1,9rem a 390 px hasta 1,4rem a 320 px, para que las palabras actuales entren enteras.
+       overflow-wrap: anywhere (en .stat-num) queda como red para textos que no entren de ninguna forma. */
+    @media (max-width: 389.98px) {
+      .stat-num { font-size: clamp(1.4rem, 11.43vw - 0.886rem, 1.9rem); }
+    }
   </style>
 </head>
 <body>

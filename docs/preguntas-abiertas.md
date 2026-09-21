@@ -42,28 +42,6 @@ estado y ejecuta. No borra la pregunta: el historial sirve.
   `assets-src/`, se corre `node tools/optimizar-imagenes.mjs` y se borran las
   versiones de la foto actual.
 
-### P-011 — Contadores del hero partidos a mitad de palabra por debajo de 390 px
-- **Estado:** abierta
-- **Bloquea:** no bloquea. Es de M3, junto con el contador `08–17:30hs`.
-- **Qué falta:** decidir si se acepta cómo se ven los contadores entre 320 y
-  389 px, o qué se cambia en M3.
-- **Contexto:** la Tarea 6 de M2c arregló el desborde como pide la spec:
-  columnas `minmax(0, 1fr)`, `min-width: 0` y `overflow-wrap: anywhere`, sin
-  achicar el texto. La página ya no desborda a ningún ancho, ni con 30
-  caracteres en un contador. La contracara es que, cuando una palabra no entra
-  en la celda, se parte donde se termina el lugar. Con 1,9 rem y 24 px de
-  relleno a cada lado:
-  - a 320 y 340 px: "STOC / K" y "17:30 / hs" (320) o "17:30h / s" (340);
-  - a 360 px: "17:30h / s". Antes del arreglo, a 360 entraba entero porque las
-    columnas eran desiguales (160 y 167 px); ahora las dos miden 160.
-  - a 390 px y más: igual que antes.
-  Capturas: `temporary screenshots/m2c-t6-contadores-*.png`.
-- **Qué hice mientras tanto:** nada más que lo que pide la spec. No achiqué el
-  texto (la spec lo prohíbe) ni cambié la cantidad de columnas o el relleno:
-  eso es diseño y no está dictado. Opciones para M3: menos relleno lateral por
-  debajo de 390 px, una sola columna en pantallas angostas, un tamaño de letra
-  que dependa del ancho de la pantalla (no del texto), o contadores más cortos.
-
 ### P-012 — La pestaña "Repuestos" desborda en pantallas de hasta 480 px
 - **Estado:** abierta
 - **Bloquea:** no bloquea. No está en la spec de M2c.
@@ -312,3 +290,36 @@ estado y ejecuta. No borra la pregunta: el historial sirve.
   pantalla lee sus títulos como subsecciones de "Contacto". Se cambiaron las
   tres etiquetas y se mantuvo la clase `footer-col-title`. El aspecto no
   cambió.
+
+### P-011 — Contadores del hero partidos a mitad de palabra por debajo de 390 px
+- **Estado:** respondida
+- **Bloquea:** no bloquea. Es de M3, junto con el contador `08–17:30hs`.
+- **Qué falta:** decidir si se acepta cómo se ven los contadores entre 320 y
+  389 px, o qué se cambia en M3.
+- **Contexto:** la Tarea 6 de M2c arregló el desborde como pide la spec:
+  columnas `minmax(0, 1fr)`, `min-width: 0` y `overflow-wrap: anywhere`, sin
+  achicar el texto. La página ya no desborda a ningún ancho, ni con 30
+  caracteres en un contador. La contracara es que, cuando una palabra no entra
+  en la celda, se parte donde se termina el lugar. Con 1,9 rem y 24 px de
+  relleno a cada lado:
+  - a 320 y 340 px: "STOC / K" y "17:30 / hs" (320) o "17:30h / s" (340);
+  - a 360 px: "17:30h / s". Antes del arreglo, a 360 entraba entero porque las
+    columnas eran desiguales (160 y 167 px); ahora las dos miden 160.
+  - a 390 px y más: igual que antes.
+  Capturas: `temporary screenshots/m2c-t6-contadores-*.png`.
+- **Qué hice mientras tanto:** nada más que lo que pide la spec. No achiqué el
+  texto (la spec lo prohíbe) ni cambié la cantidad de columnas o el relleno:
+  eso es diseño y no está dictado. Opciones para M3: menos relleno lateral por
+  debajo de 390 px, una sola columna en pantallas angostas, un tamaño de letra
+  que dependa del ancho de la pantalla (no del texto), o contadores más cortos.
+- **Respuesta (2026-09-21):** era una regresión. Por debajo de 390 px, el
+  número de cada contador achica su tipografía de forma progresiva:
+  `@media (max-width: 389.98px) { .stat-num { font-size: clamp(1.4rem,
+  11.43vw - 0.886rem, 1.9rem); } }`, que da 22,4 px a 320 y 30,4 px a 390.
+  El cálculo sale de la palabra más ancha, "17:30hs", que ocupa 3,92 veces el
+  tamaño de letra, y del lugar de la celda, que es la mitad del ancho de la
+  pantalla menos 68 px. `overflow-wrap: anywhere` se queda como red de
+  seguridad. Verificado a 320, 340, 360, 375 y 390 px: ninguna palabra
+  partida y ningún desborde. "08–17:30hs" va en dos renglones, cortado
+  después del guion, igual que a 390 px antes de M2c. La prueba de 30
+  caracteres no desborda. A 390 px y más, idéntico a antes.
