@@ -42,22 +42,6 @@ estado y ejecuta. No borra la pregunta: el historial sirve.
   `assets-src/`, se corre `node tools/optimizar-imagenes.mjs` y se borran las
   versiones de la foto actual.
 
-### P-013 — La página desborda entre 481 y 487 px
-- **Estado:** abierta
-- **Bloquea:** no bloquea.
-- **Qué falta:** decidir en qué módulo se corrige.
-- **Contexto:** entre 481 y 487 px de ancho la página mide 488 px y aparece
-  scroll horizontal, con cualquier pestaña de servicios. Lo que sobresale es
-  la grilla de "Nuestro proceso de trabajo": en el media query de 900 px pasa
-  a `repeat(3, 1fr)` con `gap: 40px`, cada paso (`div.step`) no baja de
-  130 px, y recién el media query de 480 px la pasa a una columna. Ya pasaba
-  antes de M2c (medido sobre `5bbabf4`). Las verificaciones de M2a a M2c no lo
-  vieron, porque solo miden a 320, 390, 768, 1440 y 1920 px. Lo encontré al
-  medir la pestaña "Repuestos" ancho por ancho (P-012).
-- **Qué hice mientras tanto:** nada, porque no estaba pedido. Sería del mismo
-  tipo que la Tarea 6 de M2c: columnas `minmax(0, 1fr)`, o un punto de corte
-  intermedio para la grilla del proceso.
-
 ---
 
 ## Respondidas
@@ -381,3 +365,25 @@ estado y ejecuta. No borra la pregunta: el historial sirve.
   puse comillas invertidas a las etiquetas y al CSS, como en el resto de la
   spec. Los puntos 3 y 4 de la Tarea 6 no se tocaron. El 4 sigue sin nombrar
   375 px.
+
+### P-013 — La página desborda entre 481 y 487 px
+- **Estado:** respondida
+- **Bloquea:** no bloquea.
+- **Qué falta:** decidir en qué módulo se corrige.
+- **Contexto:** entre 481 y 487 px de ancho la página mide 488 px y aparece
+  scroll horizontal, con cualquier pestaña de servicios. Lo que sobresale es
+  la grilla de "Nuestro proceso de trabajo": en el media query de 900 px pasa
+  a `repeat(3, 1fr)` con `gap: 40px`, cada paso (`div.step`) no baja de
+  130 px, y recién el media query de 480 px la pasa a una columna. Ya pasaba
+  antes de M2c (medido sobre `5bbabf4`). Las verificaciones de M2a a M2c no lo
+  vieron, porque solo miden a 320, 390, 768, 1440 y 1920 px. Lo encontré al
+  medir la pestaña "Repuestos" ancho por ancho (P-012).
+- **Qué hice mientras tanto:** nada, porque no estaba pedido. Sería del mismo
+  tipo que la Tarea 6 de M2c: columnas `minmax(0, 1fr)`, o un punto de corte
+  intermedio para la grilla del proceso.
+- **Respuesta (2026-09-22):** no se corrige. La grilla de "Nuestro proceso"
+  desaparece en M3: la reemplaza la sección "Cómo trabajamos" (Tarea 5 de
+  `docs/spec-m3-home.md`). En esa tarea quedó anotado que hay que verificar
+  que la sección nueva no desborde entre 481 y 487 px. Hasta la Tarea 5, el
+  barrido de anchos de cada tarea va a seguir mostrando este desborde, y no
+  cuenta como regresión.

@@ -144,6 +144,26 @@ proceso, que es real:
 Radio: **80 km**. Todas las localidades siguientes tienen clientes reales que
 vienen o han venido al taller. No agregar localidades que no estén acá.
 
+**Localidades con más clientes** (fuente: Anubis, 2026-09-21). Son las que se
+nombran en el sitio, en este orden:
+
+| # | Localidad | Clientes | Órdenes de trabajo |
+|---|---|---|---|
+| 1 | Arroyo Cabral | 41 | 101 |
+| 2 | Bell Ville | 29 | 61 |
+| 3 | Ticino | 27 | 143 |
+| 4 | Idiazábal | 26 | 69 |
+| 5 | James Craik | 14 | 42 |
+| 6 | Pozo del Molle | 14 | 24 |
+| 7 | Tío Pujio | 13 | 30 |
+| 8 | Etruria | 9 | 22 |
+| 9 | Ballesteros | 9 | 34 |
+| 10 | Cintra | 9 | 14 |
+
+"Córdoba" figura en el sistema con 12 clientes y 16 órdenes de trabajo, pero
+está fuera del radio de 80 km. `TODO_DATO: confirmar si es Córdoba capital o
+un registro de la provincia en el campo localidad`. **No se nombra en el sitio.**
+
 Villa María (0 km) · Villa Nueva (2,4) · Las Mojarras (12,2) · Arroyo Cabral
 (16,7) · Tío Pujio (17,2) · Ana Zumarán (18,1) · Arroyo Algodón (24,9) · Luca
 (25,7) · Palestina (27,2) · La Palestina (27,2) · Ausonia (27,6) · Ballesteros
@@ -250,12 +270,85 @@ Referencia de tono B2B: manual de marca `directrices-de-marca-dgp.html`
 (sección 04). Vocabulario: "vehículo" (no "unidad"), "pick-up", "utilitario",
 "flota", "mantenimiento preventivo", "orden de trabajo".
 
+## 18b. Atención, alcance y diferenciales (declarados por Ramiro el 2026-09-21)
+
+### A quién le habla primero la home
+
+- **Prioridad de la home: el particular** ("taller de confianza para mi
+  vehículo"). Las flotas tienen su página propia (M7).
+- Contexto: hoy la mayoría de los presupuestos nuevos vienen de **empresas**.
+  La home prioriza al particular porque es lo que la gente busca en Google; la
+  página de flotas se usa para cerrar tratos que empiezan por otro lado.
+
+### Cómo funciona el turno (texto de referencia, no literal)
+
+- **Service y revisión:** se presupuesta; si el cliente aprueba, se da turno en
+  el momento.
+- **Trabajos más complejos:** siempre que se puede, se pasa un presupuesto
+  **sin desarme previo**, aclarando que **puede cambiar**. Se le recomienda al
+  cliente coordinar un turno para revisar y presupuestar sobre lo revisado.
+- **Demora hasta el turno:** variable. **No publicar plazos.**
+- **Sin turno / urgencias:** rara vez, y solo con clientes de flota
+  específicos. **No ofrecer atención sin turno ni urgencias en el sitio.**
+
+### Repuestos
+
+- **Stock propio:** el **75% de las órdenes de trabajo del último año** se
+  hicieron con repuestos del stock propio. Fuente: Anubis, consultado el
+  2026-09-21. Publicable como: "3 de cada 4 trabajos del último año se
+  resolvieron con repuestos de nuestro propio stock". Revisar el dato una vez
+  por año.
+- **"Stock inmediato" no se puede afirmar:** una de cada cuatro veces hay que
+  pedir el repuesto afuera.
+- **Originales y alternativos:** se trabaja con los dos. Se le da a elegir al
+  cliente y se le recomiendan variantes.
+- **Presupuesto con variantes:** se ofrecen al cliente varias opciones de
+  calidad y precio para un mismo trabajo. Verificado.
+
+### Postventa (lo concreto, verificado)
+
+- La **pieza cambiada queda en el vehículo**, para que el cliente la vea.
+- Se **avisa cuando el vehículo está listo**.
+- Después de una **reparación**, se consulta al tiempo cómo anda el vehículo.
+- **Libreta digital** con el historial completo de cada vehículo (ver §14).
+
+### Lo que NO se hace
+
+Motos · Camiones · Carrocería · Pintura.
+No mencionarlos como servicio. **Tampoco se publica que no se hacen**
+(decisión de Ramiro, 2026-09-21): el sitio simplemente no los ofrece.
+
+**Límite de porte:** los utilitarios grandes **sí entran**: Mercedes-Benz
+Sprinter, Renault Master, Iveco Daily, Fiat Ducato. "Camiones" es todo lo que
+está por encima de ese porte.
+
+### Afirmaciones prohibidas por genéricas
+
+Todo taller las dice y nadie las puede verificar. **No se escriben**, aunque
+alguien las pida:
+
+- "Tecnología de punta" / "última tecnología"
+- "Precios competitivos" / "los mejores precios"
+- "Alta calidad" / "calidad garantizada" / "excelencia"
+- "Rapidez" / "servicio rápido" / "atención inmediata" (la demora es variable)
+- "Los mejores profesionales" / "personal altamente calificado"
+- "Atención personalizada", sin decir en qué consiste
+- "Técnicos en constante capacitación" (no hay nada concreto que lo respalde)
+- "Tecnología de punta en diagnóstico" o cualquier afirmación sobre el
+  equipamiento (decisión de §7: no se especifica)
+
+Cada una se reemplaza por **el hecho concreto que la respalda**: en vez de
+"precios competitivos", "te damos varias opciones de repuesto y precio para el
+mismo trabajo"; en vez de "atención personalizada", "te avisamos cuando está
+listo y dejamos la pieza cambiada para que la veas".
+
 ## 19. Identidad visual (del manual de marca)
 
 | Elemento | Valor |
 |---|---|
 | Azul corporativo | `#124B8F` (dominante) |
-| Verde agro | `#7DB919` (acento, botones de contacto y turno) |
+| Verde agro | `#7DB919` (acento). **No se usa como fondo de texto blanco**: contraste 2,38:1, no llega al mínimo. |
+| Botones de acción | **Azul corporativo `#124B8F` con texto blanco** (contraste 8,65:1). Incluye todos los botones de WhatsApp, aunque WhatsApp use verde. Decisión de Ramiro, 2026-09-21. |
 | Rojo motor | `#D32027` (solo alertas y urgencias) |
 | Gris asfalto | `#2D2D2D` (texto) |
 | Tipografía títulos | Montserrat |
