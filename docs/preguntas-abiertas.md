@@ -365,6 +365,8 @@ estado y ejecuta. No borra la pregunta: el historial sirve.
   puse comillas invertidas a las etiquetas y al CSS, como en el resto de la
   spec. Los puntos 3 y 4 de la Tarea 6 no se tocaron. El 4 sigue sin nombrar
   375 px.
+- **Actualización (2026-09-22):** Ramiro pasó el texto del punto 4 de la
+  Tarea 6, con los 375 px, y ya está reemplazado en la spec.
 
 ### P-013 — La página desborda entre 481 y 487 px
 - **Estado:** respondida

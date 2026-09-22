@@ -134,8 +134,8 @@ actual, vuelve a romperse.
    no entren de ninguna forma (ver P-011).
 3. **Esta tarea sí puede cambiar el aspecto**, pero solo por debajo de 390 px.
    A 390 px y más, la fila se tiene que ver exactamente igual que antes.
-4. Verificar a **320, 340, 360 y 390 px** que `document.documentElement.scrollWidth`
-   es igual al ancho de la ventana.
+4. Verificar a 320, 340, 360, 375 y 390 px: ninguna palabra partida, ningún
+   desborde.
 5. **Prueba de la condición:** reemplazar temporalmente, solo en memoria desde
    Puppeteer (sin tocar el archivo), el texto de un contador por uno de 30
    caracteres, y verificar que a 320 px tampoco desborda. Mostrar el resultado.
