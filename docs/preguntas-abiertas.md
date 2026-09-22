@@ -389,3 +389,30 @@ estado y ejecuta. No borra la pregunta: el historial sirve.
   que la sección nueva no desborde entre 481 y 487 px. Hasta la Tarea 5, el
   barrido de anchos de cada tarea va a seguir mostrando este desborde, y no
   cuenta como regresión.
+
+### P-015 — La etiqueta del hero sigue verde sobre la foto y no llega al mínimo
+- **Estado:** respondida
+- **Bloquea:** no bloquea. Afecta la Tarea 3 de M3.
+- **Qué falta:** decidir cómo se ve la etiqueta de arriba del título del hero,
+  que en la Tarea 3 pasa a decir "Especialistas en pick-ups y utilitarios".
+- **Contexto:** `.hero-badge` en `public/index.html`: texto verde `#7DB919` con
+  borde verde, sin fondo propio, directo sobre la foto. Mide 3,22:1 en el 10 %
+  más desfavorable de la foto y 3,50:1 en la mediana. Como es texto chico, el
+  mínimo es 4,5:1 (`docs/contraste-m3.md`). La Tarea 1 no la corrigió. Oscurecer
+  el verde o bajarle la opacidad, que es lo único que permite la spec, empeora
+  el contraste sobre fondo oscuro. Además, el punto 5 deja lo que está sobre la
+  foto para cuando llegue F-01. Con el texto nuevo de la Tarea 3, el problema
+  sigue igual.
+- **Qué hice mientras tanto:** nada. Una opción para la Tarea 3 sería darle a
+  la etiqueta un fondo propio. Ahí sí se puede medir contra un color fijo,
+  aunque cambie la foto. La otra es esperar a F-01 y volver a medir.
+- **Respuesta (2026-09-22):** se resuelve dentro de la Tarea 1 de M3. La
+  etiqueta pasa de texto verde suelto a una píldora de fondo sólido, porque
+  texto suelto sobre una foto tiene un fondo inestable por definición. Un fondo
+  sólido fija el contraste, sin depender de la imagen que haya detrás. Fondo y
+  borde: `#588212`, que es el verde corporativo `#7DB919` con el mismo tono y la
+  misma saturación (HSL 82,5°, 76,2 %) y la luminosidad bajada de 41,2 % a
+  29,0 %. Es el mínimo que llega a 4,5:1 con texto blanco: da 4,55:1, y un
+  paso antes (`#588312`) queda en 4,497:1. Texto blanco. La forma de píldora
+  (`border-radius: 100px`) ya estaba y no cambió. Medición en
+  `docs/contraste-m3.md`.

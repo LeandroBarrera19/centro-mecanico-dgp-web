@@ -103,6 +103,7 @@ async function medirEstado(browser, estado, ancho) {
         donde: `${seccion ? (seccion.id ? '#' + seccion.id : seccion.tagName.toLowerCase()) : ''} ${el.tagName.toLowerCase()}${el.classList.length ? '.' + [...el.classList].join('.') : ''}`.trim(),
         color: m.slice(0, 3), alfa: (m[3] ?? 1) * opacidad,
         px: parseFloat(cs.fontSize), peso: parseInt(cs.fontWeight, 10), cajas,
+        decorativo: !!el.closest('[aria-hidden="true"]'),
       });
     }
     return lista;
@@ -159,8 +160,8 @@ try {
 const grupos = new Map();
 for (const r of todos) {
   const colorTexto = hex(r.color) + (r.alfa < 0.999 ? ` al ${Math.round(r.alfa * 100)} %` : '');
-  const clave = `${colorTexto}|${r.variable ? 'variable' : r.fondo}|${r.px}|${r.peso}`;
-  const g = grupos.get(clave) ?? { colorTexto, fondo: r.variable ? `variable (mediana ${r.fondo})` : r.fondo, px: r.px, peso: r.peso, grande: r.grande, minimo: r.minimo, p10: Infinity, mediana: Infinity, usos: 0, ejemplo: null, anchos: new Set(), estados: new Set() };
+  const clave = `${colorTexto}|${r.variable ? 'variable' : r.fondo}|${r.px}|${r.peso}|${r.decorativo}`;
+  const g = grupos.get(clave) ?? { colorTexto, fondo: r.variable ? `variable (mediana ${r.fondo})` : r.fondo, px: r.px, peso: r.peso, grande: r.grande, minimo: r.minimo, decorativo: r.decorativo, p10: Infinity, mediana: Infinity, usos: 0, ejemplo: null, anchos: new Set(), estados: new Set() };
   g.usos++; g.anchos.add(r.ancho); g.estados.add(r.estado);
   if (r.p10 < g.p10) { g.p10 = r.p10; g.mediana = r.mediana; g.ejemplo = r; }
   grupos.set(clave, g);
@@ -170,12 +171,14 @@ const num = v => v.toFixed(2).replace('.', ',');
 const corto = s => (s.length > 48 ? s.slice(0, 46) + '…' : s).replace(/\|/g, '\\|');
 const fila = g => `| ${num(g.p10)}:1 | ${num(g.mediana)}:1 | ${num(g.minimo)}:1 | \`${g.colorTexto}\` | \`${g.fondo}\` | ${String(g.px).replace('.', ',')} px, ${g.peso}${g.grande ? ' (grande)' : ''} | «${corto(g.ejemplo.texto)}» — \`${g.ejemplo.donde}\` | ${[...g.anchos].join(', ')} | ${g.usos} |`;
 const cabecera = '| Contraste (p10) | Mediana | Mínimo | Texto | Fondo | Tamaño y peso | Ejemplo — dónde | Anchos | Usos |\n|---|---|---|---|---|---|---|---|---|';
-const fallan = filas.filter(g => g.p10 < g.minimo);
-const pasan = filas.filter(g => g.p10 >= g.minimo);
+// Texto con aria-hidden="true" (propio o de un ancestro): decorativo, exento del mínimo.
+const exentos = filas.filter(g => g.decorativo);
+const fallan = filas.filter(g => !g.decorativo && g.p10 < g.minimo);
+const pasan = filas.filter(g => !g.decorativo && g.p10 >= g.minimo);
 
 const md = [
   `Estados medidos: ${ESTADOS.map(e => `${e.id} (${e.anchos.join(' y ')} px)`).join('; ')}.`,
-  `Textos medidos: ${todos.length}. Combinaciones distintas: ${filas.length}. No llegan al mínimo: **${fallan.length}**.`,
+  `Textos medidos: ${todos.length}. Combinaciones distintas: ${filas.length}. No llegan al mínimo: **${fallan.length}**. Exentas por decorativas: ${exentos.length}.`,
   '',
   '### Combinaciones que no llegan al mínimo, de peor a mejor',
   '',
@@ -184,6 +187,10 @@ const md = [
   '### Combinaciones que llegan al mínimo',
   '',
   cabecera + '\n' + pasan.map(fila).join('\n'),
+  '',
+  '### Exentas por decorativas (`aria-hidden="true"`)',
+  '',
+  exentos.length ? cabecera + '\n' + exentos.map(fila).join('\n') : 'Ninguna.',
   '',
 ].join('\n');
 

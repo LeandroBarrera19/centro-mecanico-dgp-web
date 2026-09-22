@@ -115,9 +115,13 @@
     }
     .btn-primary:focus-visible,
     .btn-outline:focus-visible,
-    .btn-wa:focus-visible,
-    .btn-cta:focus-visible {
+    .btn-wa:focus-visible {
       outline-color: #fff;
+    }
+    /* Botones azules sobre fondo claro: el contorno blanco no se vería */
+    .btn-cta:focus-visible,
+    .testimonials .btn-primary:focus-visible {
+      outline-color: #0d3870;
     }
 
     /* ── ENLACE DE SALTO: invisible hasta recibir foco con el teclado ── */
@@ -195,8 +199,8 @@
       display: block;
       margin-bottom: 10px;
     }
-    .process .eyebrow-label,
-    .contact-cta .eyebrow-label { color: rgba(255,255,255,0.6); }
+    .process .eyebrow-label { color: rgba(255,255,255,0.6); }
+    .contact-cta .eyebrow-label { color: rgba(255,255,255,0.64); }
 
     /* ── NAVBAR ── */
     .navbar {
@@ -244,14 +248,18 @@
       font-family: 'Montserrat', sans-serif;
       font-weight: 700;
       font-size: 0.85rem;
-      background: var(--verde);
+      background: var(--azul);
       color: var(--blanco);
       padding: 10px 22px;
       border-radius: var(--radius);
       transition: background 0.2s, transform 0.1s;
       white-space: nowrap;
     }
-    .btn-cta:hover { background: var(--verde-dark); transform: translateY(-1px); }
+    .btn-cta:hover { background: var(--azul-dark); transform: translateY(-1px); }
+    .btn-cta:focus-visible { background: var(--azul-dark); }
+    /* .navbar-links a (color gris y azul al pasar el mouse) pesa más que .btn-cta */
+    .navbar-links a.btn-cta,
+    .navbar-links a.btn-cta:hover { color: var(--blanco); }
     .navbar-toggle {
       display: none;
       cursor: pointer;
@@ -335,8 +343,11 @@
       font-size: 0.72rem;
       letter-spacing: 0.14em;
       text-transform: uppercase;
-      color: var(--verde);
-      border: 1.5px solid var(--verde);
+      /* Fondo sólido: contraste fijo, sin depender de la foto (P-015).
+         #588212 es el verde corporativo con la luminosidad mínima para 4,5:1 con blanco. */
+      background: #588212;
+      color: var(--blanco);
+      border: 1.5px solid #588212;
       padding: 6px 16px;
       border-radius: 100px;
       margin-bottom: 24px;
@@ -378,7 +389,7 @@
       font-family: 'Montserrat', sans-serif;
       font-weight: 700;
       font-size: 0.95rem;
-      background: var(--verde);
+      background: var(--azul);
       color: var(--blanco);
       padding: 14px 28px;
       border-radius: var(--radius);
@@ -387,7 +398,10 @@
       gap: 8px;
       transition: background 0.2s, transform 0.15s;
     }
-    .btn-primary:hover { background: var(--verde-dark); transform: translateY(-2px); }
+    .btn-primary:hover { background: var(--azul-dark); transform: translateY(-2px); }
+    .btn-primary:focus-visible { background: var(--azul-dark); }
+    /* Sobre la foto el azul se confunde con la capa azul: borde blanco, como .btn-wa */
+    .hero .btn-primary { border: 2px solid var(--blanco); padding: 12px 26px; }
     .btn-outline {
       font-family: 'Montserrat', sans-serif;
       font-weight: 700;
@@ -614,11 +628,11 @@
       letter-spacing: .18em;
       text-transform: uppercase;
       color: var(--azul);
-      opacity: 0.55;
+      opacity: 1;
       margin-right: 16px;
     }
     .brands-intro--secondary {
-      opacity: 0.40;
+      opacity: 0.77;
       margin-right: 12px;
     }
     .brand-name {
@@ -627,7 +641,7 @@
       font-size: 0.8rem;
       letter-spacing: .06em;
       color: var(--azul);
-      opacity: 0.75;
+      opacity: 1;
       text-transform: uppercase;
       transition: opacity 0.2s;
       padding: 4px 8px;
@@ -635,7 +649,7 @@
     .brand-name--secondary {
       font-weight: 500;
       font-size: 0.68rem;
-      opacity: 0.45;
+      opacity: 0.77;
       padding: 2px 5px;
     }
     .brand-name:hover, .brand-name--secondary:hover { opacity: 1; }
@@ -781,13 +795,15 @@
       font-family: 'Montserrat', sans-serif;
       font-weight: 700;
       font-size: 1rem;
-      background: #25D366;
+      background: var(--azul);
       color: var(--blanco);
-      padding: 16px 32px;
+      border: 2px solid var(--blanco);
+      padding: 14px 30px;
       border-radius: var(--radius);
       transition: background 0.2s, transform 0.15s;
     }
-    .btn-wa:hover { background: #1ebe5c; transform: translateY(-2px); }
+    .btn-wa:hover { background: var(--azul-dark); transform: translateY(-2px); }
+    .btn-wa:focus-visible { background: var(--azul-dark); }
     .btn-wa svg { width: 22px; height: 22px; fill: var(--blanco); flex-shrink: 0; }
     .contact-data { display: flex; flex-direction: column; gap: 18px; }
     .contact-item { display: flex; align-items: center; gap: 14px; font-size: 0.95rem; color: rgba(255,255,255,0.82); }
@@ -809,7 +825,7 @@
       font-size: 0.72rem;
       letter-spacing: 0.08em;
       text-transform: uppercase;
-      color: rgba(255,255,255,0.5);
+      color: rgba(255,255,255,0.64);
       margin-bottom: 2px;
     }
     .contact-item strong { color: var(--blanco); font-weight: 500; font-family: 'Roboto', sans-serif; }
@@ -833,7 +849,7 @@
       color: var(--blanco);
       margin-bottom: 3px;
     }
-    .footer-brand-sub { font-size: 0.8rem; color: rgba(255,255,255,0.45); margin-bottom: 16px; }
+    .footer-brand-sub { font-size: 0.8rem; color: rgba(255,255,255,0.55); margin-bottom: 16px; }
     .footer-tagline { font-size: 0.88rem; color: rgba(255,255,255,0.55); font-style: italic; line-height: 1.55; }
     .footer-col-title {
       font-family: 'Montserrat', sans-serif;
@@ -855,7 +871,7 @@
       align-items: center;
       justify-content: space-between;
     }
-    .footer-bottom p { font-size: 0.8rem; color: rgba(255,255,255,0.38); }
+    .footer-bottom p { font-size: 0.8rem; color: rgba(255,255,255,0.55); }
 
     /* ── ANIMATIONS ── */
     .fade-in { opacity: 0; transform: translateY(22px); transition: opacity 0.6s ease, transform 0.6s ease; }
@@ -1152,37 +1168,37 @@
       <div class="brands-row">
         <span class="brands-intro">Especialistas en</span>
         <span class="brand-name">TOYOTA</span>
-        <span class="brand-sep">·</span>
+        <span class="brand-sep" aria-hidden="true">·</span>
         <span class="brand-name">VOLKSWAGEN</span>
-        <span class="brand-sep">·</span>
+        <span class="brand-sep" aria-hidden="true">·</span>
         <span class="brand-name">FORD</span>
       </div>
       <div class="brands-row">
         <span class="brands-intro brands-intro--secondary">También atendemos</span>
         <span class="brand-name brand-name--secondary">CHEVROLET</span>
-        <span class="brand-sep">·</span>
+        <span class="brand-sep" aria-hidden="true">·</span>
         <span class="brand-name brand-name--secondary">RENAULT</span>
-        <span class="brand-sep">·</span>
+        <span class="brand-sep" aria-hidden="true">·</span>
         <span class="brand-name brand-name--secondary">FIAT</span>
-        <span class="brand-sep">·</span>
+        <span class="brand-sep" aria-hidden="true">·</span>
         <span class="brand-name brand-name--secondary">PEUGEOT</span>
-        <span class="brand-sep">·</span>
+        <span class="brand-sep" aria-hidden="true">·</span>
         <span class="brand-name brand-name--secondary">MERCEDES-BENZ</span>
-        <span class="brand-sep">·</span>
+        <span class="brand-sep" aria-hidden="true">·</span>
         <span class="brand-name brand-name--secondary">AUDI</span>
-        <span class="brand-sep">·</span>
+        <span class="brand-sep" aria-hidden="true">·</span>
         <span class="brand-name brand-name--secondary">NISSAN</span>
-        <span class="brand-sep">·</span>
+        <span class="brand-sep" aria-hidden="true">·</span>
         <span class="brand-name brand-name--secondary">HONDA</span>
-        <span class="brand-sep">·</span>
+        <span class="brand-sep" aria-hidden="true">·</span>
         <span class="brand-name brand-name--secondary">CITROËN</span>
-        <span class="brand-sep">·</span>
+        <span class="brand-sep" aria-hidden="true">·</span>
         <span class="brand-name brand-name--secondary">BMW</span>
-        <span class="brand-sep">·</span>
+        <span class="brand-sep" aria-hidden="true">·</span>
         <span class="brand-name brand-name--secondary">JEEP</span>
-        <span class="brand-sep">·</span>
+        <span class="brand-sep" aria-hidden="true">·</span>
         <span class="brand-name brand-name--secondary">DODGE</span>
-        <span class="brand-sep">·</span>
+        <span class="brand-sep" aria-hidden="true">·</span>
         <span class="brand-name brand-name--secondary">PORSCHE</span>
       </div>
     </div>
@@ -1200,25 +1216,25 @@
     <div class="why-grid">
 
       <div class="why-card fade-in">
-        <span class="why-num-bg">01</span>
+        <span class="why-num-bg" aria-hidden="true">01</span>
         <h3>Diagnóstico transparente</h3>
         <p>Diagnóstico OBD. Sabés exactamente qué tiene tu vehículo antes de autorizar cualquier trabajo. Sin sorpresas en el presupuesto.</p>
       </div>
 
       <div class="why-card fade-in delay-1">
-        <span class="why-num-bg">02</span>
+        <span class="why-num-bg" aria-hidden="true">02</span>
         <h3>Stock propio. Respuesta inmediata.</h3>
         <p>Casa de repuestos integrada al taller. Sin demoras por falta de piezas. Tu vehículo vuelve a operar en el menor tiempo posible.</p>
       </div>
 
       <div class="why-card fade-in delay-2">
-        <span class="why-num-bg">03</span>
+        <span class="why-num-bg" aria-hidden="true">03</span>
         <h3>Un equipo con más de 20 años en el rubro</h3>
         <p>Socios técnicos de empresas agropecuarias de toda la región. Nuestro respaldo no es solo mecánico: es estratégico para que tu operación nunca se detenga.</p>
       </div>
 
       <div class="why-card fade-in delay-3">
-        <span class="why-num-bg">04</span>
+        <span class="why-num-bg" aria-hidden="true">04</span>
         <h3>Presupuestos claros. Garantía de repuestos y trabajos.</h3>
         <p>Te ofrecemos múltiples opciones de presupuesto —variedad de calidades, demoras y precios— todas respaldadas por nuestra experiencia comprobada. Atención completamente personalizada, con seguimiento profesional y garantía sobre los repuestos y los trabajos realizados. La relación no termina con la entrega: te acompañamos en el post venta.</p>
       </div>
@@ -1530,7 +1546,7 @@
         </div>
         <p class="t-text">DGP cuenta con profesionales de confianza, cumplen con los tiempos, usan lubricantes y repuestos de calidad, cuentan con la tecnología necesaria para los vehículos actuales.</p>
         <div class="t-footer">
-          <div class="t-avatar" style="background:#E65100;">AR</div>
+          <div class="t-avatar" style="background:#124B8F;">AR</div>
           <div>
             <div class="t-name">Alberto R.</div>
             <div class="t-date">octubre 2025</div>
@@ -1546,7 +1562,7 @@
         </div>
         <p class="t-text">Este equipo de trabajo atiende, atendió y atenderá mis vehículos. Un equipo fantástico.</p>
         <div class="t-footer">
-          <div class="t-avatar" style="background:#F57C00;">CG</div>
+          <div class="t-avatar" style="background:#124B8F;">CG</div>
           <div>
             <div class="t-name">Carlos G.</div>
             <div class="t-date">octubre 2025</div>
