@@ -76,9 +76,10 @@ leen esos saltos como una estructura rota.
 
 1. Listar primero **todos** los encabezados del documento en orden, con su
    nivel y su texto, y marcar dónde hay saltos.
-2. Corregir para que no haya saltos: cada nivel desciende de a uno. Los
-   `<h4>` que cuelgan directo de un `<h2>` pasan a `<h3>`; los `<h5>` del pie
-   pasan al nivel que corresponda según lo que tengan encima.
+2. Corregir para que no haya saltos. Los `<h4>` que cuelgan de un `<h2>` pasan
+   a `<h3>`. Los `<h5>` del pie pasan a `<h2>`: el pie es una región propia,
+   fuera del `<main>`, y si sus títulos fueran `<h3>` un lector de pantalla los
+   leería como subsecciones de la última sección del contenido (ver P-009).
 3. **El aspecto no cambia.** Si el CSS da estilo por nombre de etiqueta
    (`h4 { ... }`), mover ese estilo a una clase y aplicarla, para que el
    encabezado se vea igual después de cambiar de nivel. Mostrar el CSS
@@ -125,10 +126,12 @@ contadores. M3 puede cambiar lo que dicen; si se arregla a medida del texto
 actual, vuelve a romperse.
 
 1. Mostrar el CSS de la fila de contadores y de cada celda.
-2. Corregir con maquetación, no achicando el texto a medida: que las celdas
-   puedan encogerse (`min-width: 0` en los hijos de la grilla, columnas con
-   `minmax(0, 1fr)`), y que el texto largo pueda partirse en vez de empujar el
-   ancho.
+2. Corregir con maquetación: que las celdas puedan encogerse (`min-width: 0`
+   en los hijos de la grilla, columnas con `minmax(0, 1fr)`). Por debajo de
+   390 px, el número de cada contador achica su tipografía de forma progresiva
+   con `clamp()` hasta que los textos actuales entren sin partirse a 320 px.
+   `overflow-wrap: anywhere` queda solo como red de seguridad para textos que
+   no entren de ninguna forma (ver P-011).
 3. **Esta tarea sí puede cambiar el aspecto**, pero solo por debajo de 390 px.
    A 390 px y más, la fila se tiene que ver exactamente igual que antes.
 4. Verificar a **320, 340, 360 y 390 px** que `document.documentElement.scrollWidth`

@@ -58,24 +58,6 @@ estado y ejecuta. No borra la pregunta: el historial sirve.
   tipo que la Tarea 6 de M2c: columnas `minmax(0, 1fr)`, o un punto de corte
   intermedio para la grilla del proceso.
 
-### P-014 — Texto de la spec de M2c para P-009 y P-011
-- **Estado:** abierta
-- **Bloquea:** no bloquea.
-- **Qué falta:** el texto nuevo de dos puntos de `docs/spec-m2c-tecnica.md`,
-  que quedaron desfasados con las respuestas del 2026-09-21:
-  1. Tarea 4, punto 2: "los `<h5>` del pie pasan al nivel que corresponda
-     según lo que tengan encima". Por P-009 van en `<h2>`, porque el pie es
-     una región propia.
-  2. Tarea 6, punto 2: "Corregir con maquetación, no achicando el texto a
-     medida…". Por P-011, por debajo de 390 px el número achica su
-     tipografía de forma progresiva con `clamp()`, y `overflow-wrap:
-     anywhere` queda como red de seguridad. El punto 3 ("solo por debajo de
-     390 px") y el 4 (anchos verificados, ahora con 375) también cambian.
-- **Contexto:** la spec tiene que decir lo que se hizo. El texto de la spec no
-  lo escribo yo.
-- **Qué hice mientras tanto:** nada en la spec. El código ya sigue las
-  respuestas.
-
 ---
 
 ## Respondidas
@@ -372,3 +354,30 @@ estado y ejecuta. No borra la pregunta: el historial sirve.
   columnas. Verificado: la pestaña ya no desborda por sí misma a ningún ancho
   entre 320 y 1440 px. Solo queda el desborde de 481 a 487 px, que es de toda
   la página (P-013).
+- **Confirmación (2026-09-22):** Ramiro confirma la decisión; se queda así.
+
+### P-014 — Texto de la spec de M2c para P-009 y P-011
+- **Estado:** respondida
+- **Bloquea:** no bloquea.
+- **Qué falta:** el texto nuevo de dos puntos de `docs/spec-m2c-tecnica.md`,
+  que quedaron desfasados con las respuestas del 2026-09-21:
+  1. Tarea 4, punto 2: "los `<h5>` del pie pasan al nivel que corresponda
+     según lo que tengan encima". Por P-009 van en `<h2>`, porque el pie es
+     una región propia.
+  2. Tarea 6, punto 2: "Corregir con maquetación, no achicando el texto a
+     medida…". Por P-011, por debajo de 390 px el número achica su
+     tipografía de forma progresiva con `clamp()`, y `overflow-wrap:
+     anywhere` queda como red de seguridad. El punto 3 ("solo por debajo de
+     390 px") y el 4 (anchos verificados, ahora con 375) también cambian.
+- **Contexto:** la spec tiene que decir lo que se hizo. El texto de la spec no
+  lo escribo yo.
+- **Qué hice mientras tanto:** nada en la spec. El código ya sigue las
+  respuestas.
+- **Respuesta (2026-09-22):** Ramiro pasó el texto de los dos puntos, y ya
+  están reemplazados en `docs/spec-m2c-tecnica.md`. Tarea 4, punto 2: los
+  `<h5>` del pie pasan a `<h2>` porque el pie es una región propia (P-009).
+  Tarea 6, punto 2: `clamp()` por debajo de 390 px y `overflow-wrap: anywhere`
+  solo como red de seguridad (P-011). Lo único que cambié yo fue el formato: le
+  puse comillas invertidas a las etiquetas y al CSS, como en el resto de la
+  spec. Los puntos 3 y 4 de la Tarea 6 no se tocaron. El 4 sigue sin nombrar
+  375 px.

@@ -57,6 +57,11 @@ dejás el hueco reservado según `docs/brief-fotografico.md`, con su marcador
 `TODO_IMAGEN: <id del hueco>`, y seguís. Un hueco visible es correcto; una foto
 ajena que finge ser del taller, no.
 
+- Cuando Ramiro entregue una versión nueva de docs/datos-verificados.md, no se
+  reemplaza el archivo: se compara con la versión del repositorio y se aplican
+  solo sus agregados y cambios. Lo que exista en el repositorio y no en la
+  versión nueva se conserva. El diff se muestra antes de commitear.
+
 ---
 
 ## 3. Stack y restricciones técnicas
@@ -165,6 +170,10 @@ comando que lo comprueba.
 - Las verificaciones visuales y de desborde recorren todas las pestañas,
   menús desplegables y estados ocultos, no solo lo que se ve al cargar la
   página. Un error dentro de una pestaña cerrada es un error igual.
+- La verificación de desborde horizontal barre todos los anchos de 320 a 1920
+  px, de a 1 px, midiendo document.documentElement.scrollWidth contra el
+  ancho de la ventana, sin capturas. Un desborde entre dos anchos medidos es un
+  desborde igual.
 
 "Debería funcionar" no es una respuesta aceptable.
 
