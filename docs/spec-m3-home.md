@@ -123,7 +123,41 @@ alternativos". Antes de ejecutar, **listá cada tarjeta con su texto actual** y
 marcá las que tienen alguno de esos problemas. Esas las reescribo yo; no las
 toques hasta tener el texto.
 
+### Textos definitivos (decididos por Ramiro el 2026-09-23)
+
+Sobre el inventario de las 19 tarjetas. Reemplazo **completo** del párrafo de
+cada una; los títulos no cambian. Las tarjetas que no están en esta tabla
+conservan su texto actual.
+
+| Tarjeta | Párrafo |
+|---|---|
+| Diagnóstico OBD | `Lectura de códigos de falla, para identificar el problema antes de intervenir.` |
+| Reprogramación ECU | `Actualización y calibración de la centralita electrónica del motor.` |
+| Iluminación | `Diagnóstico, mantenimiento y mejora del sistema de iluminación del vehículo.` |
+| Sistemas de Inyección | `Diagnóstico, limpieza y reemplazo de inyectores. Calibración y reprogramación del sistema de combustible.` |
+| Kit Altura & Ensanche | `Elevación de suspensión y ensanche de vía para pick-ups.` |
+| Casa de Repuestos | `Stock propio, en el mismo lugar que el taller. Repuestos originales y alternativos, abierta al público.` |
+| Frenos & Suspensión | `Pastillas, discos, campanas y cintas de freno. Amortiguadores y piezas de recambio de tren delantero y trasero.` |
+
+Motivo de cada cambio:
+
+- **Diagnóstico OBD**, **Reprogramación ECU** y **Sistemas de Inyección**:
+  salen "precisa", "preciso" y "rendimiento óptimo", calidad no verificable.
+- **Iluminación** y **Kit Altura & Ensanche**: sale el lenguaje del
+  posicionamiento anterior ("operaciones diurnas y nocturnas", "terrenos
+  rurales exigentes").
+- **Casa de Repuestos**: sale "inmediato". `datos-verificados.md` §18b dice
+  que "stock inmediato" no se puede afirmar, porque una de cada cuatro veces
+  hay que pedir el repuesto afuera. **"Originales y alternativos" se queda**:
+  la misma §18b lo da por verificado ("se trabaja con los dos").
+- **Frenos & Suspensión**: sale "todas las piezas de recambio", que
+  contradice el 75% de stock propio publicado en el hero.
+
+Estos siete textos se aplican en un commit propio, **después** del de la
+reorganización, para que las dos cosas queden separables.
+
 Commit: `Servicios reorganizados en pestanas para el particular`
+Commit de los textos: `Textos de tarjetas de servicios sin afirmaciones genericas`
 
 ---
 

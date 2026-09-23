@@ -416,3 +416,50 @@ estado y ejecuta. No borra la pregunta: el historial sirve.
   paso antes (`#588312`) queda en 4,497:1. Texto blanco. La forma de píldora
   (`border-radius: 100px`) ya estaba y no cambió. Medición en
   `docs/contraste-m3.md`.
+---
+
+### P-016 — Texto de la tarjeta "Casa de Repuestos": "inmediato" y "originales y alternativos"
+- **Estado:** respondida
+- **Bloquea:** no bloquea. Afecta la Tarea 4 de M3.
+- **Qué falta:** el texto nuevo del párrafo de la tarjeta "Casa de Repuestos".
+- **Contexto:** `public/index.html`, pestaña "Repuestos". El párrafo decía
+  «Stock propio e inmediato. Repuestos originales y alternativos para las
+  principales marcas de pick-ups.» La Tarea 4 de `docs/spec-m3-home.md` manda
+  marcar toda tarjeta que contenga "inmediato" u "originales y alternativos" y
+  no tocarla hasta tener el texto. Es un hallazgo diferido desde M2a (informe
+  de M2a, §7).
+- **Qué hice mientras tanto:** la tarjeta se movió de pestaña con su texto
+  intacto, en el commit de la reorganización.
+- **Respuesta (2026-09-23):** el párrafo pasa a «Stock propio, en el mismo
+  lugar que el taller. Repuestos originales y alternativos, abierta al
+  público.» Sale solo "inmediato": `datos-verificados.md` §18b dice que "stock
+  inmediato" no se puede afirmar, porque una de cada cuatro veces hay que
+  pedir el repuesto afuera. **"Originales y alternativos" se queda**, porque
+  la misma §18b lo da por verificado ("se trabaja con los dos"). El texto
+  quedó escrito en `docs/spec-m3-home.md`, Tarea 4, "Textos definitivos".
+
+---
+
+### P-017 — Cinco tarjetas de servicios con lenguaje no verificable o del posicionamiento anterior
+- **Estado:** respondida
+- **Bloquea:** no bloquea. Afecta la Tarea 4 de M3.
+- **Qué falta:** decidir si se reescriben cinco tarjetas que **no** disparan el
+  criterio literal de la Tarea 4.
+- **Contexto:** al inventariar las 19 tarjetas para la Tarea 4 aparecieron
+  cinco párrafos que no contienen ninguna afirmación de la lista "prohibidas
+  por genéricas" de `datos-verificados.md` ni las palabras "inmediato" u
+  "originales y alternativos", pero que dicen lo mismo con otras palabras:
+  «Identificación precisa de fallas» (Diagnóstico OBD), «Ajuste preciso de
+  parámetros del motor» (Reprogramación ECU) y «para rendimiento óptimo»
+  (Sistemas de Inyección) son calidad no verificable; «operaciones diurnas y
+  nocturnas» (Iluminación) y «terrenos rurales exigentes» (Kit Altura &
+  Ensanche) son el idioma del posicionamiento que M3 deja atrás. Como el
+  criterio literal no las alcanza, no las marqué por mi cuenta.
+- **Qué hice mientras tanto:** las cinco se movieron de pestaña con su texto
+  intacto, en el commit de la reorganización.
+- **Respuesta (2026-09-23):** se reescriben las cinco. Ramiro sumó además una
+  sexta que no estaba en el inventario marcado, «Frenos & Suspensión»: decía
+  "todas las piezas de recambio", que contradice el 75% de stock propio
+  publicado en el hero. Los siete textos (estos seis más el de P-016) están en
+  `docs/spec-m3-home.md`, Tarea 4, "Textos definitivos", y se aplican en un
+  commit separado del de la reorganización.
