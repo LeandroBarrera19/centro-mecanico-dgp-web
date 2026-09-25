@@ -4,10 +4,20 @@ Objetivo: que la home le hable primero al particular que busca un taller en
 Google, sin dejar afuera a las flotas, y que cada afirmación sea un hecho que
 el cliente puede comprobar la primera vez que va.
 
-**Modo: por tarea** (`CLAUDE.md` §7). Una sección por tarea. Para cada una:
-plan, aprobación, ejecución, capturas, y **aprobación visual de Ramiro antes
-del commit**. Los textos de esta spec ya están aprobados; lo que se revisa en
-cada tarea es cómo quedan en pantalla.
+**Modo: mixto.**
+
+- Tareas 1 a 5: por tarea (`CLAUDE.md` §7), con aprobación visual de
+  Ramiro antes de cada commit. Ya ejecutadas.
+- Tareas 6 a 12: módulo completo con el ciclo del revisor (`CLAUDE.md` §7).
+  Los textos de esta spec ya están aprobados, así que no se espera
+  aprobación entre tareas. Un commit por tarea, con su informe de revisión
+  en docs/revisiones/.
+- Tarea 13: por tarea. Se frena y se espera la aprobación visual de Ramiro
+  sobre todo el módulo junto.
+
+Motivo del cambio: a partir de la Tarea 6 los textos están todos escritos y
+aprobados en esta spec, y el control que antes hacía la aprobación entre
+tareas lo hace el subagente revisor.
 
 **Regla de textos:** todo texto visible nuevo está escrito en esta spec,
 palabra por palabra. Si una frase no entra en el diseño o suena mal en su
