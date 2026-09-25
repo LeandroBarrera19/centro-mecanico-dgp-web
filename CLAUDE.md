@@ -148,6 +148,13 @@ rendimiento, estructura):
   irreversible y no está cubierto por la spec.
 - Al terminar, informe completo: qué se hizo, qué se verificó, qué quedó
   anotado.
+- Ciclo con revisor: para cada tarea, (1) ejecutar; (2) invocar al subagente
+  `revisor` con el módulo y el número de tarea; (3) guardar su informe en
+  docs/revisiones/<modulo>-t<n>.md; (4) si el veredicto es RECHAZADO,
+  corregir los hallazgos bloqueantes y volver a invocarlo; (5) commitear la
+  tarea junto con su informe. Máximo dos vueltas de revisión: si sigue
+  RECHAZADO, anotarlo en preguntas-abiertas.md, no commitear esa tarea y
+  seguir con la siguiente. El revisor no se saltea aunque la tarea sea chica.
 
 En los dos modos:
 - Un commit de git por tarea, con mensaje descriptivo en castellano.

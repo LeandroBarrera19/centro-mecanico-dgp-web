@@ -24,51 +24,6 @@ estado y ejecuta. No borra la pregunta: el historial sirve.
 
 ## Abiertas
 
-### P-019 — El remate diagonal de la sección nueva: lo dejé, contra lo que dije en el plan
-- **Estado:** abierta
-- **Bloquea:** no bloquea. Afecta la Tarea 5 de M3, ya ejecutada.
-- **Qué falta:** confirmar si la sección "Cómo trabajamos" conserva el remate
-  diagonal al pie, o si se va.
-- **Contexto:** en el plan de la Tarea 5 escribí que se perdía el remate
-  diagonal de `.why-us::after`, "que empalmaba con el fondo oscuro del proceso
-  y se queda sin a qué empalmar". **Eso era un error mío:** al ir a borrarlo vi
-  que todas las secciones de la página encadenan diagonales, cada una pintada
-  del color de la sección siguiente (`.why-us::after` en `--azul-dark` por el
-  proceso, `.process::after` en `--blanco` por servicios, `.services::after` en
-  `--gris-bg` por reseñas). Sin diagonal, la sección nueva (fondo `--gris-bg`)
-  chocaría contra Servicios (fondo blanco) con un corte recto, y sería la única
-  transición recta de la página.
-- **Qué hice mientras tanto:** **decisión mía, contra mi propio plan:** puse
-  `.how-we-work::after` con la misma geometría que tenía `.why-us::after`
-  (66 px de alto, `clip-path: polygon(0 100%, 100% 0, 100% 100%)`) y el color
-  `--blanco`, que es el que le corresponde por tener Servicios abajo. Se ve en
-  las capturas `m3-t5-como-*.png`. Si Ramiro prefiere el corte recto, se borra
-  la regla entera y no toca nada más.
-
----
-
-### P-020 — Aire bajo el hueco F-02 en escritorio y alto del hueco entre 481 y 900 px
-- **Estado:** abierta
-- **Bloquea:** no bloquea. Afecta la Tarea 5 de M3, ya ejecutada.
-- **Qué falta:** decidir si el hueco F-02 se queda como está o se ajusta.
-- **Contexto:** la disposición es la que eligió Ramiro (escritorio: foto a la
-  izquierda y los cinco pasos en una sola columna a la derecha; celular: foto
-  arriba y pasos abajo). Medido con el hueco vacío: a 1440 px el hueco mide
-  546x364 px y la columna de pasos 860 px, así que quedan unos 500 px de fondo
-  vacío debajo de la foto. Entre 481 y 900 px, donde la grilla ya es de una
-  columna, el hueco ocupa el ancho completo y llega a 469 px de alto a 768 px:
-  se come casi una pantalla antes del primer paso.
-- **Qué hice mientras tanto:** **decisión mía:** lo dejé como está, con
-  `align-items: start` y el hueco al ancho de su columna, porque es lo que
-  dicta la disposición aprobada y porque el rectángulo gris exagera el efecto:
-  con la foto real de F-02 adentro, esos 364 y 469 px de alto son foto y no
-  vacío. Las tres salidas, si molesta, son de una línea cada una:
-  `align-items: center` en `.how-grid` para centrar la foto en escritorio, un
-  `max-width` en `.img-slot` por debajo de 900 px, o `position: sticky` en la
-  foto. No elijo ninguna por mi cuenta.
-
----
-
 ### P-007 — BLOQUEANTE DE M5: la foto actual del hero no se puede publicar
 - **Estado:** abierta
 - **Bloquea:** **M5 (publicación).** El sitio no se publica hasta que F-01
@@ -534,3 +489,55 @@ estado y ejecuta. No borra la pregunta: el historial sirve.
   **conservan el texto "¿Por qué elegirnos?"**. Decisión de Ramiro, tomada
   sabiendo que el rótulo y el destino no coinciden. Hecho y verificado con
   clic real en los tres: los tres llevan a la sección nueva.
+
+---
+
+### P-019 — El remate diagonal de la sección nueva: lo dejé, contra lo que dije en el plan
+- **Estado:** respondida
+- **Bloquea:** no bloquea. Afecta la Tarea 5 de M3, ya ejecutada.
+- **Qué falta:** confirmar si la sección "Cómo trabajamos" conserva el remate
+  diagonal al pie, o si se va.
+- **Contexto:** en el plan de la Tarea 5 escribí que se perdía el remate
+  diagonal de `.why-us::after`, "que empalmaba con el fondo oscuro del proceso
+  y se queda sin a qué empalmar". **Eso era un error mío:** al ir a borrarlo vi
+  que todas las secciones de la página encadenan diagonales, cada una pintada
+  del color de la sección siguiente (`.why-us::after` en `--azul-dark` por el
+  proceso, `.process::after` en `--blanco` por servicios, `.services::after` en
+  `--gris-bg` por reseñas). Sin diagonal, la sección nueva (fondo `--gris-bg`)
+  chocaría contra Servicios (fondo blanco) con un corte recto, y sería la única
+  transición recta de la página.
+- **Qué hice mientras tanto:** **decisión mía, contra mi propio plan:** puse
+  `.how-we-work::after` con la misma geometría que tenía `.why-us::after`
+  (66 px de alto, `clip-path: polygon(0 100%, 100% 0, 100% 100%)`) y el color
+  `--blanco`, que es el que le corresponde por tener Servicios abajo. Se ve en
+  las capturas `m3-t5-como-*.png`. Si Ramiro prefiere el corte recto, se borra
+  la regla entera y no toca nada más.
+- **Respuesta (2026-09-25):** la diagonal se queda. Decisión de Ramiro,
+  tomada sobre la geometría y el color que dejé puestos: `.how-we-work::after`
+  con 66 px de alto, `clip-path: polygon(0 100%, 100% 0, 100% 100%)` y color
+  `--blanco`. No se toca nada más.
+
+---
+
+### P-020 — Aire bajo el hueco F-02 en escritorio y alto del hueco entre 481 y 900 px
+- **Estado:** respondida
+- **Bloquea:** no bloquea. Afecta la Tarea 5 de M3, ya ejecutada.
+- **Qué falta:** decidir si el hueco F-02 se queda como está o se ajusta.
+- **Contexto:** la disposición es la que eligió Ramiro (escritorio: foto a la
+  izquierda y los cinco pasos en una sola columna a la derecha; celular: foto
+  arriba y pasos abajo). Medido con el hueco vacío: a 1440 px el hueco mide
+  546x364 px y la columna de pasos 860 px, así que quedan unos 500 px de fondo
+  vacío debajo de la foto. Entre 481 y 900 px, donde la grilla ya es de una
+  columna, el hueco ocupa el ancho completo y llega a 469 px de alto a 768 px:
+  se come casi una pantalla antes del primer paso.
+- **Qué hice mientras tanto:** **decisión mía:** lo dejé como está, con
+  `align-items: start` y el hueco al ancho de su columna, porque es lo que
+  dicta la disposición aprobada y porque el rectángulo gris exagera el efecto:
+  con la foto real de F-02 adentro, esos 364 y 469 px de alto son foto y no
+  vacío. Las tres salidas, si molesta, son de una línea cada una:
+  `align-items: center` en `.how-grid` para centrar la foto en escritorio, un
+  `max-width` en `.img-slot` por debajo de 900 px, o `position: sticky` en la
+  foto. No elijo ninguna por mi cuenta.
+- **Respuesta (2026-09-25):** el hueco queda como está hasta que llegue la
+  foto F-02. Decisión de Ramiro. Ninguna de las tres salidas se aplica por
+  ahora; si con la foto real adentro sigue molestando, se reabre.
