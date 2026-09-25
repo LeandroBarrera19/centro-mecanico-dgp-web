@@ -44,6 +44,38 @@ estado y ejecuta. No borra la pregunta: el historial sirve.
 
 ---
 
+### P-021 — La Tarea 5 se llevó el único "desde 2022" de la página
+- **Estado:** abierta
+- **Bloquea:** las Tareas 6 a 12 no, se pueden hacer igual. **Mi lectura:**
+  bloquea el cierre del módulo en la Tarea 13 y la publicación, porque mientras
+  falte, la página incumple `datos-verificados.md` §1. Si Ramiro lo ve de otra
+  manera, lo dice y sigo.
+- **Qué falta:** en qué sección va a aparecer "desde 2022" y con qué palabras.
+  Las dos cosas son texto de cara al usuario y no las escribo yo
+  (`CLAUDE.md` §1).
+- **Contexto:** `datos-verificados.md` §1, "Cómo escribir la trayectoria
+  (obligatorio)", punto 3: `"desde 2022"` tiene que aparecer al menos una vez
+  en la página, en la sección que habla de la trayectoria. La única aparición
+  estaba en el subtítulo de "¿Por qué elegirnos?"
+  (`ecda75f:public/index.html:1221`: "Centro Mecánico DGP funciona desde 2022,
+  con un equipo que lleva más de 20 años en el rubro."), que es una de las dos
+  secciones que la Tarea 5 borra completas. La spec de M3 no la repone en
+  ninguna tarea: `grep -c "2022" docs/spec-m3-home.md` da 0. Hoy
+  `grep -rn "2022" public/` no da ninguna coincidencia, y el JSON-LD tampoco
+  tiene `foundingDate` ni nada que lo supla. Lo encontró el subagente revisor
+  al auditar la Tarea 5 (`docs/revisiones/m3-t5.md`, hallazgo 1); ni el plan ni
+  el informe de la tarea lo habían visto. La contradicción entre la spec de M3
+  y `datos-verificados.md` es exactamente el caso de `CLAUDE.md` §9.
+- **Qué hice mientras tanto:** nada en el código, y **no dejé `TODO_DATO`**.
+  **Decisión mía:** un `TODO_DATO` marca el lugar donde va el dato, y acá el
+  lugar es justamente lo que falta decidir: la sección que lo contenía ya no
+  existe, y ponerlo en cualquier otra sería elegir yo. El registro queda acá.
+  El contador del hero ("+20", "años de experiencia del equipo") sigue
+  cumpliendo el punto 2 de esa misma sección, así que no hay ninguna mención
+  que atribuya los 20 años a DGP: lo que falta es solo el "desde 2022".
+
+---
+
 ## Respondidas
 
 ### P-001 — Qué cambió el commit 0501b5e en el CSS
