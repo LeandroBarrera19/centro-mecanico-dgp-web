@@ -178,7 +178,6 @@
       border-radius: 2px;
     }
     .section-header.center .section-title::after { margin: 12px auto 0; }
-    .process .section-title::after { background: rgba(125,185,25,0.7); }
     .section-sub {
       font-size: 1.05rem;
       color: var(--gris-medio);
@@ -199,7 +198,6 @@
       display: block;
       margin-bottom: 10px;
     }
-    .process .eyebrow-label { color: rgba(255,255,255,0.6); }
     .contact-cta .eyebrow-label { color: rgba(255,255,255,0.64); }
 
     /* ── NAVBAR ── */
@@ -450,66 +448,73 @@
       overflow-wrap: anywhere;
     }
 
-    /* ── WHY US ── */
-    .why-us {
+    /* ── HUECOS DE FOTO (docs/brief-fotografico.md) ──
+       Rectángulo gris con la proporción ya reservada, para que la foto que
+       falta no mueva nada cuando llegue. No se publica con huecos visibles. */
+    .img-slot {
+      background: repeating-linear-gradient(
+        135deg,
+        var(--gris-claro) 0 10px,
+        #e4e7ea 10px 20px
+      );
+      border: 1px dashed var(--gris-medio);
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 16px;
+    }
+    .img-slot span {
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 700;
+      font-size: 0.8rem;
+      letter-spacing: .06em;
+      text-transform: uppercase;
+      color: var(--gris);
+    }
+
+    /* ── CÓMO TRABAJAMOS ── */
+    .how-we-work {
       background-color: var(--gris-bg);
       background-image: radial-gradient(circle, rgba(18,75,143,0.07) 1.5px, transparent 1.5px);
       background-size: 28px 28px;
       padding: 88px 0 148px;
       position: relative;
     }
-    .why-us::after {
+    .how-we-work::after {
       content: '';
       position: absolute;
       bottom: -2px; left: 0; right: 0;
       height: 66px;
-      background-color: var(--azul-dark);
-      background-image:
-        linear-gradient(rgba(255,255,255,.04) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(255,255,255,.04) 1px, transparent 1px);
-      background-size: 60px 60px;
-      background-position: 0 4px;
+      background: var(--blanco);
       clip-path: polygon(0 100%, 100% 0, 100% 100%);
     }
-    .why-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 28px; }
-    .why-card {
+    /* Dos columnas: el hueco de foto a la izquierda y los cinco pasos en una
+       sola columna a la derecha. minmax(0, 1fr) para que ningún hijo imponga
+       un ancho mínimo mayor que su columna (M2c, Tarea 6). */
+    .how-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+      gap: 44px;
+      align-items: start;
+    }
+    .how-steps { display: grid; gap: 26px; }
+    .how-step {
       background: var(--blanco);
       border-radius: 12px;
-      padding: 36px 28px;
+      border-left: 3px solid var(--verde);
+      padding: 22px 24px;
       box-shadow: var(--shadow);
-      transition: transform 0.25s;
     }
-    .why-card:hover { transform: translateY(-4px); }
-    .why-icon {
-      width: 56px;
-      height: 56px;
-      background: var(--azul);
-      border-radius: 12px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      margin-bottom: 20px;
-    }
-    .why-icon svg { width: 28px; height: 28px; fill: none; stroke: var(--blanco); stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
-    .why-num-bg {
-      font-family: 'Montserrat', sans-serif;
-      font-weight: 900;
-      font-size: 4.5rem;
-      line-height: 1;
-      color: rgba(18,75,143,0.22);
-      margin-bottom: 4px;
-      letter-spacing: -.02em;
-      display: block;
-      user-select: none;
-    }
-    .why-card h3 {
+    .how-step h3 {
       font-family: 'Montserrat', sans-serif;
       font-weight: 700;
       font-size: 1.05rem;
       color: var(--azul);
-      margin-bottom: 12px;
+      margin-bottom: 10px;
     }
-    .why-card p { font-size: 0.93rem; color: var(--gris-medio); line-height: 1.65; }
+    .how-step p { font-size: 0.93rem; color: var(--gris-medio); line-height: 1.65; }
 
     /* ── SERVICES ── */
     .services {
@@ -707,68 +712,6 @@
     .tab-panel.active:where(#tab-mecanica) {
       grid-template-columns: repeat(3, 1fr);
     }
-
-    /* ── PROCESS ── */
-    .process { background: var(--azul-dark); padding: 88px 0 148px; position: relative; z-index: 1; }
-    .process::after {
-      content: '';
-      position: absolute;
-      bottom: -2px; left: 0; right: 0;
-      height: 66px;
-      background: var(--blanco);
-      clip-path: polygon(0 0, 100% 100%, 0 100%);
-      z-index: 1;
-    }
-    .process::before {
-      content: '';
-      position: absolute;
-      top: 0; left: 0; right: 0;
-      bottom: 0;
-      background-image:
-        linear-gradient(rgba(255,255,255,.04) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(255,255,255,.04) 1px, transparent 1px);
-      background-size: 60px 60px;
-      pointer-events: none;
-      z-index: 0;
-    }
-    .process .container { position: relative; z-index: 1; }
-    .process .section-title { color: var(--blanco); }
-    .process .section-sub { color: rgba(255,255,255,0.65); }
-    .process-steps {
-      display: grid;
-      grid-template-columns: repeat(5, 1fr);
-      gap: 0;
-      position: relative;
-    }
-    .process-steps::before {
-      content: '';
-      position: absolute;
-      top: 36px;
-      left: calc(10% + 12px);
-      right: calc(10% + 12px);
-      height: 2px;
-      background: rgba(125,185,25,0.35);
-    }
-    .step { text-align: center; padding: 0 16px; position: relative; z-index: 1; }
-    .step-num {
-      width: 72px;
-      height: 72px;
-      border-radius: 50%;
-      background: var(--verde);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      margin: 0 auto 22px;
-    }
-    .step-num svg { width: 32px; height: 32px; fill: none; stroke: var(--blanco); stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
-    .step-title {
-      font-family: 'Montserrat', sans-serif;
-      font-weight: 700;
-      font-size: 0.93rem;
-      color: var(--blanco);
-      margin-bottom: 10px;
-    }
-    .step p { font-size: 0.83rem; color: rgba(255,255,255,0.62); line-height: 1.55; }
 
     /* ── CONTACT CTA ── */
     .contact-cta { background: var(--azul); padding: 88px 0; }
@@ -1029,9 +972,8 @@
       .footer-grid { grid-template-columns: 1fr 1fr; gap: 32px; }
     }
     @media (max-width: 900px) {
-      .why-grid { grid-template-columns: 1fr; }
-      .process-steps { grid-template-columns: repeat(3, 1fr); gap: 40px; }
-      .process-steps::before { display: none; }
+      /* Foto arriba y pasos abajo: a partir de acá las dos columnas no entran. */
+      .how-grid { grid-template-columns: minmax(0, 1fr); gap: 32px; }
       .contact-inner { grid-template-columns: 1fr; gap: 44px; }
       .hero-stats-inner { grid-template-columns: repeat(2, minmax(0, 1fr)); }
       .stat-item:nth-child(2) { border-right: none; }
@@ -1050,14 +992,13 @@
       .footer-brand img { grid-row: 1 / 4; width: 44px; height: 44px; }
       .footer-brand picture { grid-row: 1 / 4; }
       .section-title { font-size: 1.65rem; }
-      .why-grid { max-width: 100%; }
     }
     @media (max-width: 480px) {
       .container { padding: 0 20px; }
       .services-grid { grid-template-columns: 1fr; }
       .tab-panel.active { grid-template-columns: 1fr; }
       #tab-repuestos.tab-panel.active { grid-template-columns: 1fr; }
-      .process-steps { grid-template-columns: 1fr; }
+      .how-step { padding: 20px; }
       .hero-stats-inner { grid-template-columns: repeat(2, minmax(0, 1fr)); }
       .hero-ctas { flex-direction: column; }
       .btn-primary, .btn-outline { justify-content: center; }
@@ -1096,7 +1037,7 @@
       <div class="navbar-links">
         <a href="#inicio">Inicio</a>
         <a href="#servicios">Servicios</a>
-        <a href="#por-que-elegirnos">¿Por qué elegirnos?</a>
+        <a href="#como-trabajamos">¿Por qué elegirnos?</a>
         <a href="#resenas">Reseñas</a>
         <a href="#contacto">Contacto</a>
         <a href="https://wa.me/5493534593187" target="_blank" rel="noopener" class="btn-cta" aria-label="Pedir turno por WhatsApp">Pedir turno</a>
@@ -1108,7 +1049,7 @@
     <div class="navbar-mobile" id="navMobile">
       <a href="#inicio"            onclick="closeMobileMenu()">Inicio</a>
       <a href="#servicios"         onclick="closeMobileMenu()">Servicios</a>
-      <a href="#por-que-elegirnos" onclick="closeMobileMenu()">¿Por qué elegirnos?</a>
+      <a href="#como-trabajamos" onclick="closeMobileMenu()">¿Por qué elegirnos?</a>
       <a href="#resenas"           onclick="closeMobileMenu()">Reseñas</a>
       <a href="#contacto"          onclick="closeMobileMenu()">Contacto</a>
       <a href="https://wa.me/5493534593187" target="_blank" rel="noopener">Pedir turno por WhatsApp</a>
@@ -1212,92 +1153,47 @@
   </div>
 </div>
 
-<!-- ═══════════════════════════════ WHY US ═══════════════════════════════ -->
-<section class="why-us" id="por-que-elegirnos">
+<!-- ═══════════════════════════ CÓMO TRABAJAMOS ═══════════════════════════ -->
+<section class="how-we-work" id="como-trabajamos">
   <div class="container">
     <div class="section-header center">
-      <span class="eyebrow-label">Por qué elegirnos</span>
-      <h2 class="section-title">¿Por qué elegirnos?</h2>
-      <p class="section-sub">Centro Mecánico DGP funciona desde 2022, con un equipo que lleva más de 20 años en el rubro.</p>
+      <h2 class="section-title">Cómo trabajamos</h2>
+      <p class="section-sub">Lo que hacemos en cada trabajo, para que sepas qué esperar.</p>
     </div>
-    <div class="why-grid">
+    <div class="how-grid">
 
-      <div class="why-card fade-in">
-        <span class="why-num-bg" aria-hidden="true">01</span>
-        <h3>Diagnóstico transparente</h3>
-        <p>Diagnóstico OBD. Sabés exactamente qué tiene tu vehículo antes de autorizar cualquier trabajo. Sin sorpresas en el presupuesto.</p>
+      <!-- TODO_IMAGEN: F-02 -->
+      <div class="img-slot fade-in" data-slot="F-02" style="aspect-ratio: 3/2">
+        <span>Foto pendiente · F-02</span>
       </div>
 
-      <div class="why-card fade-in delay-1">
-        <span class="why-num-bg" aria-hidden="true">02</span>
-        <h3>Stock propio. Respuesta inmediata.</h3>
-        <p>Casa de repuestos integrada al taller. Sin demoras por falta de piezas. Tu vehículo vuelve a operar en el menor tiempo posible.</p>
-      </div>
+      <div class="how-steps fade-in delay-1">
 
-      <div class="why-card fade-in delay-2">
-        <span class="why-num-bg" aria-hidden="true">03</span>
-        <h3>Un equipo con más de 20 años en el rubro</h3>
-        <p>Socios técnicos de empresas agropecuarias de toda la región. Nuestro respaldo no es solo mecánico: es estratégico para que tu operación nunca se detenga.</p>
-      </div>
-
-      <div class="why-card fade-in delay-3">
-        <span class="why-num-bg" aria-hidden="true">04</span>
-        <h3>Presupuestos claros. Garantía de repuestos y trabajos.</h3>
-        <p>Te ofrecemos múltiples opciones de presupuesto —variedad de calidades, demoras y precios— todas respaldadas por nuestra experiencia comprobada. Atención completamente personalizada, con seguimiento profesional y garantía sobre los repuestos y los trabajos realizados. La relación no termina con la entrega: te acompañamos en el post venta.</p>
-      </div>
-
-    </div>
-  </div>
-</section>
-
-<!-- ═══════════════════════════════ PROCESS ═══════════════════════════════ -->
-<section class="process">
-  <div class="container">
-    <div class="section-header center">
-      <span class="eyebrow-label">Nuestro proceso</span>
-      <h2 class="section-title">Nuestro proceso de trabajo</h2>
-      <p class="section-sub">Cinco pasos que garantizan un diagnóstico claro, un presupuesto transparente y un resultado sin sorpresas.</p>
-    </div>
-    <div class="process-steps">
-
-      <div class="step fade-in">
-        <div class="step-num">
-          <svg viewBox="0 0 24 24"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 01-2 2H5a2 2 0 01-2-2V5a2 2 0 012-2h11"/></svg>
+        <div class="how-step">
+          <h3>Turno para service</h3>
+          <p>Para un service, te pasamos el presupuesto y, si lo aprobás, te damos turno en el momento.</p>
         </div>
-        <h3 class="step-title">01. Recepción e inspección</h3>
-        <p>Recibimos tu vehículo y realizamos una inspección visual inicial para detectar síntomas y prioridades.</p>
-      </div>
 
-      <div class="step fade-in delay-1">
-        <div class="step-num">
-          <svg viewBox="0 0 24 24"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/></svg>
+        <div class="how-step">
+          <h3>Presupuesto antes de desarmar</h3>
+          <p>Cuando se puede, te pasamos un presupuesto sin desarmar el vehículo, y te aclaramos que puede cambiar. Si el problema necesita una revisión, coordinamos un turno y presupuestamos sobre lo revisado.</p>
         </div>
-        <h3 class="step-title">02. Diagnóstico OBD</h3>
-        <p>Inspección física completa de la integridad del vehículo. Lectura de códigos y análisis técnico computarizado. Te informamos antes de operar.</p>
-      </div>
 
-      <div class="step fade-in delay-2">
-        <div class="step-num">
-          <svg viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg>
+        <div class="how-step">
+          <h3>Opciones de repuesto</h3>
+          <p>Para un mismo trabajo te damos opciones de repuesto, originales y alternativos, con distintos precios. Te recomendamos la que conviene y elegís vos.</p>
         </div>
-        <h3 class="step-title">03. Presupuesto y seguimiento</h3>
-        <p>Múltiples opciones de presupuesto según calidad, demora y prioridad. Seguimiento personalizado en cada etapa para que siempre estés informado.</p>
-      </div>
 
-      <div class="step fade-in delay-3">
-        <div class="step-num">
-          <svg viewBox="0 0 24 24"><path d="M14.7 6.3a1 1 0 000 1.4l1.6 1.6a1 1 0 001.4 0l3.77-3.77a6 6 0 01-7.94 7.94l-6.91 6.91a2.12 2.12 0 01-3-3l6.91-6.91a6 6 0 017.94-7.94l-3.76 3.76z"/></svg>
+        <div class="how-step">
+          <h3>Entrega y seguimiento</h3>
+          <p>Te avisamos cuando el vehículo está listo. La pieza que cambiamos queda en el vehículo, para que la veas. Después de una reparación, te consultamos cómo anda.</p>
         </div>
-        <h3 class="step-title">04. Reparación con stock propio</h3>
-        <p>Intervenimos con repuestos de nuestra propia casa. Sin esperas, sin excusas. Respuesta inmediata.</p>
-      </div>
 
-      <div class="step fade-in delay-4">
-        <div class="step-num">
-          <svg viewBox="0 0 24 24"><path d="M22 11.08V12a10 10 0 11-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+        <div class="how-step">
+          <h3>Garantía de repuestos y trabajos</h3>
+          <p>Si aparece un inconveniente, traés el vehículo y lo revisamos. Un profesional determina si corresponde a la mano de obra o a un repuesto fallado, y en ese caso se reconoce la garantía.</p>
         </div>
-        <h3 class="step-title">05. Entrega y garantía</h3>
-        <p>Entrega con informe técnico completo. Registro en tu libreta digital y garantía por el trabajo realizado.</p>
+
       </div>
 
     </div>
@@ -1697,7 +1593,7 @@
         <h2 class="footer-col-title">Navegación</h2>
         <ul>
           <li><a href="#inicio">Inicio</a></li>
-          <li><a href="#por-que-elegirnos">¿Por qué elegirnos?</a></li>
+          <li><a href="#como-trabajamos">¿Por qué elegirnos?</a></li>
           <li><a href="#servicios">Servicios</a></li>
           <li><a href="#resenas">Reseñas</a></li>
           <li><a href="#contacto">Contacto</a></li>

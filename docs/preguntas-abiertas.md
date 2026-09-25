@@ -24,6 +24,51 @@ estado y ejecuta. No borra la pregunta: el historial sirve.
 
 ## Abiertas
 
+### P-019 — El remate diagonal de la sección nueva: lo dejé, contra lo que dije en el plan
+- **Estado:** abierta
+- **Bloquea:** no bloquea. Afecta la Tarea 5 de M3, ya ejecutada.
+- **Qué falta:** confirmar si la sección "Cómo trabajamos" conserva el remate
+  diagonal al pie, o si se va.
+- **Contexto:** en el plan de la Tarea 5 escribí que se perdía el remate
+  diagonal de `.why-us::after`, "que empalmaba con el fondo oscuro del proceso
+  y se queda sin a qué empalmar". **Eso era un error mío:** al ir a borrarlo vi
+  que todas las secciones de la página encadenan diagonales, cada una pintada
+  del color de la sección siguiente (`.why-us::after` en `--azul-dark` por el
+  proceso, `.process::after` en `--blanco` por servicios, `.services::after` en
+  `--gris-bg` por reseñas). Sin diagonal, la sección nueva (fondo `--gris-bg`)
+  chocaría contra Servicios (fondo blanco) con un corte recto, y sería la única
+  transición recta de la página.
+- **Qué hice mientras tanto:** **decisión mía, contra mi propio plan:** puse
+  `.how-we-work::after` con la misma geometría que tenía `.why-us::after`
+  (66 px de alto, `clip-path: polygon(0 100%, 100% 0, 100% 100%)`) y el color
+  `--blanco`, que es el que le corresponde por tener Servicios abajo. Se ve en
+  las capturas `m3-t5-como-*.png`. Si Ramiro prefiere el corte recto, se borra
+  la regla entera y no toca nada más.
+
+---
+
+### P-020 — Aire bajo el hueco F-02 en escritorio y alto del hueco entre 481 y 900 px
+- **Estado:** abierta
+- **Bloquea:** no bloquea. Afecta la Tarea 5 de M3, ya ejecutada.
+- **Qué falta:** decidir si el hueco F-02 se queda como está o se ajusta.
+- **Contexto:** la disposición es la que eligió Ramiro (escritorio: foto a la
+  izquierda y los cinco pasos en una sola columna a la derecha; celular: foto
+  arriba y pasos abajo). Medido con el hueco vacío: a 1440 px el hueco mide
+  546x364 px y la columna de pasos 860 px, así que quedan unos 500 px de fondo
+  vacío debajo de la foto. Entre 481 y 900 px, donde la grilla ya es de una
+  columna, el hueco ocupa el ancho completo y llega a 469 px de alto a 768 px:
+  se come casi una pantalla antes del primer paso.
+- **Qué hice mientras tanto:** **decisión mía:** lo dejé como está, con
+  `align-items: start` y el hueco al ancho de su columna, porque es lo que
+  dicta la disposición aprobada y porque el rectángulo gris exagera el efecto:
+  con la foto real de F-02 adentro, esos 364 y 469 px de alto son foto y no
+  vacío. Las tres salidas, si molesta, son de una línea cada una:
+  `align-items: center` en `.how-grid` para centrar la foto en escritorio, un
+  `max-width` en `.img-slot` por debajo de 900 px, o `position: sticky` en la
+  foto. No elijo ninguna por mi cuenta.
+
+---
+
 ### P-007 — BLOQUEANTE DE M5: la foto actual del hero no se puede publicar
 - **Estado:** abierta
 - **Bloquea:** **M5 (publicación).** El sitio no se publica hasta que F-01
@@ -389,6 +434,13 @@ estado y ejecuta. No borra la pregunta: el historial sirve.
   que la sección nueva no desborde entre 481 y 487 px. Hasta la Tarea 5, el
   barrido de anchos de cada tarea va a seguir mostrando este desborde, y no
   cuenta como regresión.
+- **Cierre (2026-09-25):** hecho y medido. La Tarea 5 borró la sección
+  "Nuestro proceso" entera, HTML y CSS, incluidos `.process-steps` y `.step`.
+  El barrido de 320 a 1920 px de a 1 px, con las cinco pestañas de servicios y
+  el menú móvil abierto —1601 anchos, 8454 mediciones—, da **cero desbordes**,
+  el primero del proyecto que sale limpio. El tramo 481–487 px que pedía
+  verificar la Tarea 5 mide `scrollWidth` igual a `innerWidth` en los tres
+  anchos capturados (481, 484 y 487 px).
 
 ### P-015 — La etiqueta del hero sigue verde sobre la foto y no llega al mínimo
 - **Estado:** respondida
@@ -463,3 +515,22 @@ estado y ejecuta. No borra la pregunta: el historial sirve.
   publicado en el hero. Los siete textos (estos seis más el de P-016) están en
   `docs/spec-m3-home.md`, Tarea 4, "Textos definitivos", y se aplican en un
   commit separado del de la reorganización.
+
+---
+
+### P-018 — Los enlaces siguen diciendo "¿Por qué elegirnos?" y llevan a "Cómo trabajamos"
+- **Estado:** respondida
+- **Bloquea:** no bloquea. Afecta la Tarea 5 de M3.
+- **Qué falta:** decidir el texto visible de los enlaces que apuntaban a la
+  sección "¿Por qué elegirnos?", que la Tarea 5 borra.
+- **Contexto:** la Tarea 5 de `docs/spec-m3-home.md` manda que "los enlaces del
+  menú y del pie que apuntaban a las secciones eliminadas pasan a apuntar a
+  esta", pero no dice qué tienen que decir. Son tres, no dos como yo había
+  listado en el plan (el menú de escritorio y el móvil son dos bloques de
+  markup distintos, no uno solo): `.navbar-links`, `#navMobile` y la columna
+  "Navegación" del pie.
+- **Qué hice mientras tanto:** nada por mi cuenta; esperé la decisión.
+- **Respuesta (2026-09-25):** los tres enlaces pasan a `#como-trabajamos` y
+  **conservan el texto "¿Por qué elegirnos?"**. Decisión de Ramiro, tomada
+  sabiendo que el rótulo y el destino no coinciden. Hecho y verificado con
+  clic real en los tres: los tres llevan a la sección nueva.
