@@ -118,8 +118,9 @@ redistribuidas así:
 
 **Textos de las tarjetas:** se conservan los actuales, **salvo** que contengan
 una afirmación de la lista "prohibidas por genéricas" de
-`datos-verificados.md` o las palabras "inmediato" u "originales y
-alternativos". Antes de ejecutar, **listá cada tarjeta con su texto actual** y
+`datos-verificados.md` o la palabra "inmediato". ("Originales y alternativos"
+se verificó después de escribir esta spec: ver datos-verificados.md §18b.)
+Antes de ejecutar, **listá cada tarjeta con su texto actual** y
 marcá las que tienen alguno de esos problemas. Esas las reescribo yo; no las
 toques hasta tener el texto.
 
@@ -300,6 +301,9 @@ Commit: `Seccion de zona de cobertura`
   `datos-verificados.md` §5, con `target="_blank"` y `rel="noopener"`.
 - El mapa, como está.
 - Hueco de imagen **F-07** junto al mapa.
+- Donde hoy dice "Respuesta inmediata", reemplazar por: `Respondemos de lunes
+  a viernes de 8:00 a 17:30.` No es cierto que la respuesta sea inmediata:
+  fuera del horario no se atiende.
 
 **Pie:**
 - El lema pasa a `Taller mecánico multimarca en Villa María, Córdoba.`

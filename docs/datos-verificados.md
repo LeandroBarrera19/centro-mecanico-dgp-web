@@ -298,6 +298,10 @@ Referencia de tono B2B: manual de marca `directrices-de-marca-dgp.html`
   2026-09-21. Publicable como: "3 de cada 4 trabajos del último año se
   resolvieron con repuestos de nuestro propio stock". Revisar el dato una vez
   por año.
+- **Forma corta para el contador del hero:** 75% / "de los trabajos, con
+  repuestos en stock". Omite el período porque la etiqueta larga no entra en
+  celulares; es válida mientras el dato se revise cada año. En textos corridos
+  se usa siempre la forma con "del último año".
 - **"Stock inmediato" no se puede afirmar:** una de cada cuatro veces hay que
   pedir el repuesto afuera.
 - **Originales y alternativos:** se trabaja con los dos. Se le da a elegir al
