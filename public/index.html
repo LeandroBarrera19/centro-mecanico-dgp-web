@@ -700,6 +700,13 @@
     #tab-repuestos.tab-panel.active {
       grid-template-columns: repeat(4, 1fr);
     }
+    /* Mecánica tiene 5 tarjetas: en escritorio van 3 + 2, no 4 + 1 suelta.
+       El id va dentro de :where() para que la regla pese lo mismo que
+       .tab-panel.active y los media queries de 768 y 480 px la sigan ganando
+       por orden, sin tener que repetirla en cada uno. */
+    .tab-panel.active:where(#tab-mecanica) {
+      grid-template-columns: repeat(3, 1fr);
+    }
 
     /* ── PROCESS ── */
     .process { background: var(--azul-dark); padding: 88px 0 148px; position: relative; z-index: 1; }
