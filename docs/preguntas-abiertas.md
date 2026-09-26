@@ -133,6 +133,64 @@ estado y ejecuta. No borra la pregunta: el historial sirve.
 
 ---
 
+### P-024 — La tarjeta "Casa de Repuestos" de Servicios repite el bloque nuevo
+- **Estado:** abierta
+- **Bloquea:** no bloquea. La Tarea 7 quedó ejecutada y la tarjeta sigue donde
+  estaba.
+- **Qué falta:** decidir si la tarjeta "Casa de Repuestos" de la pestaña
+  "Repuestos" se queda, se acorta o se va.
+- **Contexto:** la Tarea 7 dice: "Si la pestaña 'Repuestos' de Servicios
+  (Tarea 4) queda redundante con este bloque, **no la elimines**: anotalo en
+  `preguntas-abiertas.md`". Queda redundante, pero **solo una tarjeta de las
+  cuatro**, no la pestaña entera. La tarjeta destacada dice: "Stock propio, en
+  el mismo lugar que el taller. Repuestos originales y alternativos, abierta al
+  público" (`public/index.html:1535`, con la etiqueta "Diferencial clave" en la
+  línea 1534). Son los mismos tres hechos que
+  los tres párrafos de la sección nueva: local propio, originales y
+  alternativos, abierta al público. Las otras tres tarjetas de la pestaña
+  ("Filtros & Lubricantes", "Frenos & Suspensión", "Distribución") no se
+  repiten: enumeran qué piezas hay, que la sección nueva no dice.
+  Además, en el orden que fija la Tarea 13, Servicios va **antes** que la casa
+  de repuestos, así que el lector se cruza primero con la versión corta y
+  después con la larga.
+- **Qué hice mientras tanto:** nada: la spec dice explícitamente que no la
+  elimine, así que la dejé tal cual, con su texto y su etiqueta. Si Ramiro
+  quiere sacarla, es borrar el bloque de la tarjeta y nada más; la pestaña
+  queda con tres tarjetas, que es lo que ya tienen otras pestañas.
+
+---
+
+### P-025 — Repinté la cadena de diagonales en la Tarea 7, tocando CSS de la Tarea 6
+- **Estado:** abierta
+- **Bloquea:** no bloquea.
+- **Qué falta:** confirmar que estuvo bien hacerlo ahora y no esperar a la
+  Tarea 13.
+- **Contexto:** la Tarea 6 dejó la libreta con fondo blanco y **sin** remate
+  diagonal, porque debajo tenía Servicios, también blanco. El revisor de esa
+  tarea verificó esa ausencia y la dio por correcta
+  (`docs/revisiones/m3-t6.md`: "no agregar `::after` es coherente, no un
+  olvido"). La Tarea 7 mete la casa de repuestos entre medio, con fondo
+  `--gris-bg`, y entonces la libreta pasa a tener debajo una sección de otro
+  color. Para no dejar el único corte recto de la página, le agregué a
+  `.notebook` un `::after` en `--gris-bg` y le subí el `padding` inferior a
+  148 px, que es el que ya usan `.how-we-work`, `.services` y `.testimonials`.
+  Eso es tocar CSS que la Tarea 7 no nombra (`CLAUDE.md` §7).
+- **Qué hice mientras tanto:** **decisión mía:** lo hice igual, porque el
+  patrón "cada sección remata con una diagonal del color de la de abajo" es el
+  que Ramiro ratificó al responder P-019, y bajo ese patrón el color queda
+  determinado solo en cuanto aparece una sección nueva debajo: no había dos
+  opciones entre las cuales elegir. La geometría es la misma que aprobó P-019
+  (66 px, `clip-path: polygon(0 100%, 100% 0, 100% 100%)`). Verificado con
+  estilo computado que la cadena entera cierra, de punta a punta:
+  `how-we-work` → blanco → `libreta` → gris → `casa-de-repuestos` → blanco →
+  `servicios` → gris → `resenas` → azul → `contacto`.
+  **Pendiente para la Tarea 13:** la cadena está pintada para el orden de hoy,
+  no para el orden final. Cuando la T13 mueva Servicios al segundo lugar y
+  meta Flotas debajo de la casa de repuestos, hay que repintar al menos dos
+  remates. Queda escrito acá para que no se pierda.
+
+---
+
 ## Respondidas
 
 ### P-001 — Qué cambió el commit 0501b5e en el CSS

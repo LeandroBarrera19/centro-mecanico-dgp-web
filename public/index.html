@@ -517,14 +517,23 @@
     .how-step p { font-size: 0.93rem; color: var(--gris-medio); line-height: 1.65; }
 
     /* ── LIBRETA DIGITAL ──
-       Fondo blanco, sin trama y sin remate diagonal: la sección que queda
-       debajo hoy (Servicios) también es blanca, así que la diagonal de
-       "Cómo trabajamos" (var(--blanco), P-019) sigue empalmando bien y una
-       diagonal blanca sobre blanco no se vería. La cadena de diagonales se
-       revisa entera en la Tarea 13, que es la que fija el orden final. */
+       Fondo blanco y sin trama: así la diagonal de "Cómo trabajamos"
+       (var(--blanco), P-019) sigue empalmando con lo que tiene abajo. El
+       remate propio va pintado de --gris-bg, que es el fondo de la casa de
+       repuestos, la sección que quedó debajo en la Tarea 7. La cadena de
+       diagonales se revisa entera en la Tarea 13, que fija el orden final. */
     .notebook {
       background: var(--blanco);
-      padding: 88px 0;
+      padding: 88px 0 148px;
+      position: relative;
+    }
+    .notebook::after {
+      content: '';
+      position: absolute;
+      bottom: -2px; left: 0; right: 0;
+      height: 66px;
+      background: var(--gris-bg);
+      clip-path: polygon(0 100%, 100% 0, 100% 100%);
     }
     /* Espejo de .how-grid: el texto a la izquierda y el hueco de foto a la
        derecha, para que dos secciones seguidas no repitan la misma
@@ -583,6 +592,40 @@
       border-width: 0 2px 2px 0;
       transform: rotate(45deg);
     }
+
+    /* ── CASA DE REPUESTOS ──
+       Fondo --gris-bg con trama, para cortar las dos secciones blancas
+       seguidas. El remate va en --blanco, que es el fondo de Servicios, la
+       sección que tiene abajo hoy. */
+    .parts {
+      background-color: var(--gris-bg);
+      background-image: radial-gradient(circle, rgba(18,75,143,0.07) 1.5px, transparent 1.5px);
+      background-size: 28px 28px;
+      padding: 88px 0 148px;
+      position: relative;
+    }
+    .parts::after {
+      content: '';
+      position: absolute;
+      bottom: -2px; left: 0; right: 0;
+      height: 66px;
+      background: var(--blanco);
+      clip-path: polygon(0 100%, 100% 0, 100% 100%);
+    }
+    /* La foto a la izquierda y el texto a la derecha, alternando con la
+       libreta, que tiene la foto a la derecha. */
+    .parts-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+      gap: 44px;
+      align-items: start;
+    }
+    .parts-text p {
+      font-size: 0.98rem;
+      color: var(--gris-medio);
+      line-height: 1.7;
+    }
+    .parts-text p + p { margin-top: 18px; }
 
     /* ── SERVICES ── */
     .services {
@@ -1044,6 +1087,8 @@
       .how-grid { grid-template-columns: minmax(0, 1fr); gap: 32px; }
       /* Ídem la libreta: texto arriba y foto abajo. */
       .notebook-grid { grid-template-columns: minmax(0, 1fr); gap: 32px; }
+      /* Ídem la casa de repuestos: foto arriba y texto abajo. */
+      .parts-grid { grid-template-columns: minmax(0, 1fr); gap: 32px; }
       .contact-inner { grid-template-columns: 1fr; gap: 44px; }
       .hero-stats-inner { grid-template-columns: repeat(2, minmax(0, 1fr)); }
       .stat-item:nth-child(2) { border-right: none; }
@@ -1301,6 +1346,29 @@
       <!-- TODO_IMAGEN: F-03 -->
       <div class="img-slot fade-in delay-1" data-slot="F-03" style="aspect-ratio: 3/2">
         <span>Foto pendiente · F-03</span>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ═════════════════════════ CASA DE REPUESTOS ═════════════════════════ -->
+<section class="parts" id="casa-de-repuestos">
+  <div class="container">
+    <div class="section-header center">
+      <h2 class="section-title">Casa de repuestos</h2>
+    </div>
+    <div class="parts-grid">
+
+      <!-- TODO_IMAGEN: F-04 -->
+      <div class="img-slot fade-in" data-slot="F-04" style="aspect-ratio: 3/2">
+        <span>Foto pendiente · F-04</span>
+      </div>
+
+      <div class="parts-text fade-in delay-1">
+        <p>Tenemos casa de repuestos propia, en el mismo lugar que el taller. 3 de cada 4 trabajos del último año se hicieron con repuestos de nuestro stock.</p>
+        <p>Trabajamos con repuestos originales y alternativos, y te recomendamos opciones.</p>
+        <p>Abierta al público: también vendemos repuestos para que los lleves.</p>
       </div>
 
     </div>
