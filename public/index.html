@@ -516,6 +516,74 @@
     }
     .how-step p { font-size: 0.93rem; color: var(--gris-medio); line-height: 1.65; }
 
+    /* ── LIBRETA DIGITAL ──
+       Fondo blanco, sin trama y sin remate diagonal: la sección que queda
+       debajo hoy (Servicios) también es blanca, así que la diagonal de
+       "Cómo trabajamos" (var(--blanco), P-019) sigue empalmando bien y una
+       diagonal blanca sobre blanco no se vería. La cadena de diagonales se
+       revisa entera en la Tarea 13, que es la que fija el orden final. */
+    .notebook {
+      background: var(--blanco);
+      padding: 88px 0;
+    }
+    /* Espejo de .how-grid: el texto a la izquierda y el hueco de foto a la
+       derecha, para que dos secciones seguidas no repitan la misma
+       disposición. minmax(0, 1fr) por la misma razón que en .how-grid. */
+    .notebook-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+      gap: 44px;
+      align-items: start;
+    }
+    .notebook-icon {
+      width: 44px;
+      height: 44px;
+      background: var(--gris-bg);
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 18px;
+    }
+    .notebook-icon svg {
+      width: 22px;
+      height: 22px;
+      fill: none;
+      stroke: var(--azul);
+      stroke-width: 2;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+    }
+    .notebook-lead { font-size: 0.98rem; color: var(--gris-medio); line-height: 1.7; }
+    .notebook-list-title {
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 700;
+      font-size: 1.05rem;
+      color: var(--azul);
+      margin: 26px 0 14px;
+    }
+    .notebook-list { list-style: none; display: grid; gap: 12px; }
+    .notebook-list li {
+      position: relative;
+      padding-left: 26px;
+      font-size: 0.93rem;
+      color: var(--gris-medio);
+      line-height: 1.6;
+    }
+    /* Tilde dibujada con bordes CSS, no con un glifo: los subconjuntos de
+       fuente que servimos no incluyen los caracteres de símbolos (P-005). */
+    .notebook-list li::before {
+      content: '';
+      position: absolute;
+      left: 3px;
+      top: 3px;
+      width: 6px;
+      height: 11px;
+      border: solid var(--verde-dark);
+      border-width: 0 2px 2px 0;
+      transform: rotate(45deg);
+    }
+
     /* ── SERVICES ── */
     .services {
       padding: 88px 0 148px;
@@ -974,6 +1042,8 @@
     @media (max-width: 900px) {
       /* Foto arriba y pasos abajo: a partir de acá las dos columnas no entran. */
       .how-grid { grid-template-columns: minmax(0, 1fr); gap: 32px; }
+      /* Ídem la libreta: texto arriba y foto abajo. */
+      .notebook-grid { grid-template-columns: minmax(0, 1fr); gap: 32px; }
       .contact-inner { grid-template-columns: 1fr; gap: 44px; }
       .hero-stats-inner { grid-template-columns: repeat(2, minmax(0, 1fr)); }
       .stat-item:nth-child(2) { border-right: none; }
@@ -1194,6 +1264,43 @@
           <p>Si aparece un inconveniente, traés el vehículo y lo revisamos. Un profesional determina si corresponde a la mano de obra o a un repuesto fallado, y en ese caso se reconoce la garantía.</p>
         </div>
 
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════ LIBRETA DIGITAL ══════════════════════════ -->
+<section class="notebook" id="libreta-digital">
+  <div class="container">
+    <div class="section-header center">
+      <h2 class="section-title">Libreta digital del vehículo</h2>
+      <p class="section-sub">El historial de reparaciones de tu vehículo, siempre en tu celular.</p>
+    </div>
+    <div class="notebook-grid">
+
+      <div class="notebook-text fade-in">
+        <!-- Ícono de código QR. La spec de la Tarea 6 pide reemplazar por este
+             "el dibujo de tarjeta de crédito", que era el ícono de la tarjeta
+             "Libreta digital del vehículo" de Servicios y que la Tarea 4 ya
+             borró al rearmar las pestañas (commit 71f1d4f). Ver P-022. -->
+        <div class="notebook-icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/><path d="M14 15h3M18 19h3M14 21h3"/></svg>
+        </div>
+        <p class="notebook-lead">Cada vehículo que atendemos lleva un código QR pegado. Lo escaneás con el celular y se abre la libreta, sin instalar nada. La tienen todos nuestros clientes, particulares y empresas.</p>
+        <h3 class="notebook-list-title">Qué guarda</h3>
+        <ul class="notebook-list">
+          <li>La fecha de cada visita</li>
+          <li>El kilometraje</li>
+          <li>Los trabajos realizados</li>
+          <li>Las observaciones del técnico</li>
+          <li>El recordatorio del próximo service</li>
+        </ul>
+      </div>
+
+      <!-- TODO_IMAGEN: F-03 -->
+      <div class="img-slot fade-in delay-1" data-slot="F-03" style="aspect-ratio: 3/2">
+        <span>Foto pendiente · F-03</span>
       </div>
 
     </div>

@@ -76,6 +76,63 @@ estado y ejecuta. No borra la pregunta: el historial sirve.
 
 ---
 
+### P-022 — El "dibujo de tarjeta de crédito" que la Tarea 6 manda reemplazar ya no existe
+- **Estado:** abierta
+- **Bloquea:** no bloquea el resto del módulo. La Tarea 6 quedó ejecutada, pero
+  **no la doy por cerrada** hasta que Ramiro confirme este punto
+  (`CLAUDE.md` §9, punto 4).
+- **Qué falta:** confirmar que el ícono de código QR del bloque nuevo es lo que
+  pedía ese punto de la spec.
+- **Contexto:** la Tarea 6 dice: "**Ícono:** reemplazar el dibujo de tarjeta de
+  crédito por un ícono simple de código QR o de documento". Ese dibujo era
+  `<rect x="2" y="5" width="20" height="14" rx="2"/><path d="M2 10h20"/>`, el
+  ícono de la tarjeta "Libreta digital del vehículo" que estaba dentro de
+  Servicios. La **Tarea 4** ya lo borró al rearmar las pestañas: lo quitó el
+  commit `71f1d4f`, y hoy `grep` de ese `rect` sobre `public/` no da ninguna
+  coincidencia. Así que el punto no se puede cumplir tal como está escrito: no
+  hay nada que reemplazar. Es el caso de `CLAUDE.md` §9, "una instrucción no se
+  puede cumplir tal como está escrita".
+- **Qué hice mientras tanto:** **decisión mía:** cumplí el fondo del pedido en
+  lugar de la letra. El bloque nuevo lleva el ícono de código QR que la spec
+  nombra, en SVG en línea y con el mismo trazo que los demás íconos del sitio
+  (`viewBox="0 0 24 24"`, sin relleno, trazo de 2 px en `--azul`, en una caja
+  de 44x44 con fondo `--gris-bg`, igual que `.service-icon`). Elegí el QR y no
+  el de documento porque el párrafo del bloque habla justamente del QR pegado
+  en el vehículo. Queda un comentario en el HTML con el commit que borró el
+  dibujo viejo. Si Ramiro quería otra cosa, se cambia el `<svg>` y nada más.
+
+---
+
+### P-023 — La descripción literal de la libreta en §14 y la de la spec no coinciden
+- **Estado:** abierta
+- **Bloquea:** no bloquea. La Tarea 6 usa el texto de la spec.
+- **Qué falta:** decidir si la frase de `datos-verificados.md` §14 es literal o
+  de referencia.
+- **Contexto:** §14 dice: *Nombre a usar en el sitio: **Libreta digital del
+  vehículo**, con esta descripción debajo: "Historial de reparaciones de cada
+  vehículo. Se escanea el código QR pegado en el vehículo y se abre desde el
+  celular, sin instalar nada."* La spec de M3, Tarea 6, pone en ese lugar otras
+  palabras: la bajada `El historial de reparaciones de tu vehículo, siempre en
+  tu celular.` y el párrafo `Cada vehículo que atendemos lleva un código QR
+  pegado. Lo escaneás con el celular y se abre la libreta, sin instalar nada.
+  La tienen todos nuestros clientes, particulares y empresas.` El nombre sí es
+  exactamente el prescrito. **No hay ningún dato distinto:** cada hecho de la
+  frase de §14 está en el bloque, y los cinco ítems de "Qué guarda" son cinco
+  de los campos que §14 enumera. La diferencia es de redacción, y tiene un
+  motivo: la frase de §14 está en tercera persona y el §18 exige voseo en toda
+  la web, así que la spec la pasa a voseo y la reparte en dos. O sea que la
+  spec resuelve una tensión interna de `datos-verificados.md`. Aun así, §9 dice
+  que una contradicción entre la spec y este archivo se anota, y no estaba
+  anotada. Lo levantó el revisor de la Tarea 6
+  (`docs/revisiones/m3-t6.md`, hallazgo 2).
+- **Qué hice mientras tanto:** **decisión mía:** usé el texto de la spec, que
+  es el que Ramiro aprobó para M3 y el que respeta el voseo. Si Ramiro quiere
+  que §14 valga al pie de la letra, el cambio es reemplazar esos dos textos.
+  Lo que conviene decidir de fondo es si §14 fija la frase o solo los hechos:
+  de eso depende también M7, la página de flotas.
+
+---
+
 ## Respondidas
 
 ### P-001 — Qué cambió el commit 0501b5e en el CSS
