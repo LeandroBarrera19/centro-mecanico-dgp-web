@@ -189,6 +189,25 @@ estado y ejecuta. No borra la pregunta: el historial sirve.
   meta Flotas debajo de la casa de repuestos, hay que repintar al menos dos
   remates. Queda escrito acá para que no se pierda.
 
+- **Actualización, Tarea 11 (2026-09-26):** volvió a pasar, por tercera vez en
+  el módulo. La zona de cobertura entró entre Opiniones y Contacto, así que
+  `.testimonials::after` (`public/index.html:997-1007`) pasó de `--azul` a
+  `--blanco`, y la sección nueva estrenó el suyo en `--azul`. Mismo criterio y
+  mismo fundamento: bajo el patrón que Ramiro ratificó en P-019 no había dos
+  opciones, y dejarlo en `--azul` habría metido una cuña azul de 66 px entre
+  una sección gris y una blanca. La cadena completa hoy, medida con estilo
+  computado, es: `como-trabajamos` gris → blanco → `libreta-digital` blanco →
+  gris → `casa-de-repuestos` gris → blanco → `flotas` blanco (sin remate,
+  blanco sobre blanco) → `servicios` blanco → gris → `resenas` gris → blanco
+  → `zona-de-cobertura` blanco → azul → `contacto` azul.
+  **El inventario de pendientes para la Tarea 13 cambió:** en el orden final,
+  Servicios sube al segundo lugar, Marcas entra en el séptimo y Flotas queda
+  debajo de la casa de repuestos, así que la cadena hay que recalcularla
+  entera, no solo dos remates.
+  Lo levantó el revisor de la Tarea 11, con el mismo argumento con el que
+  había levantado P-026: una decisión que vive solo en un comentario de CSS no
+  está registrada.
+
 ---
 
 ### P-026 — Dos decisiones de forma en el bloque de flotas, que solo estaban en comentarios de CSS

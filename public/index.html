@@ -995,13 +995,40 @@
       padding: 88px 0 148px;
       position: relative;
     }
+    /* Pintado de --blanco porque la Tarea 11 metió la zona de cobertura
+       debajo, que es blanca. Antes iba en --azul, por contacto. */
     .testimonials::after {
+      content: '';
+      position: absolute;
+      bottom: -2px; left: 0; right: 0;
+      height: 66px;
+      background: var(--blanco);
+      clip-path: polygon(0 100%, 100% 0, 100% 100%);
+    }
+
+    /* ── ZONA DE COBERTURA ──
+       Sección corta: un encabezado y un párrafo centrado. El remate va en
+       --azul, que es el fondo de contacto, la sección de abajo. */
+    .coverage {
+      background: var(--blanco);
+      padding: 88px 0 148px;
+      position: relative;
+    }
+    .coverage::after {
       content: '';
       position: absolute;
       bottom: -2px; left: 0; right: 0;
       height: 66px;
       background: var(--azul);
       clip-path: polygon(0 100%, 100% 0, 100% 100%);
+    }
+    .coverage-text {
+      max-width: 760px;
+      margin: 0 auto;
+      text-align: center;
+      font-size: 1rem;
+      color: var(--gris-medio);
+      line-height: 1.75;
     }
     .google-badge {
       display: inline-flex;
@@ -1748,6 +1775,16 @@
       </a>
     </div>
 
+  </div>
+</section>
+
+<!-- ═════════════════════════ ZONA DE COBERTURA ═════════════════════════ -->
+<section class="coverage" id="zona-de-cobertura">
+  <div class="container">
+    <div class="section-header center">
+      <h2 class="section-title">Clientes de toda la región</h2>
+    </div>
+    <p class="coverage-text fade-in">Atendemos vehículos de Villa María y de más de 40 localidades en un radio de 80 km. Entre ellas: Arroyo Cabral, Bell Ville, Ticino, Idiazábal, James Craik, Pozo del Molle, Tío Pujio, Etruria, Ballesteros y Cintra.</p>
   </div>
 </section>
 

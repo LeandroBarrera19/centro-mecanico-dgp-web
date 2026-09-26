@@ -1,5 +1,5 @@
 Estados medidos: inicial (1440 y 390 px); pestaña 2 de servicios (1440 y 390 px); pestaña 3 de servicios (1440 y 390 px); pestaña 4 de servicios (1440 y 390 px); pestaña 5 de servicios (1440 y 390 px); menú móvil abierto (390 px); enlace de salto con foco (1440 px).
-Textos medidos: 373. Combinaciones distintas: 72. No llegan al mínimo: **0**. Exentas por decorativas: 1.
+Textos medidos: 377. Combinaciones distintas: 73. No llegan al mínimo: **0**. Exentas por decorativas: 1.
 
 ### Combinaciones que no llegan al mínimo, de peor a mejor
 
@@ -33,6 +33,7 @@ Ninguna.
 | 5,33:1 | 5,33:1 | 4,50:1 | `#6B6B6B` | `#FFFFFF` | 15,68 px, 400 | «Cada vehículo que atendemos lleva un código QR…» — `#libreta-digital p.notebook-lead` | 1440, 390 | 2 |
 | 5,33:1 | 5,33:1 | 4,50:1 | `#6B6B6B` | `#FFFFFF` | 12,8 px, 400 | «Toyota Hilux, VW Amarok, Ford Ranger. Especial…» — `#tab-service p` | 1440, 390 | 36 |
 | 5,33:1 | 5,33:1 | 4,50:1 | `#6B6B6B` | `#FFFFFF` | 14,08 px, 400 | «Hicieron un diagnóstico minucioso y me explica…» — `#resenas p.t-text` | 1440, 390 | 8 |
+| 5,33:1 | 5,33:1 | 4,50:1 | `#6B6B6B` | `#FFFFFF` | 16 px, 400 | «Atendemos vehículos de Villa María y de más de…» — `#zona-de-cobertura p.coverage-text.fade-in.visible` | 1440, 390 | 2 |
 | 5,44:1 | 5,44:1 | 4,50:1 | `#FFFFFF al 62 %` | `#0D3870` | 13,92 px, 400 | «Inicio» — `footer a` | 1440, 390 | 20 |
 | 5,45:1 | 5,62:1 | 3,00:1 | `#7DB919` | `#122F58` | 30,4 px, 900 (grande) | «6» — `#inicio div.stat-num` | 1440 | 1 |
 | 5,48:1 | 5,77:1 | 3,00:1 | `#7DB919` | `#142D53` | 30,4 px, 900 (grande) | «+20» — `#inicio div.stat-num` | 390 | 1 |
@@ -56,7 +57,7 @@ Ninguna.
 | 8,65:1 | 8,65:1 | 4,50:1 | `#FFFFFF` | `#124B8F` | 13,6 px, 600 | «Pedir turno» — `nav a.btn-cta` | 1440 | 1 |
 | 8,65:1 | 8,65:1 | 4,50:1 | `#FFFFFF` | `#124B8F` | 15,2 px, 700 | «Pedir turno por WhatsApp» — `#inicio a.btn-primary` | 1440, 390 | 5 |
 | 8,65:1 | 8,65:1 | 4,50:1 | `#124B8F` | `#FFFFFF` | 16,8 px, 700 | «Turno para service» — `#como-trabajamos h3` | 1440, 390 | 12 |
-| 8,65:1 | 8,65:1 | 3,00:1 | `#124B8F` | `#FFFFFF` | 32 px, 800 (grande) | «Libreta digital del vehículo» — `#libreta-digital h2.section-title` | 1440 | 2 |
+| 8,65:1 | 8,65:1 | 3,00:1 | `#124B8F` | `#FFFFFF` | 32 px, 800 (grande) | «Libreta digital del vehículo» — `#libreta-digital h2.section-title` | 1440 | 3 |
 | 8,65:1 | 8,65:1 | 4,50:1 | `#124B8F` | `#FFFFFF` | 11 px, 500 | «Nuestros servicios» — `#servicios span.eyebrow-label` | 1440, 390 | 2 |
 | 8,65:1 | 8,65:1 | 4,50:1 | `#FFFFFF` | `#124B8F` | 12,48 px, 600 | «Service y mantenimiento» — `#serviceTabs button.tab-btn.active` | 1440, 390 | 2 |
 | 8,65:1 | 8,65:1 | 4,50:1 | `#FFFFFF` | `#124B8F` | 12,48 px, 700 | «DC» — `#resenas div.t-avatar` | 1440, 390 | 6 |
@@ -65,7 +66,7 @@ Ninguna.
 | 8,65:1 | 8,65:1 | 3,00:1 | `#FFFFFF` | `#124B8F` | 32 px, 800 (grande) | «¿Necesitás atención para tu flota?» — `#contacto h2` | 1440, 390 | 2 |
 | 8,65:1 | 8,65:1 | 4,50:1 | `#FFFFFF` | `#124B8F` | 16 px, 700 | «Escribinos por WhatsApp» — `#contacto a.btn-wa` | 1440, 390 | 2 |
 | 8,65:1 | 8,65:1 | 4,50:1 | `#FFFFFF` | `#124B8F` | 15,2 px, 500 | «+54 9 353 459-3187» — `#contacto strong` | 1440, 390 | 8 |
-| 8,65:1 | 8,65:1 | 3,00:1 | `#124B8F` | `#FFFFFF` | 26,4 px, 800 (grande) | «Libreta digital del vehículo» — `#libreta-digital h2.section-title` | 390 | 2 |
+| 8,65:1 | 8,65:1 | 3,00:1 | `#124B8F` | `#FFFFFF` | 26,4 px, 800 (grande) | «Libreta digital del vehículo» — `#libreta-digital h2.section-title` | 390 | 3 |
 | 10,27:1 | 10,67:1 | 4,50:1 | `#FFFFFF al 88 %` | `#172F55` | 13,12 px, 400 | «años de experiencia del equipo» — `#inicio div.stat-label` | 1440 | 1 |
 | 10,45:1 | 10,66:1 | 4,50:1 | `#FFFFFF al 88 %` | `#122F58` | 13,12 px, 400 | «de los trabajos, con repuestos en stock» — `#inicio div.stat-label` | 1440 | 1 |
 | 10,64:1 | 10,78:1 | 4,50:1 | `#FFFFFF al 88 %` | `#132E56` | 13,12 px, 400 | «elevadores y 10 puestos de trabajo» — `#inicio div.stat-label` | 1440 | 1 |
