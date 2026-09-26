@@ -241,6 +241,81 @@ estado y ejecuta. No borra la pregunta: el historial sirve.
 
 ---
 
+### P-028 — La única verificación que pide la Tarea 9 hoy da negativo, y queda diferida a la Tarea 13
+- **Estado:** abierta
+- **Bloquea:** no bloquea la ejecución, pero **la Tarea 9 no está cerrada**:
+  su verificación no se puede hacer hasta que la Tarea 13 reordene.
+- **Qué falta:** nada de Ramiro. Es un registro: que quede escrito que la
+  Tarea 9 se cierra recién con la Tarea 13.
+- **Contexto:** la Tarea 9 (`docs/spec-m3-home.md:264-267`) no pide cambios de
+  contenido, solo "verificar que [la tira de marcas] quedó bien ubicada en el
+  orden nuevo (ver Tarea 13)". Hoy esa verificación **falla**. El `<main>` va
+  de `public/index.html:1220` a `:1818` y sus nueve hijos, en orden, son
+  `inicio` (:1223), `brands-strip` (:1273), `como-trabajamos` (:1317),
+  `libreta-digital` (:1364), `casa-de-repuestos` (:1401), `flotas` (:1424),
+  `servicios` (:1447), `resenas` (:1636) y `contacto` (:1749): Marcas está en
+  la posición 2 de 9 y el orden final de la Tarea 13
+  (`docs/spec-m3-home.md:330-341`) la pone en la 7. Servicios también está
+  fuera de lugar (7 en vez de 2), lo que confirma que el reordenamiento es una
+  sola operación de la Tarea 13 y que la Tarea 9 no tenía que mover nada
+  (`CLAUDE.md` §7). Lo levantó el revisor
+  (`docs/revisiones/m3-t9.md`, hallazgo 1 de la vuelta 1): yo había dado la
+  tarea por hecha dejando el rastro solo en un comentario de CSS
+  (`public/index.html:631-637`), que es exactamente el defecto que ya había
+  aparecido en P-026, una tarea antes.
+- **Qué hice mientras tanto:** no toqué la tira, que es lo correcto. **El
+  contenido lo verificó el revisor, no yo** (vuelta 1, verificaciones 1 y 2, y
+  vuelta 2, verificación 8): aisló el bloque de marcado en `9bc7562` (cierre
+  de M2a) y en el árbol actual, normalizó el único cambio autorizado —los 14
+  `aria-hidden="true"` que pide la Tarea 1— y dio idéntico. Recalculado en la
+  vuelta 2 normalizando además los espacios, el sha1 del bloque es
+  `6f60f91f40744d56b68ffe56e639fd8b3adeebe0` en las dos versiones; el hash
+  depende de cómo se normalice, así que sin ese criterio no se puede
+  recalcular. Del CSS solo cambiaron cuatro opacidades, que autoriza la
+  Tarea 1.
+  **Yo, en cambio, le pasé al revisor una premisa falsa:** le dije que el
+  único commit que había tocado la tira era `e3b8618`, sin haberlo comprobado.
+  `git log --oneline --follow -G 'brands-strip|brand-name|brands-intro|brand-sep' -- public/index.html`
+  devuelve `bc566b6`, `2123134`, `50a83b8` y `42bf0d5`, y `e3b8618` no está.
+- **Capturas:** el encabezado de la spec (`docs/spec-m3-home.md:30-33`) pide
+  capturas a 360, 390 y 1440 px en cada tarea. Para la Tarea 9 **no se
+  tomaron**, ni por mí ni por el revisor. **Decisión mía:** con `public/`
+  idéntico a `b83e51f` —probado por hash de árbol, el mismo
+  `adff67ff2fd8d3f90641347cdd80ef52679ea6e7`— serían idénticas a las de la
+  Tarea 8, así que no las saqué. Queda declarado acá en vez de omitido.
+- **Dos cosas que la Tarea 13 se va a encontrar**, y que dejo escritas acá
+  para que no se pierdan:
+  1. La tira es un `<div class="brands-strip">` **sin `id` y sin encabezado**
+     (`public/index.html:1273`), así que hoy ninguna ancla puede apuntarle. La
+     Tarea 13 pide que "el menú de navegación refleja este orden y cada enlace
+     lleva a su sección", y Marcas es el punto 7 de ese orden.
+  2. El menú no tiene entrada "Marcas": los cinco enlaces son Inicio,
+     Servicios, ¿Por qué elegirnos?, Reseñas y Contacto.
+
+---
+
+### P-029 — Las 13 marcas de "También atendemos" no están enumeradas en los datos verificados
+- **Estado:** abierta
+- **Bloquea:** no bloquea. Es anterior a M3 y la Tarea 9 prohíbe cambiar el
+  contenido de la tira.
+- **Qué falta:** decidir si el listado concreto se sostiene, en particular
+  PORSCHE.
+- **Contexto:** la tira publica, en la fila "También atendemos": CHEVROLET,
+  RENAULT, FIAT, PEUGEOT, MERCEDES-BENZ, AUDI, NISSAN, HONDA, CITROËN, BMW,
+  JEEP, DODGE y PORSCHE (`public/index.html:1286-1310`).
+  `datos-verificados.md` §10 no las enumera: dice "Marcas que también se
+  atienden: **Todas**. Hay fotos y publicaciones de Instagram que lo
+  respaldan." O sea que las 13 descansan enteras en ese "Todas".
+  **No viola la prohibición de §10**, que es "no listar marcas de lujo ni
+  deportivas *como especialidad*": las cuatro de gama alta están en la fila
+  secundaria, no en "Especialistas en", donde solo están Toyota, Volkswagen y
+  Ford. Lo levantó el revisor de la Tarea 9 (hallazgo 5).
+- **Qué hice mientras tanto:** nada. No toqué la tira. Si Ramiro quiere sacar
+  alguna marca, o prefiere que §10 las enumere una por una, se hace donde
+  corresponda: sacar una marca es borrar contenido y eso no lo decido yo.
+
+---
+
 ## Respondidas
 
 ### P-001 — Qué cambió el commit 0501b5e en el CSS
