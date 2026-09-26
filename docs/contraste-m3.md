@@ -1,5 +1,5 @@
 Estados medidos: inicial (1440 y 390 px); pestaña 2 de servicios (1440 y 390 px); pestaña 3 de servicios (1440 y 390 px); pestaña 4 de servicios (1440 y 390 px); pestaña 5 de servicios (1440 y 390 px); menú móvil abierto (390 px); enlace de salto con foco (1440 px).
-Textos medidos: 361. Combinaciones distintas: 69. No llegan al mínimo: **0**. Exentas por decorativas: 1.
+Textos medidos: 373. Combinaciones distintas: 72. No llegan al mínimo: **0**. Exentas por decorativas: 1.
 
 ### Combinaciones que no llegan al mínimo, de peor a mejor
 
@@ -19,6 +19,8 @@ Ninguna.
 | 4,86:1 | 4,86:1 | 4,50:1 | `#7DB919` | `#0D3870` | 11,52 px, 700 | «Navegación» — `footer h2.footer-col-title` | 1440, 390 | 6 |
 | 4,92:1 | 4,92:1 | 4,50:1 | `#6B6B6B` | `#F4F6F9` | 16,8 px, 400 | «Lo que hacemos en cada trabajo, para que sepas…» — `#como-trabajamos p.section-sub` | 1440, 390 | 4 |
 | 4,92:1 | 4,92:1 | 4,50:1 | `#6B6B6B` | `#F4F6F9` | 15,68 px, 400 | «Tenemos casa de repuestos propia, en el mismo …» — `#casa-de-repuestos p` | 1440, 390 | 6 |
+| 4,92:1 | 4,92:1 | 4,50:1 | `#6B6B6B` | `#F4F6F9` | 15,2 px, 400 | «Trabajamos con empresas de la región que neces…» — `#flotas p.fleets-lead` | 1440, 390 | 2 |
+| 4,92:1 | 4,92:1 | 4,50:1 | `#6B6B6B` | `#F4F6F9` | 14,88 px, 400 | «Cuenta corriente con pago a 30 días.» — `#flotas li` | 1440, 390 | 6 |
 | 4,92:1 | 4,92:1 | 4,50:1 | `#6B6B6B` | `#F4F6F9` | 12,48 px, 600 | «Mecánica» — `#serviceTabs button.tab-btn` | 1440, 390 | 8 |
 | 5,01:1 | 5,93:1 | 4,50:1 | `#FFFFFF al 85 %` | `variable (mediana #2B568A)` | 16,8 px, 400 | «Service, mecánica y diagnóstico para todas las…» — `#inicio p` | 1440, 390 | 2 |
 | 5,08:1 | 5,08:1 | 4,50:1 | `#6B6B6B` | `#FFF8F8` | 12,8 px, 400 | «Stock propio, en el mismo lugar que el taller.…» — `#tab-repuestos p` | 1440, 390 | 2 |
@@ -47,11 +49,12 @@ Ninguna.
 | 7,99:1 | 7,99:1 | 4,50:1 | `#124B8F` | `#F4F6F9` | 10 px, 600 | «Especialistas en» — `#contenido-principal span.brands-intro` | 1440, 390 | 2 |
 | 7,99:1 | 7,99:1 | 4,50:1 | `#124B8F` | `#F4F6F9` | 12,8 px, 800 | «TOYOTA» — `#contenido-principal span.brand-name` | 1440, 390 | 6 |
 | 7,99:1 | 7,99:1 | 3,00:1 | `#124B8F` | `#F4F6F9` | 32 px, 800 (grande) | «Cómo trabajamos» — `#como-trabajamos h2.section-title` | 1440 | 3 |
+| 7,99:1 | 7,99:1 | 3,00:1 | `#124B8F` | `#F4F6F9` | 24 px, 800 (grande) | «¿Tenés una flota de vehículos?» — `#flotas h2.section-title` | 1440, 390 | 2 |
 | 7,99:1 | 7,99:1 | 4,50:1 | `#124B8F` | `#F4F6F9` | 11 px, 500 | «Lo que dicen nuestros clientes» — `#resenas span.eyebrow-label` | 1440, 390 | 2 |
 | 7,99:1 | 7,99:1 | 3,00:1 | `#124B8F` | `#F4F6F9` | 26,4 px, 800 (grande) | «Cómo trabajamos» — `#como-trabajamos h2.section-title` | 390 | 3 |
 | 8,65:1 | 8,65:1 | 4,50:1 | `#124B8F` | `#FFFFFF` | 16,8 px, 800 | «Centro Mecánico DGP» — `nav div.navbar-logo-text` | 1440, 390 | 2 |
 | 8,65:1 | 8,65:1 | 4,50:1 | `#FFFFFF` | `#124B8F` | 13,6 px, 600 | «Pedir turno» — `nav a.btn-cta` | 1440 | 1 |
-| 8,65:1 | 8,65:1 | 4,50:1 | `#FFFFFF` | `#124B8F` | 15,2 px, 700 | «Pedir turno por WhatsApp» — `#inicio a.btn-primary` | 1440, 390 | 3 |
+| 8,65:1 | 8,65:1 | 4,50:1 | `#FFFFFF` | `#124B8F` | 15,2 px, 700 | «Pedir turno por WhatsApp» — `#inicio a.btn-primary` | 1440, 390 | 5 |
 | 8,65:1 | 8,65:1 | 4,50:1 | `#124B8F` | `#FFFFFF` | 16,8 px, 700 | «Turno para service» — `#como-trabajamos h3` | 1440, 390 | 12 |
 | 8,65:1 | 8,65:1 | 3,00:1 | `#124B8F` | `#FFFFFF` | 32 px, 800 (grande) | «Libreta digital del vehículo» — `#libreta-digital h2.section-title` | 1440 | 2 |
 | 8,65:1 | 8,65:1 | 4,50:1 | `#124B8F` | `#FFFFFF` | 11 px, 500 | «Nuestros servicios» — `#servicios span.eyebrow-label` | 1440, 390 | 2 |

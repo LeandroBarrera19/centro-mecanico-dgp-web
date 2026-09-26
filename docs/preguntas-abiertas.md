@@ -191,6 +191,56 @@ estado y ejecuta. No borra la pregunta: el historial sirve.
 
 ---
 
+### P-026 — Dos decisiones de forma en el bloque de flotas, que solo estaban en comentarios de CSS
+- **Estado:** abierta
+- **Bloquea:** no bloquea.
+- **Qué falta:** confirmar las dos, o pedir que se deshagan.
+- **Contexto:** la Tarea 8 pide "bloque corto y secundario: no más alto que la
+  sección de 'Cómo trabajamos'", y da el texto del botón, pero no dice cómo se
+  ve ninguna de las dos cosas.
+- **Qué hice mientras tanto:** dos **decisiones mías**:
+  1. **El panel acotado.** En vez de una sección a todo ancho como las demás,
+     un panel de `max-width: 860px` centrado, con fondo `--gris-bg` y borde
+     izquierdo azul, dentro de una sección blanca
+     (`public/index.html:631-673`). Es la única parte del `<main>` que no
+     ocupa el ancho completo, y así busqué que se lea como secundaria. Medido:
+     la sección va de 561 px de alto a 1440 px hasta 911 px a 320 px, contra
+     1245 a 1810 px de "Cómo trabajamos", así que la condición de la spec se
+     cumple en todos los anchos.
+  2. **El ícono de WhatsApp en el botón** (`public/index.html:1437-1439`). La
+     spec de la Tarea 8 da el rótulo pero no menciona ícono. Lo puse porque es
+     el patrón del sitio: la Tarea 1 dice que los botones de WhatsApp
+     "conservan el ícono de WhatsApp" y `datos-verificados.md` §19 los trata
+     como un grupo. **Tiene un costo medido:** a 360 px el ícono hace que el
+     rótulo pase de dos líneas a tres (alto del botón 77 px → 101 px). A
+     320 px son tres líneas con ícono o sin él, y a 390 px son dos con ícono.
+     Ninguna palabra se corta y no hay desborde en ningún ancho. Si Ramiro
+     prefiere dos líneas a 360 px, se borra el `<svg>` y nada más.
+
+---
+
+### P-027 — La Tarea 8 deja dos llamados a flotas en la home
+- **Estado:** abierta
+- **Bloquea:** no bloquea la ejecución, pero conviene resolverlo dentro de M3.
+- **Qué falta:** decidir qué pasa con el `<h2>` de la sección de contacto.
+- **Contexto:** con el bloque nuevo, la home queda con dos secciones que
+  llaman a las flotas: `¿Tenés una flota de vehículos?`
+  (`public/index.html:1424`, la que crea esta tarea) y
+  `¿Necesitás atención para tu flota?` (`public/index.html:1755`, la de
+  contacto, que ya estaba). La Tarea 12 reescribe el contenido de contacto
+  —botón, teléfono, horario, dirección, formas de pago, redes, mapa, hueco
+  F-07 y la frase de "respuesta inmediata"— pero **no da texto de reemplazo
+  para ese `<h2>`**. O sea que, tal como está escrita la spec, la duplicación
+  sobrevive a M3, y va en contra del objetivo del módulo, que es que la home
+  le hable primero al particular. Lo levantó el revisor de la Tarea 8
+  (`docs/revisiones/m3-t8.md`, hallazgo 2).
+- **Qué hice mientras tanto:** nada. La Tarea 8 no manda tocar contacto y no
+  lo toqué. El texto nuevo de ese `<h2>`, si va, lo tiene que escribir Ramiro:
+  yo no escribo textos de cara al usuario (`CLAUDE.md` §1). Si me lo pasa, lo
+  aplico en la Tarea 12.
+
+---
+
 ## Respondidas
 
 ### P-001 — Qué cambió el commit 0501b5e en el CSS
