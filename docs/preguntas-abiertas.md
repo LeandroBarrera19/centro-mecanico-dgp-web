@@ -316,6 +316,55 @@ estado y ejecuta. No borra la pregunta: el historial sirve.
 
 ---
 
+### P-030 — Dos textos que la Tarea 10 deja repetidos en la sección de opiniones
+- **Estado:** abierta
+- **Bloquea:** no bloquea el resto del módulo, pero **la duplicación se ve hoy
+  en la página**: el rótulo superior y el `<h2>` dicen la misma frase, una
+  debajo de la otra. Se ve en `temporary screenshots/m3-t10-duplicado-*.png`.
+- **Qué falta:** decidir qué dice, o si va, el rótulo superior; y decidir si la
+  insignia de Google se queda al lado del subtítulo nuevo.
+- **Contexto:** la Tarea 10 (`docs/spec-m3-home.md:274-287`) da un `<h2>` y un
+  subtítulo nuevos, y manda eliminar un párrafo. No dice nada de otros dos
+  elementos que ya estaban en esa sección y que con los textos nuevos quedan
+  repetidos:
+  1. El rótulo superior, `<span class="eyebrow-label">`
+     (`public/index.html:1646`), dice **"Lo que dicen nuestros clientes"**,
+     que es **exactamente** el texto que la spec le da al `<h2>`
+     (`public/index.html:1647`). O sea que la misma frase se imprime dos veces
+     seguidas.
+  2. La insignia de Google (`public/index.html:1652-1664`) muestra "4,9"
+     (`:1659`), las cinco estrellas y "Más de 130 opiniones en Google"
+     (`:1663`). El subtítulo nuevo (`:1648`) dice "4,9 en Google, con más de
+     130 opiniones.": el mismo dato, dos renglones más arriba.
+- **Qué hice mientras tanto:** **nada: los dos quedaron como estaban.** Dejé un
+  comentario junto al rótulo para que nadie lo saque por su cuenta. Las dos
+  cosas son borrado o reescritura de texto de cara al usuario, y eso no lo
+  decido yo (`CLAUDE.md` §1 y §9, y la Regla de textos de la propia spec de
+  M3: si una frase no encaja, "no se reescribe: se anota en
+  `preguntas-abiertas.md` con una captura y se sigue").
+- **Un error mío, y su corrección:** en la primera pasada de la Tarea 10 **sí
+  borré el rótulo**, declarándolo como decisión mía. El revisor lo rechazó
+  como bloqueante y tenía razón: §9 lista "hace falta borrar algo que la spec
+  no menciona" como un caso de hueco, y el tratamiento de un hueco es anotarlo
+  y seguir, no elegir una de las salidas. Me lo señaló además con mi propia
+  contradicción: en esta misma pregunta le había aplicado a la insignia el
+  criterio correcto ("no me corresponde") y al rótulo el contrario. El rótulo
+  está repuesto, idéntico a como estaba.
+- **Si Ramiro quiere sacarlo**, es borrar la línea 1646 y su comentario. Si
+  quiere otro texto, lo escribe él.
+- **Una regla de CSS que quedó inerte, para que nadie se confunda en la Tarea
+  13:** al pasar `.testimonials-grid` a dos columnas
+  (`public/index.html:1035`), la regla del `@media (max-width: 900px)`
+  (`public/index.html:1142`) quedó diciendo exactamente lo mismo que la de
+  escritorio. **No la borré**, porque limpiar lo que la tarea no toca está
+  prohibido por `CLAUDE.md` §7 y un borrado no mandado es un hueco por §9.
+  Medido: a 900 px las columnas son `408px 408px` y a 901 px `408.5px
+  408.5px`, o sea que cruzar el corte no cambia nada; la diferencia es el
+  ancho del contenedor, no la regla. Las dos columnas de 481 a 900 px salen
+  hoy de la regla base, no de esa. Lo levantó el revisor de esta tarea.
+
+---
+
 ## Respondidas
 
 ### P-001 — Qué cambió el commit 0501b5e en el CSS

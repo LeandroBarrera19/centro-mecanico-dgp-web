@@ -1028,9 +1028,11 @@
     .t-star { width: 13.328125px; }
     .svg-defs { position: absolute; width: 0; height: 0; overflow: hidden; }
     .google-count-text { font-size: 0.8rem; color: var(--gris-medio); white-space: nowrap; }
+    /* Dos por dos en escritorio (Tarea 10): con cuatro reseñas, tres columnas
+       dejaban una tarjeta suelta abajo. */
     .testimonials-grid {
       display: grid;
-      grid-template-columns: repeat(3, 1fr);
+      grid-template-columns: repeat(2, 1fr);
       gap: 20px;
       margin-bottom: 44px;
     }
@@ -1637,9 +1639,13 @@
   <svg class="svg-defs" aria-hidden="true" focusable="false"><symbol id="estrella" viewBox="0 0 100 120"><path d="M51.3 17.6L61.5 49.0L94.5 49.0L67.8 68.4L78.0 99.7L51.3 80.3L24.6 99.7L34.8 68.4L8.1 49.0L41.1 49.0Z"/></symbol></svg>
   <div class="container">
     <div class="section-header center">
+      <!-- Este rótulo dice lo mismo que el <h2> de abajo, palabra por palabra,
+           desde que la Tarea 10 le cambió el texto al <h2>. La spec no manda
+           borrarlo, así que no se borra: es un hueco y está anotado en P-030,
+           esperando decisión del propietario. No sacarlo por cuenta propia. -->
       <span class="eyebrow-label">Lo que dicen nuestros clientes</span>
-      <h2 class="section-title">Reseñas en Google</h2>
-      <p class="section-sub">La confianza de nuestros clientes es el motor que nos impulsa a superarnos cada día.</p>
+      <h2 class="section-title">Lo que dicen nuestros clientes</h2>
+      <p class="section-sub">4,9 en Google, con más de 130 opiniones.</p>
     </div>
 
     <div style="display:flex;justify-content:center;">
