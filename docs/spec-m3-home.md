@@ -365,3 +365,122 @@ Commit: `Informe de cierre de M3`
 - La página de flotas (M7) y las páginas por modelo y de precios (M8).
 - Mensajes precargados distintos en cada botón de WhatsApp (M4).
 - Reemplazar el iframe del mapa por una vista que cargue al tocarla.
+
+---
+
+## Decisiones de cierre (P-021 a P-034)
+
+Respuestas de Ramiro del 2026-09-28 a las catorce preguntas abiertas de
+`docs/preguntas-abiertas.md`. Cada una se aplica con el ciclo del revisor y un
+commit por pregunta que toque `public/`. Después va la Tarea 13.
+
+### Cambios en `docs/datos-verificados.md`
+
+- **§1, punto 3 de la regla de trayectoria**, reemplazado por: *"Desde 2022"
+  tiene que aparecer al menos una vez en la home, en un lugar visible. Hoy está
+  en la sección de zona de cobertura.*
+- **§10**, la fila "Marcas que también se atienden": *Todas. Se publican en la
+  fila "También atendemos": Chevrolet, Renault, Fiat, Peugeot, Mercedes-Benz,
+  Audi, Nissan, Honda, Citroën, BMW, Jeep, Dodge y Porsche. Ramiro confirmó que
+  hay trabajos realizados y material que lo respalda para cada una.*
+- **§14**, agregado: *La descripción de arriba fija los hechos, no la
+  redacción. En el sitio se reformula en voseo, sin cambiar ni agregar hechos.*
+
+### P-021 — "Desde 2022"
+
+En el párrafo de "Clientes de toda la región", agregar `Desde 2022` al
+principio. El párrafo queda: `Desde 2022 atendemos vehículos de Villa María y
+de más de 40 localidades en un radio de 80 km. Entre ellas: …` (el resto
+igual).
+
+### P-022 — Ícono de la libreta
+
+Confirmado el ícono de código QR. La pregunta se cierra y con ella la Tarea 6.
+
+### P-023 — La descripción de §14
+
+La decisión tomada fue correcta: la frase de §14 es de referencia, no literal.
+Queda escrito en §14 (ver arriba).
+
+### P-024 — Tarjeta "Casa de Repuestos" en la pestaña "Repuestos"
+
+Eliminar la tarjeta, con su etiqueta "Diferencial clave". La pestaña queda con
+tres tarjetas.
+
+### P-025 — Remates diagonales
+
+Confirmado el repintado de la Tarea 7, y **como regla general:** el color de
+cada remate diagonal es el de la sección de abajo, y no es una decisión. Cuando
+cambie el orden, se recalcula sin preguntar. En la Tarea 13 se recalcula la
+cadena entera.
+
+### P-026 — Bloque de flotas
+
+Confirmadas las dos decisiones: el panel acotado y el ícono de WhatsApp, aunque
+a 360 px el botón ocupe tres líneas.
+
+### P-027 — El `<h2>` de contacto
+
+Pasa a `Pedí tu turno`.
+
+### P-028 — Cierre de la Tarea 9
+
+La Tarea 9 se cierra en la Tarea 13. **Marcas no lleva entrada en el menú:** es
+una franja, no un destino, y no hace falta agregarle `id`.
+
+### P-029 — Las trece marcas
+
+Se quedan. Quedan enumeradas en §10 de `datos-verificados.md`.
+
+### P-030 — Opiniones
+
+- Eliminar el rótulo superior "Lo que dicen nuestros clientes": queda solo el
+  `<h2>`.
+- Eliminar el subtítulo "4,9 en Google, con más de 130 opiniones.": queda la
+  insignia de Google, que dice lo mismo con más respaldo.
+- La regla CSS inerte del *media query* de 900 px se borra en la limpieza de la
+  Tarea 13.
+
+### P-031 — El párrafo de contacto
+
+El párrafo completo pasa a: `Escribinos por WhatsApp para coordinar el turno o
+pedir un presupuesto. Respondemos de lunes a viernes de 8:00 a 17:30.` Se saca
+el `TODO_DATO`.
+
+### P-032 y menú de la Tarea 13
+
+**Menú (escritorio y móvil), en este orden:** Inicio · Servicios · ¿Por qué
+elegirnos? → `#como-trabajamos` · Flotas → `#flotas` · Reseñas · Contacto.
+
+**Columna "Navegación" del pie:** Inicio · Servicios · ¿Por qué elegirnos? ·
+Libreta digital → `#libreta-digital` · Flotas · Reseñas · Zona de cobertura →
+`#zona-de-cobertura` · Contacto. Casa de repuestos no se repite: ya está en la
+columna "Servicios".
+
+### P-033 — Las redes en contacto
+
+Confirmadas las tres decisiones.
+
+### P-034 — Contacto y pie
+
+- En el pie, sacar "Villa María, Córdoba" debajo del nombre y en la línea suelta
+  final. Quedan el lema y la dirección de la columna Contacto.
+- Confirmado el aspecto del hueco F-07.
+- Confirmado el rótulo "Formas de pago".
+- En la columna Contacto del pie, el horario pasa a `Lunes a viernes de 8:00 a
+  17:30` y `@dgpcentromecanico` pasa a enlace a Instagram, con
+  `target="_blank"` y `rel="noopener"`.
+
+### P-007
+
+Sigue abierta: depende de la foto F-01.
+
+### Ajustes a la Tarea 13
+
+- Incluye la **limpieza de CSS sin uso**: `.badge-urgente`, `.hero h1 em` y la
+  regla inerte de P-030.
+- Incluye **recalcular la cadena entera de remates diagonales** según la regla
+  de P-025.
+- El informe va a **`docs/planes/m3-informe.md`**, no a `docs/informe-m3.md`.
+- Las capturas llevan el prefijo **`m3-final-`**.
+- Al terminar, se frena para la aprobación visual de Ramiro.

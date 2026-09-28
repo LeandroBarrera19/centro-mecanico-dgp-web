@@ -26,9 +26,8 @@ ficha de Google Maps observada el 2026-09-07.
    quién son.
 2. Los 20 años son del **equipo**, y siempre se dice así: "un equipo con más de
    20 años en el rubro", "+20 años de experiencia del equipo".
-3. **"desde 2022"** tiene que aparecer al menos una vez en la página, en la
-   sección que habla de la trayectoria. No hace falta repetirlo en cada
-   mención: alcanza con que ninguna mención atribuya los 20 años a DGP.
+3. "Desde 2022" tiene que aparecer al menos una vez en la home, en un lugar
+   visible. Hoy está en la sección de zona de cobertura.
 
 ## 2. Ubicación y contacto
 
@@ -136,7 +135,7 @@ proceso, que es real:
 | Modelos foco | Toyota Hilux, Ford Ranger, Volkswagen Amarok |
 | Chevrolet | **No** va en el foco |
 | Segmento | Pick-ups y utilitarios |
-| Marcas que también se atienden | Todas. Hay fotos y publicaciones de Instagram que lo respaldan. No listar marcas de lujo ni deportivas como especialidad. |
+| Marcas que también se atienden | Todas. Se publican en la fila "También atendemos": Chevrolet, Renault, Fiat, Peugeot, Mercedes-Benz, Audi, Nissan, Honda, Citroën, BMW, Jeep, Dodge y Porsche. Ramiro confirmó que hay trabajos realizados y material que lo respalda para cada una. No listar marcas de lujo ni deportivas como especialidad. |
 | Público | Particulares con cualquier vehículo, y flotas de empresas. **La home habla a los dos.** |
 
 ## 11. Zona de cobertura
@@ -230,6 +229,9 @@ Nombre a usar en el sitio: **Libreta digital del vehículo**, con esta
 descripción debajo: "Historial de reparaciones de cada vehículo. Se escanea el
 código QR pegado en el vehículo y se abre desde el celular, sin instalar nada."
 No usar "Tarjeta Virtual".
+
+La descripción de arriba fija los hechos, no la redacción. En el sitio se
+reformula en voseo, sin cambiar ni agregar hechos.
 
 ## 15. Chequeo de 25 puntos
 

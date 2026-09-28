@@ -41,507 +41,27 @@ estado y ejecuta. No borra la pregunta: el historial sirve.
   `public/assets/`. Cuando llegue F-01, se reemplaza el original en
   `assets-src/`, se corre `node tools/optimizar-imagenes.mjs` y se borran las
   versiones de la foto actual.
+- **Nota (2026-09-28):** sigue abierta. Ramiro la repasó al responder el
+  resto de las preguntas de M3 y confirmó que depende de la foto F-01.
 
 ---
 
-### P-021 — La Tarea 5 se llevó el único "desde 2022" de la página
-- **Estado:** abierta
-- **Bloquea:** las Tareas 6 a 12 no, se pueden hacer igual. **Mi lectura:**
-  bloquea el cierre del módulo en la Tarea 13 y la publicación, porque mientras
-  falte, la página incumple `datos-verificados.md` §1. Si Ramiro lo ve de otra
-  manera, lo dice y sigo.
-- **Qué falta:** en qué sección va a aparecer "desde 2022" y con qué palabras.
-  Las dos cosas son texto de cara al usuario y no las escribo yo
-  (`CLAUDE.md` §1).
-- **Contexto:** `datos-verificados.md` §1, "Cómo escribir la trayectoria
-  (obligatorio)", punto 3: `"desde 2022"` tiene que aparecer al menos una vez
-  en la página, en la sección que habla de la trayectoria. La única aparición
-  estaba en el subtítulo de "¿Por qué elegirnos?"
-  (`ecda75f:public/index.html:1221`: "Centro Mecánico DGP funciona desde 2022,
-  con un equipo que lleva más de 20 años en el rubro."), que es una de las dos
-  secciones que la Tarea 5 borra completas. La spec de M3 no la repone en
-  ninguna tarea: `grep -c "2022" docs/spec-m3-home.md` da 0. Hoy
-  `grep -rn "2022" public/` no da ninguna coincidencia, y el JSON-LD tampoco
-  tiene `foundingDate` ni nada que lo supla. Lo encontró el subagente revisor
-  al auditar la Tarea 5 (`docs/revisiones/m3-t5.md`, hallazgo 1); ni el plan ni
-  el informe de la tarea lo habían visto. La contradicción entre la spec de M3
-  y `datos-verificados.md` es exactamente el caso de `CLAUDE.md` §9.
-- **Qué hice mientras tanto:** nada en el código, y **no dejé `TODO_DATO`**.
-  **Decisión mía:** un `TODO_DATO` marca el lugar donde va el dato, y acá el
-  lugar es justamente lo que falta decidir: la sección que lo contenía ya no
-  existe, y ponerlo en cualquier otra sería elegir yo. El registro queda acá.
-  El contador del hero ("+20", "años de experiencia del equipo") sigue
-  cumpliendo el punto 2 de esa misma sección, así que no hay ninguna mención
-  que atribuya los 20 años a DGP: lo que falta es solo el "desde 2022".
-
----
-
-### P-022 — El "dibujo de tarjeta de crédito" que la Tarea 6 manda reemplazar ya no existe
-- **Estado:** abierta
-- **Bloquea:** no bloquea el resto del módulo. La Tarea 6 quedó ejecutada, pero
-  **no la doy por cerrada** hasta que Ramiro confirme este punto
-  (`CLAUDE.md` §9, punto 4).
-- **Qué falta:** confirmar que el ícono de código QR del bloque nuevo es lo que
-  pedía ese punto de la spec.
-- **Contexto:** la Tarea 6 dice: "**Ícono:** reemplazar el dibujo de tarjeta de
-  crédito por un ícono simple de código QR o de documento". Ese dibujo era
-  `<rect x="2" y="5" width="20" height="14" rx="2"/><path d="M2 10h20"/>`, el
-  ícono de la tarjeta "Libreta digital del vehículo" que estaba dentro de
-  Servicios. La **Tarea 4** ya lo borró al rearmar las pestañas: lo quitó el
-  commit `71f1d4f`, y hoy `grep` de ese `rect` sobre `public/` no da ninguna
-  coincidencia. Así que el punto no se puede cumplir tal como está escrito: no
-  hay nada que reemplazar. Es el caso de `CLAUDE.md` §9, "una instrucción no se
-  puede cumplir tal como está escrita".
-- **Qué hice mientras tanto:** **decisión mía:** cumplí el fondo del pedido en
-  lugar de la letra. El bloque nuevo lleva el ícono de código QR que la spec
-  nombra, en SVG en línea y con el mismo trazo que los demás íconos del sitio
-  (`viewBox="0 0 24 24"`, sin relleno, trazo de 2 px en `--azul`, en una caja
-  de 44x44 con fondo `--gris-bg`, igual que `.service-icon`). Elegí el QR y no
-  el de documento porque el párrafo del bloque habla justamente del QR pegado
-  en el vehículo. Queda un comentario en el HTML con el commit que borró el
-  dibujo viejo. Si Ramiro quería otra cosa, se cambia el `<svg>` y nada más.
-
----
-
-### P-023 — La descripción literal de la libreta en §14 y la de la spec no coinciden
-- **Estado:** abierta
-- **Bloquea:** no bloquea. La Tarea 6 usa el texto de la spec.
-- **Qué falta:** decidir si la frase de `datos-verificados.md` §14 es literal o
-  de referencia.
-- **Contexto:** §14 dice: *Nombre a usar en el sitio: **Libreta digital del
-  vehículo**, con esta descripción debajo: "Historial de reparaciones de cada
-  vehículo. Se escanea el código QR pegado en el vehículo y se abre desde el
-  celular, sin instalar nada."* La spec de M3, Tarea 6, pone en ese lugar otras
-  palabras: la bajada `El historial de reparaciones de tu vehículo, siempre en
-  tu celular.` y el párrafo `Cada vehículo que atendemos lleva un código QR
-  pegado. Lo escaneás con el celular y se abre la libreta, sin instalar nada.
-  La tienen todos nuestros clientes, particulares y empresas.` El nombre sí es
-  exactamente el prescrito. **No hay ningún dato distinto:** cada hecho de la
-  frase de §14 está en el bloque, y los cinco ítems de "Qué guarda" son cinco
-  de los campos que §14 enumera. La diferencia es de redacción, y tiene un
-  motivo: la frase de §14 está en tercera persona y el §18 exige voseo en toda
-  la web, así que la spec la pasa a voseo y la reparte en dos. O sea que la
-  spec resuelve una tensión interna de `datos-verificados.md`. Aun así, §9 dice
-  que una contradicción entre la spec y este archivo se anota, y no estaba
-  anotada. Lo levantó el revisor de la Tarea 6
-  (`docs/revisiones/m3-t6.md`, hallazgo 2).
-- **Qué hice mientras tanto:** **decisión mía:** usé el texto de la spec, que
-  es el que Ramiro aprobó para M3 y el que respeta el voseo. Si Ramiro quiere
-  que §14 valga al pie de la letra, el cambio es reemplazar esos dos textos.
-  Lo que conviene decidir de fondo es si §14 fija la frase o solo los hechos:
-  de eso depende también M7, la página de flotas.
-
----
-
-### P-024 — La tarjeta "Casa de Repuestos" de Servicios repite el bloque nuevo
-- **Estado:** abierta
-- **Bloquea:** no bloquea. La Tarea 7 quedó ejecutada y la tarjeta sigue donde
-  estaba.
-- **Qué falta:** decidir si la tarjeta "Casa de Repuestos" de la pestaña
-  "Repuestos" se queda, se acorta o se va.
-- **Contexto:** la Tarea 7 dice: "Si la pestaña 'Repuestos' de Servicios
-  (Tarea 4) queda redundante con este bloque, **no la elimines**: anotalo en
-  `preguntas-abiertas.md`". Queda redundante, pero **solo una tarjeta de las
-  cuatro**, no la pestaña entera. La tarjeta destacada dice: "Stock propio, en
-  el mismo lugar que el taller. Repuestos originales y alternativos, abierta al
-  público" (`public/index.html:1535`, con la etiqueta "Diferencial clave" en la
-  línea 1534). Son los mismos tres hechos que
-  los tres párrafos de la sección nueva: local propio, originales y
-  alternativos, abierta al público. Las otras tres tarjetas de la pestaña
-  ("Filtros & Lubricantes", "Frenos & Suspensión", "Distribución") no se
-  repiten: enumeran qué piezas hay, que la sección nueva no dice.
-  Además, en el orden que fija la Tarea 13, Servicios va **antes** que la casa
-  de repuestos, así que el lector se cruza primero con la versión corta y
-  después con la larga.
-- **Qué hice mientras tanto:** nada: la spec dice explícitamente que no la
-  elimine, así que la dejé tal cual, con su texto y su etiqueta. Si Ramiro
-  quiere sacarla, es borrar el bloque de la tarjeta y nada más; la pestaña
-  queda con tres tarjetas, que es lo que ya tienen otras pestañas.
-
----
-
-### P-025 — Repinté la cadena de diagonales en la Tarea 7, tocando CSS de la Tarea 6
+### P-035 — Una frase de §10 que conservé al aplicar el cambio de Ramiro
 - **Estado:** abierta
 - **Bloquea:** no bloquea.
-- **Qué falta:** confirmar que estuvo bien hacerlo ahora y no esperar a la
-  Tarea 13.
-- **Contexto:** la Tarea 6 dejó la libreta con fondo blanco y **sin** remate
-  diagonal, porque debajo tenía Servicios, también blanco. El revisor de esa
-  tarea verificó esa ausencia y la dio por correcta
-  (`docs/revisiones/m3-t6.md`: "no agregar `::after` es coherente, no un
-  olvido"). La Tarea 7 mete la casa de repuestos entre medio, con fondo
-  `--gris-bg`, y entonces la libreta pasa a tener debajo una sección de otro
-  color. Para no dejar el único corte recto de la página, le agregué a
-  `.notebook` un `::after` en `--gris-bg` y le subí el `padding` inferior a
-  148 px, que es el que ya usan `.how-we-work`, `.services` y `.testimonials`.
-  Eso es tocar CSS que la Tarea 7 no nombra (`CLAUDE.md` §7).
-- **Qué hice mientras tanto:** **decisión mía:** lo hice igual, porque el
-  patrón "cada sección remata con una diagonal del color de la de abajo" es el
-  que Ramiro ratificó al responder P-019, y bajo ese patrón el color queda
-  determinado solo en cuanto aparece una sección nueva debajo: no había dos
-  opciones entre las cuales elegir. La geometría es la misma que aprobó P-019
-  (66 px, `clip-path: polygon(0 100%, 100% 0, 100% 100%)`). Verificado con
-  estilo computado que la cadena entera cierra, de punta a punta:
-  `how-we-work` → blanco → `libreta` → gris → `casa-de-repuestos` → blanco →
-  `servicios` → gris → `resenas` → azul → `contacto`.
-  **Pendiente para la Tarea 13:** la cadena está pintada para el orden de hoy,
-  no para el orden final. Cuando la T13 mueva Servicios al segundo lugar y
-  meta Flotas debajo de la casa de repuestos, hay que repintar al menos dos
-  remates. Queda escrito acá para que no se pierda.
-
-- **Actualización, Tarea 11 (2026-09-26):** volvió a pasar, por tercera vez en
-  el módulo. La zona de cobertura entró entre Opiniones y Contacto, así que
-  `.testimonials::after` (`public/index.html:997-1007`) pasó de `--azul` a
-  `--blanco`, y la sección nueva estrenó el suyo en `--azul`. Mismo criterio y
-  mismo fundamento: bajo el patrón que Ramiro ratificó en P-019 no había dos
-  opciones, y dejarlo en `--azul` habría metido una cuña azul de 66 px entre
-  una sección gris y una blanca. La cadena completa hoy, medida con estilo
-  computado, es: `como-trabajamos` gris → blanco → `libreta-digital` blanco →
-  gris → `casa-de-repuestos` gris → blanco → `flotas` blanco (sin remate,
-  blanco sobre blanco) → `servicios` blanco → gris → `resenas` gris → blanco
-  → `zona-de-cobertura` blanco → azul → `contacto` azul.
-  **El inventario de pendientes para la Tarea 13 cambió:** en el orden final,
-  Servicios sube al segundo lugar, Marcas entra en el séptimo y Flotas queda
-  debajo de la casa de repuestos, así que la cadena hay que recalcularla
-  entera, no solo dos remates.
-  Lo levantó el revisor de la Tarea 11, con el mismo argumento con el que
-  había levantado P-026: una decisión que vive solo en un comentario de CSS no
-  está registrada.
-
----
-
-### P-026 — Dos decisiones de forma en el bloque de flotas, que solo estaban en comentarios de CSS
-- **Estado:** abierta
-- **Bloquea:** no bloquea.
-- **Qué falta:** confirmar las dos, o pedir que se deshagan.
-- **Contexto:** la Tarea 8 pide "bloque corto y secundario: no más alto que la
-  sección de 'Cómo trabajamos'", y da el texto del botón, pero no dice cómo se
-  ve ninguna de las dos cosas.
-- **Qué hice mientras tanto:** dos **decisiones mías**:
-  1. **El panel acotado.** En vez de una sección a todo ancho como las demás,
-     un panel de `max-width: 860px` centrado, con fondo `--gris-bg` y borde
-     izquierdo azul, dentro de una sección blanca
-     (`public/index.html:631-673`). Es la única parte del `<main>` que no
-     ocupa el ancho completo, y así busqué que se lea como secundaria. Medido:
-     la sección va de 561 px de alto a 1440 px hasta 911 px a 320 px, contra
-     1245 a 1810 px de "Cómo trabajamos", así que la condición de la spec se
-     cumple en todos los anchos.
-  2. **El ícono de WhatsApp en el botón** (`public/index.html:1437-1439`). La
-     spec de la Tarea 8 da el rótulo pero no menciona ícono. Lo puse porque es
-     el patrón del sitio: la Tarea 1 dice que los botones de WhatsApp
-     "conservan el ícono de WhatsApp" y `datos-verificados.md` §19 los trata
-     como un grupo. **Tiene un costo medido:** a 360 px el ícono hace que el
-     rótulo pase de dos líneas a tres (alto del botón 77 px → 101 px). A
-     320 px son tres líneas con ícono o sin él, y a 390 px son dos con ícono.
-     Ninguna palabra se corta y no hay desborde en ningún ancho. Si Ramiro
-     prefiere dos líneas a 360 px, se borra el `<svg>` y nada más.
-
----
-
-### P-027 — La Tarea 8 deja dos llamados a flotas en la home
-- **Estado:** abierta
-- **Bloquea:** no bloquea la ejecución, pero conviene resolverlo dentro de M3.
-- **Qué falta:** decidir qué pasa con el `<h2>` de la sección de contacto.
-- **Contexto:** con el bloque nuevo, la home queda con dos secciones que
-  llaman a las flotas: `¿Tenés una flota de vehículos?`
-  (`public/index.html:1474`, la que crea esta tarea) y
-  `¿Necesitás atención para tu flota?` (`public/index.html:1815`, la de
-  contacto, que ya estaba). La Tarea 12 reescribe el contenido de contacto
-  —botón, teléfono, horario, dirección, formas de pago, redes, mapa, hueco
-  F-07 y la frase de "respuesta inmediata"— pero **no da texto de reemplazo
-  para ese `<h2>`**. O sea que, tal como está escrita la spec, la duplicación
-  sobrevive a M3, y va en contra del objetivo del módulo, que es que la home
-  le hable primero al particular. Lo levantó el revisor de la Tarea 8
-  (`docs/revisiones/m3-t8.md`, hallazgo 2).
-- **Qué hice mientras tanto:** nada. La Tarea 8 no manda tocar contacto y no
-  lo toqué. El texto nuevo de ese `<h2>`, si va, lo tiene que escribir Ramiro:
-  yo no escribo textos de cara al usuario (`CLAUDE.md` §1). Si me lo pasa, lo
-  aplico en la Tarea 12.
-
----
-
-### P-028 — La única verificación que pide la Tarea 9 hoy da negativo, y queda diferida a la Tarea 13
-- **Estado:** abierta
-- **Bloquea:** no bloquea la ejecución, pero **la Tarea 9 no está cerrada**:
-  su verificación no se puede hacer hasta que la Tarea 13 reordene.
-- **Qué falta:** nada de Ramiro. Es un registro: que quede escrito que la
-  Tarea 9 se cierra recién con la Tarea 13.
-- **Contexto:** la Tarea 9 (`docs/spec-m3-home.md:264-267`) no pide cambios de
-  contenido, solo "verificar que [la tira de marcas] quedó bien ubicada en el
-  orden nuevo (ver Tarea 13)". Hoy esa verificación **falla**. El `<main>` va
-  de `public/index.html:1266` a `:1905` y sus nueve hijos, en orden, son
-  `inicio` (:1223), `brands-strip` (:1273), `como-trabajamos` (:1317),
-  `libreta-digital` (:1364), `casa-de-repuestos` (:1401), `flotas` (:1424),
-  `servicios` (:1447), `resenas` (:1636) y `contacto` (:1749): Marcas está en
-  la posición 2 de 9 y el orden final de la Tarea 13
-  (`docs/spec-m3-home.md:330-341`) la pone en la 7. Servicios también está
-  fuera de lugar (7 en vez de 2), lo que confirma que el reordenamiento es una
-  sola operación de la Tarea 13 y que la Tarea 9 no tenía que mover nada
-  (`CLAUDE.md` §7). Lo levantó el revisor
-  (`docs/revisiones/m3-t9.md`, hallazgo 1 de la vuelta 1): yo había dado la
-  tarea por hecha dejando el rastro solo en un comentario de CSS
-  (`public/index.html:631-637`), que es exactamente el defecto que ya había
-  aparecido en P-026, una tarea antes.
-- **Qué hice mientras tanto:** no toqué la tira, que es lo correcto. **El
-  contenido lo verificó el revisor, no yo** (vuelta 1, verificaciones 1 y 2, y
-  vuelta 2, verificación 8): aisló el bloque de marcado en `9bc7562` (cierre
-  de M2a) y en el árbol actual, normalizó el único cambio autorizado —los 14
-  `aria-hidden="true"` que pide la Tarea 1— y dio idéntico. Recalculado en la
-  vuelta 2 normalizando además los espacios, el sha1 del bloque es
-  `6f60f91f40744d56b68ffe56e639fd8b3adeebe0` en las dos versiones; el hash
-  depende de cómo se normalice, así que sin ese criterio no se puede
-  recalcular. Del CSS solo cambiaron cuatro opacidades, que autoriza la
-  Tarea 1.
-  **Yo, en cambio, le pasé al revisor una premisa falsa:** le dije que el
-  único commit que había tocado la tira era `e3b8618`, sin haberlo comprobado.
-  `git log --oneline --follow -G 'brands-strip|brand-name|brands-intro|brand-sep' -- public/index.html`
-  devuelve `bc566b6`, `2123134`, `50a83b8` y `42bf0d5`, y `e3b8618` no está.
-- **Capturas:** el encabezado de la spec (`docs/spec-m3-home.md:30-33`) pide
-  capturas a 360, 390 y 1440 px en cada tarea. Para la Tarea 9 **no se
-  tomaron**, ni por mí ni por el revisor. **Decisión mía:** con `public/`
-  idéntico a `b83e51f` —probado por hash de árbol, el mismo
-  `adff67ff2fd8d3f90641347cdd80ef52679ea6e7`— serían idénticas a las de la
-  Tarea 8, así que no las saqué. Queda declarado acá en vez de omitido.
-- **Actualización, Tarea 12 (2026-09-27):** las líneas de arriba son las que
-  había al medir, y desde entonces la Tarea 11 y la Tarea 12 corrieron el
-  archivo. Hoy el `<main>` tiene **diez** hijos, no nueve, porque se sumó la
-  zona de cobertura: `inicio` (:1269), `brands-strip` (:1319),
-  `como-trabajamos` (:1363), `libreta-digital` (:1410), `casa-de-repuestos`
-  (:1447), `flotas` (:1470), `servicios` (:1493), `resenas` (:1682),
-  `zona-de-cobertura` (:1799) y `contacto` (:1809). **Lo que no cambió es el
-  problema:** Marcas sigue en la posición 2 y el orden final la pone en la 7,
-  así que la Tarea 9 sigue sin poder cerrarse.
-- **Dos cosas que la Tarea 13 se va a encontrar**, y que dejo escritas acá
-  para que no se pierdan:
-  1. La tira es un `<div class="brands-strip">` **sin `id` y sin encabezado**
-     (`public/index.html:1273`), así que hoy ninguna ancla puede apuntarle. La
-     Tarea 13 pide que "el menú de navegación refleja este orden y cada enlace
-     lleva a su sección", y Marcas es el punto 7 de ese orden.
-  2. El menú no tiene entrada "Marcas": los cinco enlaces son Inicio,
-     Servicios, ¿Por qué elegirnos?, Reseñas y Contacto.
-
----
-
-### P-029 — Las 13 marcas de "También atendemos" no están enumeradas en los datos verificados
-- **Estado:** abierta
-- **Bloquea:** no bloquea. Es anterior a M3 y la Tarea 9 prohíbe cambiar el
-  contenido de la tira.
-- **Qué falta:** decidir si el listado concreto se sostiene, en particular
-  PORSCHE.
-- **Contexto:** la tira publica, en la fila "También atendemos": CHEVROLET,
-  RENAULT, FIAT, PEUGEOT, MERCEDES-BENZ, AUDI, NISSAN, HONDA, CITROËN, BMW,
-  JEEP, DODGE y PORSCHE (`public/index.html:1286-1310`).
-  `datos-verificados.md` §10 no las enumera: dice "Marcas que también se
-  atienden: **Todas**. Hay fotos y publicaciones de Instagram que lo
-  respaldan." O sea que las 13 descansan enteras en ese "Todas".
-  **No viola la prohibición de §10**, que es "no listar marcas de lujo ni
-  deportivas *como especialidad*": las cuatro de gama alta están en la fila
-  secundaria, no en "Especialistas en", donde solo están Toyota, Volkswagen y
-  Ford. Lo levantó el revisor de la Tarea 9 (hallazgo 5).
-- **Qué hice mientras tanto:** nada. No toqué la tira. Si Ramiro quiere sacar
-  alguna marca, o prefiere que §10 las enumere una por una, se hace donde
-  corresponda: sacar una marca es borrar contenido y eso no lo decido yo.
-
----
-
-### P-030 — Dos textos que la Tarea 10 deja repetidos en la sección de opiniones
-- **Estado:** abierta
-- **Bloquea:** no bloquea el resto del módulo, pero **la duplicación se ve hoy
-  en la página**: el rótulo superior y el `<h2>` dicen la misma frase, una
-  debajo de la otra. Se ve en `temporary screenshots/m3-t10-duplicado-*.png`.
-- **Qué falta:** decidir qué dice, o si va, el rótulo superior; y decidir si la
-  insignia de Google se queda al lado del subtítulo nuevo.
-- **Contexto:** la Tarea 10 (`docs/spec-m3-home.md:274-287`) da un `<h2>` y un
-  subtítulo nuevos, y manda eliminar un párrafo. No dice nada de otros dos
-  elementos que ya estaban en esa sección y que con los textos nuevos quedan
-  repetidos:
-  1. El rótulo superior, `<span class="eyebrow-label">`
-     (`public/index.html:1646`), dice **"Lo que dicen nuestros clientes"**,
-     que es **exactamente** el texto que la spec le da al `<h2>`
-     (`public/index.html:1647`). O sea que la misma frase se imprime dos veces
-     seguidas.
-  2. La insignia de Google (`public/index.html:1652-1664`) muestra "4,9"
-     (`:1659`), las cinco estrellas y "Más de 130 opiniones en Google"
-     (`:1663`). El subtítulo nuevo (`:1648`) dice "4,9 en Google, con más de
-     130 opiniones.": el mismo dato, dos renglones más arriba.
-- **Qué hice mientras tanto:** **nada: los dos quedaron como estaban.** Dejé un
-  comentario junto al rótulo para que nadie lo saque por su cuenta. Las dos
-  cosas son borrado o reescritura de texto de cara al usuario, y eso no lo
-  decido yo (`CLAUDE.md` §1 y §9, y la Regla de textos de la propia spec de
-  M3: si una frase no encaja, "no se reescribe: se anota en
-  `preguntas-abiertas.md` con una captura y se sigue").
-- **Un error mío, y su corrección:** en la primera pasada de la Tarea 10 **sí
-  borré el rótulo**, declarándolo como decisión mía. El revisor lo rechazó
-  como bloqueante y tenía razón: §9 lista "hace falta borrar algo que la spec
-  no menciona" como un caso de hueco, y el tratamiento de un hueco es anotarlo
-  y seguir, no elegir una de las salidas. Me lo señaló además con mi propia
-  contradicción: en esta misma pregunta le había aplicado a la insignia el
-  criterio correcto ("no me corresponde") y al rótulo el contrario. El rótulo
-  está repuesto, idéntico a como estaba.
-- **Si Ramiro quiere sacarlo**, es borrar la línea 1646 y su comentario. Si
-  quiere otro texto, lo escribe él.
-- **Una regla de CSS que quedó inerte, para que nadie se confunda en la Tarea
-  13:** al pasar `.testimonials-grid` a dos columnas
-  (`public/index.html:1035`), la regla del `@media (max-width: 900px)`
-  (`public/index.html:1142`) quedó diciendo exactamente lo mismo que la de
-  escritorio. **No la borré**, porque limpiar lo que la tarea no toca está
-  prohibido por `CLAUDE.md` §7 y un borrado no mandado es un hueco por §9.
-  Medido: a 900 px las columnas son `408px 408px` y a 901 px `408.5px
-  408.5px`, o sea que cruzar el corte no cambia nada; la diferencia es el
-  ancho del contenedor, no la regla. Las dos columnas de 481 a 900 px salen
-  hoy de la regla base, no de esa. Lo levantó el revisor de esta tarea.
-
----
-
-### P-031 — La frase que la Tarea 12 manda reemplazar ya no existe, y la que quedó no se puede tocar sin reescribir
-- **Estado:** abierta
-- **Bloquea:** **sí, en parte.** Es el único punto de la Tarea 12 que quedó sin
-  hacer, y mientras tanto **sigue publicada una afirmación que
-  `datos-verificados.md` prohíbe**. No bloquea la Tarea 13, pero sí el cierre
-  del módulo, junto con P-021.
-- **Qué falta:** el texto exacto del párrafo de contacto, escrito por Ramiro.
-- **Contexto:** la Tarea 12 dice: *Donde hoy dice "Respuesta inmediata",
-  reemplazar por: `Respondemos de lunes a viernes de 8:00 a 17:30.` No es
-  cierto que la respuesta sea inmediata: fuera del horario no se atiende.*
-  La frase **con mayúscula** ya no existe. Verificado con
-  `git log --oneline --follow -G 'Respuesta inmediata' -- public/index.html`,
-  que devuelve `1e3ab33` y `42bf0d5`: estaba en dos lugares que **la Tarea 5
-  borró**, el `<h3>Stock propio. Respuesta inmediata.</h3>` de "¿Por qué
-  elegirnos?" y un párrafo del proceso de cinco pasos
-  (`1e3ab33^:public/index.html:1233` y `:1292`).
-  **Pero el punto de la spec no quedó sin objeto**, y conviene decirlo claro
-  porque la primera redacción de esta pregunta daba a entender lo contrario:
-  aquellas dos frases hablaban de *stock* y de *reparación*, y el punto de la
-  spec está escrito **dentro de "Contacto"**, con la justificación "fuera del
-  horario no se atiende", que describe exactamente la afirmación de
-  **respuesta** que sigue viva. O sea que hay algo que sacar, y hay que
-  sacarlo. Lo corrigió el revisor de la Tarea 12.
-  Lo que queda hoy es, en minúscula y dentro de una oración que
-  la spec no cita, en `public/index.html:1823`:
-  *"Diagnóstico transparente, stock propio y respuesta inmediata. Coordiná tu
-  turno directamente por WhatsApp y un técnico especializado te responde a la
-  brevedad."* Ahí hay dos afirmaciones de rapidez, no una: "respuesta
-  inmediata" y "te responde a la brevedad".
-  Reemplazar literalmente las dos palabras da una oración rota
-  ("…stock propio y Respondemos de lunes a viernes de 8:00 a 17:30.."), y
-  cualquiera de las otras lecturas —cambiar la primera oración entera, o el
-  párrafo entero— borra texto que la spec no menciona ("Diagnóstico
-  transparente", "stock propio", la invitación a coordinar por WhatsApp).
-- **Captura:** `temporary screenshots/m3-t12-p031-390.png` y `-1440.png`, que
-  es lo que exige la Regla de textos de la spec para este caso.
-- **Qué hice mientras tanto:** **el párrafo quedó intacto**, y quedó un
-  marcador `TODO_DATO` en el código, justo arriba
-  (`public/index.html:1816-1822`), que explica qué falta y remite acá. Las
-  tres salidas posibles exigen escribir o recortar texto de cara al usuario, y
-  eso no lo hago yo (`CLAUDE.md` §1 y §9). Es el mismo criterio por el que el
-  revisor me rechazó la Tarea 10 cuando borré un rótulo que la spec no
-  nombraba. Todo el resto de la Tarea 12 se hizo.
-  En la primera pasada **no** había dejado el `TODO_DATO` ni la captura: las
-  dos cosas las exige el procedimiento y las dos me las marcó el revisor.
-- **Qué necesito:** el párrafo completo, tal como tiene que quedar. Si la
-  intención es solo sacar las dos afirmaciones de rapidez y dejar el resto,
-  igual hace falta que el texto lo escriba Ramiro.
-- **Riesgo mientras tanto:** la página sigue afirmando que la respuesta es
-  inmediata. **Con precisión, porque en la primera redacción lo dije de más:**
-  esa frase exacta **no** figura en la lista de "Afirmaciones prohibidas por
-  genéricas" de `datos-verificados.md` §18b —ahí están "rapidez", "servicio
-  rápido" y "atención inmediata"—, pero va contra el criterio de esa misma
-  sección, que dice que la demora es variable y que **no se publican plazos**,
-  y contra la justificación que la propia spec da al pedir el cambio. No llega
-  a publicarse igual, porque M5 ya está bloqueada por P-007. Lo precisó el
-  revisor de la Tarea 12.
-
----
-
-### P-032 — "Los enlaces del pie apuntan a las secciones nuevas": cuáles y con qué rótulos
-- **Estado:** abierta
-- **Bloquea:** no bloquea. Ningún enlace del pie está roto.
-- **Qué falta:** decidir qué secciones nuevas entran en la columna
-  "Navegación" del pie, y con qué texto.
-- **Contexto:** la Tarea 12 dice "Los enlaces del pie apuntan a las secciones
-  nuevas", sin decir cuáles ni cómo se llaman. El módulo creó cuatro secciones
-  nuevas: `#libreta-digital`, `#casa-de-repuestos`, `#flotas` y
-  `#zona-de-cobertura`. La columna "Navegación" (`public/index.html:1923-1931`, con los cinco enlaces en `:1925-1929`)
-  tiene hoy cinco enlaces: Inicio, "¿Por qué elegirnos?" → `#como-trabajamos`,
-  Servicios, Reseñas y Contacto. Ninguno está roto: los cinco destinos
-  existen. El rótulo "¿Por qué elegirnos?" apuntando a "Cómo trabajamos" es
-  decisión de Ramiro, ya cerrada en P-018.
-- **Qué hice mientras tanto:** **una sola cosa, la que no exige escribir
-  texto:** la columna "Servicios" del pie tenía un enlace que decía "Casa de
-  Repuestos" y apuntaba a `#servicios`; ahora apunta a `#casa-de-repuestos`,
-  que es su sección propia. El rótulo no cambió.
-  **No agregué entradas nuevas** a la columna "Navegación": elegir cuáles de
-  las cuatro secciones van y con qué rótulo es decisión de contenido.
-  Ojo que la Tarea 13 pide algo parecido para el menú de navegación, así que
-  conviene decidir las dos cosas juntas.
-
----
-
-### P-033 — Cómo quedaron las tres redes en la sección de contacto
-- **Estado:** abierta
-- **Bloquea:** no bloquea. Los tres enlaces funcionan y apuntan a las URLs
-  verificadas.
-- **Qué falta:** confirmar la forma, o pedir otra.
-- **Contexto:** la Tarea 12 dice "Redes: Instagram, Facebook y LinkedIn, **como
-  enlaces reales** a las URLs de `datos-verificados.md` §5, con
-  `target="_blank"` y `rel="noopener"`". Da las tres redes y la exigencia
-  técnica, pero no dice **cómo se muestran**. Lo que había antes era una fila
-  sola, rotulada "Instagram", con el texto `@dgpcentromecanico` que **no era
-  un enlace** (`git show c076267:public/index.html`, líneas 1818-1826).
-- **Qué hice mientras tanto:** tres **decisiones mías**, todas de forma y las
-  tres reversibles:
-  1. **Una sola fila para las tres**, rotulada `Redes` —la palabra es de la
-     spec—, en vez de tres filas separadas. Así no hubo que inventar un
-     rótulo ni un identificador para cada red.
-  2. **El texto visible de cada enlace:** `@dgpcentromecanico` para Instagram,
-     que es el que ya estaba y así no se pierde ningún texto, y `Facebook` y
-     `LinkedIn` para las otras dos, que son los nombres que usa la propia
-     spec. Queda una fila despareja, un usuario y dos nombres de red:
-     `datos-verificados.md` §5 solo da las URLs, no da usuarios de Facebook ni
-     de LinkedIn, y no los voy a deducir de la URL.
-  3. **El ícono.** La fila tenía el de Instagram y ahora contiene tres redes,
-     así que lo cambié por uno neutro de tres nodos conectados, en el mismo
-     trazo que los demás íconos de contacto.
-  Los tres enlaces se probaron con foco de teclado: alcanzables, con contorno
-  visible, `target="_blank"` y `rel="noopener"` en los tres.
-
----
-
-### P-034 — Cuatro cosas del contacto y el pie que decidí yo o que quedaron desparejas
-- **Estado:** abierta
-- **Bloquea:** no bloquea nada.
-- **Qué falta:** confirmar las tres primeras y decidir la cuarta.
-- **Contexto y qué hice:** las cuatro salieron de la revisión de la Tarea 12.
-  1. **La línea suelta del pie de página** (`public/index.html:1957`). Saqué
-     de ahí la frase del posicionamiento anterior y su separador, y dejé
-     "Villa María, Córdoba" porque la spec no manda sacarlo. **Decisión mía.**
-     Consecuencia: el pie dice ahora "Villa María, Córdoba" **cuatro veces**:
-     debajo del nombre (`:1918`), al final del lema nuevo (`:1919`), en la
-     columna Contacto (`:1945`) y en esa línea (`:1957`). Sacar alguna es
-     borrar contenido y no lo decido yo.
-  2. **El aspecto del hueco F-07** (`.contact-slot`, `public/index.html:891-896`).
-     Los otros tres huecos son el rectángulo gris rayado que describe
-     `docs/brief-fotografico.md`. Sobre el fondo azul de contacto ese gris se
-     ve como un parche, así que a este le puse fondo blanco al 6 % y borde
-     blanco al 35 %, y el rótulo en blanco (`.contact-slot span`,
-     `public/index.html:896`). **Y una cuarta diferencia que no había
-     declarado:** el `<div>` de F-07 (`:1899`) **no lleva la clase `fade-in`**
-     que sí llevan F-02, F-03 y F-04, porque la sección de contacto no anima
-     sus bloques. Las cuatro son **decisiones mías**, de forma: el marcador,
-     el `data-slot`, la proporción y el texto del rótulo son los del brief, y
-     la proporción 16:9 está medida exacta en cuatro anchos.
-  3. **El rótulo `Formas de pago`** (`public/index.html:1880`). La spec lo
-     escribe como nombre de campo, no entre acentos graves como los textos
-     que sí dicta. Lo usé tal cual de rótulo visible. **Decisión mía**, igual
-     que "Redes" en P-033, que sí había declarado.
-  4. **La columna "Contacto" del pie** (`public/index.html:1945`) quedó con el
-     formato viejo del horario, "Lun–Vie 08:00 – 17:30hs", mientras la sección
-     de contacto ahora dice "Lunes a viernes de 8:00 a 17:30"; y muestra
-     `@dgpcentromecanico` como texto plano, sin enlazar, cuando arriba las tres
-     redes ya son enlaces reales. **No lo toqué:** la Tarea 12 solo manda
-     cambiar el lema, sacar las frases y apuntar los enlaces del pie. El dato
-     en sí es correcto (`datos-verificados.md` §3). Queda a la vista porque la
-     misma página muestra el mismo horario en dos formatos.
+- **Qué falta:** confirmar que la frase conservada tiene que seguir ahí.
+- **Contexto:** al responder P-029, Ramiro dictó el reemplazo de la fila
+  "Marcas que también se atienden" de `datos-verificados.md` §10. La fila decía
+  tres cosas: "Todas.", "Hay fotos y publicaciones de Instagram que lo
+  respaldan." y "No listar marcas de lujo ni deportivas como especialidad." El
+  texto nuevo repone la primera, reemplaza la segunda por la enumeración de las
+  trece marcas y **no menciona la tercera**.
+- **Qué hice mientras tanto:** **decisión mía:** conservé la tercera frase, por
+  la regla de `CLAUDE.md` §2 ("lo que exista en el repositorio y no en la
+  versión nueva se conserva"). No se contradice con lo nuevo: Audi, BMW,
+  Mercedes-Benz y Porsche entran en la fila "También atendemos", que no es la
+  de especialidad; la fila "Marcas foco" sigue siendo Toyota, Ford y
+  Volkswagen. Si Ramiro la quería fuera, es borrar esa oración y nada más.
 
 ---
 
@@ -1042,3 +562,565 @@ estado y ejecuta. No borra la pregunta: el historial sirve.
 - **Respuesta (2026-09-25):** el hueco queda como está hasta que llegue la
   foto F-02. Decisión de Ramiro. Ninguna de las tres salidas se aplica por
   ahora; si con la foto real adentro sigue molestando, se reabre.
+
+---
+
+### P-021 — La Tarea 5 se llevó el único "desde 2022" de la página
+- **Estado:** respondida
+- **Bloquea:** las Tareas 6 a 12 no, se pueden hacer igual. **Mi lectura:**
+  bloquea el cierre del módulo en la Tarea 13 y la publicación, porque mientras
+  falte, la página incumple `datos-verificados.md` §1. Si Ramiro lo ve de otra
+  manera, lo dice y sigo.
+- **Qué falta:** en qué sección va a aparecer "desde 2022" y con qué palabras.
+  Las dos cosas son texto de cara al usuario y no las escribo yo
+  (`CLAUDE.md` §1).
+- **Contexto:** `datos-verificados.md` §1, "Cómo escribir la trayectoria
+  (obligatorio)", punto 3: `"desde 2022"` tiene que aparecer al menos una vez
+  en la página, en la sección que habla de la trayectoria. La única aparición
+  estaba en el subtítulo de "¿Por qué elegirnos?"
+  (`ecda75f:public/index.html:1221`: "Centro Mecánico DGP funciona desde 2022,
+  con un equipo que lleva más de 20 años en el rubro."), que es una de las dos
+  secciones que la Tarea 5 borra completas. La spec de M3 no la repone en
+  ninguna tarea: `grep -c "2022" docs/spec-m3-home.md` da 0. Hoy
+  `grep -rn "2022" public/` no da ninguna coincidencia, y el JSON-LD tampoco
+  tiene `foundingDate` ni nada que lo supla. Lo encontró el subagente revisor
+  al auditar la Tarea 5 (`docs/revisiones/m3-t5.md`, hallazgo 1); ni el plan ni
+  el informe de la tarea lo habían visto. La contradicción entre la spec de M3
+  y `datos-verificados.md` es exactamente el caso de `CLAUDE.md` §9.
+- **Qué hice mientras tanto:** nada en el código, y **no dejé `TODO_DATO`**.
+  **Decisión mía:** un `TODO_DATO` marca el lugar donde va el dato, y acá el
+  lugar es justamente lo que falta decidir: la sección que lo contenía ya no
+  existe, y ponerlo en cualquier otra sería elegir yo. El registro queda acá.
+  El contador del hero ("+20", "años de experiencia del equipo") sigue
+  cumpliendo el punto 2 de esa misma sección, así que no hay ninguna mención
+  que atribuya los 20 años a DGP: lo que falta es solo el "desde 2022".
+- **Respuesta (2026-09-28):** "Desde 2022" va al principio del párrafo de
+  "Clientes de toda la región". El párrafo queda: "Desde 2022 atendemos
+  vehículos de Villa María y de más de 40 localidades en un radio de 80 km.
+  Entre ellas: ..." (el resto igual). Además, `datos-verificados.md` §1,
+  punto 3, pasa a decir que "Desde 2022" tiene que aparecer al menos una vez
+  en la home, en un lugar visible, y que hoy está en la sección de zona de
+  cobertura. Decisión de Ramiro.
+
+---
+
+### P-022 — El "dibujo de tarjeta de crédito" que la Tarea 6 manda reemplazar ya no existe
+- **Estado:** respondida
+- **Bloquea:** no bloquea el resto del módulo. La Tarea 6 quedó ejecutada, pero
+  **no la doy por cerrada** hasta que Ramiro confirme este punto
+  (`CLAUDE.md` §9, punto 4).
+- **Qué falta:** confirmar que el ícono de código QR del bloque nuevo es lo que
+  pedía ese punto de la spec.
+- **Contexto:** la Tarea 6 dice: "**Ícono:** reemplazar el dibujo de tarjeta de
+  crédito por un ícono simple de código QR o de documento". Ese dibujo era
+  `<rect x="2" y="5" width="20" height="14" rx="2"/><path d="M2 10h20"/>`, el
+  ícono de la tarjeta "Libreta digital del vehículo" que estaba dentro de
+  Servicios. La **Tarea 4** ya lo borró al rearmar las pestañas: lo quitó el
+  commit `71f1d4f`, y hoy `grep` de ese `rect` sobre `public/` no da ninguna
+  coincidencia. Así que el punto no se puede cumplir tal como está escrito: no
+  hay nada que reemplazar. Es el caso de `CLAUDE.md` §9, "una instrucción no se
+  puede cumplir tal como está escrita".
+- **Qué hice mientras tanto:** **decisión mía:** cumplí el fondo del pedido en
+  lugar de la letra. El bloque nuevo lleva el ícono de código QR que la spec
+  nombra, en SVG en línea y con el mismo trazo que los demás íconos del sitio
+  (`viewBox="0 0 24 24"`, sin relleno, trazo de 2 px en `--azul`, en una caja
+  de 44x44 con fondo `--gris-bg`, igual que `.service-icon`). Elegí el QR y no
+  el de documento porque el párrafo del bloque habla justamente del QR pegado
+  en el vehículo. Queda un comentario en el HTML con el commit que borró el
+  dibujo viejo. Si Ramiro quería otra cosa, se cambia el `<svg>` y nada más.
+- **Respuesta (2026-09-28):** confirmado el ícono de código QR. La pregunta se
+  cierra y con ella la Tarea 6.
+
+---
+
+### P-023 — La descripción literal de la libreta en §14 y la de la spec no coinciden
+- **Estado:** respondida
+- **Bloquea:** no bloquea. La Tarea 6 usa el texto de la spec.
+- **Qué falta:** decidir si la frase de `datos-verificados.md` §14 es literal o
+  de referencia.
+- **Contexto:** §14 dice: *Nombre a usar en el sitio: **Libreta digital del
+  vehículo**, con esta descripción debajo: "Historial de reparaciones de cada
+  vehículo. Se escanea el código QR pegado en el vehículo y se abre desde el
+  celular, sin instalar nada."* La spec de M3, Tarea 6, pone en ese lugar otras
+  palabras: la bajada `El historial de reparaciones de tu vehículo, siempre en
+  tu celular.` y el párrafo `Cada vehículo que atendemos lleva un código QR
+  pegado. Lo escaneás con el celular y se abre la libreta, sin instalar nada.
+  La tienen todos nuestros clientes, particulares y empresas.` El nombre sí es
+  exactamente el prescrito. **No hay ningún dato distinto:** cada hecho de la
+  frase de §14 está en el bloque, y los cinco ítems de "Qué guarda" son cinco
+  de los campos que §14 enumera. La diferencia es de redacción, y tiene un
+  motivo: la frase de §14 está en tercera persona y el §18 exige voseo en toda
+  la web, así que la spec la pasa a voseo y la reparte en dos. O sea que la
+  spec resuelve una tensión interna de `datos-verificados.md`. Aun así, §9 dice
+  que una contradicción entre la spec y este archivo se anota, y no estaba
+  anotada. Lo levantó el revisor de la Tarea 6
+  (`docs/revisiones/m3-t6.md`, hallazgo 2).
+- **Qué hice mientras tanto:** **decisión mía:** usé el texto de la spec, que
+  es el que Ramiro aprobó para M3 y el que respeta el voseo. Si Ramiro quiere
+  que §14 valga al pie de la letra, el cambio es reemplazar esos dos textos.
+  Lo que conviene decidir de fondo es si §14 fija la frase o solo los hechos:
+  de eso depende también M7, la página de flotas.
+- **Respuesta (2026-09-28):** la decisión fue correcta. La frase de §14 es de
+  referencia, no literal. `datos-verificados.md` §14 lo dice ahora de forma
+  explícita: "La descripción de arriba fija los hechos, no la redacción. En el
+  sitio se reformula en voseo, sin cambiar ni agregar hechos."
+  Eso vale también para M7.
+
+---
+
+### P-024 — La tarjeta "Casa de Repuestos" de Servicios repite el bloque nuevo
+- **Estado:** respondida
+- **Bloquea:** no bloquea. La Tarea 7 quedó ejecutada y la tarjeta sigue donde
+  estaba.
+- **Qué falta:** decidir si la tarjeta "Casa de Repuestos" de la pestaña
+  "Repuestos" se queda, se acorta o se va.
+- **Contexto:** la Tarea 7 dice: "Si la pestaña 'Repuestos' de Servicios
+  (Tarea 4) queda redundante con este bloque, **no la elimines**: anotalo en
+  `preguntas-abiertas.md`". Queda redundante, pero **solo una tarjeta de las
+  cuatro**, no la pestaña entera. La tarjeta destacada dice: "Stock propio, en
+  el mismo lugar que el taller. Repuestos originales y alternativos, abierta al
+  público" (`public/index.html:1535`, con la etiqueta "Diferencial clave" en la
+  línea 1534). Son los mismos tres hechos que
+  los tres párrafos de la sección nueva: local propio, originales y
+  alternativos, abierta al público. Las otras tres tarjetas de la pestaña
+  ("Filtros & Lubricantes", "Frenos & Suspensión", "Distribución") no se
+  repiten: enumeran qué piezas hay, que la sección nueva no dice.
+  Además, en el orden que fija la Tarea 13, Servicios va **antes** que la casa
+  de repuestos, así que el lector se cruza primero con la versión corta y
+  después con la larga.
+- **Qué hice mientras tanto:** nada: la spec dice explícitamente que no la
+  elimine, así que la dejé tal cual, con su texto y su etiqueta. Si Ramiro
+  quiere sacarla, es borrar el bloque de la tarjeta y nada más; la pestaña
+  queda con tres tarjetas, que es lo que ya tienen otras pestañas.
+- **Respuesta (2026-09-28):** se elimina la tarjeta "Casa de Repuestos" de la
+  pestaña "Repuestos", con su etiqueta "Diferencial clave". La pestaña queda
+  con tres tarjetas. Decisión de Ramiro.
+
+---
+
+### P-025 — Repinté la cadena de diagonales en la Tarea 7, tocando CSS de la Tarea 6
+- **Estado:** respondida
+- **Bloquea:** no bloquea.
+- **Qué falta:** confirmar que estuvo bien hacerlo ahora y no esperar a la
+  Tarea 13.
+- **Contexto:** la Tarea 6 dejó la libreta con fondo blanco y **sin** remate
+  diagonal, porque debajo tenía Servicios, también blanco. El revisor de esa
+  tarea verificó esa ausencia y la dio por correcta
+  (`docs/revisiones/m3-t6.md`: "no agregar `::after` es coherente, no un
+  olvido"). La Tarea 7 mete la casa de repuestos entre medio, con fondo
+  `--gris-bg`, y entonces la libreta pasa a tener debajo una sección de otro
+  color. Para no dejar el único corte recto de la página, le agregué a
+  `.notebook` un `::after` en `--gris-bg` y le subí el `padding` inferior a
+  148 px, que es el que ya usan `.how-we-work`, `.services` y `.testimonials`.
+  Eso es tocar CSS que la Tarea 7 no nombra (`CLAUDE.md` §7).
+- **Qué hice mientras tanto:** **decisión mía:** lo hice igual, porque el
+  patrón "cada sección remata con una diagonal del color de la de abajo" es el
+  que Ramiro ratificó al responder P-019, y bajo ese patrón el color queda
+  determinado solo en cuanto aparece una sección nueva debajo: no había dos
+  opciones entre las cuales elegir. La geometría es la misma que aprobó P-019
+  (66 px, `clip-path: polygon(0 100%, 100% 0, 100% 100%)`). Verificado con
+  estilo computado que la cadena entera cierra, de punta a punta:
+  `how-we-work` → blanco → `libreta` → gris → `casa-de-repuestos` → blanco →
+  `servicios` → gris → `resenas` → azul → `contacto`.
+  **Pendiente para la Tarea 13:** la cadena está pintada para el orden de hoy,
+  no para el orden final. Cuando la T13 mueva Servicios al segundo lugar y
+  meta Flotas debajo de la casa de repuestos, hay que repintar al menos dos
+  remates. Queda escrito acá para que no se pierda.
+
+- **Actualización, Tarea 11 (2026-09-26):** volvió a pasar, por tercera vez en
+  el módulo. La zona de cobertura entró entre Opiniones y Contacto, así que
+  `.testimonials::after` (`public/index.html:997-1007`) pasó de `--azul` a
+  `--blanco`, y la sección nueva estrenó el suyo en `--azul`. Mismo criterio y
+  mismo fundamento: bajo el patrón que Ramiro ratificó en P-019 no había dos
+  opciones, y dejarlo en `--azul` habría metido una cuña azul de 66 px entre
+  una sección gris y una blanca. La cadena completa hoy, medida con estilo
+  computado, es: `como-trabajamos` gris → blanco → `libreta-digital` blanco →
+  gris → `casa-de-repuestos` gris → blanco → `flotas` blanco (sin remate,
+  blanco sobre blanco) → `servicios` blanco → gris → `resenas` gris → blanco
+  → `zona-de-cobertura` blanco → azul → `contacto` azul.
+  **El inventario de pendientes para la Tarea 13 cambió:** en el orden final,
+  Servicios sube al segundo lugar, Marcas entra en el séptimo y Flotas queda
+  debajo de la casa de repuestos, así que la cadena hay que recalcularla
+  entera, no solo dos remates.
+  Lo levantó el revisor de la Tarea 11, con el mismo argumento con el que
+  había levantado P-026: una decisión que vive solo en un comentario de CSS no
+  está registrada.
+- **Respuesta (2026-09-28):** confirmado el repintado de la Tarea 7, y **como
+  regla general:** el color de cada remate diagonal es el de la sección de
+  abajo, y no es una decisión. Cuando cambie el orden, se recalcula sin
+  preguntar. En la Tarea 13 se recalcula la cadena entera.
+
+---
+
+### P-026 — Dos decisiones de forma en el bloque de flotas, que solo estaban en comentarios de CSS
+- **Estado:** respondida
+- **Bloquea:** no bloquea.
+- **Qué falta:** confirmar las dos, o pedir que se deshagan.
+- **Contexto:** la Tarea 8 pide "bloque corto y secundario: no más alto que la
+  sección de 'Cómo trabajamos'", y da el texto del botón, pero no dice cómo se
+  ve ninguna de las dos cosas.
+- **Qué hice mientras tanto:** dos **decisiones mías**:
+  1. **El panel acotado.** En vez de una sección a todo ancho como las demás,
+     un panel de `max-width: 860px` centrado, con fondo `--gris-bg` y borde
+     izquierdo azul, dentro de una sección blanca
+     (`public/index.html:631-673`). Es la única parte del `<main>` que no
+     ocupa el ancho completo, y así busqué que se lea como secundaria. Medido:
+     la sección va de 561 px de alto a 1440 px hasta 911 px a 320 px, contra
+     1245 a 1810 px de "Cómo trabajamos", así que la condición de la spec se
+     cumple en todos los anchos.
+  2. **El ícono de WhatsApp en el botón** (`public/index.html:1437-1439`). La
+     spec de la Tarea 8 da el rótulo pero no menciona ícono. Lo puse porque es
+     el patrón del sitio: la Tarea 1 dice que los botones de WhatsApp
+     "conservan el ícono de WhatsApp" y `datos-verificados.md` §19 los trata
+     como un grupo. **Tiene un costo medido:** a 360 px el ícono hace que el
+     rótulo pase de dos líneas a tres (alto del botón 77 px → 101 px). A
+     320 px son tres líneas con ícono o sin él, y a 390 px son dos con ícono.
+     Ninguna palabra se corta y no hay desborde en ningún ancho. Si Ramiro
+     prefiere dos líneas a 360 px, se borra el `<svg>` y nada más.
+- **Respuesta (2026-09-28):** confirmadas las dos decisiones, el panel acotado y
+  el ícono de WhatsApp, aunque a 360 px el botón ocupe tres líneas.
+
+---
+
+### P-027 — La Tarea 8 deja dos llamados a flotas en la home
+- **Estado:** respondida
+- **Bloquea:** no bloquea la ejecución, pero conviene resolverlo dentro de M3.
+- **Qué falta:** decidir qué pasa con el `<h2>` de la sección de contacto.
+- **Contexto:** con el bloque nuevo, la home queda con dos secciones que
+  llaman a las flotas: `¿Tenés una flota de vehículos?`
+  (`public/index.html:1474`, la que crea esta tarea) y
+  `¿Necesitás atención para tu flota?` (`public/index.html:1815`, la de
+  contacto, que ya estaba). La Tarea 12 reescribe el contenido de contacto
+  —botón, teléfono, horario, dirección, formas de pago, redes, mapa, hueco
+  F-07 y la frase de "respuesta inmediata"— pero **no da texto de reemplazo
+  para ese `<h2>`**. O sea que, tal como está escrita la spec, la duplicación
+  sobrevive a M3, y va en contra del objetivo del módulo, que es que la home
+  le hable primero al particular. Lo levantó el revisor de la Tarea 8
+  (`docs/revisiones/m3-t8.md`, hallazgo 2).
+- **Qué hice mientras tanto:** nada. La Tarea 8 no manda tocar contacto y no
+  lo toqué. El texto nuevo de ese `<h2>`, si va, lo tiene que escribir Ramiro:
+  yo no escribo textos de cara al usuario (`CLAUDE.md` §1). Si me lo pasa, lo
+  aplico en la Tarea 12.
+- **Respuesta (2026-09-28):** el `<h2>` de la sección de contacto pasa a "Pedí tu
+  turno". Decisión de Ramiro.
+
+---
+
+### P-028 — La única verificación que pide la Tarea 9 hoy da negativo, y queda diferida a la Tarea 13
+- **Estado:** respondida
+- **Bloquea:** no bloquea la ejecución, pero **la Tarea 9 no está cerrada**:
+  su verificación no se puede hacer hasta que la Tarea 13 reordene.
+- **Qué falta:** nada de Ramiro. Es un registro: que quede escrito que la
+  Tarea 9 se cierra recién con la Tarea 13.
+- **Contexto:** la Tarea 9 (`docs/spec-m3-home.md:264-267`) no pide cambios de
+  contenido, solo "verificar que [la tira de marcas] quedó bien ubicada en el
+  orden nuevo (ver Tarea 13)". Hoy esa verificación **falla**. El `<main>` va
+  de `public/index.html:1266` a `:1905` y sus nueve hijos, en orden, son
+  `inicio` (:1223), `brands-strip` (:1273), `como-trabajamos` (:1317),
+  `libreta-digital` (:1364), `casa-de-repuestos` (:1401), `flotas` (:1424),
+  `servicios` (:1447), `resenas` (:1636) y `contacto` (:1749): Marcas está en
+  la posición 2 de 9 y el orden final de la Tarea 13
+  (`docs/spec-m3-home.md:330-341`) la pone en la 7. Servicios también está
+  fuera de lugar (7 en vez de 2), lo que confirma que el reordenamiento es una
+  sola operación de la Tarea 13 y que la Tarea 9 no tenía que mover nada
+  (`CLAUDE.md` §7). Lo levantó el revisor
+  (`docs/revisiones/m3-t9.md`, hallazgo 1 de la vuelta 1): yo había dado la
+  tarea por hecha dejando el rastro solo en un comentario de CSS
+  (`public/index.html:631-637`), que es exactamente el defecto que ya había
+  aparecido en P-026, una tarea antes.
+- **Qué hice mientras tanto:** no toqué la tira, que es lo correcto. **El
+  contenido lo verificó el revisor, no yo** (vuelta 1, verificaciones 1 y 2, y
+  vuelta 2, verificación 8): aisló el bloque de marcado en `9bc7562` (cierre
+  de M2a) y en el árbol actual, normalizó el único cambio autorizado —los 14
+  `aria-hidden="true"` que pide la Tarea 1— y dio idéntico. Recalculado en la
+  vuelta 2 normalizando además los espacios, el sha1 del bloque es
+  `6f60f91f40744d56b68ffe56e639fd8b3adeebe0` en las dos versiones; el hash
+  depende de cómo se normalice, así que sin ese criterio no se puede
+  recalcular. Del CSS solo cambiaron cuatro opacidades, que autoriza la
+  Tarea 1.
+  **Yo, en cambio, le pasé al revisor una premisa falsa:** le dije que el
+  único commit que había tocado la tira era `e3b8618`, sin haberlo comprobado.
+  `git log --oneline --follow -G 'brands-strip|brand-name|brands-intro|brand-sep' -- public/index.html`
+  devuelve `bc566b6`, `2123134`, `50a83b8` y `42bf0d5`, y `e3b8618` no está.
+- **Capturas:** el encabezado de la spec (`docs/spec-m3-home.md:30-33`) pide
+  capturas a 360, 390 y 1440 px en cada tarea. Para la Tarea 9 **no se
+  tomaron**, ni por mí ni por el revisor. **Decisión mía:** con `public/`
+  idéntico a `b83e51f` —probado por hash de árbol, el mismo
+  `adff67ff2fd8d3f90641347cdd80ef52679ea6e7`— serían idénticas a las de la
+  Tarea 8, así que no las saqué. Queda declarado acá en vez de omitido.
+- **Actualización, Tarea 12 (2026-09-27):** las líneas de arriba son las que
+  había al medir, y desde entonces la Tarea 11 y la Tarea 12 corrieron el
+  archivo. Hoy el `<main>` tiene **diez** hijos, no nueve, porque se sumó la
+  zona de cobertura: `inicio` (:1269), `brands-strip` (:1319),
+  `como-trabajamos` (:1363), `libreta-digital` (:1410), `casa-de-repuestos`
+  (:1447), `flotas` (:1470), `servicios` (:1493), `resenas` (:1682),
+  `zona-de-cobertura` (:1799) y `contacto` (:1809). **Lo que no cambió es el
+  problema:** Marcas sigue en la posición 2 y el orden final la pone en la 7,
+  así que la Tarea 9 sigue sin poder cerrarse.
+- **Dos cosas que la Tarea 13 se va a encontrar**, y que dejo escritas acá
+  para que no se pierdan:
+  1. La tira es un `<div class="brands-strip">` **sin `id` y sin encabezado**
+     (`public/index.html:1273`), así que hoy ninguna ancla puede apuntarle. La
+     Tarea 13 pide que "el menú de navegación refleja este orden y cada enlace
+     lleva a su sección", y Marcas es el punto 7 de ese orden.
+  2. El menú no tiene entrada "Marcas": los cinco enlaces son Inicio,
+     Servicios, ¿Por qué elegirnos?, Reseñas y Contacto.
+- **Respuesta (2026-09-28):** entendido; la Tarea 9 se cierra en la Tarea 13.
+  **Marcas no lleva entrada en el menú:** es una franja, no un destino, y no
+  hace falta agregarle `id`. Decisión de Ramiro.
+
+---
+
+### P-029 — Las 13 marcas de "También atendemos" no están enumeradas en los datos verificados
+- **Estado:** respondida
+- **Bloquea:** no bloquea. Es anterior a M3 y la Tarea 9 prohíbe cambiar el
+  contenido de la tira.
+- **Qué falta:** decidir si el listado concreto se sostiene, en particular
+  PORSCHE.
+- **Contexto:** la tira publica, en la fila "También atendemos": CHEVROLET,
+  RENAULT, FIAT, PEUGEOT, MERCEDES-BENZ, AUDI, NISSAN, HONDA, CITROËN, BMW,
+  JEEP, DODGE y PORSCHE (`public/index.html:1286-1310`).
+  `datos-verificados.md` §10 no las enumera: dice "Marcas que también se
+  atienden: **Todas**. Hay fotos y publicaciones de Instagram que lo
+  respaldan." O sea que las 13 descansan enteras en ese "Todas".
+  **No viola la prohibición de §10**, que es "no listar marcas de lujo ni
+  deportivas *como especialidad*": las cuatro de gama alta están en la fila
+  secundaria, no en "Especialistas en", donde solo están Toyota, Volkswagen y
+  Ford. Lo levantó el revisor de la Tarea 9 (hallazgo 5).
+- **Qué hice mientras tanto:** nada. No toqué la tira. Si Ramiro quiere sacar
+  alguna marca, o prefiere que §10 las enumere una por una, se hace donde
+  corresponda: sacar una marca es borrar contenido y eso no lo decido yo.
+- **Respuesta (2026-09-28):** las trece marcas se quedan. Quedan enumeradas en
+  `datos-verificados.md` §10, con la confirmación de Ramiro de que hay
+  trabajos realizados y material que lo respalda para cada una.
+
+---
+
+### P-030 — Dos textos que la Tarea 10 deja repetidos en la sección de opiniones
+- **Estado:** respondida
+- **Bloquea:** no bloquea el resto del módulo, pero **la duplicación se ve hoy
+  en la página**: el rótulo superior y el `<h2>` dicen la misma frase, una
+  debajo de la otra. Se ve en `temporary screenshots/m3-t10-duplicado-*.png`.
+- **Qué falta:** decidir qué dice, o si va, el rótulo superior; y decidir si la
+  insignia de Google se queda al lado del subtítulo nuevo.
+- **Contexto:** la Tarea 10 (`docs/spec-m3-home.md:274-287`) da un `<h2>` y un
+  subtítulo nuevos, y manda eliminar un párrafo. No dice nada de otros dos
+  elementos que ya estaban en esa sección y que con los textos nuevos quedan
+  repetidos:
+  1. El rótulo superior, `<span class="eyebrow-label">`
+     (`public/index.html:1646`), dice **"Lo que dicen nuestros clientes"**,
+     que es **exactamente** el texto que la spec le da al `<h2>`
+     (`public/index.html:1647`). O sea que la misma frase se imprime dos veces
+     seguidas.
+  2. La insignia de Google (`public/index.html:1652-1664`) muestra "4,9"
+     (`:1659`), las cinco estrellas y "Más de 130 opiniones en Google"
+     (`:1663`). El subtítulo nuevo (`:1648`) dice "4,9 en Google, con más de
+     130 opiniones.": el mismo dato, dos renglones más arriba.
+- **Qué hice mientras tanto:** **nada: los dos quedaron como estaban.** Dejé un
+  comentario junto al rótulo para que nadie lo saque por su cuenta. Las dos
+  cosas son borrado o reescritura de texto de cara al usuario, y eso no lo
+  decido yo (`CLAUDE.md` §1 y §9, y la Regla de textos de la propia spec de
+  M3: si una frase no encaja, "no se reescribe: se anota en
+  `preguntas-abiertas.md` con una captura y se sigue").
+- **Un error mío, y su corrección:** en la primera pasada de la Tarea 10 **sí
+  borré el rótulo**, declarándolo como decisión mía. El revisor lo rechazó
+  como bloqueante y tenía razón: §9 lista "hace falta borrar algo que la spec
+  no menciona" como un caso de hueco, y el tratamiento de un hueco es anotarlo
+  y seguir, no elegir una de las salidas. Me lo señaló además con mi propia
+  contradicción: en esta misma pregunta le había aplicado a la insignia el
+  criterio correcto ("no me corresponde") y al rótulo el contrario. El rótulo
+  está repuesto, idéntico a como estaba.
+- **Si Ramiro quiere sacarlo**, es borrar la línea 1646 y su comentario. Si
+  quiere otro texto, lo escribe él.
+- **Una regla de CSS que quedó inerte, para que nadie se confunda en la Tarea
+  13:** al pasar `.testimonials-grid` a dos columnas
+  (`public/index.html:1035`), la regla del `@media (max-width: 900px)`
+  (`public/index.html:1142`) quedó diciendo exactamente lo mismo que la de
+  escritorio. **No la borré**, porque limpiar lo que la tarea no toca está
+  prohibido por `CLAUDE.md` §7 y un borrado no mandado es un hueco por §9.
+  Medido: a 900 px las columnas son `408px 408px` y a 901 px `408.5px
+  408.5px`, o sea que cruzar el corte no cambia nada; la diferencia es el
+  ancho del contenedor, no la regla. Las dos columnas de 481 a 900 px salen
+  hoy de la regla base, no de esa. Lo levantó el revisor de esta tarea.
+- **Respuesta (2026-09-28):** se elimina el rótulo superior "Lo que dicen
+  nuestros clientes" (queda solo el `<h2>`) y se elimina el subtítulo "4,9 en
+  Google, con más de 130 opiniones." (queda la insignia de Google, que dice lo
+  mismo con más respaldo). La regla CSS inerte del *media query* de 900 px se
+  borra en la limpieza de la Tarea 13. Decisión de Ramiro.
+
+---
+
+### P-031 — La frase que la Tarea 12 manda reemplazar ya no existe, y la que quedó no se puede tocar sin reescribir
+- **Estado:** respondida
+- **Bloquea:** **sí, en parte.** Es el único punto de la Tarea 12 que quedó sin
+  hacer, y mientras tanto **sigue publicada una afirmación que
+  `datos-verificados.md` prohíbe**. No bloquea la Tarea 13, pero sí el cierre
+  del módulo, junto con P-021.
+- **Qué falta:** el texto exacto del párrafo de contacto, escrito por Ramiro.
+- **Contexto:** la Tarea 12 dice: *Donde hoy dice "Respuesta inmediata",
+  reemplazar por: `Respondemos de lunes a viernes de 8:00 a 17:30.` No es
+  cierto que la respuesta sea inmediata: fuera del horario no se atiende.*
+  La frase **con mayúscula** ya no existe. Verificado con
+  `git log --oneline --follow -G 'Respuesta inmediata' -- public/index.html`,
+  que devuelve `1e3ab33` y `42bf0d5`: estaba en dos lugares que **la Tarea 5
+  borró**, el `<h3>Stock propio. Respuesta inmediata.</h3>` de "¿Por qué
+  elegirnos?" y un párrafo del proceso de cinco pasos
+  (`1e3ab33^:public/index.html:1233` y `:1292`).
+  **Pero el punto de la spec no quedó sin objeto**, y conviene decirlo claro
+  porque la primera redacción de esta pregunta daba a entender lo contrario:
+  aquellas dos frases hablaban de *stock* y de *reparación*, y el punto de la
+  spec está escrito **dentro de "Contacto"**, con la justificación "fuera del
+  horario no se atiende", que describe exactamente la afirmación de
+  **respuesta** que sigue viva. O sea que hay algo que sacar, y hay que
+  sacarlo. Lo corrigió el revisor de la Tarea 12.
+  Lo que queda hoy es, en minúscula y dentro de una oración que
+  la spec no cita, en `public/index.html:1823`:
+  *"Diagnóstico transparente, stock propio y respuesta inmediata. Coordiná tu
+  turno directamente por WhatsApp y un técnico especializado te responde a la
+  brevedad."* Ahí hay dos afirmaciones de rapidez, no una: "respuesta
+  inmediata" y "te responde a la brevedad".
+  Reemplazar literalmente las dos palabras da una oración rota
+  ("…stock propio y Respondemos de lunes a viernes de 8:00 a 17:30.."), y
+  cualquiera de las otras lecturas —cambiar la primera oración entera, o el
+  párrafo entero— borra texto que la spec no menciona ("Diagnóstico
+  transparente", "stock propio", la invitación a coordinar por WhatsApp).
+- **Captura:** `temporary screenshots/m3-t12-p031-390.png` y `-1440.png`, que
+  es lo que exige la Regla de textos de la spec para este caso.
+- **Qué hice mientras tanto:** **el párrafo quedó intacto**, y quedó un
+  marcador `TODO_DATO` en el código, justo arriba
+  (`public/index.html:1816-1822`), que explica qué falta y remite acá. Las
+  tres salidas posibles exigen escribir o recortar texto de cara al usuario, y
+  eso no lo hago yo (`CLAUDE.md` §1 y §9). Es el mismo criterio por el que el
+  revisor me rechazó la Tarea 10 cuando borré un rótulo que la spec no
+  nombraba. Todo el resto de la Tarea 12 se hizo.
+  En la primera pasada **no** había dejado el `TODO_DATO` ni la captura: las
+  dos cosas las exige el procedimiento y las dos me las marcó el revisor.
+- **Qué necesito:** el párrafo completo, tal como tiene que quedar. Si la
+  intención es solo sacar las dos afirmaciones de rapidez y dejar el resto,
+  igual hace falta que el texto lo escriba Ramiro.
+- **Riesgo mientras tanto:** la página sigue afirmando que la respuesta es
+  inmediata. **Con precisión, porque en la primera redacción lo dije de más:**
+  esa frase exacta **no** figura en la lista de "Afirmaciones prohibidas por
+  genéricas" de `datos-verificados.md` §18b —ahí están "rapidez", "servicio
+  rápido" y "atención inmediata"—, pero va contra el criterio de esa misma
+  sección, que dice que la demora es variable y que **no se publican plazos**,
+  y contra la justificación que la propia spec da al pedir el cambio. No llega
+  a publicarse igual, porque M5 ya está bloqueada por P-007. Lo precisó el
+  revisor de la Tarea 12.
+- **Respuesta (2026-09-28):** el párrafo completo de contacto pasa a:
+  "Escribinos por WhatsApp para coordinar el turno o pedir un presupuesto.
+  Respondemos de lunes a viernes de 8:00 a 17:30." Se saca el `TODO_DATO`.
+  Texto de Ramiro.
+
+---
+
+### P-032 — "Los enlaces del pie apuntan a las secciones nuevas": cuáles y con qué rótulos
+- **Estado:** respondida
+- **Bloquea:** no bloquea. Ningún enlace del pie está roto.
+- **Qué falta:** decidir qué secciones nuevas entran en la columna
+  "Navegación" del pie, y con qué texto.
+- **Contexto:** la Tarea 12 dice "Los enlaces del pie apuntan a las secciones
+  nuevas", sin decir cuáles ni cómo se llaman. El módulo creó cuatro secciones
+  nuevas: `#libreta-digital`, `#casa-de-repuestos`, `#flotas` y
+  `#zona-de-cobertura`. La columna "Navegación" (`public/index.html:1923-1931`, con los cinco enlaces en `:1925-1929`)
+  tiene hoy cinco enlaces: Inicio, "¿Por qué elegirnos?" → `#como-trabajamos`,
+  Servicios, Reseñas y Contacto. Ninguno está roto: los cinco destinos
+  existen. El rótulo "¿Por qué elegirnos?" apuntando a "Cómo trabajamos" es
+  decisión de Ramiro, ya cerrada en P-018.
+- **Qué hice mientras tanto:** **una sola cosa, la que no exige escribir
+  texto:** la columna "Servicios" del pie tenía un enlace que decía "Casa de
+  Repuestos" y apuntaba a `#servicios`; ahora apunta a `#casa-de-repuestos`,
+  que es su sección propia. El rótulo no cambió.
+  **No agregué entradas nuevas** a la columna "Navegación": elegir cuáles de
+  las cuatro secciones van y con qué rótulo es decisión de contenido.
+  Ojo que la Tarea 13 pide algo parecido para el menú de navegación, así que
+  conviene decidir las dos cosas juntas.
+- **Respuesta (2026-09-28):** decidido por Ramiro, junto con el menú de la
+  Tarea 13.
+
+  **Menú (escritorio y móvil), en este orden:** Inicio · Servicios · ¿Por qué
+  elegirnos? (a `#como-trabajamos`) · Flotas (a `#flotas`) · Reseñas ·
+  Contacto.
+
+  **Columna "Navegación" del pie:** Inicio · Servicios · ¿Por qué elegirnos? ·
+  Libreta digital (a `#libreta-digital`) · Flotas · Reseñas · Zona de cobertura
+  (a `#zona-de-cobertura`) · Contacto. Casa de repuestos no se repite: ya está
+  en la columna "Servicios".
+
+---
+
+### P-033 — Cómo quedaron las tres redes en la sección de contacto
+- **Estado:** respondida
+- **Bloquea:** no bloquea. Los tres enlaces funcionan y apuntan a las URLs
+  verificadas.
+- **Qué falta:** confirmar la forma, o pedir otra.
+- **Contexto:** la Tarea 12 dice "Redes: Instagram, Facebook y LinkedIn, **como
+  enlaces reales** a las URLs de `datos-verificados.md` §5, con
+  `target="_blank"` y `rel="noopener"`". Da las tres redes y la exigencia
+  técnica, pero no dice **cómo se muestran**. Lo que había antes era una fila
+  sola, rotulada "Instagram", con el texto `@dgpcentromecanico` que **no era
+  un enlace** (`git show c076267:public/index.html`, líneas 1818-1826).
+- **Qué hice mientras tanto:** tres **decisiones mías**, todas de forma y las
+  tres reversibles:
+  1. **Una sola fila para las tres**, rotulada `Redes` —la palabra es de la
+     spec—, en vez de tres filas separadas. Así no hubo que inventar un
+     rótulo ni un identificador para cada red.
+  2. **El texto visible de cada enlace:** `@dgpcentromecanico` para Instagram,
+     que es el que ya estaba y así no se pierde ningún texto, y `Facebook` y
+     `LinkedIn` para las otras dos, que son los nombres que usa la propia
+     spec. Queda una fila despareja, un usuario y dos nombres de red:
+     `datos-verificados.md` §5 solo da las URLs, no da usuarios de Facebook ni
+     de LinkedIn, y no los voy a deducir de la URL.
+  3. **El ícono.** La fila tenía el de Instagram y ahora contiene tres redes,
+     así que lo cambié por uno neutro de tres nodos conectados, en el mismo
+     trazo que los demás íconos de contacto.
+  Los tres enlaces se probaron con foco de teclado: alcanzables, con contorno
+  visible, `target="_blank"` y `rel="noopener"` en los tres.
+- **Respuesta (2026-09-28):** confirmadas las tres decisiones de las redes.
+
+---
+
+### P-034 — Cuatro cosas del contacto y el pie que decidí yo o que quedaron desparejas
+- **Estado:** respondida
+- **Bloquea:** no bloquea nada.
+- **Qué falta:** confirmar las tres primeras y decidir la cuarta.
+- **Contexto y qué hice:** las cuatro salieron de la revisión de la Tarea 12.
+  1. **La línea suelta del pie de página** (`public/index.html:1957`). Saqué
+     de ahí la frase del posicionamiento anterior y su separador, y dejé
+     "Villa María, Córdoba" porque la spec no manda sacarlo. **Decisión mía.**
+     Consecuencia: el pie dice ahora "Villa María, Córdoba" **cuatro veces**:
+     debajo del nombre (`:1918`), al final del lema nuevo (`:1919`), en la
+     columna Contacto (`:1945`) y en esa línea (`:1957`). Sacar alguna es
+     borrar contenido y no lo decido yo.
+  2. **El aspecto del hueco F-07** (`.contact-slot`, `public/index.html:891-896`).
+     Los otros tres huecos son el rectángulo gris rayado que describe
+     `docs/brief-fotografico.md`. Sobre el fondo azul de contacto ese gris se
+     ve como un parche, así que a este le puse fondo blanco al 6 % y borde
+     blanco al 35 %, y el rótulo en blanco (`.contact-slot span`,
+     `public/index.html:896`). **Y una cuarta diferencia que no había
+     declarado:** el `<div>` de F-07 (`:1899`) **no lleva la clase `fade-in`**
+     que sí llevan F-02, F-03 y F-04, porque la sección de contacto no anima
+     sus bloques. Las cuatro son **decisiones mías**, de forma: el marcador,
+     el `data-slot`, la proporción y el texto del rótulo son los del brief, y
+     la proporción 16:9 está medida exacta en cuatro anchos.
+  3. **El rótulo `Formas de pago`** (`public/index.html:1880`). La spec lo
+     escribe como nombre de campo, no entre acentos graves como los textos
+     que sí dicta. Lo usé tal cual de rótulo visible. **Decisión mía**, igual
+     que "Redes" en P-033, que sí había declarado.
+  4. **La columna "Contacto" del pie** (`public/index.html:1945`) quedó con el
+     formato viejo del horario, "Lun–Vie 08:00 – 17:30hs", mientras la sección
+     de contacto ahora dice "Lunes a viernes de 8:00 a 17:30"; y muestra
+     `@dgpcentromecanico` como texto plano, sin enlazar, cuando arriba las tres
+     redes ya son enlaces reales. **No lo toqué:** la Tarea 12 solo manda
+     cambiar el lema, sacar las frases y apuntar los enlaces del pie. El dato
+     en sí es correcto (`datos-verificados.md` §3). Queda a la vista porque la
+     misma página muestra el mismo horario en dos formatos.
+- **Respuesta (2026-09-28):** decidido por Ramiro, punto por punto.
+
+  1. En el pie se saca "Villa María, Córdoba" de debajo del nombre y de la
+     línea suelta final. Quedan el lema y la dirección de la columna Contacto.
+  2. Confirmado el aspecto del hueco F-07.
+  3. Confirmado el rótulo "Formas de pago".
+  4. En la columna Contacto del pie, el horario pasa a "Lunes a viernes de
+     8:00 a 17:30" y "@dgpcentromecanico" pasa a enlace a Instagram, con
+     `target="_blank"` y `rel="noopener"`.
