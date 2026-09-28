@@ -285,7 +285,7 @@ Sin commit si no hubo cambios.
 ## Tarea 10 — Opiniones
 
 - `<h2>`: `Lo que dicen nuestros clientes`
-- Subtítulo: `4,9 en Google, con más de 130 opiniones.`
+- Sin subtítulo.
 - Se elimina el párrafo "La confianza de nuestros clientes es el motor que nos
   impulsa a superarnos cada día".
 - Las cuatro reseñas **no cambian**: textos, nombres, fechas y estrellas ya
@@ -293,6 +293,14 @@ Sin commit si no hubo cambios.
 - Grilla de **2 × 2** en escritorio (se acaba la tarjeta suelta abajo), una
   columna en celular.
 - Botón a la ficha, como está.
+
+> **Actualizado el 2026-09-28 por la decisión de cierre de P-030.** Cuando se
+> ejecutó esta tarea, el segundo punto decía: *Subtítulo: `4,9 en Google, con
+> más de 130 opiniones.`* Al responder P-030, Ramiro mandó eliminarlo, porque
+> la insignia de Google que está debajo dice lo mismo con más respaldo. En la
+> misma respuesta mandó eliminar el rótulo superior, que repetía el `<h2>`
+> palabra por palabra y que esta tarea nunca había dictado. Ver "Decisiones de
+> cierre (P-021 a P-034)" al final de este archivo.
 
 Commit: `Opiniones en grilla de dos por dos`
 
