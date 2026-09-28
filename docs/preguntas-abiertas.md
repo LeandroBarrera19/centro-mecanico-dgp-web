@@ -104,8 +104,8 @@ referencia por referencia, está en `docs/planes/m3-informe.md`.
   que pasarían por `text=auto`.
 - **Por qué el riesgo es acotado, medido en un repositorio de prueba:**
   `text=auto` detecta un binario por su contenido, no por su nombre. Un `.pdf`
-  con `
-` y bytes nulos **fue detectado como binario y sobrevivió intacto**.
+  con retornos de carro y bytes nulos **fue detectado como binario y sobrevivió
+  intacto**.
   Solo se corrompería un binario **sin ningún byte nulo en sus primeros 8 kB**.
   Hoy en el repositorio no hay ninguno: el censo da 21 binarios, los 21
   cubiertos por la lista.
