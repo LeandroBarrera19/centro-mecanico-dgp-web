@@ -119,12 +119,22 @@ redistribuidas así:
 | `Mecánica` | Motor y Periféricos · Frenos y Seguridad · Tren Delantero y Trasero · Transmisión y Trenes de Fuerza · Kit Altura & Ensanche |
 | `Diagnóstico y electrónica` | Diagnóstico OBD · Reprogramación ECU · Sistemas de Inyección |
 | `Aire acondicionado y confort` | Sistema A/C Completo · Iluminación · Velocidad Crucero |
-| `Repuestos` | Casa de Repuestos · Filtros & Lubricantes · Frenos & Suspensión · Distribución |
+| `Repuestos` | Filtros & Lubricantes · Frenos & Suspensión · Distribución |
 
 - La pestaña "Preparación de Flota" desaparece.
 - La tarjeta "Libreta digital del vehículo" sale de las pestañas: pasa a su
   bloque propio (Tarea 6).
-- Total: 18 tarjetas.
+- Total: 17 tarjetas.
+
+> **Actualizado el 2026-09-28 por la decisión de cierre de P-024.** Cuando se
+> ejecutó esta tarea, la pestaña `Repuestos` llevaba cuatro tarjetas y el total
+> era 18: la primera era `Casa de Repuestos`, con la etiqueta "Diferencial
+> clave". Al responder P-024, Ramiro mandó eliminarla porque repetía la sección
+> `#casa-de-repuestos`, y la pestaña quedó con tres. Por eso quedan sin objeto,
+> y se conservan solo como registro de lo que se decidió en su momento, la fila
+> `Casa de Repuestos` de "Textos definitivos" y su viñeta en "Motivo de cada
+> cambio", las dos más abajo en esta misma tarea. Ver "Decisiones de cierre
+> (P-021 a P-034)" al final de este archivo.
 
 **Textos de las tarjetas:** se conservan los actuales, **salvo** que contengan
 una afirmación de la lista "prohibidas por genéricas" de
