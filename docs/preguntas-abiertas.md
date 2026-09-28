@@ -1077,6 +1077,31 @@ estado y ejecuta. No borra la pregunta: el historial sirve.
   Google, con más de 130 opiniones." (queda la insignia de Google, que dice lo
   mismo con más respaldo). La regla CSS inerte del *media query* de 900 px se
   borra en la limpieza de la Tarea 13. Decisión de Ramiro.
+- **Aplicado (2026-09-28).** Todo lo que dice "Qué hice mientras tanto" y "Si
+  Ramiro quiere sacarlo" acá arriba describe el estado **anterior**, y queda
+  como está porque es el planteo fechado. Lo que hay hoy en el archivo:
+  - Se fueron el `<span class="eyebrow-label">` y el `<p class="section-sub">`.
+    Queda solo el `<h2>`. El diff quita seis líneas y no agrega ninguna.
+  - **Y se fue también el comentario de cuatro líneas** que yo había dejado
+    junto al rótulo. **Decisión mía**, porque la respuesta de Ramiro nombra el
+    rótulo y el subtítulo pero no el comentario. La tomé así: el comentario era
+    mío (commit `4dbadd1`, verificado con `git log -S`), no de otro, y él mismo
+    fijaba la condición de su vencimiento ("esperando decisión del
+    propietario"), que se cumplió; dejarlo habría publicado en el código una
+    afirmación hoy falsa, "La spec no manda borrarlo, así que no se borra". El
+    revisor la aceptó como consecuencia forzosa y me marcó, con razón, que
+    estaba solo en el chat y tenía que estar escrita acá.
+  - **No se tocó** la regla inerte del *media query* de 900 px
+    (`.testimonials-grid`): va en la limpieza de la Tarea 13, como pide Ramiro.
+  - Medido: el espacio entre el `<h2>` y la insignia pasó de 90,9 px a **52,0
+    px**, que es el `margin-bottom` de `.section-header` y el mismo valor que
+    ya tienen "Casa de repuestos" y "Clientes de toda la región", los otros dos
+    encabezados de un solo `<h2>`. No quedó hueco ni salto de aire.
+  - **Criterio sobre las referencias de línea**, que el revisor pidió explicitar
+    porque en P-024 las corregí y acá no: **dejan de corregirse unidad por
+    unidad.** Cada borrado corre el archivo y las vuelve a romper, y las de
+    P-031 además desaparecen con su propia unidad. Se arreglan todas juntas en
+    el barrido de la Tarea 13 que reserva P-037.
 
 ---
 
