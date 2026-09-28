@@ -295,7 +295,11 @@
       position: absolute;
       bottom: 0; left: 0; right: 0;
       height: 110px;
-      background: linear-gradient(to bottom, rgba(244,246,249,0) 0%, var(--gris-bg) 100%);
+      /* Muere en el color de la sección de abajo, que con el orden final de la
+         Tarea 13 es Servicios, blanca. Antes moría en --gris-bg, porque debajo
+         estaba la franja de marcas. Regla de P-025: el color del remate es el
+         de la sección de abajo, y se recalcula solo cuando cambia el orden. */
+      background: linear-gradient(to bottom, rgba(255,255,255,0) 0%, var(--blanco) 100%);
       z-index: 1;
       pointer-events: none;
     }
@@ -351,21 +355,6 @@
       border-radius: 100px;
       margin-bottom: 24px;
     }
-    .badge-urgente {
-      display: inline-block;
-      font-family: 'Montserrat', sans-serif;
-      font-weight: 700;
-      font-size: 0.58rem;
-      letter-spacing: .1em;
-      text-transform: uppercase;
-      background: #D32027;
-      color: #fff;
-      padding: 3px 7px;
-      border-radius: 4px;
-      margin-left: 7px;
-      vertical-align: middle;
-      line-height: 1.4;
-    }
     .hero h1 {
       font-family: 'Montserrat', sans-serif;
       font-weight: 900;
@@ -375,7 +364,6 @@
       margin-bottom: 24px;
       max-width: 680px;
     }
-    .hero h1 em { color: var(--verde); font-style: normal; }
     .hero p {
       font-size: 1.05rem;
       color: rgba(255,255,255,0.85);
@@ -521,8 +509,9 @@
        Fondo blanco y sin trama: así la diagonal de "Cómo trabajamos"
        (var(--blanco), P-019) sigue empalmando con lo que tiene abajo. El
        remate propio va pintado de --gris-bg, que es el fondo de la casa de
-       repuestos, la sección que quedó debajo en la Tarea 7. La cadena de
-       diagonales se revisa entera en la Tarea 13, que fija el orden final. */
+       repuestos, la sección que quedó debajo en la Tarea 7. La Tarea 13
+       recalculó la cadena entera con el orden final y este remate no cambió:
+       la casa de repuestos sigue debajo. */
     .notebook {
       background: var(--blanco);
       padding: 88px 0 148px;
@@ -632,9 +621,14 @@
        "Bloque corto y secundario" (spec, Tarea 8): en vez de una sección a
        todo ancho como las demás, un panel de ancho acotado, para que no
        compita con lo que le habla al particular.
-       Sin remate diagonal: hoy debajo queda Servicios, también blanco. En el
-       orden final de la Tarea 13 debajo va Marcas, y ahí se repinta toda la
-       cadena de una vez (P-025). */
+       Sin remate diagonal, también con el orden final de la Tarea 13. Debajo
+       quedó la franja de marcas, que es --gris-bg, así que acá hay un cambio
+       de color sin diagonal. Es a propósito: la franja es una banda, no una
+       sección —no lleva id ni entrada en el menú (P-028)— y se separa de lo
+       que sigue con su propio borde inferior. Comprobado en captura a 390 y
+       1440 px. La regla de P-025 fija el color de los remates que existen; no
+       manda crear uno nuevo, y crearlo habría sido una decisión de forma que
+       nadie pidió. */
     .fleets {
       background: var(--blanco);
       padding: 88px 0;
@@ -1183,7 +1177,6 @@
       .contact-inner { grid-template-columns: 1fr; gap: 44px; }
       .hero-stats-inner { grid-template-columns: repeat(2, minmax(0, 1fr)); }
       .stat-item:nth-child(2) { border-right: none; }
-      .testimonials-grid { grid-template-columns: repeat(2, 1fr); }
     }
     /* El menú de escritorio mide 668,5 px fijos y no se achica: el que cede es
        el logo, que se planta en 97,6 px. Con el ítem "Flotas" que agrega P-032,
@@ -1326,180 +1319,6 @@
           <div class="stat-label">años de experiencia del equipo</div>
         </div>
       </div>
-    </div>
-  </div>
-</section>
-
-<!-- ═══════════════════════════════ BRANDS STRIP ═══════════════════════════════ -->
-<div class="brands-strip">
-  <div class="container">
-    <div class="brands-strip-inner">
-      <div class="brands-row">
-        <span class="brands-intro">Especialistas en</span>
-        <span class="brand-name">TOYOTA</span>
-        <span class="brand-sep" aria-hidden="true">·</span>
-        <span class="brand-name">VOLKSWAGEN</span>
-        <span class="brand-sep" aria-hidden="true">·</span>
-        <span class="brand-name">FORD</span>
-      </div>
-      <div class="brands-row">
-        <span class="brands-intro brands-intro--secondary">También atendemos</span>
-        <span class="brand-name brand-name--secondary">CHEVROLET</span>
-        <span class="brand-sep" aria-hidden="true">·</span>
-        <span class="brand-name brand-name--secondary">RENAULT</span>
-        <span class="brand-sep" aria-hidden="true">·</span>
-        <span class="brand-name brand-name--secondary">FIAT</span>
-        <span class="brand-sep" aria-hidden="true">·</span>
-        <span class="brand-name brand-name--secondary">PEUGEOT</span>
-        <span class="brand-sep" aria-hidden="true">·</span>
-        <span class="brand-name brand-name--secondary">MERCEDES-BENZ</span>
-        <span class="brand-sep" aria-hidden="true">·</span>
-        <span class="brand-name brand-name--secondary">AUDI</span>
-        <span class="brand-sep" aria-hidden="true">·</span>
-        <span class="brand-name brand-name--secondary">NISSAN</span>
-        <span class="brand-sep" aria-hidden="true">·</span>
-        <span class="brand-name brand-name--secondary">HONDA</span>
-        <span class="brand-sep" aria-hidden="true">·</span>
-        <span class="brand-name brand-name--secondary">CITROËN</span>
-        <span class="brand-sep" aria-hidden="true">·</span>
-        <span class="brand-name brand-name--secondary">BMW</span>
-        <span class="brand-sep" aria-hidden="true">·</span>
-        <span class="brand-name brand-name--secondary">JEEP</span>
-        <span class="brand-sep" aria-hidden="true">·</span>
-        <span class="brand-name brand-name--secondary">DODGE</span>
-        <span class="brand-sep" aria-hidden="true">·</span>
-        <span class="brand-name brand-name--secondary">PORSCHE</span>
-      </div>
-    </div>
-  </div>
-</div>
-
-<!-- ═══════════════════════════ CÓMO TRABAJAMOS ═══════════════════════════ -->
-<section class="how-we-work" id="como-trabajamos">
-  <div class="container">
-    <div class="section-header center">
-      <h2 class="section-title">Cómo trabajamos</h2>
-      <p class="section-sub">Lo que hacemos en cada trabajo, para que sepas qué esperar.</p>
-    </div>
-    <div class="how-grid">
-
-      <!-- TODO_IMAGEN: F-02 -->
-      <div class="img-slot fade-in" data-slot="F-02" style="aspect-ratio: 3/2">
-        <span>Foto pendiente · F-02</span>
-      </div>
-
-      <div class="how-steps fade-in delay-1">
-
-        <div class="how-step">
-          <h3>Turno para service</h3>
-          <p>Para un service, te pasamos el presupuesto y, si lo aprobás, te damos turno en el momento.</p>
-        </div>
-
-        <div class="how-step">
-          <h3>Presupuesto antes de desarmar</h3>
-          <p>Cuando se puede, te pasamos un presupuesto sin desarmar el vehículo, y te aclaramos que puede cambiar. Si el problema necesita una revisión, coordinamos un turno y presupuestamos sobre lo revisado.</p>
-        </div>
-
-        <div class="how-step">
-          <h3>Opciones de repuesto</h3>
-          <p>Para un mismo trabajo te damos opciones de repuesto, originales y alternativos, con distintos precios. Te recomendamos la que conviene y elegís vos.</p>
-        </div>
-
-        <div class="how-step">
-          <h3>Entrega y seguimiento</h3>
-          <p>Te avisamos cuando el vehículo está listo. La pieza que cambiamos queda en el vehículo, para que la veas. Después de una reparación, te consultamos cómo anda.</p>
-        </div>
-
-        <div class="how-step">
-          <h3>Garantía de repuestos y trabajos</h3>
-          <p>Si aparece un inconveniente, traés el vehículo y lo revisamos. Un profesional determina si corresponde a la mano de obra o a un repuesto fallado, y en ese caso se reconoce la garantía.</p>
-        </div>
-
-      </div>
-
-    </div>
-  </div>
-</section>
-
-<!-- ══════════════════════════ LIBRETA DIGITAL ══════════════════════════ -->
-<section class="notebook" id="libreta-digital">
-  <div class="container">
-    <div class="section-header center">
-      <h2 class="section-title">Libreta digital del vehículo</h2>
-      <p class="section-sub">El historial de reparaciones de tu vehículo, siempre en tu celular.</p>
-    </div>
-    <div class="notebook-grid">
-
-      <div class="notebook-text fade-in">
-        <!-- Ícono de código QR. La spec de la Tarea 6 pide reemplazar por este
-             "el dibujo de tarjeta de crédito", que era el ícono de la tarjeta
-             "Libreta digital del vehículo" de Servicios y que la Tarea 4 ya
-             borró al rearmar las pestañas (commit 71f1d4f). Ver P-022. -->
-        <div class="notebook-icon" aria-hidden="true">
-          <svg viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/><path d="M14 15h3M18 19h3M14 21h3"/></svg>
-        </div>
-        <p class="notebook-lead">Cada vehículo que atendemos lleva un código QR pegado. Lo escaneás con el celular y se abre la libreta, sin instalar nada. La tienen todos nuestros clientes, particulares y empresas.</p>
-        <h3 class="notebook-list-title">Qué guarda</h3>
-        <ul class="notebook-list">
-          <li>La fecha de cada visita</li>
-          <li>El kilometraje</li>
-          <li>Los trabajos realizados</li>
-          <li>Las observaciones del técnico</li>
-          <li>El recordatorio del próximo service</li>
-        </ul>
-      </div>
-
-      <!-- TODO_IMAGEN: F-03 -->
-      <div class="img-slot fade-in delay-1" data-slot="F-03" style="aspect-ratio: 3/2">
-        <span>Foto pendiente · F-03</span>
-      </div>
-
-    </div>
-  </div>
-</section>
-
-<!-- ═════════════════════════ CASA DE REPUESTOS ═════════════════════════ -->
-<section class="parts" id="casa-de-repuestos">
-  <div class="container">
-    <div class="section-header center">
-      <h2 class="section-title">Casa de repuestos</h2>
-    </div>
-    <div class="parts-grid">
-
-      <!-- TODO_IMAGEN: F-04 -->
-      <div class="img-slot fade-in" data-slot="F-04" style="aspect-ratio: 3/2">
-        <span>Foto pendiente · F-04</span>
-      </div>
-
-      <div class="parts-text fade-in delay-1">
-        <p>Tenemos casa de repuestos propia, en el mismo lugar que el taller. 3 de cada 4 trabajos del último año se hicieron con repuestos de nuestro stock.</p>
-        <p>Trabajamos con repuestos originales y alternativos, y te recomendamos opciones.</p>
-        <p>Abierta al público: también vendemos repuestos para que los lleves.</p>
-      </div>
-
-    </div>
-  </div>
-</section>
-
-<!-- ══════════════════════════════ FLOTAS ══════════════════════════════ -->
-<section class="fleets" id="flotas">
-  <div class="container">
-    <div class="fleets-panel fade-in">
-      <div class="section-header">
-        <h2 class="section-title">¿Tenés una flota de vehículos?</h2>
-      </div>
-      <p class="fleets-lead">Trabajamos con empresas de la región que necesitan sus vehículos en condiciones. En los últimos dos años atendimos a más de 90 clientes con cuatro o más vehículos.</p>
-      <ul class="fleets-list">
-        <li>Cuenta corriente con pago a 30 días.</li>
-        <li>Libreta digital de cada vehículo de la flota.</li>
-        <li>Condiciones y beneficios acordados con cada empresa.</li>
-      </ul>
-      <a href="https://wa.me/5493534593187" target="_blank" rel="noopener" class="btn-primary">
-        <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor" aria-hidden="true">
-          <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
-        </svg>
-        Consultar condiciones para empresas
-      </a>
     </div>
   </div>
 </section>
@@ -1683,6 +1502,180 @@
     </div>
   </div>
 </section>
+
+<!-- ═══════════════════════════ CÓMO TRABAJAMOS ═══════════════════════════ -->
+<section class="how-we-work" id="como-trabajamos">
+  <div class="container">
+    <div class="section-header center">
+      <h2 class="section-title">Cómo trabajamos</h2>
+      <p class="section-sub">Lo que hacemos en cada trabajo, para que sepas qué esperar.</p>
+    </div>
+    <div class="how-grid">
+
+      <!-- TODO_IMAGEN: F-02 -->
+      <div class="img-slot fade-in" data-slot="F-02" style="aspect-ratio: 3/2">
+        <span>Foto pendiente · F-02</span>
+      </div>
+
+      <div class="how-steps fade-in delay-1">
+
+        <div class="how-step">
+          <h3>Turno para service</h3>
+          <p>Para un service, te pasamos el presupuesto y, si lo aprobás, te damos turno en el momento.</p>
+        </div>
+
+        <div class="how-step">
+          <h3>Presupuesto antes de desarmar</h3>
+          <p>Cuando se puede, te pasamos un presupuesto sin desarmar el vehículo, y te aclaramos que puede cambiar. Si el problema necesita una revisión, coordinamos un turno y presupuestamos sobre lo revisado.</p>
+        </div>
+
+        <div class="how-step">
+          <h3>Opciones de repuesto</h3>
+          <p>Para un mismo trabajo te damos opciones de repuesto, originales y alternativos, con distintos precios. Te recomendamos la que conviene y elegís vos.</p>
+        </div>
+
+        <div class="how-step">
+          <h3>Entrega y seguimiento</h3>
+          <p>Te avisamos cuando el vehículo está listo. La pieza que cambiamos queda en el vehículo, para que la veas. Después de una reparación, te consultamos cómo anda.</p>
+        </div>
+
+        <div class="how-step">
+          <h3>Garantía de repuestos y trabajos</h3>
+          <p>Si aparece un inconveniente, traés el vehículo y lo revisamos. Un profesional determina si corresponde a la mano de obra o a un repuesto fallado, y en ese caso se reconoce la garantía.</p>
+        </div>
+
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════ LIBRETA DIGITAL ══════════════════════════ -->
+<section class="notebook" id="libreta-digital">
+  <div class="container">
+    <div class="section-header center">
+      <h2 class="section-title">Libreta digital del vehículo</h2>
+      <p class="section-sub">El historial de reparaciones de tu vehículo, siempre en tu celular.</p>
+    </div>
+    <div class="notebook-grid">
+
+      <div class="notebook-text fade-in">
+        <!-- Ícono de código QR. La spec de la Tarea 6 pide reemplazar por este
+             "el dibujo de tarjeta de crédito", que era el ícono de la tarjeta
+             "Libreta digital del vehículo" de Servicios y que la Tarea 4 ya
+             borró al rearmar las pestañas (commit 71f1d4f). Ver P-022. -->
+        <div class="notebook-icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/><path d="M14 15h3M18 19h3M14 21h3"/></svg>
+        </div>
+        <p class="notebook-lead">Cada vehículo que atendemos lleva un código QR pegado. Lo escaneás con el celular y se abre la libreta, sin instalar nada. La tienen todos nuestros clientes, particulares y empresas.</p>
+        <h3 class="notebook-list-title">Qué guarda</h3>
+        <ul class="notebook-list">
+          <li>La fecha de cada visita</li>
+          <li>El kilometraje</li>
+          <li>Los trabajos realizados</li>
+          <li>Las observaciones del técnico</li>
+          <li>El recordatorio del próximo service</li>
+        </ul>
+      </div>
+
+      <!-- TODO_IMAGEN: F-03 -->
+      <div class="img-slot fade-in delay-1" data-slot="F-03" style="aspect-ratio: 3/2">
+        <span>Foto pendiente · F-03</span>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ═════════════════════════ CASA DE REPUESTOS ═════════════════════════ -->
+<section class="parts" id="casa-de-repuestos">
+  <div class="container">
+    <div class="section-header center">
+      <h2 class="section-title">Casa de repuestos</h2>
+    </div>
+    <div class="parts-grid">
+
+      <!-- TODO_IMAGEN: F-04 -->
+      <div class="img-slot fade-in" data-slot="F-04" style="aspect-ratio: 3/2">
+        <span>Foto pendiente · F-04</span>
+      </div>
+
+      <div class="parts-text fade-in delay-1">
+        <p>Tenemos casa de repuestos propia, en el mismo lugar que el taller. 3 de cada 4 trabajos del último año se hicieron con repuestos de nuestro stock.</p>
+        <p>Trabajamos con repuestos originales y alternativos, y te recomendamos opciones.</p>
+        <p>Abierta al público: también vendemos repuestos para que los lleves.</p>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════ FLOTAS ══════════════════════════════ -->
+<section class="fleets" id="flotas">
+  <div class="container">
+    <div class="fleets-panel fade-in">
+      <div class="section-header">
+        <h2 class="section-title">¿Tenés una flota de vehículos?</h2>
+      </div>
+      <p class="fleets-lead">Trabajamos con empresas de la región que necesitan sus vehículos en condiciones. En los últimos dos años atendimos a más de 90 clientes con cuatro o más vehículos.</p>
+      <ul class="fleets-list">
+        <li>Cuenta corriente con pago a 30 días.</li>
+        <li>Libreta digital de cada vehículo de la flota.</li>
+        <li>Condiciones y beneficios acordados con cada empresa.</li>
+      </ul>
+      <a href="https://wa.me/5493534593187" target="_blank" rel="noopener" class="btn-primary">
+        <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor" aria-hidden="true">
+          <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
+        </svg>
+        Consultar condiciones para empresas
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════ BRANDS STRIP ═══════════════════════════════ -->
+<div class="brands-strip">
+  <div class="container">
+    <div class="brands-strip-inner">
+      <div class="brands-row">
+        <span class="brands-intro">Especialistas en</span>
+        <span class="brand-name">TOYOTA</span>
+        <span class="brand-sep" aria-hidden="true">·</span>
+        <span class="brand-name">VOLKSWAGEN</span>
+        <span class="brand-sep" aria-hidden="true">·</span>
+        <span class="brand-name">FORD</span>
+      </div>
+      <div class="brands-row">
+        <span class="brands-intro brands-intro--secondary">También atendemos</span>
+        <span class="brand-name brand-name--secondary">CHEVROLET</span>
+        <span class="brand-sep" aria-hidden="true">·</span>
+        <span class="brand-name brand-name--secondary">RENAULT</span>
+        <span class="brand-sep" aria-hidden="true">·</span>
+        <span class="brand-name brand-name--secondary">FIAT</span>
+        <span class="brand-sep" aria-hidden="true">·</span>
+        <span class="brand-name brand-name--secondary">PEUGEOT</span>
+        <span class="brand-sep" aria-hidden="true">·</span>
+        <span class="brand-name brand-name--secondary">MERCEDES-BENZ</span>
+        <span class="brand-sep" aria-hidden="true">·</span>
+        <span class="brand-name brand-name--secondary">AUDI</span>
+        <span class="brand-sep" aria-hidden="true">·</span>
+        <span class="brand-name brand-name--secondary">NISSAN</span>
+        <span class="brand-sep" aria-hidden="true">·</span>
+        <span class="brand-name brand-name--secondary">HONDA</span>
+        <span class="brand-sep" aria-hidden="true">·</span>
+        <span class="brand-name brand-name--secondary">CITROËN</span>
+        <span class="brand-sep" aria-hidden="true">·</span>
+        <span class="brand-name brand-name--secondary">BMW</span>
+        <span class="brand-sep" aria-hidden="true">·</span>
+        <span class="brand-name brand-name--secondary">JEEP</span>
+        <span class="brand-sep" aria-hidden="true">·</span>
+        <span class="brand-name brand-name--secondary">DODGE</span>
+        <span class="brand-sep" aria-hidden="true">·</span>
+        <span class="brand-name brand-name--secondary">PORSCHE</span>
+      </div>
+    </div>
+  </div>
+</div>
 
 <!-- ═══════════════════════════════ TESTIMONIOS ═══════════════════════════════ -->
 <section class="testimonials" id="resenas">

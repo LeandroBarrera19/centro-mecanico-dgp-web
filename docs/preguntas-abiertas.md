@@ -20,6 +20,23 @@ Cómo se anota cada pregunta:
 Cuando Ramiro responde, el agente agrega **Respuesta:** debajo, cambia el
 estado y ejecuta. No borra la pregunta: el historial sirve.
 
+**Sobre las referencias de línea** (las de la forma `public/index.html` más dos
+puntos y un número): son **fechadas**.
+Señalan dónde estaba el elemento el día en que se escribió la pregunta, no dónde
+está hoy. Cada tarea que agrega o borra renglones las corre todas, y las que
+apuntan a un elemento ya eliminado no se pueden actualizar a ningún número. Para
+encontrar algo hoy se busca el elemento, no la línea. Las que llevan un hash de
+commit adelante sí son exactas, porque apuntan a una versión congelada.
+
+**Decisión mía en la Tarea 13 de M3**, después de auditar las **25**
+referencias del archivo: 2 históricas, con hash de commit, que son exactas, y
+**23 al archivo de ese día, todas corridas**. La alternativa era reescribir esos
+23 números, y varios apuntan a elementos que ya no existen, así que habría
+habido que inventarlos. **Esto cambia el criterio que aplicó la Tarea 12**, que
+sí las actualizó una por una; el motivo del cambio es que cada unidad de trabajo
+vuelve a romperlas y que la mitad ya no tiene destino. La auditoría completa,
+referencia por referencia, está en `docs/planes/m3-informe.md`.
+
 ---
 
 ## Abiertas
@@ -124,7 +141,11 @@ estado y ejecuta. No borra la pregunta: el historial sirve.
      de 768 y 480 px), y **después las restauré**. Ver abajo: fue un error mío
      y está revertido. El CSS quedó exactamente como estaba.
   3. **No borré el CSS que quedó sin uso:** `.service-card--highlight` (tres
-     reglas) y `.badge-highlight`, que solo usaba esa tarjeta. La limpieza que
+     reglas) y `.badge-highlight`, que solo usaba esa tarjeta. (En la Tarea 13
+     el revisor encontró una **cuarta** regla huérfana que yo no había visto,
+     `.services-grid`, con su declaración base y tres *media queries*: no la usa
+     ningún elemento y **nunca** la usó, `git log -S 'class="services-grid'` no
+     devuelve ningún commit. Tampoco la borré, por el mismo motivo.) La limpieza que
      pide la Tarea 13 enumera `.badge-urgente`, `.hero h1 em` y la regla inerte
      de P-030, y estas dos no estaban en esa lista porque cuando se escribió
      todavía se usaban. **No las agrego por mi cuenta:** borrar lo que la spec
@@ -146,6 +167,14 @@ estado y ejecuta. No borra la pregunta: el historial sirve.
   `:1918`, `:1919`, `:1945`, `:1957`), algunas ya corridas de antes. Las de
   P-031 sí se corrigieron. El barrido de referencias de la Tarea 13 tiene que
   pasar por todo `preguntas-abiertas.md`, no solo por lo que toque cada unidad.
+- **Resuelto en la Tarea 13.** El barrido se hizo y auditó las **25**
+  referencias del archivo: 2 históricas, con hash de commit adelante, que son
+  exactas, y **23 al archivo de ese día, todas corridas**. No se reescribieron:
+  varias señalan elementos que ya no existen y habría habido que inventarles un
+  número. En su lugar quedó escrito arriba, en el encabezado del archivo, que
+  las referencias de línea son fechadas y que para encontrar algo hay que
+  buscar el elemento. **Decisión mía**, con la auditoría completa en
+  `docs/planes/m3-informe.md`.
 - **El error del punto 2, y por qué era un error.** Lo levantó el revisor de
   P-024 como bloqueante y tenía razón por un motivo que yo no había mirado:
   esas reglas **no eran CSS huérfano**, eran la implementación de **P-012**, y
@@ -192,6 +221,18 @@ estado y ejecuta. No borra la pregunta: el historial sirve.
   vuelva a describir un estado que existió de verdad. La versión anterior no se
   pierde: queda en el historial de git. Si Ramiro prefiere que el acta de M3
   quede congelada como está, lo dice y no se regenera.
+- **Resuelto en la Tarea 13.** Se regeneró entera, con la página ya final:
+  **383 textos, 70 combinaciones distintas, 0 por debajo del mínimo**, 1 exenta
+  por decorativa. El revisor la corrió por su cuenta y comparó su salida con el
+  archivo: **idénticos**, o sea que el acta es reproducible línea por línea.
+- **Una salvedad, porque acá arriba escribí "con su fecha nueva":**
+  `tools/auditar-contraste.mjs` **no emite fecha**, así que el acta nueva no
+  lleva ninguna y es indistinguible de la anterior salvo por su contenido. Me
+  lo marcó el revisor. **No le agregué una línea de fecha a mano**, porque eso
+  rompería justamente lo que la hace confiable: que se pueda regenerar y dar
+  byte por byte lo mismo. La fecha del acta es la del commit que la trae. Si
+  conviene que el archivo la lleve adentro, hay que agregársela a la
+  herramienta, y eso no lo hago por mi cuenta.
 
 ---
 
@@ -331,6 +372,34 @@ estado y ejecuta. No borra la pregunta: el historial sirve.
   segura de comparar contra una versión anterior es `git show
   HEAD:public/index.html > archivo.html` y abrirlo con `file:///`, que no toca
   el árbol de trabajo. Quedó escrito en el informe de esta unidad.
+
+---
+
+### P-045 — La unión Flotas → Marcas cambia de color sin remate diagonal
+- **Estado:** abierta
+- **Bloquea:** no bloquea. La página no tiene ningún defecto medible ahí.
+- **Qué falta:** decidir si esa unión lleva un remate diagonal o se queda como
+  está.
+- **Contexto:** el orden final de la Tarea 13 puso la franja de marcas
+  (`--gris-bg`) debajo de la sección de flotas (blanca). **Es el único cambio
+  de color de la página sin remate diagonal**, y lo introdujo esta tarea: antes
+  del movimiento, debajo de flotas estaba Servicios, que también es blanco, así
+  que no había cambio de color. Medido sobre el DOM a 1440 px: `section.fleets`
+  con fondo `rgb(255,255,255)` y `::after` en `none`, seguida de
+  `div.brands-strip` con fondo `rgb(244,246,249)`. Además `.brands-strip` tiene
+  `border-bottom` pero **no** `border-top`, o sea que la franja está delimitada
+  abajo y no arriba, que es justamente el borde nuevo.
+- **Qué hice mientras tanto:** **decisión mía: no creé el remate.** La regla de
+  P-025 fija el **color** de los remates que existen; no manda crear uno nuevo,
+  y crearlo es una decisión de forma que nadie pidió. Saqué capturas a 390 y
+  1440 px (`temporary screenshots/m3-final-union-flotas-marcas-*.png`) y la
+  unión lee como una banda deliberada, no como un error de pintura; el revisor
+  coincidió en eso y aclaró que no le corresponde opinar sobre la forma.
+- **Por qué esta pregunta existe:** porque el revisor me marcó, con razón, que
+  la decisión estaba escrita **solo en un comentario de CSS**. Es la tercera
+  vez que me pasa lo mismo en este módulo: ya había ocurrido en **P-026** y en
+  **P-028**, las dos veces levantado por el revisor. Una decisión que vive en un
+  comentario del código no está registrada.
 
 ---
 
@@ -1137,6 +1206,13 @@ estado y ejecuta. No borra la pregunta: el historial sirve.
 - **Respuesta (2026-09-28):** entendido; la Tarea 9 se cierra en la Tarea 13.
   **Marcas no lleva entrada en el menú:** es una franja, no un destino, y no
   hace falta agregarle `id`. Decisión de Ramiro.
+- **Cerrada en la Tarea 13 (2026-09-28).** Donde arriba dice "la Tarea 9 **no
+  está cerrada**", léase cerrada. La verificación que quedaba diferida **da
+  positivo**, comprobada por el revisor de la Tarea 13: la franja quedó en la
+  **posición 7** del orden final, que es la que le asigna la spec; sigue siendo
+  un `<div class="brands-strip">` **sin `id`**, como decidió Ramiro; y no
+  aparece en ninguno de los tres bloques de navegación. Con eso la Tarea 9
+  queda cerrada.
 
 ---
 
