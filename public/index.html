@@ -631,7 +631,22 @@
        nadie pidió. */
     .fleets {
       background: var(--blanco);
-      padding: 88px 0;
+      padding: 88px 0 148px;
+      position: relative;
+    }
+    /* Remate diagonal hacia la franja de marcas, que es --gris-bg. Lo pidió
+       Ramiro al resolver P-045, ampliando la regla de P-025: todo cambio de
+       color entre secciones lleva remate diagonal, y crearlo no es una
+       decisión. Misma geometría que los otros cinco: 66 px de alto, el mismo
+       polígono y el mismo bottom de -2 px; el padding inferior pasa de 88 a
+       148 px, como en las demás secciones con remate. */
+    .fleets::after {
+      content: '';
+      position: absolute;
+      bottom: -2px; left: 0; right: 0;
+      height: 66px;
+      background: var(--gris-bg);
+      clip-path: polygon(0 100%, 100% 0, 100% 100%);
     }
     .fleets-panel {
       max-width: 860px;

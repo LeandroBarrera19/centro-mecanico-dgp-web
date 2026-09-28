@@ -379,34 +379,6 @@ referencia por referencia, está en `docs/planes/m3-informe.md`.
 
 ---
 
-### P-045 — La unión Flotas → Marcas cambia de color sin remate diagonal
-- **Estado:** abierta
-- **Bloquea:** no bloquea. La página no tiene ningún defecto medible ahí.
-- **Qué falta:** decidir si esa unión lleva un remate diagonal o se queda como
-  está.
-- **Contexto:** el orden final de la Tarea 13 puso la franja de marcas
-  (`--gris-bg`) debajo de la sección de flotas (blanca). **Es el único cambio
-  de color de la página sin remate diagonal**, y lo introdujo esta tarea: antes
-  del movimiento, debajo de flotas estaba Servicios, que también es blanco, así
-  que no había cambio de color. Medido sobre el DOM a 1440 px: `section.fleets`
-  con fondo `rgb(255,255,255)` y `::after` en `none`, seguida de
-  `div.brands-strip` con fondo `rgb(244,246,249)`. Además `.brands-strip` tiene
-  `border-bottom` pero **no** `border-top`, o sea que la franja está delimitada
-  abajo y no arriba, que es justamente el borde nuevo.
-- **Qué hice mientras tanto:** **decisión mía: no creé el remate.** La regla de
-  P-025 fija el **color** de los remates que existen; no manda crear uno nuevo,
-  y crearlo es una decisión de forma que nadie pidió. Saqué capturas a 390 y
-  1440 px (`temporary screenshots/m3-final-union-flotas-marcas-*.png`) y la
-  unión lee como una banda deliberada, no como un error de pintura; el revisor
-  coincidió en eso y aclaró que no le corresponde opinar sobre la forma.
-- **Por qué esta pregunta existe:** porque el revisor me marcó, con razón, que
-  la decisión estaba escrita **solo en un comentario de CSS**. Es la tercera
-  vez que me pasa lo mismo en este módulo: ya había ocurrido en **P-026** y en
-  **P-028**, las dos veces levantado por el revisor. Una decisión que vive en un
-  comentario del código no está registrada.
-
----
-
 ### P-049 — La regla de autonomía nueva choca con §9 y con dos viñetas de §7
 - **Estado:** abierta
 - **Bloquea:** no bloquea, pero decide casos concretos y ya decidió uno.
@@ -437,6 +409,33 @@ referencia por referencia, está en `docs/planes/m3-informe.md`.
 ---
 
 ## Respondidas
+
+### P-050 — Decisión propia: la unión contacto → pie no lleva remate diagonal
+- **Estado:** respondida
+- **Decisión propia**, tomada al ejecutar el punto 2b el 2026-09-28.
+- **Qué apareció:** al aplicar la regla ampliada de P-025 —*todo cambio de
+  color entre secciones lleva remate diagonal*— y medir la cadena entera sobre
+  el DOM, apareció una **segunda** unión que la incumple y que nadie había
+  mirado: **la sección de contacto contra el pie**, `rgb(18, 75, 143)` contra
+  `rgb(13, 56, 112)`. Es el único cambio de color que queda sin remate.
+- **Qué decidí: no le agregué diagonal.** Tres motivos:
+  1. **El pie no es una sección.** La cadena de remates vive dentro de
+     `<main>`; el pie es otro punto de referencia del documento, con su propia
+     barra de acento abajo. La regla habla de "cambio de color entre
+     secciones".
+  2. **Los dos azules son el mismo color de marca en dos tonos**, `--azul` y
+     `--azul-dark`. El escalón lee como "acá empieza el pie", no como dos
+     secciones distintas. Verificado en captura a 390 y 1440 px:
+     `temporary screenshots/post-union-contacto-pie-*.png`.
+  3. **La instrucción de Ramiro nombraba una sola unión**, la de Flotas →
+     Marcas, y el commit se llama así. Agregar una diagonal en el pie es tocar
+     una parte de la página que no pidió.
+- **Contra qué va esta decisión:** contra la letra de "crearlo no es una
+  decisión", que en su lectura más amplia me obligaría a crearla. Por eso la
+  registro en vez de resolverla en silencio.
+- **Si Ramiro la quiere:** es agregarle a `.contact-cta` un `::after` idéntico
+  al de `.fleets` con `background: var(--azul-dark)`, subirle el padding
+  inferior de 88 a 148 px y darle `position: relative`. Tres líneas.
 
 ### P-046 — Decisión propia: el subtítulo "Autonomía." en `CLAUDE.md` §7
 - **Estado:** respondida
@@ -1205,6 +1204,15 @@ referencia por referencia, está en `docs/planes/m3-informe.md`.
   regla general:** el color de cada remate diagonal es el de la sección de
   abajo, y no es una decisión. Cuando cambie el orden, se recalcula sin
   preguntar. En la Tarea 13 se recalcula la cadena entera.
+- **Ampliada (2026-09-28), al resolver P-045:** *todo cambio de color entre
+  secciones lleva remate diagonal, y crearlo no es una decisión.* Antes la
+  regla fijaba el **color** de los remates que existían; ahora también obliga a
+  **crearlos**. Decisión de Ramiro.
+- **Alcance, medido al aplicarla:** con la regla ampliada hay **dos** uniones
+  en la página donde cambia el color. La de Flotas → Marcas se resolvió con su
+  diagonal. La otra es **contacto → pie**, `rgb(18,75,143)` contra
+  `rgb(13,56,112)`, y **no** se le agregó remate: ver **P-050**, decisión
+  propia.
 
 ---
 
@@ -1714,3 +1722,46 @@ referencia por referencia, está en `docs/planes/m3-informe.md`.
     el archivo en CRLF, como ya había pasado en M2c. Detectado y revertido
     antes de commitear: 2003 líneas, cero CRLF, y el diff sigue siendo solo el
     pie.
+
+---
+
+### P-045 — La unión Flotas → Marcas cambia de color sin remate diagonal
+- **Estado:** respondida
+- **Bloquea:** no bloquea. La página no tiene ningún defecto medible ahí.
+- **Qué falta:** decidir si esa unión lleva un remate diagonal o se queda como
+  está.
+- **Contexto:** el orden final de la Tarea 13 puso la franja de marcas
+  (`--gris-bg`) debajo de la sección de flotas (blanca). **Es el único cambio
+  de color de la página sin remate diagonal**, y lo introdujo esta tarea: antes
+  del movimiento, debajo de flotas estaba Servicios, que también es blanco, así
+  que no había cambio de color. Medido sobre el DOM a 1440 px: `section.fleets`
+  con fondo `rgb(255,255,255)` y `::after` en `none`, seguida de
+  `div.brands-strip` con fondo `rgb(244,246,249)`. Además `.brands-strip` tiene
+  `border-bottom` pero **no** `border-top`, o sea que la franja está delimitada
+  abajo y no arriba, que es justamente el borde nuevo.
+- **Qué hice mientras tanto:** **decisión mía: no creé el remate.** La regla de
+  P-025 fija el **color** de los remates que existen; no manda crear uno nuevo,
+  y crearlo es una decisión de forma que nadie pidió. Saqué capturas a 390 y
+  1440 px (`temporary screenshots/m3-final-union-flotas-marcas-*.png`) y la
+  unión lee como una banda deliberada, no como un error de pintura; el revisor
+  coincidió en eso y aclaró que no le corresponde opinar sobre la forma.
+- **Por qué esta pregunta existe:** porque el revisor me marcó, con razón, que
+  la decisión estaba escrita **solo en un comentario de CSS**. Es la tercera
+  vez que me pasa lo mismo en este módulo: ya había ocurrido en **P-026** y en
+  **P-028**, las dos veces levantado por el revisor. Una decisión que vive en un
+  comentario del código no está registrada.
+- **Respuesta (2026-09-28):** se agrega la diagonal, con la geometría de las
+  demás y el color de la sección de abajo. Y P-025 se amplía: todo cambio de
+  color entre secciones lleva remate diagonal, y crearlo no es una decisión.
+  Decisión de Ramiro.
+- **Aplicado (2026-09-28).** `.fleets` recibió `position: relative`, el padding
+  inferior pasó de 88 a 148 px —como las otras cinco secciones con remate— y un
+  `::after` con **la misma geometría exacta** que los demás: 66 px de alto,
+  `bottom: -2px`, `clip-path: polygon(0 100%, 100% 0, 100% 100%)` y
+  `background: var(--gris-bg)`, que es el fondo de la franja de marcas.
+  **Medida la cadena entera sobre el DOM:** las seis diagonales coinciden con
+  la sección de abajo, y la única unión que cambia de color sin remate es
+  contacto → pie (P-050). Captura en
+  `temporary screenshots/post-union-flotas-marcas-*.png`.
+
+---
