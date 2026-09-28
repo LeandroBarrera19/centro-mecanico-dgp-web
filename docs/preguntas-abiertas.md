@@ -63,300 +63,6 @@ referencia por referencia, está en `docs/planes/m3-informe.md`.
 
 ---
 
-### P-035 — Una frase de §10 que conservé al aplicar el cambio de Ramiro
-- **Estado:** abierta
-- **Bloquea:** no bloquea.
-- **Qué falta:** confirmar que la frase conservada tiene que seguir ahí.
-- **Contexto:** al responder P-029, Ramiro dictó el reemplazo de la fila
-  "Marcas que también se atienden" de `datos-verificados.md` §10. La fila decía
-  tres cosas: "Todas.", "Hay fotos y publicaciones de Instagram que lo
-  respaldan." y "No listar marcas de lujo ni deportivas como especialidad." El
-  texto nuevo repone la primera, reemplaza la segunda por la enumeración de las
-  trece marcas y **no menciona la tercera**.
-- **Qué hice mientras tanto:** **decisión mía:** conservé la tercera frase. No
-  se contradice con lo nuevo: Audi, BMW, Mercedes-Benz y Porsche entran en la
-  fila "También atendemos", que no es la de especialidad; la fila "Marcas foco"
-  sigue siendo Toyota, Ford y Volkswagen. Si Ramiro la quería fuera, es borrar
-  esa oración y nada más.
-- **Corrección del fundamento** (me la marcó el revisor de P-021, y tiene
-  razón): primero escribí que la conservación la obligaba `CLAUDE.md` §2. **No
-  es así.** §2 está redactada para "cuando Ramiro entregue una versión nueva de
-  `docs/datos-verificados.md`", y acá no hubo versión nueva del archivo sino un
-  reemplazo de una fila dictado en prosa. Lo que aplica es **§9**: hay que
-  elegir entre dos opciones y ninguna está dictada, así que se elige la que no
-  borra, se declara como decisión propia y se anota. Eso es lo que hice; lo que
-  estaba mal era el artículo que citaba.
-- **El criterio, ahora explícito, porque en el mismo commit lo apliqué de dos
-  maneras distintas** (segundo hallazgo del mismo revisor): en `ce9b2ba`
-  también reemplacé el punto 3 de §1, y ahí **sí** dejé caer una oración,
-  "No hace falta repetirlo en cada mención: alcanza con que ninguna mención
-  atribuya los 20 años a DGP." La diferencia que veo entre los dos casos, y que
-  no había escrito: en §1 el texto nuevo de Ramiro **vuelve a legislar el mismo
-  asunto** (cuántas veces y dónde tiene que aparecer "Desde 2022"), así que
-  reemplaza la oración vieja; en §10 el texto nuevo **no dice nada** sobre
-  marcas de lujo y deportivas, que es otro asunto, así que no la reemplaza.
-  **Decisión mía.** La sustancia de lo que se cayó en §1 sobrevive en el punto
-  1 de la misma sección ("**Nunca** atribuir los 20 años a DGP"). Si Ramiro
-  quiere esa oración de vuelta, se repone.
-
----
-
-### P-036 — Cómo queda la Tarea 11 de la spec, que dictaba el párrafo sin "Desde 2022"
-- **Estado:** abierta
-- **Bloquea:** no bloquea.
-- **Qué falta:** confirmar que la Tarea 11 de la spec tenía que quedar
-  actualizada, y no como registro de lo que se pidió en su momento.
-- **Contexto:** la Tarea 11 de `docs/spec-m3-home.md` dicta el párrafo de la
-  zona de cobertura empezando por "Atendemos vehículos de…". La respuesta a
-  P-021 le antepone "Desde 2022". Las dos instrucciones quedaron en el mismo
-  archivo, a unas cien líneas de distancia, diciendo cosas distintas sobre el
-  mismo párrafo. Lo levantó el revisor de P-021 como bloqueante: quien lea la
-  Tarea 11 aislada revierte el cambio.
-- **Qué hice mientras tanto:** **decisión mía**, entre las tres salidas que el
-  revisor enumeró (reemplazar la línea, remitirla a la decisión, o dejarla como
-  registro histórico fechado): **reemplacé el párrafo de la Tarea 11 por el
-  texto vigente** —que es el que dictó Ramiro, no uno escrito por mí— y debajo
-  dejé una nota fechada que dice qué decía antes y por qué cambió. Elegí esta
-  porque deja el archivo sin contradicción y conserva el historial, y porque la
-  regla de mantener la spec sincronizada pide justamente eso. No toca `public/`.
-
----
-
-### P-037 — Tres decisiones de CSS que arrastró el borrado de la tarjeta (P-024)
-- **Estado:** abierta
-- **Bloquea:** no bloquea. P-024 quedó ejecutada.
-- **Qué falta:** confirmar las dos primeras y decidir la tercera.
-- **Contexto:** la tarjeta "Casa de Repuestos" era la **cuarta** de la pestaña
-  "Repuestos" y la única destacada de todo el sitio. Al sacarla quedaron tres
-  cosas sin dueño, y ninguna está nombrada en la respuesta de Ramiro, que dice
-  solo "la pestaña queda con tres tarjetas".
-- **Qué hice mientras tanto:** **las tres son decisiones mías.**
-  1. **Renumeré los retardos del fade-in.** Las otras cuatro pestañas empiezan
-     con una tarjeta sin retardo y siguen con `delay-1`, `delay-2`… Al caer la
-     primera, Repuestos quedaba empezando en `delay-1`. Pasé las tres
-     restantes a (sin retardo), `delay-1` y `delay-2`, que es la convención del
-     archivo.
-  2. **Borré las tres reglas `#tab-repuestos.tab-panel.active`** (la de base,
-     que fijaba cuatro columnas, y sus dos repeticiones en los *media queries*
-     de 768 y 480 px), y **después las restauré**. Ver abajo: fue un error mío
-     y está revertido. El CSS quedó exactamente como estaba.
-  3. **No borré el CSS que quedó sin uso:** `.service-card--highlight` (tres
-     reglas) y `.badge-highlight`, que solo usaba esa tarjeta. (En la Tarea 13
-     el revisor encontró una **cuarta** regla huérfana que yo no había visto,
-     `.services-grid`, con su declaración base y tres *media queries*: no la usa
-     ningún elemento y **nunca** la usó, `git log -S 'class="services-grid'` no
-     devuelve ningún commit. Tampoco la borré, por el mismo motivo.) La limpieza que
-     pide la Tarea 13 enumera `.badge-urgente`, `.hero h1 em` y la regla inerte
-     de P-030, y estas dos no estaban en esa lista porque cuando se escribió
-     todavía se usaban. **No las agrego por mi cuenta:** borrar lo que la spec
-     no nombra es un hueco (`CLAUDE.md` §9). Si Ramiro quiere que caigan en la
-     limpieza de la Tarea 13, lo dice y se van en ese commit.
-     **Resuelto el 2026-09-28:** Ramiro mandó borrar las cuatro huérfanas
-     —`.service-card--highlight` con sus tres reglas, `.badge-highlight`,
-     `.footer-brand-sub` y `.services-grid`— y se fueron en el commit de las
-     tres columnas.
-  4. **Sincronicé la Tarea 4 de la spec**, que seguía ordenando la tarjeta
-     borrada: la fila de la pestaña `Repuestos` de la tabla y el total, que
-     pasó de 18 a 17 tarjetas (contadas: 3 + 5 + 3 + 3 + 3). Debajo dejé una
-     nota fechada que dice qué decía antes y por qué cambió, y que la fila
-     `Casa de Repuestos` de "Textos definitivos" y su viñeta de "Motivo de cada
-     cambio" se conservan como registro. **Decisión mía**, con el mismo
-     criterio que P-036. No toca `public/`. La primera redacción de esa nota
-     decía que Ramiro había mandado eliminar la tarjeta *"porque repetía la
-     sección `#casa-de-repuestos`"*: **él no dio motivo**, la redundancia es el
-     argumento con el que yo planteé la pregunta. Corregido; me lo marcó el
-     revisor.
-- **Pendiente para la Tarea 13:** este borrado corrió nueve renglones y dejó
-  desactualizadas las referencias de línea de **P-034** (`:1880`, `:1899`,
-  `:1918`, `:1919`, `:1945`, `:1957`), algunas ya corridas de antes. Las de
-  P-031 sí se corrigieron. El barrido de referencias de la Tarea 13 tiene que
-  pasar por todo `preguntas-abiertas.md`, no solo por lo que toque cada unidad.
-- **Resuelto en la Tarea 13.** El barrido se hizo y auditó las **25**
-  referencias del archivo: 2 históricas, con hash de commit adelante, que son
-  exactas, y **23 al archivo de ese día, todas corridas**. No se reescribieron:
-  varias señalan elementos que ya no existen y habría habido que inventarles un
-  número. En su lugar quedó escrito arriba, en el encabezado del archivo, que
-  las referencias de línea son fechadas y que para encontrar algo hay que
-  buscar el elemento. **Decisión mía**, con la auditoría completa en
-  `docs/planes/m3-informe.md`.
-- **El error del punto 2, y por qué era un error.** Lo levantó el revisor de
-  P-024 como bloqueante y tenía razón por un motivo que yo no había mirado:
-  esas reglas **no eran CSS huérfano**, eran la implementación de **P-012**, y
-  lo que yo hice es exactamente la alternativa que Ramiro evaluó y descartó.
-  `preguntas-abiertas.md`, P-012, texto del 2026-09-21: *"Alternativa, si se
-  prefiere: borrar la regla con `id`. Así 'Repuestos' se comportaría como las
-  demás pestañas a cualquier ancho…"*, y debajo: *"**Confirmación
-  (2026-09-22):** Ramiro confirma la decisión; se queda así."* Mi argumento era
-  que no se trataba de limpieza sino de consecuencia forzosa; no lo era:
-  dejarlas no incumple ninguna regla escrita, solo deja cuatro columnas para
-  tres tarjetas entre 769 y 1200 px, que es un juicio de apariencia y no me
-  corresponde. El revisor además me señaló que en el mismo diff yo usaba el
-  criterio contrario en el punto 3. **Restaurado:** las tres reglas y su
-  comentario volvieron idénticos, en sus líneas originales.
-- **Lo que queda por decidir, entonces:** si con tres tarjetas esas reglas
-  siguen teniendo sentido. Hoy dan cuatro columnas para tres tarjetas entre 769
-  y 1200 px, distinto de las otras tres pestañas de tres tarjetas. **No lo
-  toco:** es de Ramiro, que ya se pronunció una vez sobre estas mismas reglas.
-
----
-
-### P-038 — `docs/contraste-m3.md` quedó desalineado y ninguna tarea manda rehacerlo
-- **Estado:** abierta
-- **Bloquea:** no bloquea. El contraste **real** está medido y en cero
-  incumplimientos; lo desalineado es el acta, no la página.
-- **Qué falta:** decidir si la Tarea 13 rehace la auditoría de contraste o si
-  el acta se queda como está, fechada en el día en que se midió.
-- **Contexto:** `docs/contraste-m3.md` es el acta de la auditoría de contraste
-  de M3. Las unidades de cierre le movieron cuatro filas y el total: la línea 2
-  dice "Textos medidos: 387" y hoy son 381; las líneas 26, 29 y 79 son de la
-  tarjeta que borró P-024; la 36 es el párrafo que cambió P-021; y la 67 es el
-  `<h2>` que cambió P-027. **La lista de verificación de la Tarea 13
-  (`docs/spec-m3-home.md`) no incluye rehacer la auditoría de contraste:** pide
-  menú, `<h1>`, `grep`, JSON-LD, peso, capturas, huecos `TODO_IMAGEN` e
-  informe. O sea que, tal como está escrita, M3 cerraría con el acta
-  divergente y nadie decidió si eso está bien. Lo levantó el revisor de P-027.
-- **Qué hice mientras tanto:** **nada todavía, y una decisión mía para la
-  Tarea 13 si Ramiro no dice otra cosa:** no toqué el archivo en ninguna de las
-  unidades —el precedente de P-021 y P-024 es que las actas fechadas no se
-  editan, y parchear solo una fila dejaría un documento híbrido que no refleja
-  ningún momento real, que es peor que uno viejo y coherente—; y en la Tarea
-  13, con la página ya final, **pienso regenerarlo entero** con
-  `node tools/auditar-contraste.mjs`, con su fecha nueva, de modo que el acta
-  vuelva a describir un estado que existió de verdad. La versión anterior no se
-  pierde: queda en el historial de git. Si Ramiro prefiere que el acta de M3
-  quede congelada como está, lo dice y no se regenera.
-- **Resuelto en la Tarea 13.** Se regeneró entera, con la página ya final:
-  **383 textos, 70 combinaciones distintas, 0 por debajo del mínimo**, 1 exenta
-  por decorativa. El revisor la corrió por su cuenta y comparó su salida con el
-  archivo: **idénticos**, o sea que el acta es reproducible línea por línea.
-- **Una salvedad, porque acá arriba escribí "con su fecha nueva":**
-  `tools/auditar-contraste.mjs` **no emite fecha**, así que el acta nueva no
-  lleva ninguna y es indistinguible de la anterior salvo por su contenido. Me
-  lo marcó el revisor. **No le agregué una línea de fecha a mano**, porque eso
-  rompería justamente lo que la hace confiable: que se pueda regenerar y dar
-  byte por byte lo mismo. La fecha del acta es la del commit que la trae. Si
-  conviene que el archivo la lleve adentro, hay que agregársela a la
-  herramienta, y eso no lo hago por mi cuenta.
-
----
-
-### P-039 — "Pedir un presupuesto por WhatsApp" tiene respaldo, pero repartido en tres filas
-- **Estado:** abierta
-- **Bloquea:** no bloquea. El texto es de Ramiro y se publica tal cual.
-- **Qué falta:** decidir si `datos-verificados.md` §18b lleva una fila propia
-  que registre **el canal** por el que se piden presupuestos.
-- **Contexto:** el párrafo de contacto que Ramiro escribió para P-031 dice
-  "Escribinos por WhatsApp para coordinar el turno o pedir un presupuesto". El
-  revisor descompuso la oración en sus tres hechos y buscó cada uno en la
-  fuente de verdad:
-  - *Escribinos por WhatsApp* → §2, "Contacto para flotas y particulares |
-    Recepción general, por WhatsApp". Respaldado.
-  - *coordinar el turno* → §18b, "Service y revisión: se presupuesta; si el
-    cliente aprueba, se da turno en el momento". Respaldado.
-  - *pedir un presupuesto* → §18b lo dice tres veces ("se presupuesta", "se
-    pasa un presupuesto sin desarme previo", "coordinar un turno para revisar y
-    presupuestar"). El **hecho** está verificado; lo que no está escrito en
-    ninguna fila es el par "presupuesto **por WhatsApp**".
-  `grep -n "presupuest" docs/datos-verificados.md` da cuatro líneas y **ninguna
-  nombra el canal**.
-- **Qué hice mientras tanto:** **nada, y no toco el texto.** Es de Ramiro, él
-  es el origen de los datos de §18b, la oración no promete que el presupuesto
-  se *entregue* por WhatsApp —solo que se puede pedir por ahí— y §2 dice que
-  WhatsApp es la recepción general. Además el sitio ya publica el mismo hecho
-  desde antes, en la sección "Cómo trabajamos" ("te pasamos el presupuesto…"),
-  sin que ninguna revisión lo objetara. Queda anotado para que la afirmación
-  publicada tenga respaldo en una sola línea y no por composición.
-
----
-
-### P-040 — El horario queda escrito dos veces en la misma banda visual de contacto
-- **Estado:** abierta
-- **Bloquea:** no bloquea.
-- **Qué falta:** decidir si la repetición se deja o si uno de los dos textos
-  cambia. Los dos son de Ramiro, así que ninguno lo toco.
-- **Contexto:** desde P-031, el párrafo de `#contacto` termina en "Respondemos
-  de lunes a viernes de 8:00 a 17:30.", y la ficha de datos de la misma sección
-  dice "Horario de atención / Lunes a viernes de 8:00 a 17:30", que viene de la
-  Tarea 12 y que P-034 confirma. **Medido a 1440 px:** el párrafo está en
-  `(x 152, y 6574)` y la ficha en `(x 752, y 6617)`; la separación vertical es
-  de **−13 px**, o sea que se solapan en altura, a 64 px de distancia
-  horizontal: los dos textos se leen de un vistazo. A 390 px quedan a 276 px y
-  no se ven juntos, así que es un efecto de escritorio.
-- **Qué hice mientras tanto:** **nada.** Es el mismo patrón que Ramiro resolvió
-  en P-030 —un texto que repite lo que ya dice otro elemento al lado—, por eso
-  lo levantó el revisor; pero acá los dos textos los escribió él, y elegir cuál
-  se va o cómo se reescribe es copy (`CLAUDE.md` §1). Lo anoto y sigo.
-
----
-
-### P-041 — El botón de WhatsApp de los dos menús no está en la lista de P-032
-- **Estado:** abierta
-- **Bloquea:** no bloquea. P-032 quedó ejecutada.
-- **Qué falta:** confirmar que el botón se queda donde está.
-- **Contexto:** la respuesta de P-032 enumera **seis** entradas de menú: Inicio,
-  Servicios, ¿Por qué elegirnos?, Flotas, Reseñas y Contacto. En el marcado hay
-  **siete** enlaces en cada bloque: los seis, más el botón azul "Pedir turno" /
-  "Pedir turno por WhatsApp", que estaba desde la Tarea 1.
-- **Qué hice mientras tanto:** **decisión mía: no lo toqué.** La respuesta
-  enumera destinos internos, con rótulo y orden; el botón no es un destino sino
-  una acción, y su color y su lugar vienen de `datos-verificados.md` §19,
-  decisión de Ramiro del 2026-09-21. Borrarlo habría sido exactamente el error
-  de P-024: llevarme por delante la implementación de una decisión ya tomada.
-  El revisor coincidió en el fondo —"no borrarlo es lo correcto"— y me marcó
-  que la decisión estaba anotada dentro de una pregunta ya `respondida`, donde
-  nadie la va a ver. Por eso está acá, abierta.
-
----
-
-### P-042 — Dos comportamientos del menú móvil que vienen de antes
-- **Estado:** abierta
-- **Bloquea:** no bloquea. Ninguno de los dos lo introdujo P-032; los dos
-  existen desde antes y se verificaron idénticos en `HEAD` y en el trabajo.
-- **Qué falta:** decidir si se arreglan o si se dejan.
-- **Contexto:** los levantó el revisor de P-032 al medir el corte nuevo.
-  1. **Al ensanchar la ventana con el menú móvil abierto, quedan los dos menús
-     visibles a la vez.** No hay manejador de `resize`: `closeMobileMenu()`
-     solo se dispara al tocar un enlace o el botón. Medido antes y después del
-     cambio de corte: el comportamiento es el mismo, lo único que se movió es
-     la franja donde puede pasar (antes cruzando 768 px, ahora 830 px). La
-     afirmación "ningún ancho con los dos menús visibles" que verifiqué vale al
-     **cargar** la página en cada ancho, no al redimensionar con el menú
-     abierto.
-  2. **En el menú móvil, el enlace de WhatsApp es el único sin
-     `closeMobileMenu()`.** Los seis de navegación lo tienen, incluido "Flotas".
-     Como abre otra pestaña, el menú queda abierto detrás.
-- **Qué hice mientras tanto:** **nada.** Los dos son anteriores a esta ronda y
-  arreglarlos es tocar JavaScript que ninguna respuesta de Ramiro menciona
-  (`CLAUDE.md` §7 y §9). El primero se arregla con un `resize` que cierre el
-  menú al pasar a escritorio; el segundo, agregando el `onclick` que ya tienen
-  los otros seis. Los dos son de una línea, pero no los hago por mi cuenta.
-
----
-
-### P-043 — El enlace nuevo del pie no se ve como enlace
-- **Estado:** abierta
-- **Bloquea:** no bloquea. Funciona, llega al contraste mínimo y tiene foco
-  visible.
-- **Qué falta:** decidir si `@dgpcentromecanico` en el pie tiene que
-  distinguirse del texto que lo rodea, y cómo.
-- **Contexto:** P-034 convirtió ese texto en enlace a Instagram. Es el **primer
-  enlace en línea dentro de un párrafo del pie**: los demás enlaces del pie
-  viven en listas y se leen como navegación por su posición. Medido: el
-  teléfono de la línea de arriba y el enlace tienen **exactamente** el mismo
-  color computado (`rgba(255,255,255,0.62)`), el mismo tamaño (13,92 px) y
-  `text-decoration-line: none`, porque el sitio tiene `a { text-decoration:
-  none; color: inherit }`. O sea que nada indica que uno sea enlace salvo el
-  cursor y el foco. Lo levantó el revisor de P-034.
-- **Qué hice mientras tanto:** **nada.** `CLAUDE.md` §6 se cumple: contraste
-  5,44:1 contra un mínimo de 4,50:1, foco visible con contorno de 3 px que da
-  4,86:1 sobre el fondo, y alcanzable por teclado. Que un enlace *parezca*
-  enlace es una decisión de forma que no me corresponde. En la sección de
-  contacto los tres enlaces de redes sí llevan subrayado (`.contact-redes a`),
-  así que la salida más obvia sería hacer lo mismo acá; no la aplico por mi
-  cuenta.
-
----
-
 ### P-044 — `core.autocrlf` está en `true` y no hay `.gitattributes`
 - **Estado:** abierta
 - **Bloquea:** no bloquea, pero es una trampa que ya se disparó dos veces.
@@ -409,6 +115,37 @@ referencia por referencia, está en `docs/planes/m3-informe.md`.
 ---
 
 ## Respondidas
+
+### P-051 — Decisión propia: la condición del manejador de `resize`
+- **Estado:** respondida
+- **Decisión propia**, tomada al ejecutar P-042 el 2026-09-28.
+- **Qué decidí:** el manejador que cierra el menú móvil al pasar a escritorio
+  pregunta por `getComputedStyle(navToggle).display === 'none'` y **no** compara
+  el ancho contra 830 px.
+- **Por qué:** el ancho de corte lo fija una sola regla de CSS,
+  `@media (max-width: 830px) { .navbar-toggle { display: flex } }`. Si el
+  JavaScript repitiera el número, habría **dos fuentes de verdad** que se
+  pueden desincronizar la próxima vez que alguien mueva el corte —y ya se movió
+  una vez, de 768 a 830, al resolver P-032—. Preguntando por el estado
+  computado del botón, la condición es el inverso exacto de esa regla y sigue
+  al CSS sin que nadie tenga que acordarse.
+- **Sobre el costo, que el revisor auditó:** `navMobile.classList.contains('open')`
+  va **primero** y corta el `&&`, así que con el menú cerrado —el 100% de los
+  `resize` en escritorio y de los que dispara la barra de direcciones al
+  scrollear en móvil— `getComputedStyle` **no se llama** y no hay recálculo de
+  estilo forzado. Medido: 810 `resize` seguidos con el menú abierto, sin
+  errores ni bloqueo perceptible.
+- **Un límite que conviene conocer:** si el menú llegara a estar abierto en
+  escritorio, el `aria-expanded` quedaría desincronizado hasta el primer
+  `resize`. El revisor comprobó que **ese estado no es alcanzable por
+  interacción real**: el botón está en `display:none`, no recibe clic ni foco,
+  y la clase `open` no viene en el HTML. Es inherente a un manejador que solo
+  corre en `resize`.
+- **Por qué tiene entrada propia:** estaba declarada como mía dentro de P-042,
+  pero las otras decisiones propias de la ronda sí tienen entrada, y ahí se
+  veía menos. Me lo marcó el revisor.
+
+---
 
 ### P-050 — Decisión propia: las dos uniones con los bordes del documento no llevan remate
 - **Estado:** respondida
@@ -1553,6 +1290,10 @@ referencia por referencia, está en `docs/planes/m3-informe.md`.
   hoy en el archivo:
   - El párrafo publicado es el de Ramiro, **carácter por carácter**, verificado
     por comparación programática contra las dos copias que hay en `docs/`.
+    **Reemplazado el 2026-09-28 por P-040:** el párrafo perdió su segunda
+    oración y hoy termina en "…o pedir un presupuesto.". El texto que Ramiro
+    dictó acá arriba es el que estuvo publicado entre el 2026-09-28 y ese
+    mismo día; queda como registro fechado, no como descripción de la página.
   - **`TODO_DATO` en `public/`: cero.** Era el único del sitio.
   - **Afirmaciones prohibidas en `public/`: cero.** Es la primera vez en todo
     M3. El revisor lo confirmó con tres barridos propios: uno sobre el archivo
@@ -1805,5 +1546,340 @@ referencia por referencia, está en `docs/planes/m3-informe.md`.
   (Primero escribí "cinco" y "seis": eran seis antes de esta y son siete
   después. Lo contó el revisor con `grep -c` del `clip-path`, que da 7, y del
   `padding: 88px 0 148px`, que también da 7.)
+
+---
+
+### P-035 — Una frase de §10 que conservé al aplicar el cambio de Ramiro
+- **Estado:** respondida
+- **Bloquea:** no bloquea.
+- **Qué falta:** confirmar que la frase conservada tiene que seguir ahí.
+- **Contexto:** al responder P-029, Ramiro dictó el reemplazo de la fila
+  "Marcas que también se atienden" de `datos-verificados.md` §10. La fila decía
+  tres cosas: "Todas.", "Hay fotos y publicaciones de Instagram que lo
+  respaldan." y "No listar marcas de lujo ni deportivas como especialidad." El
+  texto nuevo repone la primera, reemplaza la segunda por la enumeración de las
+  trece marcas y **no menciona la tercera**.
+- **Qué hice mientras tanto:** **decisión mía:** conservé la tercera frase. No
+  se contradice con lo nuevo: Audi, BMW, Mercedes-Benz y Porsche entran en la
+  fila "También atendemos", que no es la de especialidad; la fila "Marcas foco"
+  sigue siendo Toyota, Ford y Volkswagen. Si Ramiro la quería fuera, es borrar
+  esa oración y nada más.
+- **Corrección del fundamento** (me la marcó el revisor de P-021, y tiene
+  razón): primero escribí que la conservación la obligaba `CLAUDE.md` §2. **No
+  es así.** §2 está redactada para "cuando Ramiro entregue una versión nueva de
+  `docs/datos-verificados.md`", y acá no hubo versión nueva del archivo sino un
+  reemplazo de una fila dictado en prosa. Lo que aplica es **§9**: hay que
+  elegir entre dos opciones y ninguna está dictada, así que se elige la que no
+  borra, se declara como decisión propia y se anota. Eso es lo que hice; lo que
+  estaba mal era el artículo que citaba.
+- **El criterio, ahora explícito, porque en el mismo commit lo apliqué de dos
+  maneras distintas** (segundo hallazgo del mismo revisor): en `ce9b2ba`
+  también reemplacé el punto 3 de §1, y ahí **sí** dejé caer una oración,
+  "No hace falta repetirlo en cada mención: alcanza con que ninguna mención
+  atribuya los 20 años a DGP." La diferencia que veo entre los dos casos, y que
+  no había escrito: en §1 el texto nuevo de Ramiro **vuelve a legislar el mismo
+  asunto** (cuántas veces y dónde tiene que aparecer "Desde 2022"), así que
+  reemplaza la oración vieja; en §10 el texto nuevo **no dice nada** sobre
+  marcas de lujo y deportivas, que es otro asunto, así que no la reemplaza.
+  **Decisión mía.** La sustancia de lo que se cayó en §1 sobrevive en el punto
+  1 de la misma sección ("**Nunca** atribuir los 20 años a DGP"). Si Ramiro
+  quiere esa oración de vuelta, se repone.
+- **Respuesta (2026-09-28):** confirmada **tal como la tomé**. Decisión de Ramiro.
+
+---
+
+### P-036 — Cómo queda la Tarea 11 de la spec, que dictaba el párrafo sin "Desde 2022"
+- **Estado:** respondida
+- **Bloquea:** no bloquea.
+- **Qué falta:** confirmar que la Tarea 11 de la spec tenía que quedar
+  actualizada, y no como registro de lo que se pidió en su momento.
+- **Contexto:** la Tarea 11 de `docs/spec-m3-home.md` dicta el párrafo de la
+  zona de cobertura empezando por "Atendemos vehículos de…". La respuesta a
+  P-021 le antepone "Desde 2022". Las dos instrucciones quedaron en el mismo
+  archivo, a unas cien líneas de distancia, diciendo cosas distintas sobre el
+  mismo párrafo. Lo levantó el revisor de P-021 como bloqueante: quien lea la
+  Tarea 11 aislada revierte el cambio.
+- **Qué hice mientras tanto:** **decisión mía**, entre las tres salidas que el
+  revisor enumeró (reemplazar la línea, remitirla a la decisión, o dejarla como
+  registro histórico fechado): **reemplacé el párrafo de la Tarea 11 por el
+  texto vigente** —que es el que dictó Ramiro, no uno escrito por mí— y debajo
+  dejé una nota fechada que dice qué decía antes y por qué cambió. Elegí esta
+  porque deja el archivo sin contradicción y conserva el historial, y porque la
+  regla de mantener la spec sincronizada pide justamente eso. No toca `public/`.
+- **Respuesta (2026-09-28):** confirmada **tal como la tomé**. Decisión de Ramiro.
+
+---
+
+### P-037 — Tres decisiones de CSS que arrastró el borrado de la tarjeta (P-024)
+- **Estado:** respondida
+- **Bloquea:** no bloquea. P-024 quedó ejecutada.
+- **Qué falta:** confirmar las dos primeras y decidir la tercera.
+- **Contexto:** la tarjeta "Casa de Repuestos" era la **cuarta** de la pestaña
+  "Repuestos" y la única destacada de todo el sitio. Al sacarla quedaron tres
+  cosas sin dueño, y ninguna está nombrada en la respuesta de Ramiro, que dice
+  solo "la pestaña queda con tres tarjetas".
+- **Qué hice mientras tanto:** **las tres son decisiones mías.**
+  1. **Renumeré los retardos del fade-in.** Las otras cuatro pestañas empiezan
+     con una tarjeta sin retardo y siguen con `delay-1`, `delay-2`… Al caer la
+     primera, Repuestos quedaba empezando en `delay-1`. Pasé las tres
+     restantes a (sin retardo), `delay-1` y `delay-2`, que es la convención del
+     archivo.
+  2. **Borré las tres reglas `#tab-repuestos.tab-panel.active`** (la de base,
+     que fijaba cuatro columnas, y sus dos repeticiones en los *media queries*
+     de 768 y 480 px), y **después las restauré**. Ver abajo: fue un error mío
+     y está revertido. El CSS quedó exactamente como estaba.
+  3. **No borré el CSS que quedó sin uso:** `.service-card--highlight` (tres
+     reglas) y `.badge-highlight`, que solo usaba esa tarjeta. (En la Tarea 13
+     el revisor encontró una **cuarta** regla huérfana que yo no había visto,
+     `.services-grid`, con su declaración base y tres *media queries*: no la usa
+     ningún elemento y **nunca** la usó, `git log -S 'class="services-grid'` no
+     devuelve ningún commit. Tampoco la borré, por el mismo motivo.) La limpieza que
+     pide la Tarea 13 enumera `.badge-urgente`, `.hero h1 em` y la regla inerte
+     de P-030, y estas dos no estaban en esa lista porque cuando se escribió
+     todavía se usaban. **No las agrego por mi cuenta:** borrar lo que la spec
+     no nombra es un hueco (`CLAUDE.md` §9). Si Ramiro quiere que caigan en la
+     limpieza de la Tarea 13, lo dice y se van en ese commit.
+     **Resuelto el 2026-09-28:** Ramiro mandó borrar las cuatro huérfanas
+     —`.service-card--highlight` con sus tres reglas, `.badge-highlight`,
+     `.footer-brand-sub` y `.services-grid`— y se fueron en el commit de las
+     tres columnas.
+  4. **Sincronicé la Tarea 4 de la spec**, que seguía ordenando la tarjeta
+     borrada: la fila de la pestaña `Repuestos` de la tabla y el total, que
+     pasó de 18 a 17 tarjetas (contadas: 3 + 5 + 3 + 3 + 3). Debajo dejé una
+     nota fechada que dice qué decía antes y por qué cambió, y que la fila
+     `Casa de Repuestos` de "Textos definitivos" y su viñeta de "Motivo de cada
+     cambio" se conservan como registro. **Decisión mía**, con el mismo
+     criterio que P-036. No toca `public/`. La primera redacción de esa nota
+     decía que Ramiro había mandado eliminar la tarjeta *"porque repetía la
+     sección `#casa-de-repuestos`"*: **él no dio motivo**, la redundancia es el
+     argumento con el que yo planteé la pregunta. Corregido; me lo marcó el
+     revisor.
+- **Pendiente para la Tarea 13:** este borrado corrió nueve renglones y dejó
+  desactualizadas las referencias de línea de **P-034** (`:1880`, `:1899`,
+  `:1918`, `:1919`, `:1945`, `:1957`), algunas ya corridas de antes. Las de
+  P-031 sí se corrigieron. El barrido de referencias de la Tarea 13 tiene que
+  pasar por todo `preguntas-abiertas.md`, no solo por lo que toque cada unidad.
+- **Resuelto en la Tarea 13.** El barrido se hizo y auditó las **25**
+  referencias del archivo: 2 históricas, con hash de commit adelante, que son
+  exactas, y **23 al archivo de ese día, todas corridas**. No se reescribieron:
+  varias señalan elementos que ya no existen y habría habido que inventarles un
+  número. En su lugar quedó escrito arriba, en el encabezado del archivo, que
+  las referencias de línea son fechadas y que para encontrar algo hay que
+  buscar el elemento. **Decisión mía**, con la auditoría completa en
+  `docs/planes/m3-informe.md`.
+- **El error del punto 2, y por qué era un error.** Lo levantó el revisor de
+  P-024 como bloqueante y tenía razón por un motivo que yo no había mirado:
+  esas reglas **no eran CSS huérfano**, eran la implementación de **P-012**, y
+  lo que yo hice es exactamente la alternativa que Ramiro evaluó y descartó.
+  `preguntas-abiertas.md`, P-012, texto del 2026-09-21: *"Alternativa, si se
+  prefiere: borrar la regla con `id`. Así 'Repuestos' se comportaría como las
+  demás pestañas a cualquier ancho…"*, y debajo: *"**Confirmación
+  (2026-09-22):** Ramiro confirma la decisión; se queda así."* Mi argumento era
+  que no se trataba de limpieza sino de consecuencia forzosa; no lo era:
+  dejarlas no incumple ninguna regla escrita, solo deja cuatro columnas para
+  tres tarjetas entre 769 y 1200 px, que es un juicio de apariencia y no me
+  corresponde. El revisor además me señaló que en el mismo diff yo usaba el
+  criterio contrario en el punto 3. **Restaurado:** las tres reglas y su
+  comentario volvieron idénticos, en sus líneas originales.
+- **Lo que queda por decidir, entonces:** si con tres tarjetas esas reglas
+  siguen teniendo sentido. Hoy dan cuatro columnas para tres tarjetas entre 769
+  y 1200 px, distinto de las otras tres pestañas de tres tarjetas. **No lo
+  toco:** es de Ramiro, que ya se pronunció una vez sobre estas mismas reglas.
+- **Respuesta (2026-09-28):** confirmada **tal como la tomé**. Decisión de Ramiro.
+
+---
+
+### P-038 — `docs/contraste-m3.md` quedó desalineado y ninguna tarea manda rehacerlo
+- **Estado:** respondida
+- **Bloquea:** no bloquea. El contraste **real** está medido y en cero
+  incumplimientos; lo desalineado es el acta, no la página.
+- **Qué falta:** decidir si la Tarea 13 rehace la auditoría de contraste o si
+  el acta se queda como está, fechada en el día en que se midió.
+- **Contexto:** `docs/contraste-m3.md` es el acta de la auditoría de contraste
+  de M3. Las unidades de cierre le movieron cuatro filas y el total: la línea 2
+  dice "Textos medidos: 387" y hoy son 381; las líneas 26, 29 y 79 son de la
+  tarjeta que borró P-024; la 36 es el párrafo que cambió P-021; y la 67 es el
+  `<h2>` que cambió P-027. **La lista de verificación de la Tarea 13
+  (`docs/spec-m3-home.md`) no incluye rehacer la auditoría de contraste:** pide
+  menú, `<h1>`, `grep`, JSON-LD, peso, capturas, huecos `TODO_IMAGEN` e
+  informe. O sea que, tal como está escrita, M3 cerraría con el acta
+  divergente y nadie decidió si eso está bien. Lo levantó el revisor de P-027.
+- **Qué hice mientras tanto:** **nada todavía, y una decisión mía para la
+  Tarea 13 si Ramiro no dice otra cosa:** no toqué el archivo en ninguna de las
+  unidades —el precedente de P-021 y P-024 es que las actas fechadas no se
+  editan, y parchear solo una fila dejaría un documento híbrido que no refleja
+  ningún momento real, que es peor que uno viejo y coherente—; y en la Tarea
+  13, con la página ya final, **pienso regenerarlo entero** con
+  `node tools/auditar-contraste.mjs`, con su fecha nueva, de modo que el acta
+  vuelva a describir un estado que existió de verdad. La versión anterior no se
+  pierde: queda en el historial de git. Si Ramiro prefiere que el acta de M3
+  quede congelada como está, lo dice y no se regenera.
+- **Resuelto en la Tarea 13.** Se regeneró entera, con la página ya final:
+  **383 textos, 70 combinaciones distintas, 0 por debajo del mínimo**, 1 exenta
+  por decorativa. El revisor la corrió por su cuenta y comparó su salida con el
+  archivo: **idénticos**, o sea que el acta es reproducible línea por línea.
+- **Una salvedad, porque acá arriba escribí "con su fecha nueva":**
+  `tools/auditar-contraste.mjs` **no emite fecha**, así que el acta nueva no
+  lleva ninguna y es indistinguible de la anterior salvo por su contenido. Me
+  lo marcó el revisor. **No le agregué una línea de fecha a mano**, porque eso
+  rompería justamente lo que la hace confiable: que se pueda regenerar y dar
+  byte por byte lo mismo. La fecha del acta es la del commit que la trae. Si
+  conviene que el archivo la lleve adentro, hay que agregársela a la
+  herramienta, y eso no lo hago por mi cuenta.
+- **Respuesta (2026-09-28):** confirmada **tal como la tomé**. Decisión de Ramiro.
+
+---
+
+### P-041 — El botón de WhatsApp de los dos menús no está en la lista de P-032
+- **Estado:** respondida
+- **Bloquea:** no bloquea. P-032 quedó ejecutada.
+- **Qué falta:** confirmar que el botón se queda donde está.
+- **Contexto:** la respuesta de P-032 enumera **seis** entradas de menú: Inicio,
+  Servicios, ¿Por qué elegirnos?, Flotas, Reseñas y Contacto. En el marcado hay
+  **siete** enlaces en cada bloque: los seis, más el botón azul "Pedir turno" /
+  "Pedir turno por WhatsApp", que estaba desde la Tarea 1.
+- **Qué hice mientras tanto:** **decisión mía: no lo toqué.** La respuesta
+  enumera destinos internos, con rótulo y orden; el botón no es un destino sino
+  una acción, y su color y su lugar vienen de `datos-verificados.md` §19,
+  decisión de Ramiro del 2026-09-21. Borrarlo habría sido exactamente el error
+  de P-024: llevarme por delante la implementación de una decisión ya tomada.
+  El revisor coincidió en el fondo —"no borrarlo es lo correcto"— y me marcó
+  que la decisión estaba anotada dentro de una pregunta ya `respondida`, donde
+  nadie la va a ver. Por eso está acá, abierta.
+- **Respuesta (2026-09-28):** confirmada **tal como la tomé**. Decisión de Ramiro.
+
+---
+
+### P-043 — El enlace nuevo del pie no se ve como enlace
+- **Estado:** respondida
+- **Bloquea:** no bloquea. Funciona, llega al contraste mínimo y tiene foco
+  visible.
+- **Qué falta:** decidir si `@dgpcentromecanico` en el pie tiene que
+  distinguirse del texto que lo rodea, y cómo.
+- **Contexto:** P-034 convirtió ese texto en enlace a Instagram. Es el **primer
+  enlace en línea dentro de un párrafo del pie**: los demás enlaces del pie
+  viven en listas y se leen como navegación por su posición. Medido: el
+  teléfono de la línea de arriba y el enlace tienen **exactamente** el mismo
+  color computado (`rgba(255,255,255,0.62)`), el mismo tamaño (13,92 px) y
+  `text-decoration-line: none`, porque el sitio tiene `a { text-decoration:
+  none; color: inherit }`. O sea que nada indica que uno sea enlace salvo el
+  cursor y el foco. Lo levantó el revisor de P-034.
+- **Qué hice mientras tanto:** **nada.** `CLAUDE.md` §6 se cumple: contraste
+  5,44:1 contra un mínimo de 4,50:1, foco visible con contorno de 3 px que da
+  4,86:1 sobre el fondo, y alcanzable por teclado. Que un enlace *parezca*
+  enlace es una decisión de forma que no me corresponde. En la sección de
+  contacto los tres enlaces de redes sí llevan subrayado (`.contact-redes a`),
+  así que la salida más obvia sería hacer lo mismo acá; no la aplico por mi
+  cuenta.
+- **Respuesta (2026-09-28):** confirmada **tal como la tomé**. Decisión de Ramiro.
+
+---
+
+### P-039 — "Pedir un presupuesto por WhatsApp" tiene respaldo, pero repartido en tres filas
+- **Estado:** respondida
+- **Bloquea:** no bloquea. El texto es de Ramiro y se publica tal cual.
+- **Qué falta:** decidir si `datos-verificados.md` §18b lleva una fila propia
+  que registre **el canal** por el que se piden presupuestos.
+- **Contexto:** el párrafo de contacto que Ramiro escribió para P-031 dice
+  "Escribinos por WhatsApp para coordinar el turno o pedir un presupuesto". El
+  revisor descompuso la oración en sus tres hechos y buscó cada uno en la
+  fuente de verdad:
+  - *Escribinos por WhatsApp* → §2, "Contacto para flotas y particulares |
+    Recepción general, por WhatsApp". Respaldado.
+  - *coordinar el turno* → §18b, "Service y revisión: se presupuesta; si el
+    cliente aprueba, se da turno en el momento". Respaldado.
+  - *pedir un presupuesto* → §18b lo dice tres veces ("se presupuesta", "se
+    pasa un presupuesto sin desarme previo", "coordinar un turno para revisar y
+    presupuestar"). El **hecho** está verificado; lo que no está escrito en
+    ninguna fila es el par "presupuesto **por WhatsApp**".
+  `grep -n "presupuest" docs/datos-verificados.md` da cuatro líneas y **ninguna
+  nombra el canal**.
+- **Qué hice mientras tanto:** **nada, y no toco el texto.** Es de Ramiro, él
+  es el origen de los datos de §18b, la oración no promete que el presupuesto
+  se *entregue* por WhatsApp —solo que se puede pedir por ahí— y §2 dice que
+  WhatsApp es la recepción general. Además el sitio ya publica el mismo hecho
+  desde antes, en la sección "Cómo trabajamos" ("te pasamos el presupuesto…"),
+  sin que ninguna revisión lo objetara. Queda anotado para que la afirmación
+  publicada tenga respaldo en una sola línea y no por composición.
+- **Respuesta (2026-09-28):** se agrega a `datos-verificados.md` §18b, en
+  "Cómo funciona el turno": *- **Canal:** los presupuestos y los turnos se
+  piden por WhatsApp, a la recepción general (§2).* Decisión de Ramiro.
+- **Aplicado (2026-09-28).** Con la regla de diff: el `git diff` de
+  `datos-verificados.md` da **`2 0`**, dos líneas agregadas y **cero
+  borradas**. Con eso, la afirmación publicada "Escribinos por WhatsApp para
+  coordinar el turno o pedir un presupuesto" ya tiene respaldo en **una sola
+  fila**, que era lo que faltaba: antes había que componerlo de tres.
+
+---
+
+### P-040 — El horario queda escrito dos veces en la misma banda visual de contacto
+- **Estado:** respondida
+- **Bloquea:** no bloquea.
+- **Qué falta:** decidir si la repetición se deja o si uno de los dos textos
+  cambia. Los dos son de Ramiro, así que ninguno lo toco.
+- **Contexto:** desde P-031, el párrafo de `#contacto` termina en "Respondemos
+  de lunes a viernes de 8:00 a 17:30.", y la ficha de datos de la misma sección
+  dice "Horario de atención / Lunes a viernes de 8:00 a 17:30", que viene de la
+  Tarea 12 y que P-034 confirma. **Medido a 1440 px:** el párrafo está en
+  `(x 152, y 6574)` y la ficha en `(x 752, y 6617)`; la separación vertical es
+  de **−13 px**, o sea que se solapan en altura, a 64 px de distancia
+  horizontal: los dos textos se leen de un vistazo. A 390 px quedan a 276 px y
+  no se ven juntos, así que es un efecto de escritorio.
+- **Qué hice mientras tanto:** **nada.** Es el mismo patrón que Ramiro resolvió
+  en P-030 —un texto que repite lo que ya dice otro elemento al lado—, por eso
+  lo levantó el revisor; pero acá los dos textos los escribió él, y elegir cuál
+  se va o cómo se reescribe es copy (`CLAUDE.md` §1). Lo anoto y sigo.
+- **Respuesta (2026-09-28):** el párrafo de contacto queda solo con la primera
+  oración, "Escribinos por WhatsApp para coordinar el turno o pedir un
+  presupuesto." El horario queda en la ficha de datos de al lado. Decisión de
+  Ramiro.
+- **Aplicado (2026-09-28).** El párrafo perdió la segunda oración. El horario
+  queda ahora en **dos** lugares **visibles**, y ninguno de los dos se solapa
+  con el otro: la ficha de datos de la sección de contacto y la columna
+  Contacto del pie. Hay un tercero, legible solo por máquina: el
+  `openingHoursSpecification` del JSON-LD, donde schema.org exige el formato
+  `HH:MM` y por eso dice `08:00`. La repetición que medía −13 px de separación a 1440 px desapareció,
+  porque uno de los dos textos ya no existe.
+
+---
+
+### P-042 — Dos comportamientos del menú móvil que vienen de antes
+- **Estado:** respondida
+- **Bloquea:** no bloquea. Ninguno de los dos lo introdujo P-032; los dos
+  existen desde antes y se verificaron idénticos en `HEAD` y en el trabajo.
+- **Qué falta:** decidir si se arreglan o si se dejan.
+- **Contexto:** los levantó el revisor de P-032 al medir el corte nuevo.
+  1. **Al ensanchar la ventana con el menú móvil abierto, quedan los dos menús
+     visibles a la vez.** No hay manejador de `resize`: `closeMobileMenu()`
+     solo se dispara al tocar un enlace o el botón. Medido antes y después del
+     cambio de corte: el comportamiento es el mismo, lo único que se movió es
+     la franja donde puede pasar (antes cruzando 768 px, ahora 830 px). La
+     afirmación "ningún ancho con los dos menús visibles" que verifiqué vale al
+     **cargar** la página en cada ancho, no al redimensionar con el menú
+     abierto.
+  2. **En el menú móvil, el enlace de WhatsApp es el único sin
+     `closeMobileMenu()`.** Los seis de navegación lo tienen, incluido "Flotas".
+     Como abre otra pestaña, el menú queda abierto detrás.
+- **Qué hice mientras tanto:** **nada.** Los dos son anteriores a esta ronda y
+  arreglarlos es tocar JavaScript que ninguna respuesta de Ramiro menciona
+  (`CLAUDE.md` §7 y §9). El primero se arregla con un `resize` que cierre el
+  menú al pasar a escritorio; el segundo, agregando el `onclick` que ya tienen
+  los otros seis. Los dos son de una línea, pero no los hago por mi cuenta.
+- **Respuesta (2026-09-28):** se arreglan los dos. Decisión de Ramiro.
+- **Aplicado (2026-09-28), y probado con interacción real, no leyendo el
+  código:**
+  1. **El manejador de `resize`.** Cierra el menú móvil cuando el botón deja de
+     mostrarse. **Decisión propia de forma:** la condición es
+     `getComputedStyle(navToggle).display === 'none'` y no una comparación
+     contra 830 px, para que el ancho de corte siga viviendo **solo** en el
+     CSS y no haya dos fuentes de verdad que se puedan desincronizar.
+  2. **El `onclick="closeMobileMenu()"`** del enlace de WhatsApp, que era el
+     único de los siete que no lo tenía.
+  **Las tres pruebas:** abrir a 390 px y ensanchar a 1200 → el menú se cierra
+  solo, `aria-expanded` vuelve a `false` y el rótulo a "Abrir menú", y **en
+  ningún momento quedan los dos menús visibles**; abrir a 390 px y achicar a
+  360 → **sigue abierto**, que es lo correcto, porque no se cruzó el corte; y
+  clic en el enlace de WhatsApp → cierra, con `aria-expanded` y rótulo
+  correctos.
 
 ---
