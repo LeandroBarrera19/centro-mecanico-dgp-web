@@ -163,6 +163,19 @@ En los dos modos:
 - No refactorices ni "limpies" código que la tarea no toca.
 - No borres archivos sin preguntar.
 
+**Autonomía.**
+
+Decisiones que tomás solo, sin esperar confirmación: forma (maquetación,
+espaciado, íconos, orden de reglas CSS, clases), proceso (orden de commits,
+scripts de verificación, nombres de archivos de trabajo) y correcciones
+técnicas de una a pocas líneas que no cambien lo que el sitio dice. Las
+registrás en docs/preguntas-abiertas.md como "Decisión propia" con estado
+"respondida", y el revisor las audita. Si el revisor la rechaza, se corrige.
+
+Solo se consulta a Ramiro por: texto de cara al usuario, datos del negocio,
+borrado de contenido visible, configuración del repositorio o del hosting,
+y todo lo que contradiga una decisión suya registrada.
+
 ---
 
 ## 8. Verificación antes de declarar algo hecho
