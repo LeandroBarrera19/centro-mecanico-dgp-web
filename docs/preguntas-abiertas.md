@@ -63,28 +63,6 @@ referencia por referencia, está en `docs/planes/m3-informe.md`.
 
 ---
 
-### P-044 — `core.autocrlf` está en `true` y no hay `.gitattributes`
-- **Estado:** abierta
-- **Bloquea:** no bloquea, pero es una trampa que ya se disparó dos veces.
-- **Qué falta:** decidir si se agrega un `.gitattributes` que fije los finales
-  de línea del repositorio.
-- **Contexto:** `public/index.html` está en LF en el índice y en el árbol de
-  trabajo, pero `git config core.autocrlf` está en `true` y el repositorio no
-  tiene `.gitattributes`. Cada vez que git reescribe el archivo —un `git
-  stash`, un `git checkout`— lo devuelve en **CRLF**, y un commit hecho así
-  ensucia las 2003 líneas mientras el contador de cambios sigue diciendo que se
-  tocaron ocho. Pasó en M2c y volvió a pasar en esta unidad, al comparar la
-  grilla del pie contra `HEAD` con `git stash`. Las dos veces se detectó y se
-  revirtió antes de commitear, pero depende de acordarse.
-- **Qué hice mientras tanto:** **nada en la configuración.** Tocar `git config`
-  o agregar un archivo que cambia cómo se guardan todos los archivos del
-  repositorio no es algo que haga por mi cuenta. Mientras tanto, la forma
-  segura de comparar contra una versión anterior es `git show
-  HEAD:public/index.html > archivo.html` y abrirlo con `file:///`, que no toca
-  el árbol de trabajo. Quedó escrito en el informe de esta unidad.
-
----
-
 ### P-049 — La regla de autonomía nueva choca con §9 y con dos viñetas de §7
 - **Estado:** abierta
 - **Bloquea:** no bloquea, pero decide casos concretos y ya decidió uno.
@@ -114,7 +92,49 @@ referencia por referencia, está en `docs/planes/m3-informe.md`.
 
 ---
 
+### P-053 — La lista de binarios del `.gitattributes` cubre seis extensiones, no las vecinas
+- **Estado:** abierta
+- **Bloquea:** no bloquea. Hoy no hay ningún archivo afectado.
+- **Qué falta:** decidir si se agregan `*.jpeg` y `*.woff`, que son los vecinos
+  directos de dos extensiones que sí están.
+- **Contexto:** Ramiro dictó seis extensiones —`png`, `jpg`, `webp`, `avif`,
+  `woff2`, `ico`— y se pusieron esas seis y nada más: agregar otras habría sido
+  decidir por él. El revisor comprobó con `git check-attr` que quedan **fuera**
+  `*.jpeg`, `*.woff`, `*.ttf`, `*.otf`, `*.pdf`, `*.zip`, `*.gif` y `*.mp4`,
+  que pasarían por `text=auto`.
+- **Por qué el riesgo es acotado, medido en un repositorio de prueba:**
+  `text=auto` detecta un binario por su contenido, no por su nombre. Un `.pdf`
+  con `
+` y bytes nulos **fue detectado como binario y sobrevivió intacto**.
+  Solo se corrompería un binario **sin ningún byte nulo en sus primeros 8 kB**.
+  Hoy en el repositorio no hay ninguno: el censo da 21 binarios, los 21
+  cubiertos por la lista.
+- **Qué hice mientras tanto:** **nada.** La lista es la que dictó Ramiro.
+
+---
+
 ## Respondidas
+
+### P-052 — Decisión propia: normalizar el árbol de trabajo de un archivo que Ramiro no nombró
+- **Estado:** respondida
+- **Decisión propia**, tomada al ejecutar P-044 el 2026-09-28.
+- **Qué decidí:** además de agregar el `.gitattributes`, convertí a LF **el
+  árbol de trabajo** de `tools/auditar-contraste.mjs`, que tenía 198 retornos
+  de carro. Su índice ya estaba en LF, así que el `git add --renormalize .` no
+  lo tocaba.
+- **Daño: cero, medido.** El `sha256` del archivo en disco es **idéntico** al
+  del blob ya commiteado en `HEAD`
+  (`dcb3f8ee02954bbd851bbfe1590f4f68ae1588573619a19afe2b8382967cf3da`), así que
+  para git la operación es un no-op y **no entra al commit**. Deja el archivo
+  exactamente como lo dejaría el próximo `checkout` con el `.gitattributes`
+  puesto.
+- **Lo que observó el revisor, y que es justo:** Ramiro no nombró ese archivo,
+  y su instrucción venía con un "si cambiara algo más, frená". Esa condición se
+  refería al **contenido del commit**, no al árbol de trabajo, así que no hay
+  incumplimiento literal; pero *"la lectura conservadora era dejarlo y que lo
+  arreglara solo el checkout siguiente"*. Queda para que lo mire Ramiro.
+
+---
 
 ### P-051 — Decisión propia: la condición del manejador de `resize`
 - **Estado:** respondida
@@ -1881,5 +1901,53 @@ referencia por referencia, está en `docs/planes/m3-informe.md`.
   360 → **sigue abierto**, que es lo correcto, porque no se cruzó el corte; y
   clic en el enlace de WhatsApp → cierra, con `aria-expanded` y rótulo
   correctos.
+
+---
+
+### P-044 — `core.autocrlf` está en `true` y no hay `.gitattributes`
+- **Estado:** respondida
+- **Bloquea:** no bloquea, pero es una trampa que ya se disparó dos veces.
+- **Qué falta:** decidir si se agrega un `.gitattributes` que fije los finales
+  de línea del repositorio.
+- **Contexto:** `public/index.html` está en LF en el índice y en el árbol de
+  trabajo, pero `git config core.autocrlf` está en `true` y el repositorio no
+  tiene `.gitattributes`. Cada vez que git reescribe el archivo —un `git
+  stash`, un `git checkout`— lo devuelve en **CRLF**, y un commit hecho así
+  ensucia las 2003 líneas mientras el contador de cambios sigue diciendo que se
+  tocaron ocho. Pasó en M2c y volvió a pasar en esta unidad, al comparar la
+  grilla del pie contra `HEAD` con `git stash`. Las dos veces se detectó y se
+  revirtió antes de commitear, pero depende de acordarse.
+- **Qué hice mientras tanto:** **nada en la configuración.** Tocar `git config`
+  o agregar un archivo que cambia cómo se guardan todos los archivos del
+  repositorio no es algo que haga por mi cuenta. Mientras tanto, la forma
+  segura de comparar contra una versión anterior es `git show
+  HEAD:public/index.html > archivo.html` y abrirlo con `file:///`, que no toca
+  el árbol de trabajo. Quedó escrito en el informe de esta unidad.
+- **Respuesta (2026-09-28):** se agrega un `.gitattributes` con
+  `* text=auto eol=lf`, y los binarios (`*.png`, `*.jpg`, `*.webp`, `*.avif`,
+  `*.woff2`, `*.ico`) marcados como `binary`. Después `git add --renormalize .`
+  y verificar que el commit no cambie el contenido de ningún archivo, solo
+  finales de línea; si cambiara algo más, frenar. Decisión de Ramiro.
+- **Aplicado (2026-09-28), con la verificación que él pidió.**
+  - **El `--renormalize` no cambió nada.** Lo único que entró al índice fue el
+    propio `.gitattributes`: `git diff --cached --name-only` devuelve **ese
+    archivo y nada más**. No hubo que frenar.
+  - **Comprobado además por huella de contenido**, no solo por el índice: saqué
+    el `sha256` de los **78** archivos versionados **ignorando los finales de
+    línea**, antes y después, y los comparé. La única diferencia es la línea
+    nueva de `.gitattributes`. Ningún contenido cambió.
+  - **Estado de los finales de línea antes:** 56 archivos `i/lf w/lf`, 21
+    binarios y **uno con CRLF en el árbol de trabajo**,
+    `tools/auditar-contraste.mjs`, que tenía 198 retornos de carro. Su índice
+    ya estaba en LF, así que el `--renormalize` no lo tocó.
+  - **Decisión propia:** normalicé también **el árbol de trabajo** de ese
+    archivo, para que coincida con su índice. Ver **P-052**.
+  - **Estado después:** **58 archivos `i/lf w/lf` y 21 binarios. Cero CRLF en
+    todo el repositorio.**
+  - **Lo que esto cierra:** `core.autocrlf` sigue en `true`, pero ya no manda:
+    `.gitattributes` gana. Se acabó el riesgo de que un `git stash` devuelva
+    `public/index.html` en CRLF y un commit ensucie sus ~2000 líneas mientras
+    el contador dice que se tocaron ocho. Pasó dos veces, en M2c y al aplicar
+    P-034, y las dos se detectó a mano antes de commitear.
 
 ---
