@@ -167,6 +167,34 @@ estado y ejecuta. No borra la pregunta: el historial sirve.
 
 ---
 
+### P-038 — `docs/contraste-m3.md` quedó desalineado y ninguna tarea manda rehacerlo
+- **Estado:** abierta
+- **Bloquea:** no bloquea. El contraste **real** está medido y en cero
+  incumplimientos; lo desalineado es el acta, no la página.
+- **Qué falta:** decidir si la Tarea 13 rehace la auditoría de contraste o si
+  el acta se queda como está, fechada en el día en que se midió.
+- **Contexto:** `docs/contraste-m3.md` es el acta de la auditoría de contraste
+  de M3. Las unidades de cierre le movieron cuatro filas y el total: la línea 2
+  dice "Textos medidos: 387" y hoy son 381; las líneas 26, 29 y 79 son de la
+  tarjeta que borró P-024; la 36 es el párrafo que cambió P-021; y la 67 es el
+  `<h2>` que cambió P-027. **La lista de verificación de la Tarea 13
+  (`docs/spec-m3-home.md`) no incluye rehacer la auditoría de contraste:** pide
+  menú, `<h1>`, `grep`, JSON-LD, peso, capturas, huecos `TODO_IMAGEN` e
+  informe. O sea que, tal como está escrita, M3 cerraría con el acta
+  divergente y nadie decidió si eso está bien. Lo levantó el revisor de P-027.
+- **Qué hice mientras tanto:** **nada todavía, y una decisión mía para la
+  Tarea 13 si Ramiro no dice otra cosa:** no toqué el archivo en ninguna de las
+  unidades —el precedente de P-021 y P-024 es que las actas fechadas no se
+  editan, y parchear solo una fila dejaría un documento híbrido que no refleja
+  ningún momento real, que es peor que uno viejo y coherente—; y en la Tarea
+  13, con la página ya final, **pienso regenerarlo entero** con
+  `node tools/auditar-contraste.mjs`, con su fecha nueva, de modo que el acta
+  vuelva a describir un estado que existió de verdad. La versión anterior no se
+  pierde: queda en el historial de git. Si Ramiro prefiere que el acta de M3
+  quede congelada como está, lo dice y no se regenera.
+
+---
+
 ## Respondidas
 
 ### P-001 — Qué cambió el commit 0501b5e en el CSS
