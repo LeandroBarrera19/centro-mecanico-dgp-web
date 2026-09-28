@@ -105,6 +105,68 @@ estado y ejecuta. No borra la pregunta: el historial sirve.
 
 ---
 
+### P-037 — Tres decisiones de CSS que arrastró el borrado de la tarjeta (P-024)
+- **Estado:** abierta
+- **Bloquea:** no bloquea. P-024 quedó ejecutada.
+- **Qué falta:** confirmar las dos primeras y decidir la tercera.
+- **Contexto:** la tarjeta "Casa de Repuestos" era la **cuarta** de la pestaña
+  "Repuestos" y la única destacada de todo el sitio. Al sacarla quedaron tres
+  cosas sin dueño, y ninguna está nombrada en la respuesta de Ramiro, que dice
+  solo "la pestaña queda con tres tarjetas".
+- **Qué hice mientras tanto:** **las tres son decisiones mías.**
+  1. **Renumeré los retardos del fade-in.** Las otras cuatro pestañas empiezan
+     con una tarjeta sin retardo y siguen con `delay-1`, `delay-2`… Al caer la
+     primera, Repuestos quedaba empezando en `delay-1`. Pasé las tres
+     restantes a (sin retardo), `delay-1` y `delay-2`, que es la convención del
+     archivo.
+  2. **Borré las tres reglas `#tab-repuestos.tab-panel.active`** (la de base,
+     que fijaba cuatro columnas, y sus dos repeticiones en los *media queries*
+     de 768 y 480 px), y **después las restauré**. Ver abajo: fue un error mío
+     y está revertido. El CSS quedó exactamente como estaba.
+  3. **No borré el CSS que quedó sin uso:** `.service-card--highlight` (tres
+     reglas) y `.badge-highlight`, que solo usaba esa tarjeta. La limpieza que
+     pide la Tarea 13 enumera `.badge-urgente`, `.hero h1 em` y la regla inerte
+     de P-030, y estas dos no estaban en esa lista porque cuando se escribió
+     todavía se usaban. **No las agrego por mi cuenta:** borrar lo que la spec
+     no nombra es un hueco (`CLAUDE.md` §9). Si Ramiro quiere que caigan en la
+     limpieza de la Tarea 13, lo dice y se van en ese commit.
+  4. **Sincronicé la Tarea 4 de la spec**, que seguía ordenando la tarjeta
+     borrada: la fila de la pestaña `Repuestos` de la tabla y el total, que
+     pasó de 18 a 17 tarjetas (contadas: 3 + 5 + 3 + 3 + 3). Debajo dejé una
+     nota fechada que dice qué decía antes y por qué cambió, y que la fila
+     `Casa de Repuestos` de "Textos definitivos" y su viñeta de "Motivo de cada
+     cambio" se conservan como registro. **Decisión mía**, con el mismo
+     criterio que P-036. No toca `public/`. La primera redacción de esa nota
+     decía que Ramiro había mandado eliminar la tarjeta *"porque repetía la
+     sección `#casa-de-repuestos`"*: **él no dio motivo**, la redundancia es el
+     argumento con el que yo planteé la pregunta. Corregido; me lo marcó el
+     revisor.
+- **Pendiente para la Tarea 13:** este borrado corrió nueve renglones y dejó
+  desactualizadas las referencias de línea de **P-034** (`:1880`, `:1899`,
+  `:1918`, `:1919`, `:1945`, `:1957`), algunas ya corridas de antes. Las de
+  P-031 sí se corrigieron. El barrido de referencias de la Tarea 13 tiene que
+  pasar por todo `preguntas-abiertas.md`, no solo por lo que toque cada unidad.
+- **El error del punto 2, y por qué era un error.** Lo levantó el revisor de
+  P-024 como bloqueante y tenía razón por un motivo que yo no había mirado:
+  esas reglas **no eran CSS huérfano**, eran la implementación de **P-012**, y
+  lo que yo hice es exactamente la alternativa que Ramiro evaluó y descartó.
+  `preguntas-abiertas.md`, P-012, texto del 2026-09-21: *"Alternativa, si se
+  prefiere: borrar la regla con `id`. Así 'Repuestos' se comportaría como las
+  demás pestañas a cualquier ancho…"*, y debajo: *"**Confirmación
+  (2026-09-22):** Ramiro confirma la decisión; se queda así."* Mi argumento era
+  que no se trataba de limpieza sino de consecuencia forzosa; no lo era:
+  dejarlas no incumple ninguna regla escrita, solo deja cuatro columnas para
+  tres tarjetas entre 769 y 1200 px, que es un juicio de apariencia y no me
+  corresponde. El revisor además me señaló que en el mismo diff yo usaba el
+  criterio contrario en el punto 3. **Restaurado:** las tres reglas y su
+  comentario volvieron idénticos, en sus líneas originales.
+- **Lo que queda por decidir, entonces:** si con tres tarjetas esas reglas
+  siguen teniendo sentido. Hoy dan cuatro columnas para tres tarjetas entre 769
+  y 1200 px, distinto de las otras tres pestañas de tres tarjetas. **No lo
+  toco:** es de Ramiro, que ya se pronunció una vez sobre estas mismas reglas.
+
+---
+
 ## Respondidas
 
 ### P-001 — Qué cambió el commit 0501b5e en el CSS
@@ -1014,7 +1076,7 @@ estado y ejecuta. No borra la pregunta: el historial sirve.
   **respuesta** que sigue viva. O sea que hay algo que sacar, y hay que
   sacarlo. Lo corrigió el revisor de la Tarea 12.
   Lo que queda hoy es, en minúscula y dentro de una oración que
-  la spec no cita, en `public/index.html:1823`:
+  la spec no cita, en `public/index.html:1816`:
   *"Diagnóstico transparente, stock propio y respuesta inmediata. Coordiná tu
   turno directamente por WhatsApp y un técnico especializado te responde a la
   brevedad."* Ahí hay dos afirmaciones de rapidez, no una: "respuesta
@@ -1028,7 +1090,7 @@ estado y ejecuta. No borra la pregunta: el historial sirve.
   es lo que exige la Regla de textos de la spec para este caso.
 - **Qué hice mientras tanto:** **el párrafo quedó intacto**, y quedó un
   marcador `TODO_DATO` en el código, justo arriba
-  (`public/index.html:1816-1822`), que explica qué falta y remite acá. Las
+  (`public/index.html:1807-1815`), que explica qué falta y remite acá. Las
   tres salidas posibles exigen escribir o recortar texto de cara al usuario, y
   eso no lo hago yo (`CLAUDE.md` §1 y §9). Es el mismo criterio por el que el
   revisor me rechazó la Tarea 10 cuando borré un rótulo que la spec no
