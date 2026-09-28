@@ -292,6 +292,8 @@ Referencia de tono B2B: manual de marca `directrices-de-marca-dgp.html`
 - **Demora hasta el turno:** variable. **No publicar plazos.**
 - **Sin turno / urgencias:** rara vez, y solo con clientes de flota
   específicos. **No ofrecer atención sin turno ni urgencias en el sitio.**
+- **Canal:** los presupuestos y los turnos se piden por WhatsApp, a la
+  recepción general (§2).
 
 ### Repuestos
 
