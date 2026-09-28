@@ -297,10 +297,13 @@ Sin commit si no hubo cambios.
 > **Actualizado el 2026-09-28 por la decisión de cierre de P-030.** Cuando se
 > ejecutó esta tarea, el segundo punto decía: *Subtítulo: `4,9 en Google, con
 > más de 130 opiniones.`* Al responder P-030, Ramiro mandó eliminarlo, porque
-> la insignia de Google que está debajo dice lo mismo con más respaldo. En la
-> misma respuesta mandó eliminar el rótulo superior, que repetía el `<h2>`
-> palabra por palabra y que esta tarea nunca había dictado. Ver "Decisiones de
-> cierre (P-021 a P-034)" al final de este archivo.
+> la insignia de Google que está debajo dice lo mismo con más respaldo (ese
+> motivo es de él, citado de su respuesta). En la misma respuesta mandó
+> eliminar el rótulo superior, esta vez **sin dar motivo**. (Que el rótulo
+> repetía el `<h2>` palabra por palabra, y que esta tarea nunca lo había
+> dictado, son dos hechos verificados, y son el argumento con el que se planteó
+> P-030, no el motivo que dio él.) Ver "Decisiones de cierre (P-021 a P-034)"
+> al final de este archivo.
 
 Commit: `Opiniones en grilla de dos por dos`
 
