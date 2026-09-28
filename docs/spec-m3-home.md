@@ -498,6 +498,22 @@ Libreta digital → `#libreta-digital` · Flotas · Reseñas · Zona de cobertur
 `#zona-de-cobertura` · Contacto. Casa de repuestos no se repite: ya está en la
 columna "Servicios".
 
+**Cómo entra el menú a anchos intermedios (decidido el 2026-09-28, al
+ejecutar).** Agregar "Flotas" hizo que el menú de escritorio dejara de entrar:
+desbordaba entre 769 y 797 px, y entre 798 y 830 px el botón quedaba pegado al
+borde, sin el aire del contenedor. El bloque del menú mide 668,5 px fijos y no
+se achica; el que cede es el logo, que se planta en 97,6 px. Se le llevaron a
+Ramiro tres salidas medidas y eligió **aplicar dos a la vez**:
+
+- el corte del menú móvil sube de 768 a **830 px**;
+- el espaciado entre ítems baja de 32 a **20 px por debajo de 1000 px**.
+
+Queda entonces: menú móvil de 320 a 830 px, menú de escritorio desde 831 px con
+espaciado de 20 px hasta 1000 px y de 32 px desde 1001 px. Las dos
+declaraciones salen del bloque de 768 px, que ya no las necesita. Medido de 320
+a 1920 px de a 1 px: cero desbordes, ningún ancho con los dos menús a la vez ni
+con ninguno, y ninguno con el menú sin su aire.
+
 ### P-033 — Las redes en contacto
 
 Confirmadas las tres decisiones.
