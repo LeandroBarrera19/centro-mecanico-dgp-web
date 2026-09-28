@@ -410,32 +410,41 @@ referencia por referencia, está en `docs/planes/m3-informe.md`.
 
 ## Respondidas
 
-### P-050 — Decisión propia: la unión contacto → pie no lleva remate diagonal
+### P-050 — Decisión propia: las dos uniones con los bordes del documento no llevan remate
 - **Estado:** respondida
 - **Decisión propia**, tomada al ejecutar el punto 2b el 2026-09-28.
 - **Qué apareció:** al aplicar la regla ampliada de P-025 —*todo cambio de
   color entre secciones lleva remate diagonal*— y medir la cadena entera sobre
-  el DOM, apareció una **segunda** unión que la incumple y que nadie había
-  mirado: **la sección de contacto contra el pie**, `rgb(18, 75, 143)` contra
-  `rgb(13, 56, 112)`. Es el único cambio de color que queda sin remate.
-- **Qué decidí: no le agregué diagonal.** Tres motivos:
-  1. **El pie no es una sección.** La cadena de remates vive dentro de
-     `<main>`; el pie es otro punto de referencia del documento, con su propia
-     barra de acento abajo. La regla habla de "cambio de color entre
-     secciones".
-  2. **Los dos azules son el mismo color de marca en dos tonos**, `--azul` y
-     `--azul-dark`. El escalón lee como "acá empieza el pie", no como dos
-     secciones distintas. Verificado en captura a 390 y 1440 px:
-     `temporary screenshots/post-union-contacto-pie-*.png`.
+  el DOM, aparecieron **dos** uniones que la incumplen y que nadie había
+  mirado. Las dos son contra un borde del documento, no entre secciones:
+  - **contacto → pie**, `rgb(18, 75, 143)` contra `rgb(13, 56, 112)`;
+  - **navbar → hero**, `#FFFFFF` (con su borde `#E8EDF3`) contra
+    `rgb(37, 81, 123)`. Esta se me había escapado y la midió el revisor,
+    muestreando los píxeles de la costura a 1440 px: `y=71: 255,255,255`,
+    `y=72: 232,237,243`, `y=73: 37,81,123`.
+- **Qué decidí: no les agregué diagonal, a ninguna de las dos.** Tres motivos:
+  1. **Ni el pie ni la barra de navegación son secciones.** La cadena de
+     remates vive dentro de `<main>`; el `<footer>` y el `<header>` son otros
+     puntos de referencia del documento. La regla habla de "cambio de color
+     entre **secciones**", y el mismo criterio deja afuera a las dos.
+  2. **En el pie, los dos azules son el mismo color de marca en dos tonos**,
+     `--azul` y `--azul-dark`: el escalón lee como "acá empieza el pie".
+     Verificado en captura a 390 y 1440 px:
+     `temporary screenshots/post-union-contacto-pie-*.png`. **Este motivo es el
+     más débil de los tres** y así me lo marcó el revisor: es un juicio de
+     forma, y `CLAUDE.md` §1 no me los asigna. Lo dejo escrito como lo que es,
+     una apreciación mía, no un argumento.
   3. **La instrucción de Ramiro nombraba una sola unión**, la de Flotas →
-     Marcas, y el commit se llama así. Agregar una diagonal en el pie es tocar
-     una parte de la página que no pidió.
+     Marcas, y el commit se llama así. Agregar diagonales en el pie o en la
+     barra de navegación es tocar partes de la página que no pidió.
 - **Contra qué va esta decisión:** contra la letra de "crearlo no es una
   decisión", que en su lectura más amplia me obligaría a crearla. Por eso la
   registro en vez de resolverla en silencio.
-- **Si Ramiro la quiere:** es agregarle a `.contact-cta` un `::after` idéntico
-  al de `.fleets` con `background: var(--azul-dark)`, subirle el padding
-  inferior de 88 a 148 px y darle `position: relative`. Tres líneas.
+- **Si Ramiro las quiere:** para el pie, agregarle a `.contact-cta` un
+  `::after` idéntico al de `.fleets` con `background: var(--azul-dark)`,
+  subirle el padding inferior de 88 a 148 px y darle `position: relative`. La
+  de la barra de navegación es más delicada, porque la barra es fija y se
+  superpone al hero: conviene que la pida y se mida antes.
 
 ### P-046 — Decisión propia: el subtítulo "Autonomía." en `CLAUDE.md` §7
 - **Estado:** respondida
@@ -467,6 +476,21 @@ referencia por referencia, está en `docs/planes/m3-informe.md`.
   1 ya no entra en su commit y necesita uno segundo, que es justo lo que "un
   commit por tarea" evita. **De acá en adelante: se agrupan pasadas de revisión
   solo mientras el trabajo siga sin commitear.**
+- **Y lo volví a hacer, dos commits después.** El punto 2b (`da37be5`, la
+  diagonal de flotas) también se commiteó **sin su informe de revisión**, un
+  commit después de que yo escribiera acá arriba que eso no se hace. No lo
+  arreglo revirtiendo: lo reviso junto con el 2c, antes de commitear el 2c, y
+  si aparece algo bloqueante se corrige en un commit propio. Queda escrito
+  porque haber escrito la regla no alcanzó para cumplirla: **el control tiene
+  que correr antes del `git commit`, no después**, y el momento de invocarlo es
+  cuando el trabajo está listo, no cuando ya está guardado.
+- **Lo que sí repara el agujero, y se hizo.** El revisor me señaló que la nota
+  sirve como registro pero **no como control**, con dos razones medibles: que
+  la primera redacción ya decía lo mismo y un commit después volvió a pasar, y
+  que `da37be5` va a quedar en la historia sin su informe. Lo único que lo
+  repara sin reescribir historia es que **el informe del punto 2b viaje en el
+  commit del 2c**, y así se hizo: `docs/revisiones/post-m3-p2b-p2c.md` cubre
+  los dos puntos y dice a cuál commit corresponde cada uno.
 
 ---
 
@@ -1208,11 +1232,18 @@ referencia por referencia, está en `docs/planes/m3-informe.md`.
   secciones lleva remate diagonal, y crearlo no es una decisión.* Antes la
   regla fijaba el **color** de los remates que existían; ahora también obliga a
   **crearlos**. Decisión de Ramiro.
-- **Alcance, medido al aplicarla:** con la regla ampliada hay **dos** uniones
-  en la página donde cambia el color. La de Flotas → Marcas se resolvió con su
-  diagonal. La otra es **contacto → pie**, `rgb(18,75,143)` contra
-  `rgb(13,56,112)`, y **no** se le agregó remate: ver **P-050**, decisión
-  propia.
+- **Alcance, medido al aplicarla.** Las uniones de la página que **cambian de
+  color** son nueve: **siete** están resueltas con remate diagonal, y **dos**
+  quedan sin remate, las dos por el mismo motivo, que es que no son uniones
+  entre secciones de `<main>`:
+  - **navbar → hero**, `#FFFFFF` contra `rgb(37,81,123)`;
+  - **contacto → pie**, `rgb(18,75,143)` contra `rgb(13,56,112)`.
+  Las dos están tratadas en **P-050**, decisión propia. (La primera versión de
+  este inventario decía "dos uniones donde cambia el color" y se olvidaba de
+  navbar → hero; lo midió el revisor, muestreando los píxeles de la costura.)
+  Aparte, hay dos uniones **sin** cambio de color y por eso sin remate: hero →
+  Servicios, donde el degradado muere en blanco puro, y Marcas → Opiniones,
+  que son del mismo gris.
 
 ---
 
@@ -1418,6 +1449,15 @@ referencia por referencia, está en `docs/planes/m3-informe.md`.
   Google, con más de 130 opiniones." (queda la insignia de Google, que dice lo
   mismo con más respaldo). La regla CSS inerte del *media query* de 900 px se
   borra en la limpieza de la Tarea 13. Decisión de Ramiro.
+- **Su criterio se aplicó otra vez el 2026-09-28**, por decisión de Ramiro: se
+  sacó el rótulo `Nuestros servicios` que estaba arriba del `<h2>` "Servicios",
+  por el mismo motivo por el que se había sacado el de Opiniones. Quedaban
+  **dos** `eyebrow-label` en el sitio y queda **uno**, el de Contacto, que no
+  repite su `<h2>` ("Contacto" contra "Pedí tu turno"). La clase sigue en uso,
+  así que su CSS no queda huérfano. (Primero escribí "de los tres que tenía el
+  sitio": eran tres en `c45335e`, antes de que P-030 sacara el de Opiniones, y
+  cinco hasta `ecda75f`. Al momento de este cambio eran dos. Lo contó el
+  revisor commit por commit.)
 - **Aplicado (2026-09-28).** Todo lo que dice "Qué hice mientras tanto" y "Si
   Ramiro quiere sacarlo" acá arriba describe el estado **anterior**, y queda
   como está porque es el planteo fechado. Lo que hay hoy en el archivo:
@@ -1755,13 +1795,15 @@ referencia por referencia, está en `docs/planes/m3-informe.md`.
   color entre secciones lleva remate diagonal, y crearlo no es una decisión.
   Decisión de Ramiro.
 - **Aplicado (2026-09-28).** `.fleets` recibió `position: relative`, el padding
-  inferior pasó de 88 a 148 px —como las otras cinco secciones con remate— y un
+  inferior pasó de 88 a 148 px —como las otras **seis** secciones con remate— y un
   `::after` con **la misma geometría exacta** que los demás: 66 px de alto,
   `bottom: -2px`, `clip-path: polygon(0 100%, 100% 0, 100% 100%)` y
   `background: var(--gris-bg)`, que es el fondo de la franja de marcas.
-  **Medida la cadena entera sobre el DOM:** las seis diagonales coinciden con
-  la sección de abajo, y la única unión que cambia de color sin remate es
-  contacto → pie (P-050). Captura en
+  **Medida la cadena entera sobre el DOM:** las **siete** diagonales del sitio
+  coinciden con la sección de abajo. Captura en
   `temporary screenshots/post-union-flotas-marcas-*.png`.
+  (Primero escribí "cinco" y "seis": eran seis antes de esta y son siete
+  después. Lo contó el revisor con `grep -c` del `clip-path`, que da 7, y del
+  `padding: 88px 0 148px`, que también da 7.)
 
 ---

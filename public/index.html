@@ -637,9 +637,10 @@
     /* Remate diagonal hacia la franja de marcas, que es --gris-bg. Lo pidió
        Ramiro al resolver P-045, ampliando la regla de P-025: todo cambio de
        color entre secciones lleva remate diagonal, y crearlo no es una
-       decisión. Misma geometría que los otros cinco: 66 px de alto, el mismo
+       decisión. Misma geometría que los otros seis: 66 px de alto, el mismo
        polígono y el mismo bottom de -2 px; el padding inferior pasa de 88 a
-       148 px, como en las demás secciones con remate. */
+       148 px, como en las demás secciones con remate. Con esta, el sitio tiene
+       siete. */
     .fleets::after {
       content: '';
       position: absolute;
@@ -1314,7 +1315,6 @@
 <section class="services" id="servicios">
   <div class="container">
     <div class="section-header center">
-      <span class="eyebrow-label">Nuestros servicios</span>
       <h2 class="section-title">Servicios</h2>
       <p class="section-sub">Para todas las marcas, con especialización en pick-ups y utilitarios.</p>
     </div>
