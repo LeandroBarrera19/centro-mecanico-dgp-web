@@ -288,6 +288,52 @@ estado y ejecuta. No borra la pregunta: el historial sirve.
 
 ---
 
+### P-043 — El enlace nuevo del pie no se ve como enlace
+- **Estado:** abierta
+- **Bloquea:** no bloquea. Funciona, llega al contraste mínimo y tiene foco
+  visible.
+- **Qué falta:** decidir si `@dgpcentromecanico` en el pie tiene que
+  distinguirse del texto que lo rodea, y cómo.
+- **Contexto:** P-034 convirtió ese texto en enlace a Instagram. Es el **primer
+  enlace en línea dentro de un párrafo del pie**: los demás enlaces del pie
+  viven en listas y se leen como navegación por su posición. Medido: el
+  teléfono de la línea de arriba y el enlace tienen **exactamente** el mismo
+  color computado (`rgba(255,255,255,0.62)`), el mismo tamaño (13,92 px) y
+  `text-decoration-line: none`, porque el sitio tiene `a { text-decoration:
+  none; color: inherit }`. O sea que nada indica que uno sea enlace salvo el
+  cursor y el foco. Lo levantó el revisor de P-034.
+- **Qué hice mientras tanto:** **nada.** `CLAUDE.md` §6 se cumple: contraste
+  5,44:1 contra un mínimo de 4,50:1, foco visible con contorno de 3 px que da
+  4,86:1 sobre el fondo, y alcanzable por teclado. Que un enlace *parezca*
+  enlace es una decisión de forma que no me corresponde. En la sección de
+  contacto los tres enlaces de redes sí llevan subrayado (`.contact-redes a`),
+  así que la salida más obvia sería hacer lo mismo acá; no la aplico por mi
+  cuenta.
+
+---
+
+### P-044 — `core.autocrlf` está en `true` y no hay `.gitattributes`
+- **Estado:** abierta
+- **Bloquea:** no bloquea, pero es una trampa que ya se disparó dos veces.
+- **Qué falta:** decidir si se agrega un `.gitattributes` que fije los finales
+  de línea del repositorio.
+- **Contexto:** `public/index.html` está en LF en el índice y en el árbol de
+  trabajo, pero `git config core.autocrlf` está en `true` y el repositorio no
+  tiene `.gitattributes`. Cada vez que git reescribe el archivo —un `git
+  stash`, un `git checkout`— lo devuelve en **CRLF**, y un commit hecho así
+  ensucia las 2003 líneas mientras el contador de cambios sigue diciendo que se
+  tocaron ocho. Pasó en M2c y volvió a pasar en esta unidad, al comparar la
+  grilla del pie contra `HEAD` con `git stash`. Las dos veces se detectó y se
+  revirtió antes de commitear, pero depende de acordarse.
+- **Qué hice mientras tanto:** **nada en la configuración.** Tocar `git config`
+  o agregar un archivo que cambia cómo se guardan todos los archivos del
+  repositorio no es algo que haga por mi cuenta. Mientras tanto, la forma
+  segura de comparar contra una versión anterior es `git show
+  HEAD:public/index.html > archivo.html` y abrirlo con `file:///`, que no toca
+  el árbol de trabajo. Quedó escrito en el informe de esta unidad.
+
+---
+
 ## Respondidas
 
 ### P-001 — Qué cambió el commit 0501b5e en el CSS
@@ -1426,3 +1472,45 @@ estado y ejecuta. No borra la pregunta: el historial sirve.
   4. En la columna Contacto del pie, el horario pasa a "Lunes a viernes de
      8:00 a 17:30" y "@dgpcentromecanico" pasa a enlace a Instagram, con
      `target="_blank"` y `rel="noopener"`.
+- **Aplicado (2026-09-28).** Los puntos 2 y 3 eran confirmaciones: no se tocó
+  nada. Los puntos 1 y 4 se ejecutaron así:
+  - Se fueron el `<div class="footer-brand-sub">` de debajo del nombre y el
+    `<p>` suelto del final. **"Villa María, Córdoba" en el pie bajó de cuatro
+    apariciones a dos**, que son las que Ramiro deja: el lema y la dirección de
+    la columna Contacto.
+  - **Se fue también el comentario de cinco líneas** que estaba junto a la
+    línea suelta y que decía que "Villa María, Córdoba" no se tocaba porque la
+    Tarea 12 no lo mencionaba. **Decisión mía**, del mismo tipo que la del
+    comentario de P-030: era mío, su condición se cumplió, y dejarlo habría
+    publicado en el código una afirmación hoy falsa.
+  - El horario del pie y el de la sección de contacto ahora dicen lo mismo con
+    el mismo formato. Las únicas apariciones de `08:00` que quedan en el sitio
+    están en el `openingHoursSpecification` del JSON-LD, donde schema.org exige
+    `HH:MM`.
+  - **Medido, porque el logo del pie abarca tres filas de la grilla y ahora hay
+    dos hijos en vez de tres.** Barrido de 320 a 1000 px de a 1 px, contra
+    `HEAD`: el bloque `.footer-brand` pasó de 108,7 a **72,2** px entre 320 y
+    425 px, y de 86,9 a **58,0** px entre **426** y 768 px; de 769 px para
+    arriba no usa grilla y no cambia (311,2 px en las dos versiones). La
+    diferencia es exactamente el renglón que se sacó: −36,5 px y −28,9 px.
+    **Primero escribí que el segundo tramo empezaba en 480 px: era mi cifra, no
+    una medición, y el revisor la corrigió a 426.**
+  - **Sobre la tercera fila de la grilla, que también corregí.** No es cierto
+    que quedara en cero: entre 426 y 768 px mide **7,59 px**. El motivo es que
+    el logo lleva `grid-row: 1 / 4` y ahora, con 58 px, es **más alto que las
+    dos filas de texto que quedan** (28,59 + 21,81 = 50,4 px), así que la
+    grilla estira la tercera para alojarlo. Antes el texto era más alto y eso no
+    pasaba. **No es un hueco:** el alto del bloque es igual al alto del logo, o
+    sea que no sobra espacio por debajo del elemento más alto, y `align-items:
+    start` mantiene el logo alineado arriba con el nombre en todos los anchos
+    (mismo `top`, verificado por geometría y por captura a 360, 390, 480, 768 y
+    1440 px). El único efecto visible es que en ese tramo el logo sobresale
+    7,6 px por debajo del lema.
+  - **Quedó CSS sin uso y no lo borré:** `.footer-brand-sub`, que solo usaba el
+    `<div>` eliminado. Mismo criterio que en P-037 punto 3: borrar lo que la
+    spec no nombra es un hueco (`CLAUDE.md` §9). Si Ramiro quiere que caiga en
+    la limpieza de la Tarea 13, lo dice.
+  - **Nota de proceso:** para comparar contra `HEAD` usé `git stash`, que dejó
+    el archivo en CRLF, como ya había pasado en M2c. Detectado y revertido
+    antes de commitear: 2003 líneas, cero CRLF, y el diff sigue siendo solo el
+    pie.
