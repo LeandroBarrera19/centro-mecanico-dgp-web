@@ -129,8 +129,10 @@ redistribuidas así:
 > **Actualizado el 2026-09-28 por la decisión de cierre de P-024.** Cuando se
 > ejecutó esta tarea, la pestaña `Repuestos` llevaba cuatro tarjetas y el total
 > era 18: la primera era `Casa de Repuestos`, con la etiqueta "Diferencial
-> clave". Al responder P-024, Ramiro mandó eliminarla porque repetía la sección
-> `#casa-de-repuestos`, y la pestaña quedó con tres. Por eso quedan sin objeto,
+> clave". Al responder P-024, Ramiro mandó eliminarla, sin dar motivo, y la
+> pestaña quedó con tres. (La redundancia con la sección `#casa-de-repuestos`
+> es el argumento con el que se planteó la pregunta, no el motivo que dio él.)
+> Por eso quedan sin objeto,
 > y se conservan solo como registro de lo que se decidió en su momento, la fila
 > `Casa de Repuestos` de "Textos definitivos" y su viñeta en "Motivo de cada
 > cambio", las dos más abajo en esta misma tarea. Ver "Decisiones de cierre
