@@ -195,6 +195,55 @@ estado y ejecuta. No borra la pregunta: el historial sirve.
 
 ---
 
+### P-039 — "Pedir un presupuesto por WhatsApp" tiene respaldo, pero repartido en tres filas
+- **Estado:** abierta
+- **Bloquea:** no bloquea. El texto es de Ramiro y se publica tal cual.
+- **Qué falta:** decidir si `datos-verificados.md` §18b lleva una fila propia
+  que registre **el canal** por el que se piden presupuestos.
+- **Contexto:** el párrafo de contacto que Ramiro escribió para P-031 dice
+  "Escribinos por WhatsApp para coordinar el turno o pedir un presupuesto". El
+  revisor descompuso la oración en sus tres hechos y buscó cada uno en la
+  fuente de verdad:
+  - *Escribinos por WhatsApp* → §2, "Contacto para flotas y particulares |
+    Recepción general, por WhatsApp". Respaldado.
+  - *coordinar el turno* → §18b, "Service y revisión: se presupuesta; si el
+    cliente aprueba, se da turno en el momento". Respaldado.
+  - *pedir un presupuesto* → §18b lo dice tres veces ("se presupuesta", "se
+    pasa un presupuesto sin desarme previo", "coordinar un turno para revisar y
+    presupuestar"). El **hecho** está verificado; lo que no está escrito en
+    ninguna fila es el par "presupuesto **por WhatsApp**".
+  `grep -n "presupuest" docs/datos-verificados.md` da cuatro líneas y **ninguna
+  nombra el canal**.
+- **Qué hice mientras tanto:** **nada, y no toco el texto.** Es de Ramiro, él
+  es el origen de los datos de §18b, la oración no promete que el presupuesto
+  se *entregue* por WhatsApp —solo que se puede pedir por ahí— y §2 dice que
+  WhatsApp es la recepción general. Además el sitio ya publica el mismo hecho
+  desde antes, en la sección "Cómo trabajamos" ("te pasamos el presupuesto…"),
+  sin que ninguna revisión lo objetara. Queda anotado para que la afirmación
+  publicada tenga respaldo en una sola línea y no por composición.
+
+---
+
+### P-040 — El horario queda escrito dos veces en la misma banda visual de contacto
+- **Estado:** abierta
+- **Bloquea:** no bloquea.
+- **Qué falta:** decidir si la repetición se deja o si uno de los dos textos
+  cambia. Los dos son de Ramiro, así que ninguno lo toco.
+- **Contexto:** desde P-031, el párrafo de `#contacto` termina en "Respondemos
+  de lunes a viernes de 8:00 a 17:30.", y la ficha de datos de la misma sección
+  dice "Horario de atención / Lunes a viernes de 8:00 a 17:30", que viene de la
+  Tarea 12 y que P-034 confirma. **Medido a 1440 px:** el párrafo está en
+  `(x 152, y 6574)` y la ficha en `(x 752, y 6617)`; la separación vertical es
+  de **−13 px**, o sea que se solapan en altura, a 64 px de distancia
+  horizontal: los dos textos se leen de un vistazo. A 390 px quedan a 276 px y
+  no se ven juntos, así que es un efecto de escritorio.
+- **Qué hice mientras tanto:** **nada.** Es el mismo patrón que Ramiro resolvió
+  en P-030 —un texto que repite lo que ya dice otro elemento al lado—, por eso
+  lo levantó el revisor; pero acá los dos textos los escribió él, y elegir cuál
+  se va o cómo se reescribe es copy (`CLAUDE.md` §1). Lo anoto y sigo.
+
+---
+
 ## Respondidas
 
 ### P-001 — Qué cambió el commit 0501b5e en el CSS
@@ -1166,6 +1215,31 @@ estado y ejecuta. No borra la pregunta: el historial sirve.
   "Escribinos por WhatsApp para coordinar el turno o pedir un presupuesto.
   Respondemos de lunes a viernes de 8:00 a 17:30." Se saca el `TODO_DATO`.
   Texto de Ramiro.
+- **Aplicado (2026-09-28).** Todo lo que dice "Bloquea", "Qué hice mientras
+  tanto" y "Riesgo mientras tanto" acá arriba describe el estado **anterior** y
+  **hoy es falso**: queda como está porque es el planteo fechado. Lo que hay
+  hoy en el archivo:
+  - El párrafo publicado es el de Ramiro, **carácter por carácter**, verificado
+    por comparación programática contra las dos copias que hay en `docs/`.
+  - **`TODO_DATO` en `public/`: cero.** Era el único del sitio.
+  - **Afirmaciones prohibidas en `public/`: cero.** Es la primera vez en todo
+    M3. El revisor lo confirmó con tres barridos propios: uno sobre el archivo
+    crudo, uno que decodifica entidades HTML y porcentajes y quita diacríticos
+    antes de buscar —y que también mira los nombres de archivo—, y uno de
+    promesas de plazo que mi lista no cubría (`al toque`, `en el acto`,
+    `sin espera`, `en el día`, `24 h`, `urgencia`, `sin turno`, `garantizamos`).
+    Los comentarios de HTML y de CSS entran, porque busca sobre el archivo, no
+    sobre el DOM.
+  - El hueco **no se tapó: se cerró porque llegó el dato**. Lo que faltaba era
+    "el texto exacto del párrafo, escrito por Ramiro", y lo escribió él. El
+    párrafo publicado no tiene una sola palabra que no esté en su respuesta.
+  - Contraste del texto nuevo: **6,17:1** sobre el azul, contra un mínimo de
+    4,50:1. El dato importa por cómo se mide: el texto es blanco al 80 %, y
+    medir el color **sin componer el alfa** da 8,65:1, que es un falso positivo
+    cómodo. El valor real, componiendo, es 6,17:1, y también pasa.
+  - Geometría: la sección **no cambia de alto de 480 px para arriba** (lo fijan
+    la columna de datos y el mapa); en móvil se acorta 28 px, una línea de
+    texto. Sin desbalance nuevo entre columnas.
 
 ---
 
