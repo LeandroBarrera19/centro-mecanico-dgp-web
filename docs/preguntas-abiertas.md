@@ -244,6 +244,50 @@ estado y ejecuta. No borra la pregunta: el historial sirve.
 
 ---
 
+### P-041 — El botón de WhatsApp de los dos menús no está en la lista de P-032
+- **Estado:** abierta
+- **Bloquea:** no bloquea. P-032 quedó ejecutada.
+- **Qué falta:** confirmar que el botón se queda donde está.
+- **Contexto:** la respuesta de P-032 enumera **seis** entradas de menú: Inicio,
+  Servicios, ¿Por qué elegirnos?, Flotas, Reseñas y Contacto. En el marcado hay
+  **siete** enlaces en cada bloque: los seis, más el botón azul "Pedir turno" /
+  "Pedir turno por WhatsApp", que estaba desde la Tarea 1.
+- **Qué hice mientras tanto:** **decisión mía: no lo toqué.** La respuesta
+  enumera destinos internos, con rótulo y orden; el botón no es un destino sino
+  una acción, y su color y su lugar vienen de `datos-verificados.md` §19,
+  decisión de Ramiro del 2026-09-21. Borrarlo habría sido exactamente el error
+  de P-024: llevarme por delante la implementación de una decisión ya tomada.
+  El revisor coincidió en el fondo —"no borrarlo es lo correcto"— y me marcó
+  que la decisión estaba anotada dentro de una pregunta ya `respondida`, donde
+  nadie la va a ver. Por eso está acá, abierta.
+
+---
+
+### P-042 — Dos comportamientos del menú móvil que vienen de antes
+- **Estado:** abierta
+- **Bloquea:** no bloquea. Ninguno de los dos lo introdujo P-032; los dos
+  existen desde antes y se verificaron idénticos en `HEAD` y en el trabajo.
+- **Qué falta:** decidir si se arreglan o si se dejan.
+- **Contexto:** los levantó el revisor de P-032 al medir el corte nuevo.
+  1. **Al ensanchar la ventana con el menú móvil abierto, quedan los dos menús
+     visibles a la vez.** No hay manejador de `resize`: `closeMobileMenu()`
+     solo se dispara al tocar un enlace o el botón. Medido antes y después del
+     cambio de corte: el comportamiento es el mismo, lo único que se movió es
+     la franja donde puede pasar (antes cruzando 768 px, ahora 830 px). La
+     afirmación "ningún ancho con los dos menús visibles" que verifiqué vale al
+     **cargar** la página en cada ancho, no al redimensionar con el menú
+     abierto.
+  2. **En el menú móvil, el enlace de WhatsApp es el único sin
+     `closeMobileMenu()`.** Los seis de navegación lo tienen, incluido "Flotas".
+     Como abre otra pestaña, el menú queda abierto detrás.
+- **Qué hice mientras tanto:** **nada.** Los dos son anteriores a esta ronda y
+  arreglarlos es tocar JavaScript que ninguna respuesta de Ramiro menciona
+  (`CLAUDE.md` §7 y §9). El primero se arregla con un `resize` que cierre el
+  menú al pasar a escritorio; el segundo, agregando el `onclick` que ya tienen
+  los otros seis. Los dos son de una línea, pero no los hago por mi cuenta.
+
+---
+
 ## Respondidas
 
 ### P-001 — Qué cambió el commit 0501b5e en el CSS
@@ -1275,6 +1319,35 @@ estado y ejecuta. No borra la pregunta: el historial sirve.
   Libreta digital (a `#libreta-digital`) · Flotas · Reseñas · Zona de cobertura
   (a `#zona-de-cobertura`) · Contacto. Casa de repuestos no se repite: ya está
   en la columna "Servicios".
+- **Aplicado (2026-09-28).** Los tres bloques quedaron con los rótulos y el
+  orden dictados, verificados sobre el DOM renderizado. El único que cambió de
+  contenido respecto de lo que ya había es el pie: se le agregaron "Libreta
+  digital" y "Zona de cobertura", y "Servicios" pasó delante de "¿Por qué
+  elegirnos?". El botón de WhatsApp de los dos menús **no se tocó**: la
+  respuesta enumera entradas de navegación y él es un botón de acción, y
+  sacarlo habría sido un borrado que nadie pidió.
+- **El ítem nuevo no entraba, y hubo que decidir.** Agregar "Flotas" al menú de
+  escritorio metió un **desborde horizontal real** que no existía antes:
+  **174 mediciones desbordadas, en la franja de 769 a 797 px**, con el botón
+  "Pedir turno" como elemento culpable. Al medir por qué, apareció que el
+  problema era más ancho que el desborde: el bloque del menú mide **668,5 px
+  fijos** y no se achica —el que cede es el logo, que se planta en 97,6 px—,
+  así que el borde del botón cae siempre en **798,1 px**; por eso entre 798 y
+  830 px la página no desbordaba pero el botón quedaba **pegado al borde, sin
+  los 32 px de aire** del contenedor. En total, 62 anchos con el menú al filo.
+- **Decisión de Ramiro, consultada en el momento (2026-09-28).** Le llevé tres
+  salidas, las tres medidas de 320 a 1300 px de a 1 px y las tres con cero
+  desbordes, y eligió **aplicar las dos a la vez**: el corte del menú móvil
+  sube de 768 a **830 px**, y el espaciado entre ítems baja de 32 a **20 px por
+  debajo de 1000 px**. Las otras dos eran cada una por separado. **La elección
+  es suya, no mía**; lo que puse yo son las mediciones.
+- **Verificado después de aplicarlo**, barriendo 320 a 1920 px de a 1 px:
+  - Barrido de desborde con las 5 pestañas y el menú móvil: **9606 mediciones,
+    cero desbordes.**
+  - Primer ancho con menú de escritorio: **831 px**. Espaciado: 20 px en 170
+    anchos, 32 px en 920.
+  - **Ningún ancho** con los dos menús visibles a la vez, ninguno sin ninguno,
+    y ninguno con el menú sin sus 32 px de aire.
 
 ---
 

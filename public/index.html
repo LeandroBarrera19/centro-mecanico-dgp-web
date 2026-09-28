@@ -1185,9 +1185,22 @@
       .stat-item:nth-child(2) { border-right: none; }
       .testimonials-grid { grid-template-columns: repeat(2, 1fr); }
     }
-    @media (max-width: 768px) {
+    /* El menú de escritorio mide 668,5 px fijos y no se achica: el que cede es
+       el logo, que se planta en 97,6 px. Con el ítem "Flotas" que agrega P-032,
+       el borde del botón cae en 798,1 px, así que por debajo de 798 la página
+       desbordaba y entre 798 y 830 el botón quedaba pegado al borde, sin el
+       aire de 32 px del contenedor. Decisión de Ramiro (2026-09-28): las dos
+       cosas juntas, el corte del menú móvil hasta 830 px y el espaciado más
+       compacto por debajo de 1000 px. Medido de 320 a 1300 px de a 1 px: cero
+       desbordes y ningún ancho con el menú sin su aire. */
+    @media (max-width: 1000px) {
+      .navbar-links { gap: 20px; }
+    }
+    @media (max-width: 830px) {
       .navbar-links { display: none; }
       .navbar-toggle { display: flex; }
+    }
+    @media (max-width: 768px) {
       .services-grid { grid-template-columns: repeat(2, 1fr); }
       .tab-panel.active { grid-template-columns: repeat(2, 1fr); }
       #tab-repuestos.tab-panel.active { grid-template-columns: repeat(2, 1fr); }
@@ -1244,6 +1257,7 @@
         <a href="#inicio">Inicio</a>
         <a href="#servicios">Servicios</a>
         <a href="#como-trabajamos">¿Por qué elegirnos?</a>
+        <a href="#flotas">Flotas</a>
         <a href="#resenas">Reseñas</a>
         <a href="#contacto">Contacto</a>
         <a href="https://wa.me/5493534593187" target="_blank" rel="noopener" class="btn-cta" aria-label="Pedir turno por WhatsApp">Pedir turno</a>
@@ -1256,6 +1270,7 @@
       <a href="#inicio"            onclick="closeMobileMenu()">Inicio</a>
       <a href="#servicios"         onclick="closeMobileMenu()">Servicios</a>
       <a href="#como-trabajamos" onclick="closeMobileMenu()">¿Por qué elegirnos?</a>
+      <a href="#flotas"            onclick="closeMobileMenu()">Flotas</a>
       <a href="#resenas"           onclick="closeMobileMenu()">Reseñas</a>
       <a href="#contacto"          onclick="closeMobileMenu()">Contacto</a>
       <a href="https://wa.me/5493534593187" target="_blank" rel="noopener">Pedir turno por WhatsApp</a>
@@ -1901,9 +1916,12 @@
         <h2 class="footer-col-title">Navegación</h2>
         <ul>
           <li><a href="#inicio">Inicio</a></li>
-          <li><a href="#como-trabajamos">¿Por qué elegirnos?</a></li>
           <li><a href="#servicios">Servicios</a></li>
+          <li><a href="#como-trabajamos">¿Por qué elegirnos?</a></li>
+          <li><a href="#libreta-digital">Libreta digital</a></li>
+          <li><a href="#flotas">Flotas</a></li>
           <li><a href="#resenas">Reseñas</a></li>
+          <li><a href="#zona-de-cobertura">Zona de cobertura</a></li>
           <li><a href="#contacto">Contacto</a></li>
         </ul>
       </div>
