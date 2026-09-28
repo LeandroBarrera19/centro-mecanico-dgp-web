@@ -103,6 +103,10 @@ estado y ejecuta. No borra la pregunta: el historial sirve.
   porque deja el archivo sin contradicción y conserva el historial, y porque la
   regla de mantener la spec sincronizada pide justamente eso. No toca `public/`.
 
+---
+
+## Respondidas
+
 ### P-001 — Qué cambió el commit 0501b5e en el CSS
 - **Estado:** respondida
 - **Bloquea:** no bloquea. Hay que resolverla antes de M2b, que toca estilos.
