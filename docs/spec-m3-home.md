@@ -339,15 +339,28 @@ Commit: `Seccion de zona de cobertura`
   `datos-verificados.md` §5, con `target="_blank"` y `rel="noopener"`.
 - El mapa, como está.
 - Hueco de imagen **F-07** junto al mapa.
-- Donde hoy dice "Respuesta inmediata", reemplazar por: `Respondemos de lunes
-  a viernes de 8:00 a 17:30.` No es cierto que la respuesta sea inmediata:
-  fuera del horario no se atiende.
+- El párrafo completo pasa a: `Escribinos por WhatsApp para coordinar el turno
+  o pedir un presupuesto. Respondemos de lunes a viernes de 8:00 a 17:30.` No
+  es cierto que la respuesta sea inmediata: fuera del horario no se atiende.
 
 **Pie:**
 - El lema pasa a `Taller mecánico multimarca en Villa María, Córdoba.`
 - Sale "Especialistas en flotas agropecuarias" y "Socio estratégico para
   flotas agropecuarias", donde aparezcan.
 - Los enlaces del pie apuntan a las secciones nuevas.
+
+> **Actualizado el 2026-09-28 por las decisiones de cierre P-031 y P-032.**
+> Cuando se ejecutó esta tarea, el último punto de "Contacto" decía: *Donde hoy
+> dice "Respuesta inmediata", reemplazar por: `Respondemos de lunes a viernes
+> de 8:00 a 17:30.`* Esa forma no se pudo aplicar —la frase con mayúscula ya no
+> existía, y el párrafo tenía **dos** afirmaciones sobre cuánto se tarda en
+> responder, no una—, así que la tarea quedó con un `TODO_DATO` y el hueco
+> anotado en P-031. Al responderla, Ramiro escribió el **párrafo completo**, que
+> es el que figura arriba. El punto del pie, "Los enlaces del pie apuntan a las
+> secciones nuevas", quedó sin ejecutar por no decir cuáles ni con qué rótulos
+> (P-032); la respuesta de cierre enumera los del menú y los de la columna
+> "Navegación" uno por uno. Ver "Decisiones de cierre (P-021 a P-034)" al final
+> de este archivo.
 
 Commit: `Contacto con redes enlazadas y pie sin flotas agropecuarias`
 
