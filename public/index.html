@@ -682,7 +682,6 @@
       background: var(--gris-bg);
       clip-path: polygon(0 100%, 100% 0, 100% 100%);
     }
-    .services-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 18px; }
     .service-card {
       border: 1px solid var(--gris-claro);
       border-left: 3px solid var(--verde);
@@ -695,32 +694,6 @@
       border-left-color: var(--verde);
       box-shadow: 0 4px 18px rgba(18,75,143,0.13);
       transform: translateY(-3px);
-    }
-    .service-card--highlight {
-      border-color: #D32027;
-      border-left-color: #D32027;
-      background: #fff8f8;
-    }
-    .service-card--highlight:hover {
-      border-color: #D32027;
-      border-left-color: #D32027;
-    }
-    /* Título de la tarjeta destacada en el mismo gris que las demás: el rojo se reserva para alertas (P-008). */
-    .service-card--highlight .service-card-title { color: var(--gris); }
-    .badge-highlight {
-      display: inline-block;
-      font-family: 'Montserrat', sans-serif;
-      font-weight: 700;
-      font-size: 0.58rem;
-      letter-spacing: .1em;
-      text-transform: uppercase;
-      background: #D32027;
-      color: #fff;
-      padding: 2px 7px;
-      border-radius: 3px;
-      margin-bottom: 10px;
-      display: block;
-      width: fit-content;
     }
     .service-icon {
       width: 44px;
@@ -845,22 +818,28 @@
       border-color: var(--azul);
     }
     .tab-panel { display: none; }
+    /* Tres columnas en escritorio para las cinco pestañas (decisión de Ramiro,
+       2026-09-28). Cuatro de las cinco tienen tres tarjetas y en una grilla de
+       cuatro dejaban un hueco a la derecha. Mecánica, que tiene cinco, queda
+       en 3 + 2, que es exactamente como ya estaba: antes lo conseguía una
+       regla propia con :where(#tab-mecanica), y ahora sale de esta base sin
+       necesitar excepción.
+       Esto reemplaza la decisión de P-012 de dejar "Repuestos" en cuatro
+       columnas, tomada cuando esa pestaña tenía cuatro tarjetas.
+       Con el cambio quedaron sin objeto **cinco** reglas, que se borraron: las
+       tres de #tab-repuestos que implementaban P-012, la de #tab-mecanica y la
+       de .tab-panel.active del media query de 1200 px, que pasó a decir lo
+       mismo que esta base. Ramiro no enumeró ninguna de las cinco: las tres
+       primeras tenían que caer para que la instrucción se cumpliera, y las dos
+       últimas quedaron inertes. El borrado es decisión propia: ver P-048.
+       (La de #tab-mecanica llevaba el id dentro de :where() para pesar lo
+       mismo que .tab-panel.active, y que los media queries de 768 y 480 px la
+       ganaran por orden sin repetirla en cada uno. Se anota acá porque ese
+       motivo vivía en el comentario que se fue con ella.) */
     .tab-panel.active {
       display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 18px;
-    }
-    /* Por el id, esta regla pesa más que .tab-panel.active de los media queries:
-       en 768 y 480 px se repite con las columnas de las demás pestañas (P-012). */
-    #tab-repuestos.tab-panel.active {
-      grid-template-columns: repeat(4, 1fr);
-    }
-    /* Mecánica tiene 5 tarjetas: en escritorio van 3 + 2, no 4 + 1 suelta.
-       El id va dentro de :where() para que la regla pese lo mismo que
-       .tab-panel.active y los media queries de 768 y 480 px la sigan ganando
-       por orden, sin tener que repetirla en cada uno. */
-    .tab-panel.active:where(#tab-mecanica) {
       grid-template-columns: repeat(3, 1fr);
+      gap: 18px;
     }
 
     /* ── CONTACT CTA ── */
@@ -966,7 +945,6 @@
       color: var(--blanco);
       margin-bottom: 3px;
     }
-    .footer-brand-sub { font-size: 0.8rem; color: rgba(255,255,255,0.55); margin-bottom: 16px; }
     .footer-tagline { font-size: 0.88rem; color: rgba(255,255,255,0.55); font-style: italic; line-height: 1.55; }
     .footer-col-title {
       font-family: 'Montserrat', sans-serif;
@@ -1163,8 +1141,6 @@
 
     /* ── RESPONSIVE ── */
     @media (max-width: 1200px) {
-      .services-grid { grid-template-columns: repeat(3, 1fr); }
-      .tab-panel.active { grid-template-columns: repeat(3, 1fr); }
       .footer-grid { grid-template-columns: 1fr 1fr; gap: 32px; }
     }
     @media (max-width: 900px) {
@@ -1194,9 +1170,7 @@
       .navbar-toggle { display: flex; }
     }
     @media (max-width: 768px) {
-      .services-grid { grid-template-columns: repeat(2, 1fr); }
       .tab-panel.active { grid-template-columns: repeat(2, 1fr); }
-      #tab-repuestos.tab-panel.active { grid-template-columns: repeat(2, 1fr); }
       .brands-strip-inner { gap: 4px 8px; }
       .brands-intro { width: 100%; text-align: center; margin-right: 0; margin-bottom: 4px; }
       .footer-grid { grid-template-columns: 1fr; }
@@ -1207,9 +1181,7 @@
     }
     @media (max-width: 480px) {
       .container { padding: 0 20px; }
-      .services-grid { grid-template-columns: 1fr; }
       .tab-panel.active { grid-template-columns: 1fr; }
-      #tab-repuestos.tab-panel.active { grid-template-columns: 1fr; }
       .how-step { padding: 20px; }
       .hero-stats-inner { grid-template-columns: repeat(2, minmax(0, 1fr)); }
       .hero-ctas { flex-direction: column; }

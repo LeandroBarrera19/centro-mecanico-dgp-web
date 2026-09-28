@@ -151,6 +151,10 @@ referencia por referencia, está en `docs/planes/m3-informe.md`.
      todavía se usaban. **No las agrego por mi cuenta:** borrar lo que la spec
      no nombra es un hueco (`CLAUDE.md` §9). Si Ramiro quiere que caigan en la
      limpieza de la Tarea 13, lo dice y se van en ese commit.
+     **Resuelto el 2026-09-28:** Ramiro mandó borrar las cuatro huérfanas
+     —`.service-card--highlight` con sus tres reglas, `.badge-highlight`,
+     `.footer-brand-sub` y `.services-grid`— y se fueron en el commit de las
+     tres columnas.
   4. **Sincronicé la Tarea 4 de la spec**, que seguía ordenando la tarjeta
      borrada: la fila de la pestaña `Repuestos` de la tabla y el total, que
      pasó de 18 a 17 tarjetas (contadas: 3 + 5 + 3 + 3 + 3). Debajo dejé una
@@ -403,7 +407,102 @@ referencia por referencia, está en `docs/planes/m3-informe.md`.
 
 ---
 
+### P-049 — La regla de autonomía nueva choca con §9 y con dos viñetas de §7
+- **Estado:** abierta
+- **Bloquea:** no bloquea, pero decide casos concretos y ya decidió uno.
+- **Qué falta:** decidir cuál manda cuando las dos reglas aplican al mismo
+  borrado.
+- **Contexto:** el bloque de autonomía que Ramiro agregó a `CLAUDE.md` §7 el
+  2026-09-28 dice que solo se lo consulta por *"borrado de contenido
+  **visible**"*, de donde se sigue que borrar lo **no visible** —una regla de
+  CSS, un comentario— ya no se consulta. Ocho líneas más abajo, §9 sigue
+  listando *"Hace falta borrar, renombrar o mover algo que la spec no
+  menciona"* como **hueco**, y §7 conserva las viñetas *"No refactorices ni
+  'limpies' código que la tarea no toca"* y *"No borres archivos sin
+  preguntar"*. No es una colisión teórica: es exactamente la regla con la que
+  el revisor de **P-024** emitió su bloqueante por borrar tres reglas de CSS,
+  y es la que decide si el borrado de P-048 estaba bien.
+- **Qué hice mientras tanto:** **nada en `CLAUDE.md`**, que es texto de Ramiro.
+  Apliqué la interpretación que me parece la suya —borrar CSS sin uso o inerte
+  es forma, y va con registro en vez de con consulta— y registré cada borrado
+  como decisión propia. Lo levantó el revisor de esta pasada.
+- **Un segundo roce, del mismo bloque, que conviene resolver junto:** la regla
+  manda registrar las decisiones propias con estado **"respondida"**, y hasta
+  hoy la cabecera de este archivo decía que "respondida" significa *Ramiro
+  contestó*. P-046, P-047 y P-048 están en "respondida" **sin que él haya
+  contestado nada**. Las tres dicen con todas las letras que la decisión es
+  mía, así que no hay atribución falsa, pero el índice se lee distinto. Si
+  conviene, una salida es un estado propio, del estilo `decidida`.
+
+---
+
 ## Respondidas
+
+### P-046 — Decisión propia: el subtítulo "Autonomía." en `CLAUDE.md` §7
+- **Estado:** respondida
+- **Decisión propia**, tomada al ejecutar el punto 1 el 2026-09-28.
+- **Qué decidí:** el bloque que dictó Ramiro no traía título. Le puse
+  `**Autonomía.**` delante, para que se lo pueda citar y para que no se lea
+  como continuación de la lista de viñetas de "En los dos modos".
+- **Por qué es mía y no consultable:** es forma de un documento de trabajo, no
+  del sitio; no cambia ni una palabra de lo que él escribió. El texto dictado
+  está literal: el revisor lo comparó carácter por carácter, los dos párrafos
+  idénticos.
+- **Si está mal:** se borra la línea del subtítulo y nada más.
+
+---
+
+### P-047 — Decisión propia: agrupar las revisiones en cuatro pasadas
+- **Estado:** respondida
+- **Decisión propia**, tomada al empezar la tanda del 2026-09-28.
+- **Qué decidí:** Ramiro pidió "el ciclo del revisor en cada paso y un commit
+  por punto". Los commits van uno por punto, pero agrupé las **revisiones** en
+  cuatro pasadas, porque varios puntos son de una o dos líneas y cada barrido
+  de desborde tarda siete minutos.
+- **Por qué es mía:** la regla nueva pone "orden de commits" y "scripts de
+  verificación" entre las decisiones de proceso que se toman solas.
+- **Corrección que me hizo el revisor, y que acepto:** agrupar vale para lo que
+  **todavía no está commiteado**. El punto 1 se commiteó (`0c1c58f`) **sin su
+  informe de revisión**, y eso sí incumple el paso (5) del ciclo de §7. La
+  consecuencia fue concreta: como la revisión rechazó, la corrección del punto
+  1 ya no entra en su commit y necesita uno segundo, que es justo lo que "un
+  commit por tarea" evita. **De acá en adelante: se agrupan pasadas de revisión
+  solo mientras el trabajo siga sin commitear.**
+
+---
+
+### P-048 — Decisión propia: cinco reglas de CSS que Ramiro no enumeró
+- **Estado:** respondida
+- **Decisión propia**, tomada al ejecutar el punto 2a el 2026-09-28.
+- **Qué decidí:** además de las cuatro huérfanas que Ramiro enumeró, borré
+  **cinco** reglas más, que quedaron sin objeto por su propia decisión de pasar
+  las cinco pestañas a tres columnas:
+  1. `#tab-repuestos.tab-panel.active { repeat(4, 1fr) }`, la base;
+  2. y 3. sus dos repeticiones en los *media queries* de 768 y 480 px;
+  4. `.tab-panel.active:where(#tab-mecanica) { repeat(3, 1fr) }`;
+  5. `.tab-panel.active { repeat(3, 1fr) }` del *media query* de 1200 px.
+- **Por qué:** las tres primeras **tenían que caer sí o sí**, porque eran la
+  implementación de P-012 y con ellas puestas "Repuestos" seguía en cuatro
+  columnas y la instrucción no se cumplía. Las dos últimas pasaron a decir
+  exactamente lo mismo que la base nueva: son inertes.
+- **Lo que se perdió con la número 4, y dónde queda:** esa regla llevaba un
+  comentario de cuatro líneas que era el **único registro** de dos cosas: que
+  Mecánica va en **3 + 2** y no en 4 + 1, y por qué el `id` iba dentro de
+  `:where()` (para que la regla pesara lo mismo que `.tab-panel.active` y los
+  *media queries* la siguieran ganando por orden). Las dos quedan escritas acá
+  y en el comentario nuevo del CSS. **Medido:** Mecánica daba 3 + 2 antes y da
+  3 + 2 después, en todos los anchos.
+- **Lo que me marcó el revisor:** mi primer comentario en el CSS decía que
+  caían "las tres reglas con id que la implementaban". Eran **cinco** reglas,
+  no tres, y dos de ellas no implementaban P-012. Peor: el comentario empezaba
+  con "(decisión de Ramiro, 2026-09-28)", así que le atribuía a él un borrado
+  que decidí yo. Corregido en el comentario y registrado acá.
+- **Antecedente que conviene tener presente:** en **P-024** borré las tres
+  reglas de `#tab-repuestos` por mi cuenta y el revisor me rechazó con razón,
+  porque entonces la decisión de P-012 estaba vigente. Ahora Ramiro la
+  reemplaza explícitamente. La diferencia es esa, y el revisor la verificó.
+
+---
 
 ### P-001 — Qué cambió el commit 0501b5e en el CSS
 - **Estado:** respondida
@@ -698,6 +797,25 @@ referencia por referencia, está en `docs/planes/m3-informe.md`.
   entre 320 y 1440 px. Solo queda el desborde de 481 a 487 px, que es de toda
   la página (P-013).
 - **Confirmación (2026-09-22):** Ramiro confirma la decisión; se queda así.
+- **Reemplazada (2026-09-28).** Ramiro decidió que **las cinco pestañas van en
+  tres columnas en escritorio**. Motivo: cuatro de las cinco tienen tres
+  tarjetas y en una grilla de cuatro dejaban un hueco a la derecha. Aquella
+  decisión del 2026-09-22 se había tomado cuando "Repuestos" tenía **cuatro**
+  tarjetas; P-024 le sacó una y con tres ya no había excepción que sostener.
+  Cayeron entonces las tres reglas `#tab-repuestos.tab-panel.active` que la
+  implementaban —las mismas que yo había borrado por mi cuenta en P-024 y que
+  el revisor me hizo restaurar, con razón, porque en ese momento la decisión
+  seguía vigente—. La base pasó de cuatro a tres columnas, y con ella quedaron
+  inertes dos reglas más, que también se borraron: la del *media query* de
+  1200 px, que pasó a decir lo mismo que la base, y
+  `.tab-panel.active:where(#tab-mecanica)`, que conseguía las tres columnas de
+  Mecánica y que ahora salen de la base.
+  **Las cinco las borré yo: Ramiro no enumeró ninguna.** El detalle de por qué
+  cayó cada una, qué conocimiento se perdía con la de `#tab-mecanica` y dónde
+  quedó, está en **P-048**, registrado como decisión propia.
+  **Medido en 13 anchos de 320 a 1920 px: las cinco pestañas dan
+  `grid-template-columns` idéntico en todos.** Barrido de desborde: 9606
+  mediciones, cero desbordes.
 
 ### P-014 — Texto de la spec de M2c para P-009 y P-011
 - **Estado:** respondida
@@ -1586,6 +1704,12 @@ referencia por referencia, está en `docs/planes/m3-informe.md`.
     `<div>` eliminado. Mismo criterio que en P-037 punto 3: borrar lo que la
     spec no nombra es un hueco (`CLAUDE.md` §9). Si Ramiro quiere que caiga en
     la limpieza de la Tarea 13, lo dice.
+  - **Resuelto el 2026-09-28:** Ramiro mandó borrar `.footer-brand-sub`, y se
+    fue junto con las otras tres huérfanas en el commit de las tres columnas.
+    (La primera versión de esta resolución **pisó** las dos líneas de arriba en
+    vez de agregarse debajo, al revés de lo que pide la cabecera de este
+    archivo y de lo que se había hecho en P-037. Repuestas; me lo marcó el
+    revisor.)
   - **Nota de proceso:** para comparar contra `HEAD` usé `git stash`, que dejó
     el archivo en CRLF, como ya había pasado en M2c. Detectado y revertido
     antes de commitear: 2003 líneas, cero CRLF, y el diff sigue siendo solo el
