@@ -1254,7 +1254,7 @@
       <a href="#flotas"            onclick="closeMobileMenu()">Flotas</a>
       <a href="#resenas"           onclick="closeMobileMenu()">Reseñas</a>
       <a href="#contacto"          onclick="closeMobileMenu()">Contacto</a>
-      <a href="https://wa.me/5493534593187" target="_blank" rel="noopener">Pedir turno por WhatsApp</a>
+      <a href="https://wa.me/5493534593187" target="_blank" rel="noopener" onclick="closeMobileMenu()">Pedir turno por WhatsApp</a>
     </div>
   </div>
 </header>
@@ -1949,6 +1949,16 @@
     navToggle.setAttribute('aria-expanded', 'false');
     navToggle.setAttribute('aria-label', 'Abrir menú');
   }
+  // Al ensanchar la ventana con el menú abierto quedaban los dos menús
+  // visibles a la vez (P-042). Se cierra cuando el botón deja de mostrarse,
+  // que es la condición que fija el CSS: así el ancho de corte vive en un solo
+  // lugar y no hay que repetirlo acá.
+  window.addEventListener('resize', () => {
+    if (navMobile.classList.contains('open') &&
+        getComputedStyle(navToggle).display === 'none') {
+      closeMobileMenu();
+    }
+  }, { passive: true });
 
   // Service tabs
   const tabBtns = document.querySelectorAll('.tab-btn');
