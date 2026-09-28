@@ -1,0 +1,17 @@
+# Finales de línea fijos para todo el repositorio (P-044).
+#
+# Sin este archivo, `core.autocrlf=true` devolvía los archivos de texto en CRLF
+# cada vez que git los reescribía —un `git stash`, un `git checkout`—, y un
+# commit hecho en ese estado ensuciaba las ~2000 líneas de `public/index.html`
+# mientras el contador de cambios seguía diciendo que se habían tocado ocho.
+# Pasó dos veces: en M2c y al aplicar P-034.
+
+* text=auto eol=lf
+
+# Binarios: no se normalizan ni se diffean como texto.
+*.png   binary
+*.jpg   binary
+*.webp  binary
+*.avif  binary
+*.woff2 binary
+*.ico   binary
