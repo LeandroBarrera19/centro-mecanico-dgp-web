@@ -291,9 +291,14 @@ Commit: `Opiniones en grilla de dos por dos`
 Sección nueva.
 
 - `<h2>`: `Clientes de toda la región`
-- Párrafo: `Atendemos vehículos de Villa María y de más de 40 localidades en un radio de 80 km. Entre ellas: Arroyo Cabral, Bell Ville, Ticino, Idiazábal, James Craik, Pozo del Molle, Tío Pujio, Etruria, Ballesteros y Cintra.`
+- Párrafo: `Desde 2022 atendemos vehículos de Villa María y de más de 40 localidades en un radio de 80 km. Entre ellas: Arroyo Cabral, Bell Ville, Ticino, Idiazábal, James Craik, Pozo del Molle, Tío Pujio, Etruria, Ballesteros y Cintra.`
 
 Ninguna otra localidad. "Córdoba" no se nombra.
+
+> **Actualizado el 2026-09-28 por la decisión de cierre de P-021.** Cuando se
+> ejecutó esta tarea, el párrafo empezaba con `Atendemos vehículos de…`. Al
+> responder P-021, Ramiro le antepuso `Desde 2022`. El texto de arriba es el
+> vigente; ver "Decisiones de cierre (P-021 a P-034)" al final de este archivo.
 
 Commit: `Seccion de zona de cobertura`
 

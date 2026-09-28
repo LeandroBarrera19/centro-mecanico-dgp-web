@@ -56,16 +56,52 @@ estado y ejecuta. No borra la pregunta: el historial sirve.
   respaldan." y "No listar marcas de lujo ni deportivas como especialidad." El
   texto nuevo repone la primera, reemplaza la segunda por la enumeración de las
   trece marcas y **no menciona la tercera**.
-- **Qué hice mientras tanto:** **decisión mía:** conservé la tercera frase, por
-  la regla de `CLAUDE.md` §2 ("lo que exista en el repositorio y no en la
-  versión nueva se conserva"). No se contradice con lo nuevo: Audi, BMW,
-  Mercedes-Benz y Porsche entran en la fila "También atendemos", que no es la
-  de especialidad; la fila "Marcas foco" sigue siendo Toyota, Ford y
-  Volkswagen. Si Ramiro la quería fuera, es borrar esa oración y nada más.
+- **Qué hice mientras tanto:** **decisión mía:** conservé la tercera frase. No
+  se contradice con lo nuevo: Audi, BMW, Mercedes-Benz y Porsche entran en la
+  fila "También atendemos", que no es la de especialidad; la fila "Marcas foco"
+  sigue siendo Toyota, Ford y Volkswagen. Si Ramiro la quería fuera, es borrar
+  esa oración y nada más.
+- **Corrección del fundamento** (me la marcó el revisor de P-021, y tiene
+  razón): primero escribí que la conservación la obligaba `CLAUDE.md` §2. **No
+  es así.** §2 está redactada para "cuando Ramiro entregue una versión nueva de
+  `docs/datos-verificados.md`", y acá no hubo versión nueva del archivo sino un
+  reemplazo de una fila dictado en prosa. Lo que aplica es **§9**: hay que
+  elegir entre dos opciones y ninguna está dictada, así que se elige la que no
+  borra, se declara como decisión propia y se anota. Eso es lo que hice; lo que
+  estaba mal era el artículo que citaba.
+- **El criterio, ahora explícito, porque en el mismo commit lo apliqué de dos
+  maneras distintas** (segundo hallazgo del mismo revisor): en `ce9b2ba`
+  también reemplacé el punto 3 de §1, y ahí **sí** dejé caer una oración,
+  "No hace falta repetirlo en cada mención: alcanza con que ninguna mención
+  atribuya los 20 años a DGP." La diferencia que veo entre los dos casos, y que
+  no había escrito: en §1 el texto nuevo de Ramiro **vuelve a legislar el mismo
+  asunto** (cuántas veces y dónde tiene que aparecer "Desde 2022"), así que
+  reemplaza la oración vieja; en §10 el texto nuevo **no dice nada** sobre
+  marcas de lujo y deportivas, que es otro asunto, así que no la reemplaza.
+  **Decisión mía.** La sustancia de lo que se cayó en §1 sobrevive en el punto
+  1 de la misma sección ("**Nunca** atribuir los 20 años a DGP"). Si Ramiro
+  quiere esa oración de vuelta, se repone.
 
 ---
 
-## Respondidas
+### P-036 — Cómo queda la Tarea 11 de la spec, que dictaba el párrafo sin "Desde 2022"
+- **Estado:** abierta
+- **Bloquea:** no bloquea.
+- **Qué falta:** confirmar que la Tarea 11 de la spec tenía que quedar
+  actualizada, y no como registro de lo que se pidió en su momento.
+- **Contexto:** la Tarea 11 de `docs/spec-m3-home.md` dicta el párrafo de la
+  zona de cobertura empezando por "Atendemos vehículos de…". La respuesta a
+  P-021 le antepone "Desde 2022". Las dos instrucciones quedaron en el mismo
+  archivo, a unas cien líneas de distancia, diciendo cosas distintas sobre el
+  mismo párrafo. Lo levantó el revisor de P-021 como bloqueante: quien lea la
+  Tarea 11 aislada revierte el cambio.
+- **Qué hice mientras tanto:** **decisión mía**, entre las tres salidas que el
+  revisor enumeró (reemplazar la línea, remitirla a la decisión, o dejarla como
+  registro histórico fechado): **reemplacé el párrafo de la Tarea 11 por el
+  texto vigente** —que es el que dictó Ramiro, no uno escrito por mí— y debajo
+  dejé una nota fechada que dice qué decía antes y por qué cambió. Elegí esta
+  porque deja el archivo sin contradicción y conserva el historial, y porque la
+  regla de mantener la spec sincronizada pide justamente eso. No toca `public/`.
 
 ### P-001 — Qué cambió el commit 0501b5e en el CSS
 - **Estado:** respondida
