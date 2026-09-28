@@ -1,5 +1,5 @@
 Estados medidos: inicial (1440 y 390 px); pestaña 2 de servicios (1440 y 390 px); pestaña 3 de servicios (1440 y 390 px); pestaña 4 de servicios (1440 y 390 px); pestaña 5 de servicios (1440 y 390 px); menú móvil abierto (390 px); enlace de salto con foco (1440 px).
-Textos medidos: 377. Combinaciones distintas: 73. No llegan al mínimo: **0**. Exentas por decorativas: 1.
+Textos medidos: 387. Combinaciones distintas: 74. No llegan al mínimo: **0**. Exentas por decorativas: 1.
 
 ### Combinaciones que no llegan al mínimo, de peor a mejor
 
@@ -11,11 +11,11 @@ Ninguna.
 |---|---|---|---|---|---|---|---|---|
 | 4,55:1 | 4,55:1 | 4,50:1 | `#FFFFFF` | `#588212` | 11,52 px, 700 | «Especialistas en pick-ups y utilitarios» — `#inicio span.hero-badge` | 1440, 390 | 2 |
 | 4,55:1 | 4,55:1 | 4,50:1 | `#FFFFFF al 64 %` | `#124B8F` | 11 px, 500 | «Contacto» — `#contacto span.eyebrow-label` | 1440, 390 | 2 |
-| 4,55:1 | 4,55:1 | 4,50:1 | `#FFFFFF al 64 %` | `#124B8F` | 11,52 px, 700 | «WhatsApp» — `#contacto span.contact-item-label` | 1440, 390 | 8 |
+| 4,55:1 | 4,55:1 | 4,50:1 | `#FFFFFF al 64 %` | `#124B8F` | 11,52 px, 700 | «WhatsApp» — `#contacto span.contact-item-label` | 1440, 390 | 10 |
 | 4,57:1 | 4,57:1 | 4,50:1 | `#124B8F al 77 %` | `#F4F6F9` | 10 px, 600 | «También atendemos» — `#contenido-principal span.brands-intro.brands-intro--secondary` | 1440, 390 | 2 |
 | 4,57:1 | 4,57:1 | 4,50:1 | `#124B8F al 77 %` | `#F4F6F9` | 10,88 px, 500 | «CHEVROLET» — `#contenido-principal span.brand-name.brand-name--secondary` | 1440, 390 | 26 |
 | 4,62:1 | 4,62:1 | 4,50:1 | `#FFFFFF al 55 %` | `#0D3870` | 12,8 px, 400 | «Villa María, Córdoba» — `footer div.footer-brand-sub` | 1440, 390 | 8 |
-| 4,62:1 | 4,62:1 | 4,50:1 | `#FFFFFF al 55 %` | `#0D3870` | 14,08 px, 400 | «"Socio estratégico para flotas agropecuarias"» — `footer p.footer-tagline` | 1440, 390 | 2 |
+| 4,62:1 | 4,62:1 | 4,50:1 | `#FFFFFF al 55 %` | `#0D3870` | 14,08 px, 400 | «Taller mecánico multimarca en Villa María, Cór…» — `footer p.footer-tagline` | 1440, 390 | 2 |
 | 4,86:1 | 4,86:1 | 4,50:1 | `#7DB919` | `#0D3870` | 11,52 px, 700 | «Navegación» — `footer h2.footer-col-title` | 1440, 390 | 6 |
 | 4,92:1 | 4,92:1 | 4,50:1 | `#6B6B6B` | `#F4F6F9` | 16,8 px, 400 | «Lo que hacemos en cada trabajo, para que sepas…» — `#como-trabajamos p.section-sub` | 1440, 390 | 4 |
 | 4,92:1 | 4,92:1 | 4,50:1 | `#6B6B6B` | `#F4F6F9` | 15,68 px, 400 | «Tenemos casa de repuestos propia, en el mismo …» — `#casa-de-repuestos p` | 1440, 390 | 6 |
@@ -46,6 +46,7 @@ Ninguna.
 | 6,88:1 | 8,58:1 | 3,00:1 | `#FFFFFF` | `variable (mediana #224E78)` | 67,2 px, 900 (grande) | «Taller mecánico en Villa María» — `#inicio h1` | 1440 | 1 |
 | 7,06:1 | 7,28:1 | 4,50:1 | `#FFFFFF` | `variable (mediana #194479)` | 15,2 px, 700 | «Ver servicios» — `#inicio a.btn-outline` | 1440, 390 | 2 |
 | 7,27:1 | 8,64:1 | 3,00:1 | `#FFFFFF` | `variable (mediana #244D79)` | 41,6 px, 900 (grande) | «Taller mecánico en Villa María» — `#inicio h1` | 390 | 1 |
+| 7,41:1 | 7,41:1 | 4,50:1 | `#FFFFFF` | `#205696` | 12,8 px, 700 | «Foto pendiente · F-07» — `#contacto span` | 1440, 390 | 2 |
 | 7,73:1 | 7,73:1 | 4,50:1 | `#FFFFFF` | `#3949AB` | 12,48 px, 700 | «FG» — `#resenas div.t-avatar` | 1440, 390 | 2 |
 | 7,99:1 | 7,99:1 | 4,50:1 | `#124B8F` | `#F4F6F9` | 10 px, 600 | «Especialistas en» — `#contenido-principal span.brands-intro` | 1440, 390 | 2 |
 | 7,99:1 | 7,99:1 | 4,50:1 | `#124B8F` | `#F4F6F9` | 12,8 px, 800 | «TOYOTA» — `#contenido-principal span.brand-name` | 1440, 390 | 6 |
@@ -64,8 +65,8 @@ Ninguna.
 | 8,65:1 | 8,65:1 | 4,50:1 | `#124B8F` | `#FFFFFF` | 12,8 px, 700 | «Daniel C.» — `#resenas div.t-name` | 1440, 390 | 8 |
 | 8,65:1 | 8,65:1 | 4,50:1 | `#FFFFFF` | `#124B8F` | 14,08 px, 700 | «Dejá tu opinión» — `#resenas a.btn-primary` | 1440, 390 | 2 |
 | 8,65:1 | 8,65:1 | 3,00:1 | `#FFFFFF` | `#124B8F` | 32 px, 800 (grande) | «¿Necesitás atención para tu flota?» — `#contacto h2` | 1440, 390 | 2 |
-| 8,65:1 | 8,65:1 | 4,50:1 | `#FFFFFF` | `#124B8F` | 16 px, 700 | «Escribinos por WhatsApp» — `#contacto a.btn-wa` | 1440, 390 | 2 |
-| 8,65:1 | 8,65:1 | 4,50:1 | `#FFFFFF` | `#124B8F` | 15,2 px, 500 | «+54 9 353 459-3187» — `#contacto strong` | 1440, 390 | 8 |
+| 8,65:1 | 8,65:1 | 4,50:1 | `#FFFFFF` | `#124B8F` | 16 px, 700 | «Pedir turno por WhatsApp» — `#contacto a.btn-wa` | 1440, 390 | 2 |
+| 8,65:1 | 8,65:1 | 4,50:1 | `#FFFFFF` | `#124B8F` | 15,2 px, 500 | «+54 9 353 459-3187» — `#contacto strong` | 1440, 390 | 14 |
 | 8,65:1 | 8,65:1 | 3,00:1 | `#124B8F` | `#FFFFFF` | 26,4 px, 800 (grande) | «Libreta digital del vehículo» — `#libreta-digital h2.section-title` | 390 | 3 |
 | 10,27:1 | 10,67:1 | 4,50:1 | `#FFFFFF al 88 %` | `#172F55` | 13,12 px, 400 | «años de experiencia del equipo» — `#inicio div.stat-label` | 1440 | 1 |
 | 10,45:1 | 10,66:1 | 4,50:1 | `#FFFFFF al 88 %` | `#122F58` | 13,12 px, 400 | «de los trabajos, con repuestos en stock» — `#inicio div.stat-label` | 1440 | 1 |
