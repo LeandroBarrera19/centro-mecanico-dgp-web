@@ -115,6 +115,27 @@ referencia por referencia, está en `docs/planes/m3-informe.md`.
 
 ## Respondidas
 
+### P-054 — Decisión propia: transcribir la tanda post-M3 a `docs/spec-post-m3.md`
+- **Estado:** respondida
+- **Decisión propia**, tomada el 2026-09-28 al guardar el estado de la ronda.
+- **Qué decidí:** transcribir a un archivo del repositorio las instrucciones
+  que Ramiro dictó el 2026-09-28, con el estado de cada punto y los commits que
+  lo cumplen.
+- **Por qué:** **dos revisiones seguidas observaron lo mismo**, y es un
+  problema real de auditabilidad: *"no existe `docs/spec-post-m3*.md`; los
+  puntos vienen dictados en el encargo, así que el revisor contrasta contra la
+  cita, no contra un archivo versionado. Si la intención es que estas pasadas
+  sean auditables después, hoy no lo son."* Sin el archivo, lo único que
+  registra qué pidió Ramiro es lo que yo escribí en `preguntas-abiertas.md`, y
+  eso hace que el control dependa de mi propia transcripción.
+- **Qué NO hice:** no inventé nada. El archivo es transcripción literal de su
+  texto, más una tabla de estado y dos avisos para el punto 4 que salieron de
+  las revisiones y están atribuidos a ellas.
+- **Si está mal:** se borra el archivo y no se pierde nada; todo lo que dice
+  está también en `preguntas-abiertas.md` y en los informes de revisión.
+
+---
+
 ### P-052 — Decisión propia: normalizar el árbol de trabajo de un archivo que Ramiro no nombró
 - **Estado:** respondida
 - **Decisión propia**, tomada al ejecutar P-044 el 2026-09-28.
