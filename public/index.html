@@ -81,6 +81,8 @@
   }
   </script>
 
+  <script>document.documentElement.classList.add('js');</script>
+
   <!-- ── FUENTES ── -->
   <link rel="preload" as="font" type="font/woff2" href="assets/fonts/montserrat-latin.woff2" crossorigin>
   <link rel="preload" as="font" type="font/woff2" href="assets/fonts/roboto-latin.woff2" crossorigin>
@@ -102,7 +104,11 @@
 
     /* ── RESET ── */
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-    html { scroll-behavior: smooth; }
+    /* scroll-padding-top: el menú fijo mide 72 px más 1 de borde. Con esto,
+       al saltar a una sección, ésta empieza justo debajo del menú en vez de
+       quedar con su parte de arriba tapada; y al recorrer la página con el
+       teclado, el elemento enfocado no queda escondido detrás del menú. */
+    html { scroll-behavior: smooth; scroll-padding-top: 73px; }
     body { font-family: 'Roboto', sans-serif; color: #2D2D2D; background: #fff; line-height: 1.6; }
     img { max-width: 100%; display: block; }
     a { text-decoration: none; color: inherit; }
@@ -268,7 +274,7 @@
       border: none;
       padding: 4px;
     }
-    .navbar-toggle span { width: 24px; height: 2px; background: var(--gris); border-radius: 2px; display: block; transition: 0.3s; }
+    .navbar-toggle span { width: 24px; height: 2px; background: var(--gris); border-radius: 2px; display: block; transition: transform 0.3s, opacity 0.3s; }
     .navbar-mobile { display: none; flex-direction: column; }
     .navbar-mobile.open { display: flex; }
     .navbar-mobile a {
@@ -985,8 +991,13 @@
     .footer-bottom p { font-size: 0.8rem; color: rgba(255,255,255,0.55); }
 
     /* ── ANIMATIONS ── */
-    .fade-in { opacity: 0; transform: translateY(22px); transition: opacity 0.6s ease, transform 0.6s ease; }
-    .fade-in.visible { opacity: 1; transform: translateY(0); }
+    /* Solo con la clase .js en <html>, que pone el script del <head>: si el
+       JavaScript no corre, el contenido se ve igual, sin animación. La clase
+       va dentro de :where() para no sumar especificidad: con .js a secas,
+       .fade-in.visible le ganaba a .t-card:hover y las reseñas dejaban de
+       levantarse al pasar el mouse. */
+    :where(.js) .fade-in { opacity: 0; transform: translateY(22px); transition: opacity 0.6s ease, transform 0.6s ease; }
+    :where(.js) .fade-in.visible { opacity: 1; transform: translateY(0); }
     .delay-1 { transition-delay: 0.1s; }
     .delay-2 { transition-delay: 0.2s; }
     .delay-3 { transition-delay: 0.3s; }
@@ -1213,6 +1224,19 @@
        overflow-wrap: anywhere (en .stat-num) queda como red para textos que no entren de ninguna forma. */
     @media (max-width: 389.98px) {
       .stat-num { font-size: clamp(1.4rem, 11.43vw - 0.886rem, 1.9rem); }
+    }
+
+    /* ── MOVIMIENTO REDUCIDO ──
+       Quien pidió reducir el movimiento en su sistema: sin aparición al
+       desplazarse, sin desplazamiento suave y sin el levantamiento de botones
+       y tarjetas al pasar el mouse. Va al final de la hoja a propósito: sus
+       selectores pesan lo mismo que las reglas que anulan y ganan por orden. */
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+      :where(.js) .fade-in,
+      :where(.js) .fade-in.visible { opacity: 1; transform: none; transition: none; }
+      .btn-cta:hover, .btn-primary:hover, .btn-wa:hover, .btn-google-review:hover,
+      .service-card:hover, .t-card:hover { transform: none; }
     }
   </style>
 </head>

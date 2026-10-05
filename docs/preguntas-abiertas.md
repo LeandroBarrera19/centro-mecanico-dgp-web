@@ -115,6 +115,44 @@ referencia por referencia, está en `docs/planes/m3-informe.md`.
 
 ## Respondidas
 
+### P-055 — Decisión propia: módulo "interfaz" (arreglos de la revisión web-design-guidelines)
+- **Estado:** respondida
+- **Decisión propia**, tomada al ejecutar el módulo el 2026-10-05, en la rama
+  `mejoras-interfaz`. Spec: `docs/spec-interfaz.md`.
+- **Origen:** Leandro pidió aplicar los arreglos de interfaz de la revisión
+  hecha con las skills `web-design-guidelines` y `seo-audit`, e ignorar los
+  huecos de foto hasta que él agregue las fotos.
+- **Corrección de la revisión, medida:** la revisión decía que el menú fijo
+  tapaba el título de cada sección al saltar desde el menú. **No lo tapaba.**
+  En `main`, a 1440 px, el `h2` de Servicios quedaba en 88 px y el menú
+  termina en 73 px. Lo que quedaba tapado era el relleno superior de la
+  sección. La T1 se mantiene por esto último y por el foco del teclado.
+- **T1 — `scroll-padding-top: 73px`:** el valor es la altura del menú (72 px
+  más 1 px de borde inferior), no uno redondeado con aire extra. Así cada
+  sección empieza justo debajo del menú. Con 88 px, el `h2` quedaba a
+  176 px, con 15 px de más que nadie pidió.
+- **Sobre la spec:** `docs/spec-interfaz.md` la escribió el ejecutor a partir
+  de la revisión. Leandro aprobó "los arreglos de interfaz" en general, no
+  cada punto de la lista. Lo que la spec pide es, por lo tanto, también
+  decisión del ejecutor.
+- **T1 — `:where(.js)`:** la clase `.js` va dentro de `:where()` para que
+  `.fade-in` y `.fade-in.visible` conserven la especificidad que tenían. En
+  la primera vuelta, con `.js` a secas, `.fade-in.visible` le ganaba a
+  `.t-card:hover`, y las reseñas dejaban de levantarse al pasar el mouse.
+  Lo detectó el revisor.
+- **T1 — bloque de movimiento reducido al final de la hoja:** sus selectores
+  pesan lo mismo que los `:hover` que anulan, y ganan por estar después. En
+  la primera vuelta estaba antes que `.btn-google-review:hover`, y ese botón
+  se seguía levantando. Lo detectó el revisor.
+- **Hallazgos previos a T1, que no se tocan:**
+  - **`.service-card:hover` nunca levantó la tarjeta**, ni en `main`:
+    `.fade-in.visible` le gana por orden. No es parte de este módulo.
+  - **La `transition` de `.navbar-toggle span`** ahora lista `transform` y
+    `opacity`, como pide la spec, pero ninguna regla cambia esas propiedades
+    en las rayas. Era inerte antes y lo sigue siendo.
+
+---
+
 ### P-054 — Decisión propia: transcribir la tanda post-M3 a `docs/spec-post-m3.md`
 - **Estado:** respondida
 - **Decisión propia**, tomada el 2026-09-28 al guardar el estado de la ronda.
