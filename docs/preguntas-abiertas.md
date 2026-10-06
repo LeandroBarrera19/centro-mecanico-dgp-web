@@ -220,6 +220,22 @@ referencia por referencia, está en `docs/planes/m3-informe.md`.
 - **T3 — Escape:** cierra el menú solo si está abierto, y devuelve el foco
   al botón. Con el menú cerrado no hace nada, así no interfiere con Escape
   en otros lugares de la página.
+- **T4 — dónde va `aria-hidden`:** en el `div` contenedor de los 17 íconos
+  de servicio y de los 5 de contacto, no en cada `svg`. Es el mismo patrón
+  que ya usaba `.notebook-icon`. En los tres logos de WhatsApp de botones con
+  texto (inicio, reseñas y contacto) va en el `svg`, porque no tienen
+  contenedor propio. El logo de WhatsApp del botón de flotas ya lo tenía.
+  Medido: ningún `svg` de la página queda sin `aria-hidden` y sin nombre
+  accesible (0 de 59). El único `svg` visible para un lector de pantalla
+  es el logo de Google del recuadro de puntuación (`role="img"`, "Google").
+  Las estrellas son `svg` ocultos, y el nombre lo lleva su contenedor
+  (`role="img"`, "Puntuación 4,9 de 5" o "5 de 5"), como en `HEAD`.
+  Corregido a partir de lo que midió el revisor: antes decía que las
+  estrellas tenían nombre propio.
+- **T4 — `translate="no"` solo en las 16 marcas de la franja**, como pide la
+  spec. No se agrega al nombre del taller, "Centro Mecánico DGP": la spec no
+  lo pide, y que un traductor lo pase a otro idioma no lo vuelve
+  irreconocible, como sí puede pasar con "FORD" o "JEEP".
 - **Hallazgo previo a T2, que no se toca:** el anillo de foco global
   (`:focus-visible`, verde `#7DB919`) tiene 2,38:1 contra blanco, debajo del
   3:1 que WCAG 1.4.11 pide para indicadores no textuales. §6 solo pide foco
