@@ -819,6 +819,10 @@
       gap: 8px;
       margin-bottom: 36px;
     }
+    /* Marcas de las direcciones #servicios-<pestaña>: sin tamaño, arriba de
+       todo de la fila de pestañas, fuera del acomodo de la fila. */
+    .services-tabs { position: relative; }
+    .ancla-pestana { position: absolute; top: 0; left: 0; }
     .tab-btn {
       font-family: 'Montserrat', sans-serif;
       font-weight: 600;
@@ -1339,20 +1343,30 @@
 <section class="services" id="servicios">
   <div class="container">
     <div class="section-header center">
-      <h2 class="section-title">Servicios</h2>
+      <h2 class="section-title" id="servicios-titulo">Servicios</h2>
       <p class="section-sub">Para todas las marcas, con especialización en pick-ups y utilitarios.</p>
     </div>
     <!-- Tabs de navegación -->
-    <div class="services-tabs" id="serviceTabs">
-      <button class="tab-btn active" data-tab="service">Service y mantenimiento</button>
-      <button class="tab-btn" data-tab="mecanica">Mecánica</button>
-      <button class="tab-btn" data-tab="diagnostico">Diagnóstico y electrónica</button>
-      <button class="tab-btn" data-tab="ac">Aire acondicionado y confort</button>
-      <button class="tab-btn" data-tab="repuestos">Repuestos</button>
+    <!-- Patrón de pestañas WAI-ARIA. Las direcciones #servicios-<pestaña>
+         apuntan a las marcas vacías .ancla-pestana, que están arriba de todo
+         de la fila: el navegador desplaza solo hasta el principio de la fila,
+         también sin JavaScript, y el script únicamente abre la pestaña. Van
+         con aria-hidden para que la lista de pestañas solo tenga pestañas. -->
+    <div class="services-tabs" id="serviceTabs" role="tablist" aria-labelledby="servicios-titulo">
+      <span class="ancla-pestana" id="servicios-mantenimiento" aria-hidden="true"></span>
+      <span class="ancla-pestana" id="servicios-mecanica" aria-hidden="true"></span>
+      <span class="ancla-pestana" id="servicios-diagnostico" aria-hidden="true"></span>
+      <span class="ancla-pestana" id="servicios-aire-acondicionado" aria-hidden="true"></span>
+      <span class="ancla-pestana" id="servicios-repuestos" aria-hidden="true"></span>
+      <button class="tab-btn active" id="pestana-mantenimiento" role="tab" aria-selected="true" aria-controls="tab-service">Service y mantenimiento</button>
+      <button class="tab-btn" id="pestana-mecanica" role="tab" aria-selected="false" aria-controls="tab-mecanica" tabindex="-1">Mecánica</button>
+      <button class="tab-btn" id="pestana-diagnostico" role="tab" aria-selected="false" aria-controls="tab-diagnostico" tabindex="-1">Diagnóstico y electrónica</button>
+      <button class="tab-btn" id="pestana-aire-acondicionado" role="tab" aria-selected="false" aria-controls="tab-ac" tabindex="-1">Aire acondicionado y confort</button>
+      <button class="tab-btn" id="pestana-repuestos" role="tab" aria-selected="false" aria-controls="tab-repuestos" tabindex="-1">Repuestos</button>
     </div>
 
     <!-- TAB 1: Service y mantenimiento -->
-    <div class="tab-panel active" id="tab-service">
+    <div class="tab-panel active" id="tab-service" role="tabpanel" aria-labelledby="pestana-mantenimiento" tabindex="0">
 
       <div class="service-card fade-in">
         <div class="service-icon">
@@ -1381,7 +1395,7 @@
     </div>
 
     <!-- TAB 2: Mecánica -->
-    <div class="tab-panel" id="tab-mecanica">
+    <div class="tab-panel" id="tab-mecanica" role="tabpanel" aria-labelledby="pestana-mecanica" tabindex="0">
 
       <div class="service-card fade-in">
         <div class="service-icon">
@@ -1426,7 +1440,7 @@
     </div>
 
     <!-- TAB 3: Diagnóstico y electrónica -->
-    <div class="tab-panel" id="tab-diagnostico">
+    <div class="tab-panel" id="tab-diagnostico" role="tabpanel" aria-labelledby="pestana-diagnostico" tabindex="0">
 
       <div class="service-card fade-in">
         <div class="service-icon">
@@ -1455,7 +1469,7 @@
     </div>
 
     <!-- TAB 4: Aire acondicionado y confort -->
-    <div class="tab-panel" id="tab-ac">
+    <div class="tab-panel" id="tab-ac" role="tabpanel" aria-labelledby="pestana-aire-acondicionado" tabindex="0">
 
       <div class="service-card fade-in">
         <div class="service-icon">
@@ -1484,7 +1498,7 @@
     </div>
 
     <!-- TAB 5: Repuestos -->
-    <div class="tab-panel" id="tab-repuestos">
+    <div class="tab-panel" id="tab-repuestos" role="tabpanel" aria-labelledby="pestana-repuestos" tabindex="0">
 
       <div class="service-card fade-in">
         <div class="service-icon">
@@ -1932,9 +1946,9 @@
       <div class="footer-col">
         <h2 class="footer-col-title">Servicios</h2>
         <ul>
-          <li><a href="#servicios">Diagnóstico OBD</a></li>
-          <li><a href="#servicios">Reprogramación ECU</a></li>
-          <li><a href="#servicios">Sistema A/C</a></li>
+          <li><a href="#servicios-diagnostico">Diagnóstico OBD</a></li>
+          <li><a href="#servicios-diagnostico">Reprogramación ECU</a></li>
+          <li><a href="#servicios-aire-acondicionado">Sistema A/C</a></li>
           <li><a href="#casa-de-repuestos">Casa de Repuestos</a></li>
         </ul>
       </div>
@@ -1984,18 +1998,52 @@
     }
   }, { passive: true });
 
-  // Service tabs
-  const tabBtns = document.querySelectorAll('.tab-btn');
+  // Service tabs (patrón de pestañas WAI-ARIA: solo la pestaña activa entra
+  // en el recorrido con Tab; entre pestañas se pasa con las flechas, Inicio y
+  // Fin)
+  const tabBtns = [...document.querySelectorAll('.tab-btn')];
   const tabPanels = document.querySelectorAll('.tab-panel');
-  tabBtns.forEach(btn => {
+  // La dirección de cada pestaña: el botón pestana-mecanica es #servicios-mecanica.
+  const direccion = btn => '#servicios-' + btn.id.replace('pestana-', '');
+  function activarPestana(btn) {
+    tabBtns.forEach(b => {
+      const activa = b === btn;
+      b.classList.toggle('active', activa);
+      b.setAttribute('aria-selected', activa);
+      b.tabIndex = activa ? 0 : -1;
+    });
+    tabPanels.forEach(p => p.classList.toggle('active', p.id === btn.getAttribute('aria-controls')));
+  }
+  tabBtns.forEach((btn, i) => {
     btn.addEventListener('click', () => {
-      const target = btn.dataset.tab;
-      tabBtns.forEach(b => b.classList.remove('active'));
-      tabPanels.forEach(p => p.classList.remove('active'));
-      btn.classList.add('active');
-      document.getElementById('tab-' + target).classList.add('active');
+      activarPestana(btn);
+      // La pestaña queda en la dirección, para poder compartirla. replaceState
+      // no desplaza la página ni suma una entrada al historial.
+      history.replaceState(null, '', direccion(btn));
+    });
+    btn.addEventListener('keydown', e => {
+      const n = tabBtns.length;
+      const destino = {
+        ArrowRight: tabBtns[(i + 1) % n],
+        ArrowLeft: tabBtns[(i - 1 + n) % n],
+        Home: tabBtns[0],
+        End: tabBtns[n - 1],
+      }[e.key];
+      if (!destino) return;
+      e.preventDefault();
+      destino.focus();
+      destino.click();
     });
   });
+  // Una dirección #servicios-<pestaña>, al cargar o al cambiar (enlaces del
+  // pie, "Atrás", "Adelante"), abre esa pestaña. El desplazamiento lo hace el
+  // navegador, hasta la marca .ancla-pestana.
+  function pestanaDesdeDireccion() {
+    const btn = tabBtns.find(b => direccion(b) === location.hash);
+    if (btn) activarPestana(btn);
+  }
+  window.addEventListener('hashchange', pestanaDesdeDireccion);
+  pestanaDesdeDireccion();
 
   // Fade-in on scroll (IntersectionObserver)
   const observer = new IntersectionObserver((entries) => {

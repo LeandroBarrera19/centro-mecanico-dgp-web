@@ -150,6 +150,58 @@ referencia por referencia, está en `docs/planes/m3-informe.md`.
   - **La `transition` de `.navbar-toggle span`** ahora lista `transform` y
     `opacity`, como pide la spec, pero ninguna regla cambia esas propiedades
     en las rayas. Era inerte antes y lo sigue siendo.
+- **T2 — direcciones de las pestañas:** `#servicios-mantenimiento`,
+  `#servicios-mecanica`, `#servicios-diagnostico`,
+  `#servicios-aire-acondicionado` y `#servicios-repuestos`. Van sin acentos
+  ni ñ, como pide §3. Las alternativas eran `#servicios-service` o
+  `#servicios-ac`, derivadas de los `data-tab`, que no se entienden.
+- **T2 — a qué apuntan las direcciones (tercera versión):** a cinco marcas
+  vacías, `<span class="ancla-pestana">`, con `aria-hidden`, puestas arriba
+  de todo de la fila de pestañas con `position: absolute`. El navegador
+  desplaza solo hasta el principio de la fila, y el script únicamente abre
+  la pestaña. Los botones pasaron a llamarse `pestana-<pestaña>`.
+  - **Primera versión:** el `id` era el del botón. A 375 y 320 px, donde las
+    pestañas ocupan varias filas, el navegador desplazaba hasta el botón y
+    las filas de arriba quedaban detrás del menú (lo midió el revisor).
+  - **Segunda versión:** el script desplazaba hasta la fila. Peleaba con el
+    desplazamiento propio del navegador y quedaba corrida al cargar la
+    dirección directamente: −56 px a 375 px con Repuestos, según el
+    revisor. **La viñeta "Medido" de esa versión decía que quedaba en 73 px
+    también en ese caso, y era falsa.** Mi prueba encadenaba dos
+    navegaciones en la misma página y no medía una carga real. Además,
+    Ctrl+clic en los enlaces del pie había dejado de abrir otra pestaña del
+    navegador.
+  - **Con la tercera versión todo es comportamiento normal de enlace:**
+    Ctrl+clic, "Atrás", "Adelante", Enter, y funciona sin JavaScript.
+  - **Medido** (página quieta, el menú termina en 73 px):
+    - **Carga directa:** 40 casos (4 anchos × 5 pestañas × 2 modos de
+      movimiento), fila en 73 y pestaña correcta en todos.
+    - **Enlaces del pie:** 60 casos (10 anchos de 320 a 1920 × 3 enlaces ×
+      2 modos), fila en 73 en todos.
+    - **Sin JavaScript:** fila en 73, con el primer panel a la vista.
+    - **Ctrl+clic:** abre otra pestaña del navegador con la dirección y no
+      cambia la actual.
+    - **Enter sobre un enlace del pie:** fila en 73, y el Tab siguiente cae
+      en la pestaña abierta.
+    - **Clic en una pestaña:** 0 px de desplazamiento.
+  - **"Adelante":** devuelve la página al lugar donde la dejó el usuario en
+    esa entrada del historial, como en cualquier sitio. Si el usuario subió
+    al inicio antes de volver, "Adelante" lo deja arriba. No es una falla.
+- **T2 — `data-tab` borrado:** el script usa `aria-controls`, y ya nada
+  leía `data-tab`. Lo señaló el revisor.
+- **T2 — activación automática:** mover el foco con las flechas también
+  activa la pestaña. Es la variante recomendada por WAI-ARIA cuando los
+  paneles ya están en la página y mostrarlos no cuesta nada.
+- **T2 — `history.replaceState` al cambiar de pestaña:** actualiza la
+  dirección sin desplazar la página ni sumar una entrada al historial. Así
+  "Atrás" no recorre las pestañas una por una.
+- **T2 — paneles con `tabindex="0"`:** los paneles no tienen nada enfocable
+  adentro, y WAI-ARIA pide entonces que el panel mismo sea enfocable.
+- **Hallazgo previo a T2, que no se toca:** el anillo de foco global
+  (`:focus-visible`, verde `#7DB919`) tiene 2,38:1 contra blanco, debajo del
+  3:1 que WCAG 1.4.11 pide para indicadores no textuales. §6 solo pide foco
+  visible, y lo es. T2 lo extiende a los paneles. Cambiar el color del foco es
+  una decisión de marca, fuera de este módulo.
 
 ---
 
