@@ -236,6 +236,66 @@ referencia por referencia, está en `docs/planes/m3-informe.md`.
   spec. No se agrega al nombre del taller, "Centro Mecánico DGP": la spec no
   lo pide, y que un traductor lo pase a otro idioma no lo vuelve
   irreconocible, como sí puede pasar con "FORD" o "JEEP".
+- **T5 — más textos chicos que los que nombra la spec:** la spec nombra
+  tres (`.eyebrow-label` 11 px, `.brands-intro` 10 px y
+  `.brand-name--secondary` ~10,9 px), pero su regla es "ningún texto
+  visible por debajo de 12 px". Medido sobre la página, había otros cinco
+  en 0,72rem (11,52 px):
+  - el "Villa María, Córdoba" del logo (`.navbar-logo-text span`);
+  - `.hero-badge`;
+  - `.t-date`;
+  - `.contact-item-label`;
+  - `.footer-col-title`.
+  
+  Los ocho pasan a 12 px (`12px` o `0,75rem`, según la unidad que usaba
+  cada regla). Medido después: 0 textos visibles por debajo de 12 px.
+- **T5 — lo que cambia de tamaño** (comparado con `HEAD` a 320, 332, 360,
+  375, 390, 414, 600, 768, 830, 1024 y 1440 px):
+  - **Franja de marcas:** más alta en celulares, porque las marcas
+    secundarias ocupan más filas. Crece de 6 a 32 px según el ancho (a
+    414 px pasa de 182 a 212).
+  - **`.hero-badge`:** a 414 px pasa de una línea a dos (de 32 a 52 px de
+    alto). En los demás anchos crece 1 px.
+  - **Contacto y pie:** crecen unos pocos píxeles. Yo medí entre 2 y 4 px
+    en las cajas `.contact-data` y `footer`. El revisor midió en las
+    secciones enteras entre 0,8 y 2,3 px.
+  - **Sin cambios:** la altura del menú y la cantidad de líneas de los h1
+    y h2.
+  - **El logo, corregido en la segunda vuelta:** la primera vuelta decía
+    "sin cambios" en el logo, y era falso. Yo había medido 830 y 1024 px y
+    salteé lo que hay entre medio. El revisor midió que entre 831 y 835 px
+    "Villa María, Córdoba" pasaba a dos líneas, y el bloque del logo se
+    salía del menú: el renglón de arriba quedaba cortado y "Córdoba" caía
+    sobre la foto del inicio, con 1,92:1 de contraste.
+- **T5 — espaciado entre letras de "Villa María, Córdoba":** se bajó de
+  0,05em a 0,025em. A 12 px la línea mide unos 124,6 px, apenas menos que
+  los ~125,4 px que medía a 0,72rem con 0,05em. Así entra exactamente
+  donde entraba antes. La alternativa, `white-space: nowrap`, habría hecho
+  que el texto se saliera de su caja hacia el menú.
+  - **Medido de 320 a 1920 px de a 1 px contra `HEAD`:** las líneas del
+    nombre y del lugar son iguales en los 1601 anchos, y no hay desborde
+    horizontal.
+  - **Hallazgo previo, que no se toca:** entre 831 y 834 px el bloque del
+    logo ya sobresalía del menú en `HEAD` (de −1,1 a 73,1 px, con el menú
+    terminando en 73), porque el nombre ocupa tres líneas. En la rama
+    sobresale de −1,4 a 73,4 px, porque la línea de 12 px es 0,6 px más
+    alta. La diferencia con `HEAD` es de 0,3 px por lado. No es el
+    derrame que encontró el revisor (de −8,6 a 80,2).
+- **T5 — comentario reescrito:** el comentario de `touch-action` decía
+  "Toque inmediato", y "inmediato" está en la lista de palabras prohibidas.
+  Aunque no se ve en la página, se publica dentro del HTML. Se reescribió
+  sin esa palabra.
+- **T5 — `text-wrap: balance`** en `h1, h2, h3`, en una sola regla al lado
+  del reset. No cambia la cantidad de líneas de ningún h1 ni h2 en los
+  anchos medidos; solo reparte las palabras entre esas líneas.
+- **T5 — color del resaltado al tocar:** `rgba(18, 75, 143, 0.15)`, el azul
+  de la casa (`--azul`) al 15 %, en vez del gris al 18 % de Chrome. Va
+  junto con `touch-action: manipulation`, en `a` y `button`.
+- **T5 — verificado:**
+  - **Desborde:** de 320 a 1920 px de a 1 px, en las 5 pestañas y con el
+    menú móvil abierto: 0 desbordes en 8516 mediciones.
+  - **Contraste** (`tools/auditar-contraste.mjs`): 381 textos, 69
+    combinaciones, 0 por debajo del mínimo.
 - **Hallazgo previo a T2, que no se toca:** el anillo de foco global
   (`:focus-visible`, verde `#7DB919`) tiene 2,38:1 contra blanco, debajo del
   3:1 que WCAG 1.4.11 pide para indicadores no textuales. §6 solo pide foco

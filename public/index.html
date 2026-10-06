@@ -112,6 +112,11 @@
     body { font-family: 'Roboto', sans-serif; color: #2D2D2D; background: #fff; line-height: 1.6; }
     img { max-width: 100%; display: block; }
     a { text-decoration: none; color: inherit; }
+    /* Títulos repartidos en líneas parejas, sin una palabra sola al final. */
+    h1, h2, h3 { text-wrap: balance; }
+    /* Sin la espera que el navegador deja para detectar un doble toque de
+       zoom, y un resaltado del color de la casa en vez del gris. */
+    a, button { touch-action: manipulation; -webkit-tap-highlight-color: rgba(18, 75, 143, 0.15); }
 
     /* ── FOCUS VISIBLE (WCAG 2.1 AA) ── */
     :focus-visible {
@@ -197,7 +202,7 @@
     /* ── EYEBROW LABEL ── */
     .eyebrow-label {
       font-family: 'Roboto', sans-serif;
-      font-size: 11px;
+      font-size: 12px;
       font-weight: 500;
       letter-spacing: .22em;
       text-transform: uppercase;
@@ -232,12 +237,16 @@
       color: var(--azul);
       line-height: 1.2;
     }
+    /* 12 px como mínimo de texto, con el espaciado entre letras bajado de
+       0,05em a 0,025em para que la línea mida lo mismo que medía a 0,72rem
+       (≈125 px). Con 0,05em pasaba a dos líneas entre 831 y 835 px, donde
+       el logo está más apretado, y el bloque se salía del menú. */
     .navbar-logo-text span {
       display: block;
       font-weight: 400;
-      font-size: 0.72rem;
+      font-size: 0.75rem;
       color: var(--gris-medio);
-      letter-spacing: 0.05em;
+      letter-spacing: 0.025em;
     }
     .navbar-links { display: flex; align-items: center; gap: 32px; }
     .navbar-links a {
@@ -359,7 +368,7 @@
       display: inline-block;
       font-family: 'Montserrat', sans-serif;
       font-weight: 700;
-      font-size: 0.72rem;
+      font-size: 0.75rem;
       letter-spacing: 0.14em;
       text-transform: uppercase;
       /* Fondo sólido: contraste fijo, sin depender de la foto (P-015).
@@ -783,7 +792,7 @@
     }
     .brands-intro {
       font-family: 'Roboto', sans-serif;
-      font-size: 10px;
+      font-size: 12px;
       font-weight: 600;
       letter-spacing: .18em;
       text-transform: uppercase;
@@ -808,7 +817,7 @@
     }
     .brand-name--secondary {
       font-weight: 500;
-      font-size: 0.68rem;
+      font-size: 0.75rem;
       opacity: 0.77;
       padding: 2px 5px;
     }
@@ -954,7 +963,7 @@
       display: block;
       font-family: 'Montserrat', sans-serif;
       font-weight: 700;
-      font-size: 0.72rem;
+      font-size: 0.75rem;
       letter-spacing: 0.08em;
       text-transform: uppercase;
       color: rgba(255,255,255,0.64);
@@ -985,7 +994,7 @@
     .footer-col-title {
       font-family: 'Montserrat', sans-serif;
       font-weight: 700;
-      font-size: 0.72rem;
+      font-size: 0.75rem;
       letter-spacing: 0.1em;
       text-transform: uppercase;
       color: var(--verde);
@@ -1153,7 +1162,7 @@
       color: var(--azul);
       line-height: 1.2;
     }
-    .t-date { font-size: 0.72rem; color: var(--gris-medio); }
+    .t-date { font-size: 0.75rem; color: var(--gris-medio); }
     .testimonials-actions {
       display: flex;
       justify-content: center;
