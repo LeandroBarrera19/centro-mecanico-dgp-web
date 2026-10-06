@@ -197,6 +197,29 @@ referencia por referencia, está en `docs/planes/m3-informe.md`.
   "Atrás" no recorre las pestañas una por una.
 - **T2 — paneles con `tabindex="0"`:** los paneles no tienen nada enfocable
   adentro, y WAI-ARIA pide entonces que el panel mismo sea enfocable.
+- **T3 — botón del menú de 44 × 44 px sin mover las rayas:**
+  - **Cómo:** las rayas quedan centradas en el botón, y un `margin-right:
+    -6px` las deja donde estaban, a 4 px del borde del contenedor. Medido
+    contra `HEAD` a 320, 390, 600 y 830 px: posición idéntica, al píxel.
+  - **`flex-shrink: 0`:** sin esto, a 320 px el logo apretaba el botón
+    hasta 42,1 px y las rayas se corrían 0,95 px.
+  - **Lo que cede, entre 320 y 332 px:** la caja del logo, 6 px. El texto
+    sigue entero en todos esos anchos (`scrollWidth` igual a `clientWidth`).
+    A 320 px la imagen pasa de 46,6 a 45,4 px de ancho. En `HEAD` ya se
+    achicaba en esos anchos: el comentario del menú dice que "el que cede
+    es el logo".
+  - **Corrección, medida por el revisor:** acá decía que el texto quedaba
+    "en las mismas líneas" en todo el tramo, pero yo solo lo había medido a
+    320 px. De 320 a 331 px el nombre ocupa las mismas líneas que en `HEAD`.
+    **A 332 px pasa de dos líneas a tres:** "Centro Mecánico DGP" se parte
+    en dos, como ya pasaba en `HEAD` de 320 a 331. Desde 333 px vuelve a
+    ser igual. Es un salto de línea distinto en un solo ancho, sin texto
+    recortado. Lo dejo así: correrlo exigiría achicar el botón o el margen,
+    y eso es justamente lo que pide la tarea.
+  - **Desborde:** 0 de 320 a 830 px.
+- **T3 — Escape:** cierra el menú solo si está abierto, y devuelve el foco
+  al botón. Con el menú cerrado no hace nada, así no interfiere con Escape
+  en otros lugares de la página.
 - **Hallazgo previo a T2, que no se toca:** el anillo de foco global
   (`:focus-visible`, verde `#7DB919`) tiene 2,38:1 contra blanco, debajo del
   3:1 que WCAG 1.4.11 pide para indicadores no textuales. §6 solo pide foco

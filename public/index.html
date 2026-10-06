@@ -265,14 +265,24 @@
     /* .navbar-links a (color gris y azul al pasar el mouse) pesa más que .btn-cta */
     .navbar-links a.btn-cta,
     .navbar-links a.btn-cta:hover { color: var(--blanco); }
+    /* 44 × 44 px: el mínimo de un objetivo táctil. Antes medía 32 × 24.
+       Las rayas quedan centradas, y el margen derecho negativo las deja en
+       el mismo lugar que antes, a 4 px del borde del contenedor. Sin
+       flex-shrink: a 320 px el logo lo apretaba hasta 42 px. */
     .navbar-toggle {
       display: none;
       cursor: pointer;
       flex-direction: column;
+      align-items: center;
+      justify-content: center;
       gap: 5px;
       background: none;
       border: none;
-      padding: 4px;
+      padding: 0;
+      width: 44px;
+      height: 44px;
+      flex-shrink: 0;
+      margin-right: -6px;
     }
     .navbar-toggle span { width: 24px; height: 2px; background: var(--gris); border-radius: 2px; display: block; transition: transform 0.3s, opacity 0.3s; }
     .navbar-mobile { display: none; flex-direction: column; }
@@ -1987,6 +1997,13 @@
     navToggle.setAttribute('aria-expanded', 'false');
     navToggle.setAttribute('aria-label', 'Abrir menú');
   }
+  // Escape cierra el menú abierto y devuelve el foco al botón que lo abre.
+  document.addEventListener('keydown', e => {
+    if (e.key === 'Escape' && navMobile.classList.contains('open')) {
+      closeMobileMenu();
+      navToggle.focus();
+    }
+  });
   // Al ensanchar la ventana con el menú abierto quedaban los dos menús
   // visibles a la vez (P-042). Se cierra cuando el botón deja de mostrarse,
   // que es la condición que fija el CSS: así el ancho de corte vive en un solo
