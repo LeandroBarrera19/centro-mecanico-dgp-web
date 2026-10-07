@@ -4,7 +4,7 @@
 Todo lo que no esté acá se escribe como `TODO_DATO: <qué falta>` o se pregunta.
 Nunca se completa con un valor plausible.
 
-Última actualización: 2026-09-10. Origen: respuestas de Ramiro (propietario) y
+Última actualización: 2026-10-07 (coordenadas de §11). Antes: 2026-09-10. Origen: respuestas de Ramiro (propietario) y
 ficha de Google Maps observada el 2026-09-07.
 
 ---
@@ -175,6 +175,70 @@ Ordóñez (59,5) · Carrilobo (61,3) · San Antonio de Litín (62,1) · General
 Deheza (63,4) · Oncativo (69,0) · Chilibroste (69,8) · Ucacha (72,8) ·
 General Cabrera (73,7) · Chazón (73,9) · Justiniano Posse (74,6) · San Marcos
 Sud (75,8) · Las Varillas (78,3)
+
+### Coordenadas para el mapa de cobertura
+
+Aprobadas por Ramiro el 2026-10-07 (P-060), con la indicación de **usar el
+nombre oficial** de cada localidad en el mapa. Fuente: API Georef del Estado
+argentino (apis.datos.gob.ar/georef, datos del IGN), consultada el
+2026-10-07; centroide de cada localidad. Cada una se validó contra la
+distancia registrada arriba: todas coinciden con ±2,0 km de diferencia.
+
+- **"Palestina" y "La Palestina"** de la lista de arriba son una sola: con el
+  nombre oficial, en el mapa queda **La Palestina**, una vez. La lista de
+  arriba no se tocó.
+- **Nombres oficiales distintos al de uso:** "Dalmacio Vélez Sarsfield" se
+  escribe **Dalmacio Vélez**, y "San Marcos Sud", **San Marcos**. Georef
+  escribe "Idiazabal" y "Ordoñez" sin el acento con que figuran arriba; en el
+  mapa se respeta la ortografía de arriba (Idiazábal, Ordóñez), porque es
+  la misma localidad y el acento es la grafía correcta en castellano.
+  `Decisión propia, ver P-063.`
+- El rumbo es la dirección desde el taller.
+
+| Nombre en el mapa | Departamento | Latitud | Longitud | Km desde el taller | Rumbo |
+|---|---|---|---|---|---|
+| Villa María | General San Martín | -32.41350 | -63.24833 | 2,0 | SO |
+| Villa Nueva | General San Martín | -32.43548 | -63.24786 | 3,9 | SO |
+| Las Mojarras | General San Martín | -32.30433 | -63.23344 | 11,1 | N |
+| Arroyo Cabral | General San Martín | -32.48949 | -63.40238 | 18,7 | SO |
+| Tío Pujio | General San Martín | -32.28707 | -63.35368 | 17,4 | NO |
+| Ana Zumarán | Unión | -32.39095 | -63.05723 | 16,4 | E |
+| Arroyo Algodón | General San Martín | -32.20119 | -63.16512 | 23,4 | N |
+| Luca | General San Martín | -32.54051 | -63.47689 | 27,6 | SO |
+| La Palestina | General San Martín | -32.61643 | -63.40940 | 29,0 | SO |
+| Ausonia | General San Martín | -32.66180 | -63.24311 | 28,7 | S |
+| Ballesteros | Unión | -32.54170 | -62.98081 | 28,0 | SE |
+| James Craik | Tercero Arriba | -32.16143 | -63.46797 | 35,0 | NO |
+| Alto Alegre | Unión | -32.34469 | -62.88491 | 33,2 | E |
+| Ticino | General San Martín | -32.69313 | -63.43711 | 37,5 | SO |
+| Pasco | General San Martín | -32.74622 | -63.34174 | 39,5 | S |
+| Dalmacio Vélez | Tercero Arriba | -32.60860 | -63.58349 | 40,1 | SO |
+| La Playosa | General San Martín | -32.09700 | -63.03435 | 38,8 | NE |
+| Los Zorros | Tercero Arriba | -32.04497 | -63.20224 | 40,0 | N |
+| Pampayasta Norte | Tercero Arriba | -32.24100 | -63.64298 | 42,7 | NO |
+| La Laguna | General San Martín | -32.80253 | -63.24709 | 44,4 | S |
+| Morrison | Unión | -32.59287 | -62.83334 | 42,8 | SE |
+| Hernando | Tercero Arriba | -32.42788 | -63.73347 | 47,2 | O |
+| Idiazábal | Unión | -32.81254 | -63.03240 | 49,1 | S |
+| Colazo | Río Segundo | -31.96456 | -63.38268 | 50,9 | N |
+| Oliva | Tercero Arriba | -32.03826 | -63.57068 | 51,7 | NO |
+| Las Perdices | Tercero Arriba | -32.69896 | -63.70467 | 55,2 | SO |
+| Pozo del Molle | Río Segundo | -32.02134 | -62.91931 | 51,7 | NE |
+| Cintra | Unión | -32.30633 | -62.65161 | 55,5 | E |
+| Bell Ville | Unión | -32.63031 | -62.68879 | 56,7 | SE |
+| Etruria | General San Martín | -32.93923 | -63.24501 | 59,6 | S |
+| Ordóñez | Unión | -32.84101 | -62.86599 | 59,4 | SE |
+| Carrilobo | Río Segundo | -31.87371 | -63.11740 | 59,9 | N |
+| San Antonio de Litín | Unión | -32.21358 | -62.63133 | 60,2 | E |
+| General Deheza | Juárez Celman | -32.75633 | -63.78913 | 65,4 | SO |
+| Oncativo | Río Segundo | -31.91343 | -63.68202 | 69,1 | NO |
+| Chilibroste | Unión | -32.33269 | -62.51080 | 68,1 | E |
+| Ucacha | Juárez Celman | -33.03144 | -63.50612 | 74,4 | S |
+| General Cabrera | Juárez Celman | -32.81457 | -63.87496 | 75,7 | SO |
+| Chazón | General San Martín | -33.07787 | -63.27507 | 75,1 | S |
+| Justiniano Posse | Unión | -32.88345 | -62.67961 | 74,2 | SE |
+| San Marcos | Unión | -32.63024 | -62.48425 | 74,4 | E |
+| Las Varillas | San Justo | -31.87038 | -62.71966 | 76,4 | NE |
 
 ## 12. Cartera de flotas (datos agregados publicables)
 
