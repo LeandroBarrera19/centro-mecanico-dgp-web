@@ -2355,3 +2355,28 @@ referencia por referencia, está en `docs/planes/m3-informe.md`.
   se puede publicar (F-01, bloqueante de M5).
 
 ---
+
+### P-065 — Decisiones propias al llevar el rediseño al resto de la home
+- **Estado:** respondida
+- **Decisión propia**, 2026-10-07. Ramiro aprobó la muestra y pidió seguir
+  "con la misma idea". Ningún texto visible cambió.
+- **Títulos de sección** en mayúsculas, alineados a la izquierda, con una
+  línea hasta el borde (verde en su primer tramo). Los encabezados que antes
+  iban centrados también pasan a la izquierda, igual que el párrafo de
+  cobertura, la calificación de Google y los botones de reseñas.
+- **Planos de color:** la libreta digital pasa a fondo azul y flotas a azul
+  oscuro. Los remates diagonales se recalcularon con la regla de P-025 (el
+  color del remate es el de la sección de abajo): "Cómo trabajamos" remata en
+  `--azul` y "Casa de repuestos" en `--azul-dark`. Los demás no cambian.
+- **Tildes de las listas sobre azul** en verde claro (`#c5ec7f`): el verde de
+  la casa no contrasta con el azul.
+- **Pasos de "Cómo trabajamos" numerados 01 a 05** con un contador de CSS. Es
+  numeración visual del orden en que ya están; no agrega texto al HTML.
+- **Tarjetas** (servicios, pasos, reseñas, flotas y huecos de foto): esquinas
+  rectas con una esquina cortada en diagonal, como el cartel de la fachada.
+- **Pie:** las letras "DGP" gigantes y casi transparentes al final, ocultas a
+  lectores de pantalla (`aria-hidden`), al estilo de Holt.
+- **Contorno de foco del botón de flotas:** pasa a blanco. El azul oscuro de
+  antes no se veía sobre el fondo nuevo.
+
+---

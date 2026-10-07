@@ -131,8 +131,7 @@
     }
     /* Botones azules sobre fondo claro: el contorno blanco no se vería */
     .btn-cta:focus-visible,
-    .testimonials .btn-primary:focus-visible,
-    .fleets .btn-primary:focus-visible {
+    .testimonials .btn-primary:focus-visible {
       outline-color: #0d3870;
     }
 
@@ -173,31 +172,39 @@
     /* ── UTILITIES ── */
     .container { max-width: 1200px; margin: 0 auto; padding: 0 32px; }
 
+    /* Rediseño: el título en mayúsculas, alineado a la izquierda, y una línea
+       que sigue hasta el borde del contenedor, verde en su primer tramo
+       (Rogers-O'Brien). */
     .section-title {
+      display: flex;
+      align-items: center;
+      gap: 24px;
       font-family: 'Montserrat', sans-serif;
-      font-weight: 800;
-      font-size: 2rem;
+      font-weight: 900;
+      font-size: clamp(1.9rem, 3.6vw, 2.9rem);
+      line-height: 1.02;
+      text-transform: uppercase;
+      letter-spacing: -0.01em;
       color: var(--azul);
-      margin-bottom: 12px;
+      margin-bottom: 18px;
     }
     .section-title::after {
       content: '';
-      display: block;
-      width: 36px;
+      flex: 1 1 64px;
+      min-width: 64px;
       height: 3px;
-      background: var(--verde);
-      margin-top: 12px;
-      border-radius: 2px;
+      background: linear-gradient(90deg, var(--verde) 0 64px, var(--gris-claro) 64px);
     }
-    .section-header.center .section-title::after { margin: 12px auto 0; }
+    .section-header.center .section-title::after { margin: 0; }
     .section-sub {
       font-size: 1.05rem;
       color: var(--gris-medio);
       max-width: 600px;
     }
-    .section-header { margin-bottom: 52px; }
-    .section-header.center { text-align: center; }
-    .section-header.center .section-sub { margin: 0 auto; }
+    .section-header { margin-bottom: 48px; }
+    /* "center" quedó del diseño anterior: en el rediseño todo va a la izquierda. */
+    .section-header.center { text-align: left; }
+    .section-header.center .section-sub { margin: 0; }
 
     /* ── EYEBROW LABEL ── */
     .eyebrow-label {
@@ -535,7 +542,7 @@
         #e4e7ea 10px 20px
       );
       border: 1px dashed var(--gris-medio);
-      border-radius: 12px;
+      clip-path: polygon(0 0, 100% 0, 100% calc(100% - 32px), calc(100% - 32px) 100%, 0 100%);
       display: flex;
       align-items: center;
       justify-content: center;
@@ -564,7 +571,8 @@
       position: absolute;
       bottom: -2px; left: 0; right: 0;
       height: 66px;
-      background: var(--blanco);
+      /* --azul: debajo está la libreta, que en el rediseño es un plano azul. */
+      background: var(--azul);
       clip-path: polygon(0 100%, 100% 0, 100% 100%);
     }
     /* Dos columnas: el hueco de foto a la izquierda y los cinco pasos en una
@@ -576,13 +584,27 @@
       gap: 44px;
       align-items: start;
     }
-    .how-steps { display: grid; gap: 26px; }
+    .how-steps { display: grid; gap: 18px; counter-reset: paso; }
+    /* Cada paso con su número (01 a 05) grande a la izquierda: numeración
+       visual del orden, generada por CSS. */
     .how-step {
+      position: relative;
       background: var(--blanco);
-      border-radius: 12px;
-      border-left: 3px solid var(--verde);
-      padding: 22px 24px;
-      box-shadow: var(--shadow);
+      border: 1px solid var(--gris-claro);
+      padding: 22px 24px 22px 86px;
+      clip-path: polygon(0 0, 100% 0, 100% calc(100% - 18px), calc(100% - 18px) 100%, 0 100%);
+      counter-increment: paso;
+    }
+    .how-step::before {
+      content: counter(paso, decimal-leading-zero);
+      position: absolute;
+      left: 22px;
+      top: 20px;
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 900;
+      font-size: 2rem;
+      line-height: 1;
+      color: var(--azul);
     }
     .how-step h3 {
       font-family: 'Montserrat', sans-serif;
@@ -601,7 +623,8 @@
        recalculó la cadena entera con el orden final y este remate no cambió:
        la casa de repuestos sigue debajo. */
     .notebook {
-      background: var(--blanco);
+      background: var(--azul);
+      color: var(--blanco);
       padding: 88px 0 148px;
       position: relative;
     }
@@ -622,11 +645,15 @@
       gap: 44px;
       align-items: start;
     }
+    .notebook .section-title { color: var(--blanco); }
+    .notebook .section-title::after { background: linear-gradient(90deg, var(--verde) 0 64px, rgba(255,255,255,0.25) 64px); }
+    .notebook .section-sub { color: rgba(255,255,255,0.85); }
+    .notebook .img-slot { background: rgba(255,255,255,0.06); border-color: rgba(255,255,255,0.4); }
+    .notebook .img-slot span { color: var(--blanco); }
     .notebook-icon {
       width: 44px;
       height: 44px;
-      background: var(--gris-bg);
-      border-radius: 8px;
+      background: rgba(255,255,255,0.12);
       display: flex;
       align-items: center;
       justify-content: center;
@@ -636,17 +663,17 @@
       width: 22px;
       height: 22px;
       fill: none;
-      stroke: var(--azul);
+      stroke: var(--blanco);
       stroke-width: 2;
       stroke-linecap: round;
       stroke-linejoin: round;
     }
-    .notebook-lead { font-size: 0.98rem; color: var(--gris-medio); line-height: 1.7; }
+    .notebook-lead { font-size: 0.98rem; color: rgba(255,255,255,0.88); line-height: 1.7; }
     .notebook-list-title {
       font-family: 'Montserrat', sans-serif;
       font-weight: 700;
       font-size: 1.05rem;
-      color: var(--azul);
+      color: var(--blanco);
       margin: 26px 0 14px;
     }
     .notebook-list { list-style: none; display: grid; gap: 12px; }
@@ -654,11 +681,12 @@
       position: relative;
       padding-left: 26px;
       font-size: 0.93rem;
-      color: var(--gris-medio);
+      color: rgba(255,255,255,0.88);
       line-height: 1.6;
     }
     /* Tilde dibujada con bordes CSS, no con un glifo: los subconjuntos de
-       fuente que servimos no incluyen los caracteres de símbolos (P-005). */
+       fuente que servimos no incluyen los caracteres de símbolos (P-005).
+       Sobre el azul va en verde claro: el verde de la casa no contrasta. */
     .notebook-list li::before {
       content: '';
       position: absolute;
@@ -666,7 +694,7 @@
       top: 3px;
       width: 6px;
       height: 11px;
-      border: solid var(--verde-dark);
+      border: solid #c5ec7f;
       border-width: 0 2px 2px 0;
       transform: rotate(45deg);
     }
@@ -687,7 +715,8 @@
       position: absolute;
       bottom: -2px; left: 0; right: 0;
       height: 66px;
-      background: var(--blanco);
+      /* --azul-dark: debajo está flotas, que en el rediseño es un plano azul oscuro. */
+      background: var(--azul-dark);
       clip-path: polygon(0 100%, 100% 0, 100% 100%);
     }
     /* La foto a la izquierda y el texto a la derecha, alternando con la
@@ -718,7 +747,7 @@
        manda crear uno nuevo, y crearlo habría sido una decisión de forma que
        nadie pidió. */
     .fleets {
-      background: var(--blanco);
+      background: var(--azul-dark);
       padding: 88px 0 148px;
       position: relative;
     }
@@ -740,20 +769,25 @@
     .fleets-panel {
       max-width: 860px;
       margin: 0 auto;
-      background: var(--gris-bg);
-      border-radius: 12px;
-      border-left: 3px solid var(--azul);
-      padding: 34px 38px;
+      background: rgba(255,255,255,0.05);
+      border: 1px solid rgba(255,255,255,0.14);
+      border-left: 4px solid var(--verde);
+      padding: 40px 44px;
+      clip-path: polygon(0 0, 100% 0, 100% calc(100% - 32px), calc(100% - 32px) 100%, 0 100%);
     }
-    .fleets-panel .section-title { font-size: 1.5rem; }
+    .fleets .section-title { color: var(--blanco); }
+    .fleets .section-title::after { background: linear-gradient(90deg, var(--verde) 0 64px, rgba(255,255,255,0.2) 64px); }
+    /* Sobre el azul oscuro, el botón azul lleva borde blanco, como en el inicio. */
+    .fleets .btn-primary { border: 2px solid var(--blanco); }
+    .fleets-panel .section-title { font-size: clamp(1.5rem, 2.6vw, 2rem); }
     .fleets-panel .section-header { margin-bottom: 22px; }
-    .fleets-lead { font-size: 0.95rem; color: var(--gris-medio); line-height: 1.7; }
+    .fleets-lead { font-size: 0.95rem; color: rgba(255,255,255,0.88); line-height: 1.7; }
     .fleets-list { list-style: none; display: grid; gap: 10px; margin: 20px 0 26px; }
     .fleets-list li {
       position: relative;
       padding-left: 26px;
       font-size: 0.93rem;
-      color: var(--gris-medio);
+      color: rgba(255,255,255,0.88);
       line-height: 1.6;
     }
     /* Misma tilde de bordes que la libreta, y por el mismo motivo: los
@@ -765,7 +799,7 @@
       top: 3px;
       width: 6px;
       height: 11px;
-      border: solid var(--verde-dark);
+      border: solid #c5ec7f;
       border-width: 0 2px 2px 0;
       transform: rotate(45deg);
     }
@@ -787,27 +821,25 @@
       clip-path: polygon(0 100%, 100% 0, 100% 100%);
     }
     .service-card {
+      background: var(--blanco);
       border: 1px solid var(--gris-claro);
-      border-left: 3px solid var(--verde);
-      border-radius: 10px;
-      padding: 24px 18px;
-      transition: border-color 0.2s, box-shadow 0.2s, transform 0.2s;
+      border-top: 3px solid var(--azul);
+      padding: 26px 22px;
+      clip-path: polygon(0 0, 100% 0, 100% calc(100% - 22px), calc(100% - 22px) 100%, 0 100%);
+      transition: border-color 0.2s, transform 0.2s;
     }
     .service-card:hover {
       border-color: var(--azul);
-      border-left-color: var(--verde);
-      box-shadow: 0 4px 18px rgba(18,75,143,0.13);
       transform: translateY(-3px);
     }
     .service-icon {
       width: 44px;
       height: 44px;
       background: var(--gris-bg);
-      border-radius: 8px;
       display: flex;
       align-items: center;
       justify-content: center;
-      margin-bottom: 14px;
+      margin-bottom: 16px;
       transition: background 0.2s;
     }
     .service-card:hover .service-icon { background: var(--azul); }
@@ -824,10 +856,12 @@
     .service-card:hover .service-icon svg { stroke: var(--blanco); }
     .service-card-title {
       font-family: 'Montserrat', sans-serif;
-      font-weight: 700;
+      font-weight: 800;
       font-size: 0.875rem;
-      color: var(--gris);
-      margin-bottom: 6px;
+      letter-spacing: 0.02em;
+      text-transform: uppercase;
+      color: var(--azul-dark);
+      margin-bottom: 8px;
       line-height: 1.3;
     }
     .service-card p { font-size: 0.8rem; color: var(--gris-medio); line-height: 1.55; }
@@ -945,7 +979,7 @@
     .services-tabs {
       display: flex;
       flex-wrap: wrap;
-      justify-content: center;
+      justify-content: flex-start;
       gap: 8px;
       margin-bottom: 36px;
     }
@@ -955,19 +989,20 @@
     .ancla-pestana { position: absolute; top: 0; left: 0; }
     .tab-btn {
       font-family: 'Montserrat', sans-serif;
-      font-weight: 600;
-      font-size: 0.78rem;
-      letter-spacing: .03em;
-      background: var(--gris-bg);
-      color: var(--gris-medio);
+      font-weight: 700;
+      font-size: 0.75rem;
+      letter-spacing: .06em;
+      text-transform: uppercase;
+      background: var(--blanco);
+      color: var(--azul);
       border: 1.5px solid var(--gris-claro);
-      padding: 9px 18px;
-      border-radius: 100px;
+      padding: 11px 18px;
+      border-radius: 0;
       cursor: pointer;
       transition: background 0.2s, color 0.2s, border-color 0.2s;
       white-space: nowrap;
     }
-    .tab-btn:hover { border-color: var(--azul); color: var(--azul); }
+    .tab-btn:hover { border-color: var(--azul); }
     .tab-btn.active {
       background: var(--azul);
       color: #fff;
@@ -1109,7 +1144,20 @@
     .contact-item strong { color: var(--blanco); font-weight: 500; font-family: 'Roboto', sans-serif; }
 
     /* ── FOOTER ── */
-    footer { background: var(--azul-dark); padding: 60px 0 28px; position: relative; overflow: hidden; }
+    footer { background: var(--azul-dark); padding: 60px 0 0; position: relative; overflow: hidden; }
+    /* Las letras de la marca, gigantes y casi transparentes, cortadas por el
+       borde inferior (Holt). Decorativas: ocultas a lectores de pantalla. */
+    .footer-marca {
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 900;
+      font-size: clamp(6rem, 26vw, 22rem);
+      line-height: 0.78;
+      letter-spacing: -0.04em;
+      color: rgba(255,255,255,0.06);
+      margin: 28px 0 -0.06em;
+      user-select: none;
+      white-space: nowrap;
+    }
     .footer-accent-bar {
       height: 4px;
       background: linear-gradient(90deg, var(--verde) 0%, var(--azul-light) 60%, var(--verde) 100%);
@@ -1199,9 +1247,7 @@
       clip-path: polygon(0 100%, 100% 0, 100% 100%);
     }
     .coverage-text {
-      max-width: 760px;
-      margin: 0 auto;
-      text-align: center;
+      max-width: 860px;
       font-size: clamp(1.15rem, 2.1vw, 1.5rem);
       color: var(--gris);
       line-height: 1.6;
@@ -1212,6 +1258,7 @@
        4,54:1). Así ninguna palabra queda ilegible mientras se llena. */
     .llenando .palabra { color: #767676; transition: color 0.35s ease; }
     .llenando .palabra.llena { color: var(--gris); }
+    .google-badge-fila { display: flex; }
     .google-badge {
       display: inline-flex;
       align-items: center;
@@ -1247,17 +1294,18 @@
     }
     .t-card {
       background: var(--blanco);
-      border-radius: 12px;
+      border: 1px solid var(--gris-claro);
+      border-top: 3px solid var(--azul);
       padding: 26px 22px;
-      box-shadow: 0 2px 16px rgba(18,75,143,0.08);
+      clip-path: polygon(0 0, 100% 0, 100% calc(100% - 22px), calc(100% - 22px) 100%, 0 100%);
       display: flex;
       flex-direction: column;
       gap: 14px;
-      transition: transform 0.25s, box-shadow 0.25s;
+      transition: transform 0.25s, border-color 0.25s;
     }
     .t-card:hover {
       transform: translateY(-4px);
-      box-shadow: 0 8px 32px rgba(18,75,143,0.14);
+      border-color: var(--azul);
     }
     .t-card-top {
       display: flex;
@@ -1308,7 +1356,7 @@
     .t-date { font-size: 0.75rem; color: var(--gris-medio); }
     .testimonials-actions {
       display: flex;
-      justify-content: center;
+      justify-content: flex-start;
       gap: 14px;
       flex-wrap: wrap;
     }
@@ -1380,7 +1428,8 @@
          posterior): se repone el aire de arriba y abajo del inicio. */
       .hero .hero-content { padding-top: 56px; padding-bottom: 96px; }
       .tab-panel.active { grid-template-columns: 1fr; }
-      .how-step { padding: 20px; }
+      .how-step { padding: 20px 18px 20px 70px; }
+      .how-step::before { left: 16px; font-size: 1.7rem; }
       .hero-stats-inner { grid-template-columns: repeat(2, minmax(0, 1fr)); }
       .hero-ctas { flex-direction: column; }
       .btn-primary, .btn-outline { justify-content: center; }
@@ -1902,7 +1951,7 @@
       <h2 class="section-title">Lo que dicen nuestros clientes</h2>
     </div>
 
-    <div style="display:flex;justify-content:center;">
+    <div class="google-badge-fila">
       <div class="google-badge">
         <svg width="26" height="26" viewBox="0 0 24 24" aria-label="Google" role="img">
           <path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4"/>
@@ -2164,6 +2213,7 @@
     <div class="footer-bottom">
       <p>© <span id="anio-copyright">2026</span> Centro Mecánico DGP · Todos los derechos reservados.</p>
     </div>
+    <div class="footer-marca" aria-hidden="true" translate="no">DGP</div>
   </div>
   <div class="footer-accent-bar"></div>
 </footer>
