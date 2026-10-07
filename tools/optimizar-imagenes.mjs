@@ -64,3 +64,53 @@ await generar(FAVICON, path.join(PUBLIC, 'favicon-32.png'),
   s => s.resize(32, 32).png({ compressionLevel: 9, adaptiveFiltering: true }));
 await generar(FAVICON, path.join(PUBLIC, 'apple-touch-icon.png'),
   s => s.resize(180, 180).png({ compressionLevel: 9, adaptiveFiltering: true }));
+
+// ── Fotos del taller (docs/brief-fotografico.md) ─────────────────────────────
+// F-07, frente del taller. Los originales son copias de WhatsApp de 1280 px
+// (P-063): no se agrandan, así que el ancho mayor es 1280.
+const FOTOS = path.join(SRC, 'fotos');
+const SALIDA_FOTOS = path.join(ASSETS, 'fotos');
+fs.mkdirSync(SALIDA_FOTOS, { recursive: true });
+const FORMATOS_FOTO = [
+  { ext: 'avif', aplicar: s => s.avif({ quality: 50 }) },
+  { ext: 'webp', aplicar: s => s.webp({ quality: 75 }) },
+  { ext: 'jpg', aplicar: s => s.jpeg({ quality: 80, mozjpeg: true }) },
+];
+for (const f of fs.readdirSync(FOTOS).filter(f => /-original-\d+\.jpg$/.test(f)).sort()) {
+  const id = f.replace('-original', '').replace('.jpg', '');
+  for (const ancho of [480, 800, 1280]) {
+    for (const fmt of FORMATOS_FOTO) {
+      await generar(path.join(FOTOS, f), path.join(SALIDA_FOTOS, `${id}-${ancho}.${fmt.ext}`),
+        s => fmt.aplicar(s.rotate().resize({ width: ancho, withoutEnlargement: true })));
+    }
+  }
+}
+
+// ── Logos de las marcas que se atienden (P-062) ──────────────────────────────
+// Un solo color, el azul corporativo. Los de Simple Icons (CC0) son SVG
+// simples: se publican igual, con el color puesto. El de Dodge (Wikimedia
+// Commons, dominio público) trae degradados y grupos que no hacen falta: se
+// convierte a una imagen de su silueta, a 480 px (el doble de lo que se
+// muestra), en el mismo azul.
+const MARCAS = path.join(SRC, 'marcas');
+const SALIDA_MARCAS = path.join(ASSETS, 'marcas');
+fs.mkdirSync(SALIDA_MARCAS, { recursive: true });
+for (const f of fs.readdirSync(MARCAS).filter(f => f.endsWith('.svg')).sort()) {
+  const entrada = path.join(MARCAS, f);
+  if (f === 'dodge.svg') {
+    const silueta = await sharp(entrada, { density: 300 }).resize({ width: 480 })
+      .ensureAlpha().extractChannel('alpha').raw().toBuffer({ resolveWithObject: true });
+    const salida = path.join(SALIDA_MARCAS, 'dodge.webp');
+    await sharp({ create: { width: silueta.info.width, height: silueta.info.height, channels: 3, background: '#124B8F' } })
+      .joinChannel(silueta.data, { raw: { width: silueta.info.width, height: silueta.info.height, channels: 1 } })
+      .webp({ lossless: true, effort: 6 }).toFile(salida);
+    console.log(`${kb(fs.statSync(salida).size)}  ${silueta.info.width}×${silueta.info.height}  ${path.relative(RAIZ, salida)}`);
+    continue;
+  }
+  const svg = fs.readFileSync(entrada, 'utf8')
+    .replace(/<title>[^<]*<\/title>/, '')
+    .replace('<svg ', '<svg fill="#124B8F" ');
+  const salida = path.join(SALIDA_MARCAS, f);
+  fs.writeFileSync(salida, svg);
+  console.log(`${kb(fs.statSync(salida).size)}  svg  ${path.relative(RAIZ, salida)}`);
+}

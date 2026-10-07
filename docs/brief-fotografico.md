@@ -203,7 +203,7 @@ un mismo cliente, así que es cuestión de estar atento el día que pase.
 | F-04 | 2 | pendiente |
 | F-05 | 2 | pendiente |
 | F-06 | 2 | pendiente |
-| F-07 | 2 | pendiente |
+| F-07 | 2 | entregada 2026-10-07: 4 fotos, copias de WhatsApp de 1280 px (debajo del mínimo; se usan por indicación de Ramiro, P-063). Pedir los originales |
 | F-08 | 2 | pendiente |
 | F-09 | 3 | pendiente |
 | F-10 | resuelta | resuelta: placa institucional (`og-placa.jpg`) |
