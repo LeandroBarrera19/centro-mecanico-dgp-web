@@ -307,26 +307,20 @@
     }
     .navbar-mobile a:hover { color: var(--azul); }
 
-    /* ── HERO ── */
+    /* ── HERO ──
+       Rediseño (docs/propuesta-rediseno.md): un panel azul cortado en
+       diagonal sobre la foto, con una franja verde en el borde, como el
+       cartel de la fachada. El ángulo es el mismo en todos los cortes
+       diagonales del rediseño: 180 px de desplazamiento en el alto del panel.
+       En celular el panel ocupa todo el ancho y el corte pasa abajo. */
     .hero {
       position: relative;
-      min-height: 90vh;
+      min-height: 88vh;
       display: flex;
       flex-direction: column;
       justify-content: center;
-    }
-    .hero::after {
-      content: '';
-      position: absolute;
-      bottom: 0; left: 0; right: 0;
-      height: 110px;
-      /* Muere en el color de la sección de abajo, que con el orden final de la
-         Tarea 13 es Servicios, blanca. Antes moría en --gris-bg, porque debajo
-         estaba la franja de marcas. Regla de P-025: el color del remate es el
-         de la sección de abajo, y se recalcula solo cuando cambia el orden. */
-      background: linear-gradient(to bottom, rgba(255,255,255,0) 0%, var(--blanco) 100%);
-      z-index: 1;
-      pointer-events: none;
+      overflow: hidden;
+      background: var(--azul-dark);
     }
     .hero-bg {
       position: absolute;
@@ -339,64 +333,88 @@
       width: 100%;
       height: 100%;
       object-fit: cover;
-      object-position: center;
+      object-position: 70% center;
     }
-    .hero-bg::after {
-      content: '';
-      position: absolute;
-      top: 0; left: 0; right: 0;
-      bottom: 110px;
-      background-image:
-        linear-gradient(rgba(255,255,255,.04) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(255,255,255,.04) 1px, transparent 1px);
-      background-size: 60px 60px;
-      pointer-events: none;
-    }
+    /* Leve oscurecido del lado de la foto, para que el panel no compita. */
     .hero-overlay {
       position: absolute;
       inset: 0;
-      background:
-        radial-gradient(ellipse at 85% 15%, rgba(125,185,25,0.15) 0%, transparent 50%),
-        linear-gradient(135deg, rgba(13,56,112,0.93) 0%, rgba(18,75,143,0.80) 60%, rgba(13,56,112,0.70) 100%);
+      background: linear-gradient(90deg, rgba(13,56,112,0) 45%, rgba(13,56,112,0.35) 100%);
+    }
+    .hero-panel,
+    .hero-franja {
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      left: 0;
+      /* Borde del texto + 220 px: el corte nunca pasa por encima del texto. */
+      --borde-texto: calc(max(32px, 50vw - 568px) + min(620px, 52vw));
+      width: calc(var(--borde-texto) + 220px);
+      clip-path: polygon(0 0, 100% 0, calc(100% - 180px) 100%, 0 100%);
+      pointer-events: none;
+    }
+    .hero-panel {
+      z-index: 1;
+      background: rgba(13,56,112,0.95);
+    }
+    /* Asoma 12 px por detrás del panel: la línea verde del cartel. */
+    .hero-franja {
+      width: calc(var(--borde-texto) + 232px);
+      background: var(--verde);
     }
     .hero-content {
       position: relative;
       z-index: 2;
-      padding: 80px 0 40px;
+      width: 100%;
+      padding-top: 88px;
+      padding-bottom: 72px;
+      /* Ocupa todo el alto libre y centra el texto adentro: así la banda de
+         cifras queda pegada al borde inferior, sin la línea de 1,5 px que
+         dejaba el redondeo. */
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: flex-start;
     }
+    .hero-content > * { max-width: min(620px, 52vw); }
+    /* Rótulo técnico: un cuadrado verde y mayúsculas espaciadas. */
     .hero-badge {
-      display: inline-block;
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
       font-family: 'Montserrat', sans-serif;
       font-weight: 700;
       font-size: 0.75rem;
-      letter-spacing: 0.14em;
+      letter-spacing: 0.18em;
       text-transform: uppercase;
-      /* Fondo sólido: contraste fijo, sin depender de la foto (P-015).
-         #588212 es el verde corporativo con la luminosidad mínima para 4,5:1 con blanco. */
-      background: #588212;
       color: var(--blanco);
-      border: 1.5px solid #588212;
-      padding: 6px 16px;
-      border-radius: 100px;
-      margin-bottom: 24px;
+      margin-bottom: 26px;
+    }
+    .hero-badge::before {
+      content: '';
+      width: 10px;
+      height: 10px;
+      background: var(--verde);
+      flex-shrink: 0;
     }
     .hero h1 {
       font-family: 'Montserrat', sans-serif;
       font-weight: 900;
-      font-size: clamp(2.6rem, 5vw, 4.2rem);
+      font-size: clamp(2.3rem, 5.4vw, 4.6rem);
+      text-transform: uppercase;
+      letter-spacing: -0.01em;
       color: var(--blanco);
-      line-height: 1.08;
-      margin-bottom: 24px;
-      max-width: 680px;
+      line-height: 0.98;
+      margin-bottom: 26px;
     }
     .hero p {
-      font-size: 1.05rem;
-      color: rgba(255,255,255,0.85);
-      max-width: 540px;
-      margin-bottom: 40px;
-      line-height: 1.75;
+      font-size: 1.08rem;
+      color: rgba(255,255,255,0.88);
+      margin-bottom: 38px;
+      line-height: 1.7;
     }
-    .hero-ctas { display: flex; gap: 16px; flex-wrap: wrap; }
+    .hero-ctas { display: flex; gap: 14px; flex-wrap: wrap; }
     .btn-primary {
       font-family: 'Montserrat', sans-serif;
       font-weight: 700;
@@ -412,8 +430,17 @@
     }
     .btn-primary:hover { background: var(--azul-dark); transform: translateY(-2px); }
     .btn-primary:focus-visible { background: var(--azul-dark); }
-    /* Sobre la foto el azul se confunde con la capa azul: borde blanco, como .btn-wa */
-    .hero .btn-primary { border: 2px solid var(--blanco); padding: 12px 26px; }
+    /* Sobre el panel azul, el botón azul lleva borde blanco, como .btn-wa.
+       Mayúsculas espaciadas, como los rótulos. */
+    .hero .btn-primary,
+    .hero .btn-outline {
+      border: 2px solid var(--blanco);
+      padding: 14px 26px;
+      font-size: 0.82rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+    .hero .btn-primary:hover { background: var(--azul-light); }
     .btn-outline {
       font-family: 'Montserrat', sans-serif;
       font-weight: 700;
@@ -426,15 +453,15 @@
       transition: border-color 0.2s, background 0.2s;
     }
     .btn-outline:hover { border-color: var(--blanco); background: rgba(255,255,255,0.1); }
+    .hero .btn-outline { border-color: rgba(255,255,255,0.55); }
 
-    /* Stats bar */
+    /* Cifras: banda blanca con números grandes en azul y una raya verde
+       arriba de cada uno, separados por líneas finas. */
     .hero-stats {
       position: relative;
       z-index: 3;
-      border-top: 1px solid rgba(255,255,255,0.18);
-      background: rgba(10, 28, 60, 0.55);
-      backdrop-filter: blur(4px);
-      -webkit-backdrop-filter: blur(4px);
+      background: var(--blanco);
+      border-bottom: 1px solid var(--gris-claro);
     }
     /* Columnas que pueden encogerse y texto que puede partirse: la fila no empuja el ancho de la página, diga lo que diga cada contador. */
     .hero-stats-inner {
@@ -443,23 +470,59 @@
     }
     .stat-item {
       min-width: 0;
-      padding: 28px 24px;
-      border-right: 1px solid rgba(255,255,255,0.12);
+      padding: 34px 24px 30px;
+      border-right: 1px solid var(--gris-claro);
     }
     .stat-item:last-child { border-right: none; }
+    .stat-item::before {
+      content: '';
+      display: block;
+      width: 28px;
+      height: 3px;
+      background: var(--verde);
+      margin-bottom: 16px;
+    }
     .stat-num {
       font-family: 'Montserrat', sans-serif;
       font-weight: 900;
-      font-size: 1.9rem;
-      color: var(--verde);
+      font-size: clamp(2.2rem, 4vw, 3.3rem);
+      letter-spacing: -0.02em;
+      color: var(--azul);
       line-height: 1;
-      margin-bottom: 6px;
+      margin-bottom: 8px;
       overflow-wrap: anywhere;
+      font-variant-numeric: tabular-nums;
     }
     .stat-label {
-      font-size: 0.82rem;
-      color: rgba(255,255,255,0.88);
+      font-size: 0.85rem;
+      color: var(--gris-medio);
       overflow-wrap: anywhere;
+    }
+
+    /* Entrada del inicio: el panel entra desde la izquierda, la foto se
+       acomoda y el texto sube en escalones. Solo CSS: no bloquea la carga,
+       y el estado final es el de siempre. Sin movimiento si el sistema lo
+       pide (ver MOVIMIENTO REDUCIDO). */
+    @keyframes entra-panel { from { transform: translateX(-12%); } to { transform: none; } }
+    @keyframes entra-foto  { from { transform: scale(1.08); } to { transform: none; } }
+    @keyframes sube        { from { opacity: 0; transform: translateY(18px); } to { opacity: 1; transform: none; } }
+    .hero-panel  { animation: entra-panel 0.9s cubic-bezier(.2,.7,.2,1) both; }
+    .hero-franja { animation: entra-panel 0.9s 0.08s cubic-bezier(.2,.7,.2,1) both; }
+    .hero-bg img { animation: entra-foto 1.8s cubic-bezier(.2,.7,.2,1) both; }
+    .hero-badge  { animation: sube 0.6s 0.25s ease-out both; }
+    .hero h1     { animation: sube 0.7s 0.35s ease-out both; }
+    .hero p      { animation: sube 0.7s 0.5s ease-out both; }
+    .hero-ctas   { animation: sube 0.7s 0.62s ease-out both; }
+
+    @media (max-width: 900px) {
+      .hero-panel, .hero-franja {
+        width: 100%;
+        clip-path: polygon(0 0, 100% 0, 100% calc(100% - 64px), 0 100%);
+      }
+      .hero-panel { background: rgba(13,56,112,0.9); }
+      .hero-franja { top: 12px; bottom: -12px; width: 100%; }
+      .hero-content { padding-bottom: 96px; }
+      .hero-content > * { max-width: 620px; }
     }
 
     /* ── HUECOS DE FOTO (docs/brief-fotografico.md) ──
@@ -769,66 +832,114 @@
     }
     .service-card p { font-size: 0.8rem; color: var(--gris-medio); line-height: 1.55; }
 
-    /* ── BRANDS STRIP ── */
+    /* ── BRANDS STRIP ──
+       Rediseño (P-062): logos en el azul de la casa. Las tres marcas foco,
+       fijas y más grandes; las demás pasan en una cinta continua, al estilo
+       de la franja de clientes de Aurora. La cinta lleva el grupo de logos
+       dos veces y se corre la mitad de su ancho, así el empalme no se ve.
+       Se frena con el mouse, con el foco y con su botón de pausa (WCAG
+       2.2.2). Sin JavaScript o con movimiento reducido no se mueve: los
+       logos quedan en filas y el grupo repetido no se muestra. */
     .brands-strip {
       background: var(--gris-bg);
+      border-top: 1px solid var(--gris-claro);
       border-bottom: 1px solid var(--gris-claro);
-      padding: 0;
+      padding: 34px 0 30px;
+      overflow: hidden;
     }
     .brands-strip-inner {
-      display: flex;
-      flex-direction: column;
+      display: grid;
+      grid-template-columns: auto minmax(0, 1fr);
       align-items: center;
-      justify-content: center;
-      gap: 6px;
-      padding: 16px 0;
-    }
-    .brands-row {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      flex-wrap: wrap;
-      gap: 0 8px;
+      gap: 22px 40px;
     }
     .brands-intro {
-      font-family: 'Roboto', sans-serif;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-family: 'Montserrat', sans-serif;
       font-size: 12px;
-      font-weight: 600;
+      font-weight: 700;
       letter-spacing: .18em;
       text-transform: uppercase;
       color: var(--azul);
-      opacity: 1;
-      margin-right: 16px;
+      white-space: nowrap;
     }
-    .brands-intro--secondary {
-      opacity: 0.77;
-      margin-right: 12px;
+    .brands-intro::before {
+      content: '';
+      width: 8px;
+      height: 8px;
+      background: var(--verde);
+      flex-shrink: 0;
     }
-    .brand-name {
-      font-family: 'Montserrat', sans-serif;
-      font-weight: 800;
-      font-size: 0.8rem;
-      letter-spacing: .06em;
+    .brands-foco {
+      display: flex;
+      align-items: center;
+      gap: 44px;
+      flex-wrap: wrap;
+    }
+    .brands-foco img { height: 52px; width: auto; }
+    .brands-cinta {
+      position: relative;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      min-width: 0;
+    }
+    .brands-ventana {
+      overflow: hidden;
+      flex: 1;
+      min-width: 0;
+      /* Los logos aparecen y se van por los bordes, sin corte seco. */
+      -webkit-mask-image: linear-gradient(90deg, transparent, #000 6%, #000 94%, transparent);
+      mask-image: linear-gradient(90deg, transparent, #000 6%, #000 94%, transparent);
+    }
+    .brands-pista {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 18px 40px;
+    }
+    .brands-grupo {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 18px 40px;
+    }
+    .brands-grupo img { height: 30px; width: auto; }
+    /* Dodge es un logotipo apaisado: a 30 px de alto dominaba la fila. */
+    .brands-grupo img.logo-ancho { height: 18px; }
+    .brands-grupo[aria-hidden="true"] { display: none; }
+    .brands-pausa { display: none; }
+    :where(.js) .brands-pista {
+      flex-wrap: nowrap;
+      width: max-content;
+      gap: 0;
+      animation: cinta 38s linear infinite;
+    }
+    :where(.js) .brands-grupo { flex-wrap: nowrap; padding-right: 48px; gap: 48px; }
+    :where(.js) .brands-grupo[aria-hidden="true"] { display: flex; }
+    :where(.js) .brands-cinta:hover .brands-pista,
+    :where(.js) .brands-cinta:focus-within .brands-pista,
+    :where(.js) .brands-cinta.pausada .brands-pista { animation-play-state: paused; }
+    :where(.js) .brands-pausa {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 44px;
+      height: 44px;
+      flex-shrink: 0;
+      border: 1px solid var(--gris-claro);
+      border-radius: 50%;
+      background: var(--blanco);
       color: var(--azul);
-      opacity: 1;
-      text-transform: uppercase;
-      transition: opacity 0.2s;
-      padding: 4px 8px;
+      cursor: pointer;
     }
-    .brand-name--secondary {
-      font-weight: 500;
-      font-size: 0.75rem;
-      opacity: 0.77;
-      padding: 2px 5px;
-    }
-    .brand-name:hover, .brand-name--secondary:hover { opacity: 1; }
-    .brand-sep {
-      color: var(--gris-claro);
-      font-size: 1rem;
-      font-weight: 300;
-      margin: 0 2px;
-      user-select: none;
-    }
+    .brands-pausa svg { width: 14px; height: 14px; fill: currentColor; }
+    .brands-pausa .icono-seguir { display: none; }
+    .brands-cinta.pausada .icono-pausa { display: none; }
+    .brands-cinta.pausada .icono-seguir { display: block; }
+    @keyframes cinta { to { transform: translateX(-50%); } }
 
     /* ── SERVICE TABS ── */
     .services-tabs {
@@ -888,7 +999,28 @@
     }
 
     /* ── CONTACT CTA ── */
-    .contact-cta { background: var(--azul); padding: 88px 0; }
+    /* Cierre del rediseño: la fachada (F-07) a todo el ancho, difuminada, con
+       el azul encima. Arriba la capa es azul pleno, para que empalme con el
+       remate diagonal de la zona de cobertura, que es --azul (P-025). */
+    .contact-cta { position: relative; overflow: hidden; background: var(--azul); padding: 104px 0 96px; }
+    .contact-fondo img {
+      position: absolute;
+      inset: -24px;
+      width: calc(100% + 48px);
+      height: calc(100% + 48px);
+      object-fit: cover;
+      filter: blur(10px) saturate(0.9);
+      z-index: 0;
+    }
+    /* Capa azul por encima de la foto (la foto va antes en el HTML). */
+    .contact-cta::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      z-index: 1;
+      background: linear-gradient(180deg, var(--azul) 0, rgba(18,75,143,0.84) 140px, rgba(13,56,112,0.88) 100%);
+    }
+    .contact-cta .container { position: relative; z-index: 2; }
     .contact-inner { display: grid; grid-template-columns: 1fr 1fr; gap: 64px; align-items: start; }
     .contact-map {
       margin-top: 32px;
@@ -903,15 +1035,19 @@
       height: 260px;
       border: 0;
     }
-    /* Hueco F-07, junto al mapa (Tarea 12). Sobre el fondo azul de contacto
-       el rectángulo gris de .img-slot se ve como un parche, así que acá va en
-       los tonos de la sección. */
-    .contact-slot {
-      margin-top: 20px;
-      background: rgba(255,255,255,0.06);
-      border-color: rgba(255,255,255,0.35);
+    /* F-07, junto al mapa (Tarea 12): el frente del taller, para que quien
+       llega por primera vez lo reconozca. Misma altura que el mapa, con la
+       esquina inferior derecha cortada en diagonal, como el cartel. */
+    .contact-foto img {
+      display: block;
+      width: 100%;
+      height: 260px;
+      margin-top: 32px;
+      object-fit: cover;
+      object-position: center 40%;
+      border-radius: 12px;
+      clip-path: polygon(0 0, 100% 0, 100% calc(100% - 48px), calc(100% - 48px) 100%, 0 100%);
     }
-    .contact-slot span { color: var(--blanco); }
     /* Las tres redes, una al lado de la otra, con separación suficiente para
        que cada enlace sea un objetivo táctil propio. */
     .contact-redes {
@@ -922,8 +1058,9 @@
     .contact-redes a { text-decoration: underline; text-underline-offset: 3px; }
     .contact-text h2 {
       font-family: 'Montserrat', sans-serif;
-      font-weight: 800;
-      font-size: 2rem;
+      font-weight: 900;
+      font-size: clamp(2rem, 4vw, 3rem);
+      text-transform: uppercase;
       color: var(--blanco);
       margin-bottom: 16px;
       line-height: 1.2;
@@ -1065,10 +1202,16 @@
       max-width: 760px;
       margin: 0 auto;
       text-align: center;
-      font-size: 1rem;
-      color: var(--gris-medio);
-      line-height: 1.75;
+      font-size: clamp(1.15rem, 2.1vw, 1.5rem);
+      color: var(--gris);
+      line-height: 1.6;
     }
+    /* Texto que se llena al bajar: solo con JavaScript (la clase .llenando la
+       pone el script). Sin él, el párrafo se ve completo en su color. */
+    /* Gris de partida: el más claro que llega a 4,5:1 sobre blanco (#767676,
+       4,54:1). Así ninguna palabra queda ilegible mientras se llena. */
+    .llenando .palabra { color: #767676; transition: color 0.35s ease; }
+    .llenando .palabra.llena { color: var(--gris); }
     .google-badge {
       display: inline-flex;
       align-items: center;
@@ -1221,8 +1364,10 @@
     }
     @media (max-width: 768px) {
       .tab-panel.active { grid-template-columns: repeat(2, 1fr); }
-      .brands-strip-inner { gap: 4px 8px; }
-      .brands-intro { width: 100%; text-align: center; margin-right: 0; margin-bottom: 4px; }
+      .brands-strip-inner { grid-template-columns: minmax(0, 1fr); gap: 14px; }
+      .brands-foco { gap: 28px; }
+      .brands-foco img { height: 36px; }
+      .brands-intro + .brands-foco, .brands-intro + .brands-cinta { margin-bottom: 10px; }
       .footer-grid { grid-template-columns: 1fr; }
       .footer-brand { display: grid; grid-template-columns: auto 1fr; gap: 0 16px; align-items: start; }
       .footer-brand img { grid-row: 1 / 4; width: 44px; height: 44px; }
@@ -1231,6 +1376,9 @@
     }
     @media (max-width: 480px) {
       .container { padding: 0 20px; }
+      /* .container pisa el padding de .hero-content (mismo peso, regla
+         posterior): se repone el aire de arriba y abajo del inicio. */
+      .hero .hero-content { padding-top: 56px; padding-bottom: 96px; }
       .tab-panel.active { grid-template-columns: 1fr; }
       .how-step { padding: 20px; }
       .hero-stats-inner { grid-template-columns: repeat(2, minmax(0, 1fr)); }
@@ -1260,6 +1408,14 @@
       :where(.js) .fade-in.visible { opacity: 1; transform: none; transition: none; }
       .btn-cta:hover, .btn-primary:hover, .btn-wa:hover, .btn-google-review:hover,
       .service-card:hover, .t-card:hover { transform: none; }
+      .hero-panel, .hero-franja, .hero-bg img, .hero-badge, .hero h1, .hero p, .hero-ctas { animation: none; }
+      /* La cinta de marcas queda quieta: logos en filas, sin la copia del
+         empalme y sin el botón de pausa, que ya no hace falta. */
+      :where(.js) .brands-pista { animation: none; flex-wrap: wrap; width: auto; gap: 18px 40px; }
+      :where(.js) .brands-grupo { flex-wrap: wrap; padding-right: 0; gap: 18px 40px; }
+      :where(.js) .brands-grupo[aria-hidden="true"],
+      :where(.js) .brands-pausa { display: none; }
+      .brands-ventana { -webkit-mask-image: none; mask-image: none; }
     }
   </style>
 </head>
@@ -1318,6 +1474,8 @@
     </picture>
   </div>
   <div class="hero-overlay"></div>
+  <div class="hero-franja" aria-hidden="true"></div>
+  <div class="hero-panel" aria-hidden="true"></div>
 
   <div class="container hero-content">
     <span class="hero-badge">Especialistas en pick-ups y utilitarios</span>
@@ -1678,44 +1836,59 @@
 </section>
 
 <!-- ═══════════════════════════════ BRANDS STRIP ═══════════════════════════════ -->
+<!-- Logos de Simple Icons (CC0) y, el de Dodge, de Wikimedia Commons
+     (dominio público), en el azul de la casa (P-062). El segundo grupo de la
+     cinta es la copia que hace el empalme: va oculto a lectores de pantalla y
+     con alt vacío, para que cada marca se anuncie una sola vez. -->
 <div class="brands-strip">
   <div class="container">
     <div class="brands-strip-inner">
-      <div class="brands-row">
-        <span class="brands-intro">Especialistas en</span>
-        <span translate="no" class="brand-name">TOYOTA</span>
-        <span class="brand-sep" aria-hidden="true">·</span>
-        <span translate="no" class="brand-name">VOLKSWAGEN</span>
-        <span class="brand-sep" aria-hidden="true">·</span>
-        <span translate="no" class="brand-name">FORD</span>
+      <span class="brands-intro">Especialistas en</span>
+      <div class="brands-foco">
+        <img src="assets/marcas/toyota.svg" alt="Toyota" width="46" height="46" loading="lazy" translate="no">
+        <img src="assets/marcas/volkswagen.svg" alt="Volkswagen" width="46" height="46" loading="lazy" translate="no">
+        <img src="assets/marcas/ford.svg" alt="Ford" width="46" height="46" loading="lazy" translate="no">
       </div>
-      <div class="brands-row">
-        <span class="brands-intro brands-intro--secondary">También atendemos</span>
-        <span translate="no" class="brand-name brand-name--secondary">CHEVROLET</span>
-        <span class="brand-sep" aria-hidden="true">·</span>
-        <span translate="no" class="brand-name brand-name--secondary">RENAULT</span>
-        <span class="brand-sep" aria-hidden="true">·</span>
-        <span translate="no" class="brand-name brand-name--secondary">FIAT</span>
-        <span class="brand-sep" aria-hidden="true">·</span>
-        <span translate="no" class="brand-name brand-name--secondary">PEUGEOT</span>
-        <span class="brand-sep" aria-hidden="true">·</span>
-        <span translate="no" class="brand-name brand-name--secondary">MERCEDES-BENZ</span>
-        <span class="brand-sep" aria-hidden="true">·</span>
-        <span translate="no" class="brand-name brand-name--secondary">AUDI</span>
-        <span class="brand-sep" aria-hidden="true">·</span>
-        <span translate="no" class="brand-name brand-name--secondary">NISSAN</span>
-        <span class="brand-sep" aria-hidden="true">·</span>
-        <span translate="no" class="brand-name brand-name--secondary">HONDA</span>
-        <span class="brand-sep" aria-hidden="true">·</span>
-        <span translate="no" class="brand-name brand-name--secondary">CITROËN</span>
-        <span class="brand-sep" aria-hidden="true">·</span>
-        <span translate="no" class="brand-name brand-name--secondary">BMW</span>
-        <span class="brand-sep" aria-hidden="true">·</span>
-        <span translate="no" class="brand-name brand-name--secondary">JEEP</span>
-        <span class="brand-sep" aria-hidden="true">·</span>
-        <span translate="no" class="brand-name brand-name--secondary">DODGE</span>
-        <span class="brand-sep" aria-hidden="true">·</span>
-        <span translate="no" class="brand-name brand-name--secondary">PORSCHE</span>
+      <span class="brands-intro brands-intro--secondary">También atendemos</span>
+      <div class="brands-cinta" id="cintaMarcas">
+        <div class="brands-ventana">
+          <div class="brands-pista">
+            <div class="brands-grupo">
+              <img src="assets/marcas/chevrolet.svg" alt="Chevrolet" width="30" height="30" loading="lazy" translate="no">
+              <img src="assets/marcas/renault.svg" alt="Renault" width="30" height="30" loading="lazy" translate="no">
+              <img src="assets/marcas/fiat.svg" alt="Fiat" width="30" height="30" loading="lazy" translate="no">
+              <img src="assets/marcas/peugeot.svg" alt="Peugeot" width="30" height="30" loading="lazy" translate="no">
+              <img src="assets/marcas/mercedes.svg" alt="Mercedes-Benz" width="30" height="30" loading="lazy" translate="no">
+              <img src="assets/marcas/audi.svg" alt="Audi" width="30" height="30" loading="lazy" translate="no">
+              <img src="assets/marcas/nissan.svg" alt="Nissan" width="30" height="30" loading="lazy" translate="no">
+              <img src="assets/marcas/honda.svg" alt="Honda" width="30" height="30" loading="lazy" translate="no">
+              <img src="assets/marcas/citroen.svg" alt="Citroën" width="30" height="30" loading="lazy" translate="no">
+              <img src="assets/marcas/bmw.svg" alt="BMW" width="30" height="30" loading="lazy" translate="no">
+              <img src="assets/marcas/jeep.svg" alt="Jeep" width="30" height="30" loading="lazy" translate="no">
+              <img class="logo-ancho" src="assets/marcas/dodge.webp" alt="Dodge" width="129" height="18" loading="lazy" translate="no">
+              <img src="assets/marcas/porsche.svg" alt="Porsche" width="30" height="30" loading="lazy" translate="no">
+            </div>
+            <div class="brands-grupo" aria-hidden="true">
+              <img src="assets/marcas/chevrolet.svg" alt="" width="30" height="30" loading="lazy" translate="no">
+              <img src="assets/marcas/renault.svg" alt="" width="30" height="30" loading="lazy" translate="no">
+              <img src="assets/marcas/fiat.svg" alt="" width="30" height="30" loading="lazy" translate="no">
+              <img src="assets/marcas/peugeot.svg" alt="" width="30" height="30" loading="lazy" translate="no">
+              <img src="assets/marcas/mercedes.svg" alt="" width="30" height="30" loading="lazy" translate="no">
+              <img src="assets/marcas/audi.svg" alt="" width="30" height="30" loading="lazy" translate="no">
+              <img src="assets/marcas/nissan.svg" alt="" width="30" height="30" loading="lazy" translate="no">
+              <img src="assets/marcas/honda.svg" alt="" width="30" height="30" loading="lazy" translate="no">
+              <img src="assets/marcas/citroen.svg" alt="" width="30" height="30" loading="lazy" translate="no">
+              <img src="assets/marcas/bmw.svg" alt="" width="30" height="30" loading="lazy" translate="no">
+              <img src="assets/marcas/jeep.svg" alt="" width="30" height="30" loading="lazy" translate="no">
+              <img class="logo-ancho" src="assets/marcas/dodge.webp" alt="" width="129" height="18" loading="lazy" translate="no">
+              <img src="assets/marcas/porsche.svg" alt="" width="30" height="30" loading="lazy" translate="no">
+            </div>
+          </div>
+        </div>
+        <button class="brands-pausa" type="button" aria-label="Pausar la franja de marcas" aria-pressed="false">
+          <svg class="icono-pausa" viewBox="0 0 14 14" aria-hidden="true"><rect x="2" y="1" width="3.5" height="12"/><rect x="8.5" y="1" width="3.5" height="12"/></svg>
+          <svg class="icono-seguir" viewBox="0 0 14 14" aria-hidden="true"><path d="M3 1l10 6-10 6z"/></svg>
+        </button>
       </div>
     </div>
   </div>
@@ -1838,12 +2011,18 @@
     <div class="section-header center">
       <h2 class="section-title">Clientes de toda la región</h2>
     </div>
-    <p class="coverage-text fade-in">Desde 2022 atendemos vehículos de Villa María y de más de 40 localidades en un radio de 80 km. Entre ellas: Arroyo Cabral, Bell Ville, Ticino, Idiazábal, James Craik, Pozo del Molle, Tío Pujio, Etruria, Ballesteros y Cintra.</p>
+    <p class="coverage-text texto-llenado">Desde 2022 atendemos vehículos de Villa María y de más de 40 localidades en un radio de 80 km. Entre ellas: Arroyo Cabral, Bell Ville, Ticino, Idiazábal, James Craik, Pozo del Molle, Tío Pujio, Etruria, Ballesteros y Cintra.</p>
   </div>
 </section>
 
 <!-- ═══════════════════════════════ CONTACT ═══════════════════════════════ -->
 <section class="contact-cta" id="contacto">
+  <!-- F-07 difuminada de fondo: decorativa, alt vacío. -->
+  <picture class="contact-fondo">
+    <source type="image/avif" srcset="assets/fotos/F-07-4-480.avif 480w, assets/fotos/F-07-4-800.avif 800w, assets/fotos/F-07-4-1280.avif 1280w" sizes="100vw">
+    <source type="image/webp" srcset="assets/fotos/F-07-4-480.webp 480w, assets/fotos/F-07-4-800.webp 800w, assets/fotos/F-07-4-1280.webp 1280w" sizes="100vw">
+    <img src="assets/fotos/F-07-4-800.jpg" alt="" width="800" height="600" loading="lazy" decoding="async">
+  </picture>
   <div class="container">
     <div class="contact-inner">
 
@@ -1923,10 +2102,13 @@
         </iframe>
       </div>
 
-      <!-- TODO_IMAGEN: F-07 -->
-      <div class="img-slot contact-slot" data-slot="F-07" style="aspect-ratio: 16/9">
-        <span>Foto pendiente · F-07</span>
-      </div>
+      <!-- F-07 entregada el 2026-10-07 (P-063): copias de WhatsApp de
+           1280 px; reemplazar por los originales cuando lleguen. -->
+      <picture class="contact-foto">
+        <source type="image/avif" srcset="assets/fotos/F-07-2-480.avif 480w, assets/fotos/F-07-2-800.avif 800w, assets/fotos/F-07-2-1280.avif 1280w" sizes="(max-width: 900px) 100vw, 540px">
+        <source type="image/webp" srcset="assets/fotos/F-07-2-480.webp 480w, assets/fotos/F-07-2-800.webp 800w, assets/fotos/F-07-2-1280.webp 1280w" sizes="(max-width: 900px) 100vw, 540px">
+        <img src="assets/fotos/F-07-2-800.jpg" alt="Frente de Centro Mecánico DGP, con el cartel y el portón de entrada" width="800" height="600" loading="lazy" decoding="async">
+      </picture>
 
     </div>
   </div>
@@ -2081,6 +2263,70 @@
     });
   }, { threshold: 0.1 });
   document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+
+  const menosMovimiento = matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  // Franja de marcas: el botón pausa y reanuda la cinta (WCAG 2.2.2).
+  const cinta = document.getElementById('cintaMarcas');
+  const pausa = cinta.querySelector('.brands-pausa');
+  pausa.addEventListener('click', () => {
+    const pausada = cinta.classList.toggle('pausada');
+    pausa.setAttribute('aria-pressed', pausada);
+    pausa.setAttribute('aria-label', pausada ? 'Reanudar la franja de marcas' : 'Pausar la franja de marcas');
+  });
+
+  if (!menosMovimiento) {
+    // Cifras del inicio: suben desde cero hasta el valor escrito en el HTML,
+    // que es el que queda al final. Sin JavaScript o con movimiento reducido
+    // se ve el valor directamente.
+    const cifras = new IntersectionObserver(entradas => {
+      entradas.forEach(entrada => {
+        if (!entrada.isIntersecting) return;
+        cifras.unobserve(entrada.target);
+        const el = entrada.target;
+        const final = el.textContent;
+        const m = final.match(/^(\+?)(\d+)(?:,(\d+))?(%?)$/);
+        if (!m) return;
+        const decimales = m[3] ? m[3].length : 0;
+        const objetivo = parseFloat(m[2] + '.' + (m[3] || '0'));
+        const inicio = performance.now();
+        const paso = ahora => {
+          const t = Math.min((ahora - inicio) / 1300, 1);
+          const v = objetivo * (1 - Math.pow(1 - t, 3));
+          el.textContent = t < 1 ? m[1] + v.toFixed(decimales).replace('.', ',') + m[4] : final;
+          if (t < 1) requestAnimationFrame(paso);
+        };
+        requestAnimationFrame(paso);
+      });
+    }, { threshold: 0.6 });
+    document.querySelectorAll('.stat-num').forEach(el => cifras.observe(el));
+
+    // Texto que se llena al bajar (Aurora): las palabras pasan de gris claro
+    // al color del texto a medida que el párrafo sube por la pantalla. El
+    // texto no cambia: solo se envuelve cada palabra en un <span>.
+    document.querySelectorAll('.texto-llenado').forEach(p => {
+      const palabras = p.textContent.trim().split(/\s+/);
+      p.textContent = '';
+      palabras.forEach((w, i) => {
+        const span = document.createElement('span');
+        span.className = 'palabra';
+        span.textContent = w;
+        p.append(span, i < palabras.length - 1 ? ' ' : '');
+      });
+      p.classList.add('llenando');
+      const spans = [...p.querySelectorAll('.palabra')];
+      let pedido = false;
+      const actualizar = () => {
+        pedido = false;
+        const r = p.getBoundingClientRect();
+        const avance = (innerHeight * 0.85 - r.top) / (r.height + innerHeight * 0.35);
+        const n = Math.round(Math.max(0, Math.min(1, avance)) * spans.length);
+        spans.forEach((s, i) => s.classList.toggle('llena', i < n));
+      };
+      addEventListener('scroll', () => { if (!pedido) { pedido = true; requestAnimationFrame(actualizar); } }, { passive: true });
+      actualizar();
+    });
+  }
 </script>
 <script>
   // Año del copyright

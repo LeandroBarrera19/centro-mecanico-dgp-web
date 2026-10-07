@@ -2321,3 +2321,37 @@ referencia por referencia, está en `docs/planes/m3-informe.md`.
   mínimo de 2000 px que pide el brief: se usan igual por indicación de Ramiro.
 
 ---
+
+### P-064 — Decisiones propias en la muestra del rediseño (inicio, marcas y cierre)
+- **Estado:** respondida
+- **Decisión propia**, 2026-10-07. Ramiro aprobó hacer la muestra; estas son
+  decisiones de forma tomadas al hacerla. Ningún texto visible cambió.
+- **Textos de accesibilidad nuevos** (no se ven en pantalla): el `alt` de la
+  foto F-07, "Frente de Centro Mecánico DGP, con el cartel y el portón de
+  entrada", y las etiquetas del botón de la cinta de marcas, "Pausar la
+  franja de marcas" / "Reanudar la franja de marcas". CLAUDE.md §6 pide
+  `aria-label` en los botones que solo tienen ícono. Si Ramiro quiere otra
+  redacción, se cambia.
+- **Botón de pausa de la cinta:** lo exige WCAG 2.2.2 para todo lo que se
+  mueve más de 5 segundos. La cinta también se frena con el mouse y con el
+  foco del teclado.
+- **Texto que se llena al bajar:** va en el párrafo de "Clientes de toda la
+  región", que deja de usar la aparición `.fade-in`. Arranca en `#767676`
+  (4,54:1), no en el gris claro de Aurora (1,65:1), porque CLAUDE.md §6 pide
+  4,5:1 siempre.
+- **Capa azul del cierre:** 84 % arriba y 88 % abajo sobre la fachada
+  difuminada. Es la más transparente con la que todos los textos de contacto
+  pasan 4,5:1 (el más justo, 4,55:1); con más transparencia el cielo de la
+  foto bajaba el contraste.
+- **Dodge a 18 px de alto en la cinta:** es un logotipo apaisado y a 30 px
+  ocupaba el ancho de tres marcas.
+- **Logos sin transparencia:** al 80 % los logos de trazo fino (Peugeot) se
+  perdían.
+- **Hueco que venía de antes:** el bloque de texto del inicio se achicaba a
+  su contenido y quedaba centrado (en el diseño anterior empezaba en x = 380
+  px a 1440 de ancho). Ahora ocupa el ancho del contenedor. Y debajo de 480
+  px, `.container` pisaba el espacio de arriba del inicio; se repuso.
+- **Lo que no cambia:** la foto del inicio sigue siendo la provisoria que no
+  se puede publicar (F-01, bloqueante de M5).
+
+---
