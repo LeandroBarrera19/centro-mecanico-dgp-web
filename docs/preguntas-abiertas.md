@@ -2161,3 +2161,163 @@ referencia por referencia, está en `docs/planes/m3-informe.md`.
     P-034, y las dos se detectó a mano antes de commitear.
 
 ---
+
+### P-056 — Rediseño visual según DESIGN.md: decisiones de Ramiro y alcance de la muestra
+- **Estado:** respondida
+- **Bloquea:** no bloquea.
+- **Qué falta:** nada. Se anota para dejar registro.
+- **Respuesta (2026-10-07), de Ramiro en la conversación:**
+  - Rediseño estético tomando `DESIGN.md` como guía, **respetando los colores
+    (azul #124B8F, verde #7DB919) y las tipografías actuales (Montserrat y
+    Roboto)**.
+  - Tema **oscuro con el azul de la casa**: el fondo pasa a ser un azul casi
+    negro sacado de `--azul-dark`. Tarjetas en tonos de azul, el verde para
+    los botones y las cifras.
+  - Animación **llamativa**: además de las apariciones suaves, un fondo
+    animado en el inicio (esfera de puntos en canvas).
+  - Entrega: **primero una muestra** (menú, inicio y Servicios), y el resto
+    recién con su visto bueno.
+- **Qué hice:** la muestra, en la rama `rediseno-visual`, sin tocar ningún
+  texto. Los colores nuevos son todos derivados del azul y el verde (variables
+  `--noche`, `--superficie`, `--verde-luz`, etc.).
+
+---
+
+### P-057 — Excepción a la regla de imágenes: generadas por IA solo para fondos abstractos
+- **Estado:** abierta
+- **Bloquea:** no bloquea la muestra (no usa ninguna imagen generada).
+- **Qué falta:** la clave de API de OpenAI (`OPENAI_API_KEY`) en esta
+  máquina, si se quiere usar. Hoy no está configurada.
+- **Contexto:** CLAUDE.md §2 y `docs/brief-fotografico.md` prohíben imágenes
+  generadas. Ramiro habilitó (2026-10-07) una excepción acotada: **solo
+  texturas o fondos abstractos que no muestren autos, personas ni el taller**.
+  Las fotos del taller siguen siendo solo reales, y los huecos `TODO_IMAGEN`
+  siguen esperando sus fotos.
+- **Qué hice mientras tanto:** nada generado. Los adornos de la muestra (brillos,
+  degradados, grilla, esfera) son CSS y canvas. Falta además reflejar la
+  excepción en CLAUDE.md y en el brief, si Ramiro la confirma como permanente.
+
+---
+
+### P-058 — Decisiones propias de forma en la muestra del rediseño
+- **Estado:** respondida
+- **Decisión propia**, 2026-10-07.
+- **Menú:** los cortes que fijó Ramiro (menú móvil hasta 830 px, modo compacto
+  por debajo de 1000 px) quedan iguales. Como los enlaces pasaron a mayúsculas
+  con espaciado entre letras, que los ensancha, achiqué el hueco entre enlaces
+  (22 px hasta 1200 px, 14 px hasta 1000 px) y el espaciado entre letras en el
+  modo compacto. Medido de 831 a 1920 px: el botón nunca se sale del aire del
+  contenedor.
+- **Problema que viene de antes y sigue:** entre 831 y ~1084 px el texto
+  "Centro Mecánico DGP" del logo se parte en 3 líneas. En `HEAD` ya pasaba, de
+  831 a 1056 px y con hasta 4 líneas. No lo arreglé porque no es parte del
+  pedido; queda para decidir.
+- **Cifras del inicio:** suben desde cero hasta el valor escrito en el HTML,
+  que es el que queda al final. Sin JavaScript o con movimiento reducido se ve
+  el valor directamente.
+- **Contraste de las cifras:** `tools/auditar-contraste.mjs` las marca en
+  1,04:1 (p10), pero es un artefacto de la medición: el número se pinta con un
+  degradado recortado al texto, y la captura "sin texto" conserva ese
+  degradado. La mediana que da la misma herramienta es 7,4–7,8:1, y el verde
+  más oscuro del degradado (#7DB919) contra #06152B da ≈7,4:1. Mínimo para
+  texto grande: 3:1.
+- **Hueco en el móvil que venía de antes:** debajo de 480 px, `.container`
+  pisaba el padding de arriba del inicio y el texto quedaba pegado al menú. Lo
+  repuse con `.hero .hero-content`.
+
+---
+
+### P-059 — Rediseño: dirección elegida y estructura en varias páginas
+- **Estado:** respondida
+- **Bloquea:** no bloquea.
+- **Respuesta (2026-10-07), de Ramiro en la conversación:**
+  - Se descarta la muestra oscura de P-056; `public/index.html` volvió al
+    último commit (`f59a765`). Hecho y verificado: `git diff HEAD` sin
+    cambios en ese archivo.
+  - Referencias elegidas: Rogers-O'Brien (tono, tipografía contundente,
+    diagonales, color de marca en planos, orgullo regional, imagen de la
+    empresa difuminada al final), Aurora (animaciones, estructura para
+    flotas, franja móvil con las marcas que se atienden), Holt (mapa de
+    cobertura con puntos y nombres), T1 Energy (fotos del galpón y del
+    trabajo), HB Body (sección de productos con deslizantes). Descartadas:
+    Rivian y Custom Truck. Las reseñas conservan su estructura y solo se
+    adaptan al estilo nuevo. Detalle en `docs/propuesta-rediseno.md`.
+  - **Flotas y productos van en secciones propias del sitio**, no dentro de la
+    home. Lectura del agente, a confirmar: el menú pasa a tener páginas
+    propias (Inicio · Flotas · Repuestos), cada una con su dirección. La home
+    sigue priorizando al particular, como decidió Ramiro el 2026-09-21.
+- **Decisión propia que respeta una decisión registrada:** los botones vuelven
+  a ser azul con texto blanco (`datos-verificados.md` §19). La muestra oscura
+  los había puesto en verde, y eso contradecía esa decisión.
+
+---
+
+### P-060 — Coordenadas de las localidades para el mapa de cobertura
+- **Estado:** respondida
+- **Bloquea:** el mapa de cobertura.
+- **Qué falta:** que Ramiro apruebe la tabla de
+  `docs/coordenadas-localidades-propuesta.md` para pasarla a
+  `datos-verificados.md`, y que responda dos dudas de la lista de §11:
+  1. **"Palestina" y "La Palestina"** figuran como dos localidades, las dos a
+     27,2 km. En el registro oficial solo existe La Palestina. ¿Son la misma
+     y una sobra?
+  2. **Nombres oficiales distintos:** "Dalmacio Vélez Sarsfield" figura como
+     "Dalmacio Vélez", y "San Marcos Sud" como "San Marcos". ¿En el mapa se
+     escriben como en §11 (el nombre de uso) o como el oficial?
+- **Contexto:** Ramiro eligió (2026-10-07) sacar las coordenadas de una fuente
+  pública. §11 solo tiene distancias, no ubicación.
+- **Qué hice mientras tanto:** la tabla, con las 42 localidades validadas
+  contra la distancia registrada (todas dentro de ±2 km).
+
+- **Respuesta (2026-10-07):** "usá el nombre oficial". Con eso la tabla queda aprobada y pasó a `datos-verificados.md` §11 ("Coordenadas para el mapa de cobertura"). "Palestina" no existe con nombre oficial: queda una sola, La Palestina. Dalmacio Vélez y San Marcos van con su nombre oficial.
+---
+
+### P-061 — Catálogo de la casa de repuestos (sección de productos)
+- **Estado:** respondida
+- **Bloquea:** la página de productos.
+- **Qué falta:** el contenido del catálogo. No hay nada de esto en
+  `datos-verificados.md`:
+  1. Qué **categorías** se muestran (hoy la pestaña "Repuestos" de Servicios
+     nombra tres: filtros y lubricantes, frenos y suspensión, distribución).
+  2. Qué **productos** concretos van en el deslizante de destacados, con su
+     nombre y una descripción corta.
+  3. Si se muestran **precios** o solo "Consultar por WhatsApp".
+  4. **Fotos de los productos:** tienen que ser fotos propias del stock real.
+     Las fotos de catálogo de los fabricantes están prohibidas (CLAUDE.md §2).
+- **Qué hice mientras tanto:** nada.
+
+- **Respuesta (2026-10-07):** categorías, exactamente las tres de hoy (filtros y lubricantes, frenos y suspensión, distribución); productos para **Toyota Hilux, VW Amarok y Ford Ranger**; **sin precios**, con "Consultar por WhatsApp"; las fotos quedan en blanco por ahora (huecos `TODO_IMAGEN`) y se agregan después.
+- **Lo que todavía falta:** el texto de cada producto (nombre comercial y descripción corta). No lo escribo yo (CLAUDE.md §1): queda `TODO_DATO` en cada tarjeta.
+---
+
+### P-062 — Franja móvil de marcas: nombres en texto o logos
+- **Estado:** respondida
+- **Bloquea:** no bloquea (hay una opción por defecto).
+- **Qué falta:** si la franja muestra los **nombres** de las marcas en la
+  tipografía del sitio, como hoy, o los **logos** de las marcas.
+- **Contexto:** los logos son marcas registradas de terceros, y no hay
+  archivos en el repositorio. Conseguirlos implica descargarlos de algún lado
+  (CLAUDE.md §2 lo restringe) y decidir si DGP puede usarlos. Los de Toyota,
+  Volkswagen y Ford ya aparecen en el cartel de la fachada.
+- **Qué hice mientras tanto:** la propuesta usa los nombres en texto.
+
+- **Respuesta (2026-10-07):** logos, "sacalos de Google".
+- **Decisión propia sobre la fuente:** en vez de imágenes sueltas de resultados de Google (tamaño, calidad y licencia inciertos), usé **Simple Icons** (colección abierta de logos en SVG, licencia CC0, versión 16.34.0) para 15 marcas, y **Wikimedia Commons** (`File:Dodge logo.svg`, dominio público) para Dodge, que Simple Icons no tiene. Son vectoriales, de un solo color y pesan poco. Originales en `assets-src/marcas/`. Si Ramiro prefiere otras versiones, se cambian.
+- **Lo que sigue valiendo:** son marcas registradas de terceros. Se usan para decir qué marcas se atienden, como en el cartel de la fachada.
+---
+
+### P-063 — Decisiones propias al cargar coordenadas, logos y fotos
+- **Estado:** respondida
+- **Decisión propia**, 2026-10-07.
+- **Acentos en el mapa:** Georef escribe "Idiazabal" y "Ordoñez". En el mapa
+  van como en `datos-verificados.md` §11, "Idiazábal" y "Ordóñez": es la
+  misma localidad y es la grafía correcta. Ramiro pidió "el nombre oficial"
+  pensando en Dalmacio Vélez y San Marcos; si también quiere la grafía de
+  Georef para estas dos, se cambia.
+- **Fotos de la fachada:** Ramiro respondió "usá esas" (las copias de
+  WhatsApp, de 1280 px). Las saqué de `public/`, donde se habrían publicado
+  con espacios en el nombre, y las moví a `assets-src/fotos/` con nombres
+  según el brief (`F-07-original-1.jpg` a `-4`). Quedan por debajo del
+  mínimo de 2000 px que pide el brief: se usan igual por indicación de Ramiro.
+
+---
