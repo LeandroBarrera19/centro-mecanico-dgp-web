@@ -788,10 +788,13 @@ a, button { touch-action: manipulation; -webkit-tap-highlight-color: rgba(18, 75
    Rediseño (P-062): logos en el azul de la casa. Las tres marcas foco,
    fijas y más grandes; las demás pasan en una cinta continua, al estilo
    de la franja de clientes de Aurora. La cinta lleva el grupo de logos
-   dos veces y se corre la mitad de su ancho, así el empalme no se ve.
-   Se frena con el mouse, con el foco y con su botón de pausa (WCAG
-   2.2.2). Sin JavaScript o con movimiento reducido no se mueve: los
-   logos quedan en filas y el grupo repetido no se muestra. */
+   dos veces y su posición se toma módulo el ancho de un grupo, así el
+   empalme no se ve.
+   La mueve sitio.js: avanza sola, se frena con el mouse encima o con el
+   foco del teclado, y se puede arrastrar (o deslizar con el dedo o el
+   trackpad, o correr con las flechas) para los dos lados.
+   Sin JavaScript o con movimiento reducido no se mueve: los logos quedan
+   en filas y el grupo repetido no se muestra. */
 .brands-strip {
   background: var(--gris-bg);
   border-top: 1px solid var(--gris-claro);
@@ -827,15 +830,24 @@ a, button { touch-action: manipulation; -webkit-tap-highlight-color: rgba(18, 75
 .brands-foco {
   display: flex;
   align-items: center;
+  justify-content: center;
   gap: 44px;
   flex-wrap: wrap;
 }
 .brands-foco img { height: 52px; width: auto; }
+/* En escritorio las marcas principales ocupan toda la fila, así quedan en el
+   centro de la página y no en el de su columna; el rótulo queda a la
+   izquierda, en la misma fila. */
+@media (min-width: 769px) {
+  .brands-strip-inner > .brands-intro:first-child { grid-row: 1; grid-column: 1; }
+  .brands-foco { grid-row: 1; grid-column: 1 / -1; }
+  .brands-intro--secondary { grid-row: 2; grid-column: 1; }
+  .brands-cinta { grid-row: 2; grid-column: 2; }
+}
 .brands-cinta {
   position: relative;
   display: flex;
   align-items: center;
-  gap: 8px;
   min-width: 0;
 }
 .brands-ventana {
@@ -862,36 +874,24 @@ a, button { touch-action: manipulation; -webkit-tap-highlight-color: rgba(18, 75
 /* Dodge es un logotipo apaisado: a 30 px de alto dominaba la fila. */
 .brands-grupo img.logo-ancho { height: 18px; }
 .brands-grupo[aria-hidden="true"] { display: none; }
-.brands-pausa { display: none; }
+:where(.js) .brands-ventana {
+  cursor: grab;
+  /* El desplazamiento vertical de la página sigue siendo del navegador;
+     el horizontal lo toma la cinta. */
+  touch-action: pan-y;
+  user-select: none;
+  -webkit-user-select: none;
+}
+:where(.js) .brands-ventana.arrastrando { cursor: grabbing; }
+:where(.js) .brands-ventana img { -webkit-user-drag: none; pointer-events: none; }
 :where(.js) .brands-pista {
   flex-wrap: nowrap;
   width: max-content;
   gap: 0;
-  animation: cinta 38s linear infinite;
+  will-change: transform;
 }
 :where(.js) .brands-grupo { flex-wrap: nowrap; padding-right: 48px; gap: 48px; }
 :where(.js) .brands-grupo[aria-hidden="true"] { display: flex; }
-:where(.js) .brands-cinta:hover .brands-pista,
-:where(.js) .brands-cinta:focus-within .brands-pista,
-:where(.js) .brands-cinta.pausada .brands-pista { animation-play-state: paused; }
-:where(.js) .brands-pausa {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 44px;
-  height: 44px;
-  flex-shrink: 0;
-  border: 1px solid var(--gris-claro);
-  border-radius: 50%;
-  background: var(--blanco);
-  color: var(--azul);
-  cursor: pointer;
-}
-.brands-pausa svg { width: 14px; height: 14px; fill: currentColor; }
-.brands-pausa .icono-seguir { display: none; }
-.brands-cinta.pausada .icono-pausa { display: none; }
-.brands-cinta.pausada .icono-seguir { display: block; }
-@keyframes cinta { to { transform: translateX(-50%); } }
 
 /* ── SERVICE TABS ── */
 .services-tabs {
@@ -1752,10 +1752,10 @@ footer { background: var(--azul-dark); padding: 60px 0 0; position: relative; ov
   /* Los nombres conservan su desplazamiento (--td/--tm): solo se anula la entrada. */
   :where(.js) .coverage-mapa .mapa-et { opacity: 1; transition: none; }
   /* La cinta de marcas queda quieta: logos en filas, sin la copia del
-     empalme y sin el botón de pausa, que ya no hace falta. */
-  :where(.js) .brands-pista { animation: none; flex-wrap: wrap; width: auto; gap: 18px 40px; }
+     empalme y sin arrastre. */
+  :where(.js) .brands-pista { flex-wrap: wrap; width: auto; gap: 18px 40px; will-change: auto; }
   :where(.js) .brands-grupo { flex-wrap: wrap; padding-right: 0; gap: 18px 40px; }
-  :where(.js) .brands-grupo[aria-hidden="true"],
-  :where(.js) .brands-pausa { display: none; }
+  :where(.js) .brands-grupo[aria-hidden="true"] { display: none; }
+  :where(.js) .brands-ventana { cursor: auto; touch-action: auto; }
   .brands-ventana { -webkit-mask-image: none; mask-image: none; }
 }

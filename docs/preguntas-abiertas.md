@@ -63,8 +63,31 @@ referencia por referencia, está en `docs/planes/m3-informe.md`.
 
 ---
 
-### P-049 — La regla de autonomía nueva choca con §9 y con dos viñetas de §7
+### P-053 — La lista de binarios del `.gitattributes` cubre seis extensiones, no las vecinas
 - **Estado:** abierta
+- **Bloquea:** no bloquea. Hoy no hay ningún archivo afectado.
+- **Qué falta:** decidir si se agregan `*.jpeg` y `*.woff`, que son los vecinos
+  directos de dos extensiones que sí están.
+- **Contexto:** Ramiro dictó seis extensiones —`png`, `jpg`, `webp`, `avif`,
+  `woff2`, `ico`— y se pusieron esas seis y nada más: agregar otras habría sido
+  decidir por él. El revisor comprobó con `git check-attr` que quedan **fuera**
+  `*.jpeg`, `*.woff`, `*.ttf`, `*.otf`, `*.pdf`, `*.zip`, `*.gif` y `*.mp4`,
+  que pasarían por `text=auto`.
+- **Por qué el riesgo es acotado, medido en un repositorio de prueba:**
+  `text=auto` detecta un binario por su contenido, no por su nombre. Un `.pdf`
+  con retornos de carro y bytes nulos **fue detectado como binario y sobrevivió
+  intacto**.
+  Solo se corrompería un binario **sin ningún byte nulo en sus primeros 8 kB**.
+  Hoy en el repositorio no hay ninguno: el censo da 21 binarios, los 21
+  cubiertos por la lista.
+- **Qué hice mientras tanto:** **nada.** La lista es la que dictó Ramiro.
+
+---
+
+## Respondidas
+
+### P-049 — La regla de autonomía nueva choca con §9 y con dos viñetas de §7
+- **Estado:** respondida
 - **Bloquea:** no bloquea, pero decide casos concretos y ya decidió uno.
 - **Qué falta:** decidir cuál manda cuando las dos reglas aplican al mismo
   borrado.
@@ -89,31 +112,14 @@ referencia por referencia, está en `docs/planes/m3-informe.md`.
   contestado nada**. Las tres dicen con todas las letras que la decisión es
   mía, así que no hay atribución falsa, pero el índice se lee distinto. Si
   conviene, una salida es un estado propio, del estilo `decidida`.
+- **Respuesta (Ramiro, 2026-10-08):** la libertad que dio es para
+  **proponer**, no para actuar sin consultar. Queda pendiente de él si se
+  ajusta el bloque de autonomía de `CLAUDE.md` §7 para que lo diga así (es
+  texto suyo y configuración del repositorio: no lo toco sin su visto bueno).
+  Mientras tanto, las decisiones que no sean una corrección técnica mínima se
+  proponen antes de ejecutarlas.
 
 ---
-
-### P-053 — La lista de binarios del `.gitattributes` cubre seis extensiones, no las vecinas
-- **Estado:** abierta
-- **Bloquea:** no bloquea. Hoy no hay ningún archivo afectado.
-- **Qué falta:** decidir si se agregan `*.jpeg` y `*.woff`, que son los vecinos
-  directos de dos extensiones que sí están.
-- **Contexto:** Ramiro dictó seis extensiones —`png`, `jpg`, `webp`, `avif`,
-  `woff2`, `ico`— y se pusieron esas seis y nada más: agregar otras habría sido
-  decidir por él. El revisor comprobó con `git check-attr` que quedan **fuera**
-  `*.jpeg`, `*.woff`, `*.ttf`, `*.otf`, `*.pdf`, `*.zip`, `*.gif` y `*.mp4`,
-  que pasarían por `text=auto`.
-- **Por qué el riesgo es acotado, medido en un repositorio de prueba:**
-  `text=auto` detecta un binario por su contenido, no por su nombre. Un `.pdf`
-  con retornos de carro y bytes nulos **fue detectado como binario y sobrevivió
-  intacto**.
-  Solo se corrompería un binario **sin ningún byte nulo en sus primeros 8 kB**.
-  Hoy en el repositorio no hay ninguno: el censo da 21 binarios, los 21
-  cubiertos por la lista.
-- **Qué hice mientras tanto:** **nada.** La lista es la que dictó Ramiro.
-
----
-
-## Respondidas
 
 ### P-055 — Decisión propia: módulo "interfaz" (arreglos de la revisión web-design-guidelines)
 - **Estado:** respondida
@@ -2526,6 +2532,8 @@ referencia por referencia, está en `docs/planes/m3-informe.md`.
     entrada con "Lun a Vie 08:00-17:00" y un teléfono distinto del
     verificado (17:30 y +54 9 353 459-3187). Al tamaño en que se ve no se
     lee, pero conviene saberlo, y quizás corregir el cartel.
+    **Respuesta (Ramiro, 2026-10-08):** valen los datos verificados
+    (17:30 y +54 9 353 459-3187). Ver P-073.
   - La propuesta decía que el inicio tenga un bloque que lleve a Flotas y
     otro a Repuestos. Hoy esas páginas se alcanzan desde el menú y el pie.
     Para un botón en los bloques de la home hace falta su texto.
@@ -2568,3 +2576,47 @@ referencia por referencia, está en `docs/planes/m3-informe.md`.
 
 - **Respuesta (2026-10-08), de Ramiro:** "guardalo sin carteles y dejá la leyenda". Se commitean las correcciones sin tercera vuelta de revisión; el mapa va sin rótulos de rutas ni del río, con la atribución "© colaboradores de OpenStreetMap".
 ---
+
+### P-073 — Franja de marcas sin botón de pausa, arrastrable, y marcas principales centradas
+- **Estado:** respondida
+- **Bloquea:** no bloquea.
+- **Pedido de Ramiro (2026-10-08):** sacar el botón de pausar/reanudar; que
+  las marcas se muevan solas pero que el usuario pueda mover la franja para
+  los dos lados; centrar las marcas principales, que estaban alineadas a la
+  izquierda. Además confirmó que **valen los datos verificados** de teléfono
+  y horario (no los del cartel de la fachada que se ve en F-07-2; ver P-071)
+  y autorizó borrar `docs/coordenadas-localidades-propuesta.md` (borrado; no
+  tenía seguimiento en git).
+- **Qué se hizo:** se quitó el botón y sus aria-labels; la cinta pasó de
+  animación CSS a `sitio.js`, que la avanza a la misma velocidad que tenía
+  (un grupo de logos cada 38 s, unos 29 px/s a 1440 px de ancho) y la deja
+  arrastrar con el mouse, deslizar con el dedo, correr con el trackpad o con
+  las flechas del teclado, en los dos sentidos y sin que se vea el empalme.
+  Con movimiento reducido sigue quieta, en filas, como antes, también si la
+  preferencia se activa con la página abierta. Las tres marcas principales
+  quedan en el centro de la página en todos los anchos (medido de 320 a
+  1920 px: diferencia 0 px).
+- **Revisión:** la primera vuelta salió RECHAZADA
+  (`docs/revisiones/franja-marcas-r1.md`): la cinta no se podía usar con
+  teclado, y en escritorio las marcas estaban centradas en su columna
+  (119 px corridas del centro de la página) en vez de en la página, que es
+  lo que pidió Ramiro. Las dos cosas se corrigieron.
+- **Decisiones propias (forma), a revisar por Ramiro:**
+  1. Se sigue frenando con el mouse encima (era así antes del pedido):
+     permite agarrarla sin que se escape.
+  2. Después de deslizarla con el dedo o el trackpad queda quieta 1,5 s y
+     retoma sola.
+  3. Para que se pueda usar con teclado, la cinta recibe el foco con Tab
+     (solo mientras se mueve), se frena mientras lo tiene y las flechas la
+     corren 80 px. Los lectores de pantalla la anuncian con el rótulo que ya
+     se ve al lado, "También atendemos": no se agregó ningún texto nuevo.
+- **Aviso de accesibilidad:** la pauta WCAG 2.2.2 pide que lo que se mueve
+  solo más de 5 s se pueda pausar. Sin el botón, la cinta se frena con el
+  mouse encima, con el foco del teclado y con la preferencia de movimiento
+  reducido del sistema, pero no hay forma de detenerla de manera
+  permanente: ni en el celular ni en la computadora, donde el mouse y el
+  foco solo la frenan mientras están encima. Se hizo lo pedido; queda
+  anotado.
+- **Revisión, segunda vuelta:** APROBADO CON OBSERVACIONES
+  (`docs/revisiones/franja-marcas-r2.md`). Las tres decisiones propias de
+  arriba quedan para que Ramiro las vea.

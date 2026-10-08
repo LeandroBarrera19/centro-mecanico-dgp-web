@@ -97,15 +97,105 @@ document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
 
 const menosMovimiento = matchMedia('(prefers-reduced-motion: reduce)').matches;
 
-// Franja de marcas: el botón pausa y reanuda la cinta (WCAG 2.2.2).
+// Franja de marcas: la cinta avanza sola y se puede arrastrar con el mouse,
+// deslizar con el dedo, correr con el trackpad o con las flechas del
+// teclado, para los dos lados. Se frena con el mouse encima o con el foco
+// del teclado, y fuera de pantalla no gasta cuadros. El grupo de logos va
+// dos veces: la posición se toma módulo el ancho de un grupo, así el empalme
+// no se ve en ninguna dirección. Con movimiento reducido (también si se
+// activa con la página abierta) queda quieta y el CSS la pasa a filas.
 const cinta = document.getElementById('cintaMarcas');
 if (cinta) {
-  const pausa = cinta.querySelector('.brands-pausa');
-  pausa.addEventListener('click', () => {
-    const pausada = cinta.classList.toggle('pausada');
-    pausa.setAttribute('aria-pressed', pausada);
-    pausa.setAttribute('aria-label', pausada ? 'Reanudar la franja de marcas' : 'Pausar la franja de marcas');
+  const ventana = cinta.querySelector('.brands-ventana');
+  const pista = cinta.querySelector('.brands-pista');
+  const grupo = pista.querySelector('.brands-grupo');
+  const reducido = matchMedia('(prefers-reduced-motion: reduce)');
+  const VUELTA = 38;     // s para recorrer un grupo entero, como la animación anterior
+  const ESPERA = 1500;   // ms quieta después de un deslizamiento táctil o de trackpad
+  const PASO = 80;       // px por cada flecha del teclado
+  let x = 0, anterior = 0, cuadro = 0, visible = false, encima = false;
+  let arrastre = null, quietaHasta = 0;
+
+  const ancho = () => grupo.offsetWidth;
+  const ubicar = () => {
+    const w = ancho();
+    if (w) x = ((x % w) + w) % w;
+    pista.style.transform = reducido.matches ? '' : `translateX(${-x}px)`;
+  };
+  const paso = ahora => {
+    const dt = anterior ? Math.min(ahora - anterior, 100) : 0;
+    anterior = ahora;
+    const frenada = arrastre || encima || cinta.matches(':focus-visible') || ahora < quietaHasta;
+    if (!frenada) {
+      x += ancho() / VUELTA * dt / 1000;
+      ubicar();
+    }
+    cuadro = requestAnimationFrame(paso);
+  };
+  const arrancar = () => {
+    if (!cuadro && visible && !reducido.matches) { anterior = 0; cuadro = requestAnimationFrame(paso); }
+  };
+  const parar = () => { cancelAnimationFrame(cuadro); cuadro = 0; };
+  // Solo es una parada del teclado mientras se mueve.
+  const preparar = () => {
+    if (reducido.matches) {
+      parar();
+      cinta.removeAttribute('tabindex');
+      pista.style.transform = '';
+    } else {
+      cinta.tabIndex = 0;
+      ubicar();
+      arrancar();
+    }
+  };
+  reducido.addEventListener('change', preparar);
+
+  new IntersectionObserver(([e]) => {
+    visible = e.isIntersecting;
+    visible ? arrancar() : parar();
+  }).observe(ventana);
+
+  ventana.addEventListener('mouseenter', () => { encima = true; });
+  ventana.addEventListener('mouseleave', () => { encima = false; });
+
+  ventana.addEventListener('pointerdown', e => {
+    if (e.button !== 0 || reducido.matches) return;
+    arrastre = { id: e.pointerId, desde: e.clientX, x0: x };
+    ventana.setPointerCapture(e.pointerId);
+    ventana.classList.add('arrastrando');
   });
+  ventana.addEventListener('pointermove', e => {
+    if (!arrastre || e.pointerId !== arrastre.id) return;
+    x = arrastre.x0 - (e.clientX - arrastre.desde);
+    ubicar();
+  });
+  const soltar = e => {
+    if (!arrastre || e.pointerId !== arrastre.id) return;
+    arrastre = null;
+    ventana.classList.remove('arrastrando');
+    if (e.pointerType !== 'mouse') quietaHasta = performance.now() + ESPERA;
+  };
+  ventana.addEventListener('pointerup', soltar);
+  ventana.addEventListener('pointercancel', soltar);
+
+  // Trackpad o rueda horizontal; la rueda vertical sigue moviendo la página.
+  ventana.addEventListener('wheel', e => {
+    if (reducido.matches || Math.abs(e.deltaX) <= Math.abs(e.deltaY)) return;
+    e.preventDefault();
+    x += e.deltaX;
+    ubicar();
+    quietaHasta = performance.now() + ESPERA;
+  }, { passive: false });
+
+  cinta.addEventListener('keydown', e => {
+    if (reducido.matches || (e.key !== 'ArrowLeft' && e.key !== 'ArrowRight')) return;
+    e.preventDefault();
+    x += e.key === 'ArrowRight' ? PASO : -PASO;
+    ubicar();
+  });
+
+  addEventListener('resize', ubicar);
+  preparar();
 }
 
 if (!menosMovimiento) {
