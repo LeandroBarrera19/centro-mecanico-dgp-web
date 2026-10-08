@@ -2531,3 +2531,40 @@ referencia por referencia, está en `docs/planes/m3-informe.md`.
     Para un botón en los bloques de la home hace falta su texto.
 
 ---
+
+### P-072 — Revisión del rediseño: segunda vuelta RECHAZADA, correcciones sin commitear
+- **Estado:** respondida
+- **Bloquea:** el commit de las correcciones del mapa (CLAUDE.md §7: después
+  de dos vueltas rechazadas no se commitea la tarea).
+- **Qué falta (para Ramiro):**
+  1. ¿Se commitean las correcciones de abajo, ya verificadas, sin una tercera
+     vuelta de revisión?
+  2. ¿El mapa lleva rótulos de rutas ("RN 9", "RN 158") y del río? Si sí,
+     ¿"Río Tercero" o "Río Ctalamochita"? Hoy no lleva ninguno.
+  3. La atribución que exige la licencia de OpenStreetMap: "© colaboradores
+     de OpenStreetMap". ¿Esa redacción va? (Sin atribución, la base no se
+     puede usar.)
+- **Qué se hizo, sin commitear:**
+  - Se sacaron los carteles de rutas y el nombre del río. La base sigue
+    dibujando rutas, ríos, tren y límites, sin rótulos.
+  - El acomodo de nombres prueba 8 lados y 3 distancias por nombre, repasa
+    varias veces y arranca desde 41 combinaciones; en celular optimiza para
+    cuatro tamaños de mapa a la vez. El desplazamiento de cada nombre va en
+    variables CSS (`--td`, `--tm`).
+  - **Bug encontrado y corregido:** con "reducir movimiento" activado, los
+    nombres perdían su desplazamiento (`transform: none`) y quedaban
+    encimados.
+  - **Medido en el navegador, de 320 a 1920 px de a 4:** ningún par de
+    nombres visibles se superpone, con y sin movimiento reducido. Desde 1200
+    px ningún nombre tapa el punto de otra localidad. Debajo de 1200 px
+    quedan 3 casos de un nombre principal sobre un punto chico: "Arroyo
+    Cabral" sobre Hernando (320-1048 px), "Ballesteros" sobre Luca (320-336)
+    e "Idiazábal" sobre Justiniano Posse (416-432). En esos anchos los
+    nombres de esas localidades no se muestran en el mapa y figuran en la
+    lista de abajo.
+  - Desborde: 0 en las tres páginas. Contraste: 0 fallas en las tres.
+  - Informes de las dos vueltas en `docs/revisiones/rediseno-r1.md` y
+    `rediseno-r2.md`. Tabla de estado del brief con los 9 huecos R-*.
+
+- **Respuesta (2026-10-08), de Ramiro:** "guardalo sin carteles y dejá la leyenda". Se commitean las correcciones sin tercera vuelta de revisión; el mapa va sin rótulos de rutas ni del río, con la atribución "© colaboradores de OpenStreetMap".
+---

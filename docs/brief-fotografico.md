@@ -221,5 +221,14 @@ un mismo cliente, así que es cuestión de estar atento el día que pase.
 | F-08 | 2 | pendiente |
 | F-09 | 3 | pendiente |
 | F-10 | resuelta | resuelta: placa institucional (`og-placa.jpg`) |
+| R-hilux-filtros | 2 | pendiente |
+| R-hilux-frenos | 2 | pendiente |
+| R-hilux-distribucion | 2 | pendiente |
+| R-amarok-filtros | 2 | pendiente |
+| R-amarok-frenos | 2 | pendiente |
+| R-amarok-distribucion | 2 | pendiente |
+| R-ranger-filtros | 2 | pendiente |
+| R-ranger-frenos | 2 | pendiente |
+| R-ranger-distribucion | 2 | pendiente |
 
 El agente actualiza esta tabla cuando un hueco se llena.

@@ -84,62 +84,27 @@ const limitesDepto = base.limites.filter(l => l.nivel === 5).map(l => l.p);
 const limitesProv = base.limites.filter(l => l.nivel === 4).map(l => l.p);
 const tren = base.tren.map(t => t.p);
 
-// Carteles de las rutas nacionales que cruzan la zona, y el nombre del río:
-// en el punto de su recorrido más cercano a una distancia dada del taller,
-// del lado con menos localidades.
-function puntoSobre(lineas, distanciaPx, evitar) {
-  let mejor = null;
-  for (const l of lineas) for (const t of tramos(l)) for (const [x, y] of t) {
-    const d = Math.hypot(x - C, y - C);
-    if (Math.abs(d - distanciaPx) > 30 || !dentro([x, y])) continue;
-    const cerca = localidades.filter(lo => { const [px, py] = pos(lo); return Math.hypot(px - x, py - y) < 45; }).length
-      + evitar.filter(([ex, ey]) => Math.hypot(ex - x, ey - y) < 90).length * 5;
-    if (!mejor || cerca < mejor.cerca) mejor = { x, y, cerca };
-  }
-  return mejor;
-}
-const usados = [];
-const cartel = (ref, distanciaKm) => {
-  const lineas = base.rutas.filter(r => r.ref.split(';').map(s => s.trim()).includes(ref)).map(r => r.p);
-  const p = puntoSobre(lineas, distanciaKm * escala, usados);
-  if (p) usados.push([p.x, p.y]);
-  return p;
-};
-const carteles = [];
-for (const [ref, texto, km] of [['RN9', 'RN 9', 44], ['RN158', 'RN 158', 40]]) {
-  const p1 = cartel(ref, km);
-  if (!p1) continue;
-  carteles.push({ texto, p: p1, extra: false });
-  // El segundo, del otro lado de Villa María: se descartan los puntos a
-  // menos de 120° del primero.
-  const a1 = Math.atan2(p1.y - C, p1.x - C);
-  const lineas = base.rutas.filter(r => r.ref.split(';').map(x => x.trim()).includes(ref)).map(r => r.p);
-  let mejor = null;
-  for (const l of lineas) for (const t of tramos(l)) for (const [x, y] of t) {
-    const d = Math.hypot(x - C, y - C), a = Math.atan2(y - C, x - C);
-    const dif = Math.abs(((a - a1 + 3 * Math.PI) % (2 * Math.PI)) - Math.PI);
-    if (Math.abs(d - km * escala) > 30 || dif < 2 * Math.PI / 3 || !dentro([x, y])) continue;
-    const cerca = localidades.filter(lo => { const [px, py] = pos(lo); return Math.hypot(px - x, py - y) < 45; }).length;
-    if (!mejor || cerca < mejor.cerca) mejor = { x, y, cerca };
-  }
-  if (mejor) { carteles.push({ texto, p: mejor, extra: true }); usados.push([mejor.x, mejor.y]); }
-}
-const rioPunto = puntoSobre(rioTercero, 55 * escala, usados);
-if (rioPunto) usados.push([rioPunto.x, rioPunto.y]);
+// Sin carteles de rutas ni nombre del río: esos textos no están en
+// datos-verificados y quedan a decisión de Ramiro (P-072). La base se dibuja
+// sin rótulos.
 
 // ── Acomodo de nombres ──────────────────────────────────────────────────────
-const LADOS = ['d', 'i', 'ar', 'ab', 'ard', 'ari', 'abd', 'abi'];
-const SEP = 9;
+// Cada nombre puede ir en 8 lados de su punto y a 3 distancias. Primero se
+// ubica cada uno donde menos choca; después se repasan todos varias veces,
+// moviendo cada uno al lugar que más baja el total de choques, hasta que no
+// mejora más.
+const LADOS = ['d', 'i', 'ar', 'ab', 'ard', 'ari', 'abd', 'abi'].flatMap(l => [l, l + '2', l + '3']);
 function cajas(x, y, w, h, lado) {
-  switch (lado) {
-    case 'd': return [x + SEP, y - h / 2, x + SEP + w, y + h / 2];
-    case 'i': return [x - SEP - w, y - h / 2, x - SEP, y + h / 2];
-    case 'ar': return [x - w / 2, y - SEP - h, x + w / 2, y - SEP];
-    case 'ab': return [x - w / 2, y + SEP, x + w / 2, y + SEP + h];
-    case 'ard': return [x + SEP * 0.6, y - SEP * 0.6 - h, x + SEP * 0.6 + w, y - SEP * 0.6];
-    case 'ari': return [x - SEP * 0.6 - w, y - SEP * 0.6 - h, x - SEP * 0.6, y - SEP * 0.6];
-    case 'abd': return [x + SEP * 0.6, y + SEP * 0.6, x + SEP * 0.6 + w, y + SEP * 0.6 + h];
-    case 'abi': return [x - SEP * 0.6 - w, y + SEP * 0.6, x - SEP * 0.6, y + SEP * 0.6 + h];
+  const sep = { 2: 16, 3: 26 }[lado.slice(-1)] || 9, l = lado.replace(/[23]$/, '');
+  switch (l) {
+    case 'd': return [x + sep, y - h / 2, x + sep + w, y + h / 2];
+    case 'i': return [x - sep - w, y - h / 2, x - sep, y + h / 2];
+    case 'ar': return [x - w / 2, y - sep - h, x + w / 2, y - sep];
+    case 'ab': return [x - w / 2, y + sep, x + w / 2, y + sep + h];
+    case 'ard': return [x + sep * 0.6, y - sep * 0.6 - h, x + sep * 0.6 + w, y - sep * 0.6];
+    case 'ari': return [x - sep * 0.6 - w, y - sep * 0.6 - h, x - sep * 0.6, y - sep * 0.6];
+    case 'abd': return [x + sep * 0.6, y + sep * 0.6, x + sep * 0.6 + w, y + sep * 0.6 + h];
+    case 'abi': return [x - sep * 0.6 - w, y + sep * 0.6, x - sep * 0.6, y + sep * 0.6 + h];
   }
 }
 const choque = (a, b) => Math.max(0, Math.min(a[2], b[2]) - Math.max(a[0], b[0])) * Math.max(0, Math.min(a[3], b[3]) - Math.max(a[1], b[1]));
@@ -148,46 +113,96 @@ const choque = (a, b) => Math.max(0, Math.min(a[2], b[2]) - Math.max(a[0], b[0])
 let anguloKm = 0, mejorCosto = Infinity;
 for (let g = 0; g < 360; g += 5) {
   const a = g * Math.PI / 180, x = C + RADIO_PX * Math.cos(a), y = C + RADIO_PX * Math.sin(a);
-  const costo = localidades.filter(l => { const [px, py] = pos(l); return Math.hypot(px - x, py - y) < 70; }).length
-    + usados.filter(([ux, uy]) => Math.hypot(ux - x, uy - y) < 70).length;
+  const costo = localidades.filter(l => { const [px, py] = pos(l); return Math.hypot(px - x, py - y) < 70; }).length;
   if (costo < mejorCosto) { mejorCosto = costo; anguloKm = a; }
 }
 const km80 = [C + RADIO_PX * Math.cos(anguloKm), C + RADIO_PX * Math.sin(anguloKm)];
 
-function acomodar(anchoMapa, lista, celular = false) {
-  const k = anchoMapa / LADO;
-  const ocupado = [];
-  for (const l of localidades) {
-    if (celular && !principales.has(l.nombre)) continue;
-    const [x, y] = pos(l); ocupado.push([x * k - 5, y * k - 5, x * k + 5, y * k + 5]);
-  }
-  ocupado.push([C * k - 14, C * k - 14, C * k + 14, C * k + 14]);
-  ocupado.push([km80[0] * k - 24, km80[1] * k - 9, km80[0] * k + 24, km80[1] * k + 9]);
-  for (const c of carteles) if (!celular || !c.extra) ocupado.push([c.p.x * k - 28, c.p.y * k - 12, c.p.x * k + 28, c.p.y * k + 12]);
-  if (rioPunto) ocupado.push([rioPunto.x * k - 42, rioPunto.y * k - 22, rioPunto.x * k + 42, rioPunto.y * k]);
-  const lados = {};
-  const turno = [...lista].sort((a, b) => (principales.has(b.nombre) - principales.has(a.nombre)) || a.km - b.km);
-  for (const l of turno) {
-    const [x, y] = pos(l).map(v => v * k);
-    const princ = principales.has(l.nombre);
-    const w = l.nombre.length * (celular ? 7.4 : princ ? 9.4 : 6.9) + 6, h = princ ? 17 : 15;
-    let mejor = null;
-    for (const lado of LADOS) {
-      const c = cajas(x, y, w, h, lado);
-      const fuera = (c[0] < 0 || c[2] > anchoMapa || c[1] < 0 || c[3] > anchoMapa) ? 1e6 : 0;
-      const s = fuera + ocupado.reduce((t, o) => t + choque(c, o), 0);
-      if (!mejor || s < mejor.s) mejor = { lado, c, s };
-      if (s === 0) break;
+// Desplazamiento CSS equivalente a cada lado de cajas(): va en --td
+// (escritorio) y --tm (celular) de cada nombre.
+function desplazamiento(lado) {
+  const sep = { 2: 16, 3: 26 }[lado.slice(-1)] || 9, d = Math.round(sep * 0.6), l = lado.replace(/[23]$/, '');
+  return {
+    d: `translate(${sep}px,-50%)`, i: `translate(calc(-100% - ${sep}px),-50%)`,
+    ar: `translate(-50%,calc(-100% - ${sep}px))`, ab: `translate(-50%,${sep}px)`,
+    ard: `translate(${d}px,calc(-100% - ${d}px))`, ari: `translate(calc(-100% - ${d}px),calc(-100% - ${d}px))`,
+    abd: `translate(${d}px,${d}px)`, abi: `translate(calc(-100% - ${d}px),${d}px)`,
+  }[l];
+}
+
+// celular: solo las principales. Ningún nombre puede pasar sobre un punto
+// ni sobre otro nombre.
+function acomodar(anchos, lista, celular = false) {
+  // Para cada ancho de mapa: cajas fijas (puntos, taller, "80 km", "N").
+  const fijosPor = anchos.map(anchoMapa => {
+    const k = anchoMapa / LADO, fijos = [];
+    for (const l of localidades) {
+      // Todos los puntos, también en celular: un nombre no puede tapar el
+      // punto de otra localidad aunque su nombre no se muestre.
+      // La caja del punto, a su tamaño real en esta escala, con 2 px de aire.
+      const [x, y] = pos(l), r = (principales.has(l.nombre) ? 7 : 4.5) * k + 2;
+      fijos.push([x * k - r, y * k - r, x * k + r, y * k + r]);
     }
-    lados[l.nombre] = mejor;
-    ocupado.push(mejor.c);
+    fijos.push([C * k - 14, C * k - 14, C * k + 14, C * k + 14]);
+    fijos.push([km80[0] * k - 24, km80[1] * k - 9, km80[0] * k + 24, km80[1] * k + 9]);
+    fijos.push([anchoMapa - 50, 0, anchoMapa, 50]); // la "N"
+    return fijos;
+  });
+  const items = lista.map(l => {
+    const princ = principales.has(l.nombre);
+    // Anchos por letra algo generosos (Roboto 400 12 px, Montserrat 800 13 px,
+    // Roboto 700 12 px), más el relleno de la etiqueta.
+    const w = l.nombre.length * (celular ? 7.6 : princ ? 10 : 7.1) + 8, h = princ ? 18 : 16;
+    const opciones = LADOS.map(lado => {
+      // Una caja por ancho de mapa; el costo base suma todos los anchos.
+      const cs = anchos.map(anchoMapa => { const [x, y] = pos(l).map(v => v * anchoMapa / LADO); return cajas(x, y, w, h, lado); });
+      const base = cs.reduce((t, c, i) => t + ((c[0] < 0 || c[2] > anchos[i] || c[1] < 0 || c[3] > anchos[i]) ? 1e6 : 0)
+        // Tapar un punto, el taller o un rótulo pesa 10 veces más que rozar otro nombre.
+        + 10 * fijosPor[i].reduce((u, o) => u + choque(c, o), 0), 0);
+      return { lado, cs, base };
+    });
+    return { l, opciones, elegido: null };
+  });
+  const costo = (it, op) => op.base + items.reduce((t, o) => t + (o !== it && o.elegido
+    ? op.cs.reduce((u, c, i) => u + choque(c, o.elegido.cs[i]), 0) : 0), 0);
+  const turno = [...items].sort((a, b) => (principales.has(b.l.nombre) - principales.has(a.l.nombre)) || a.l.km - b.l.km);
+  // Repaso: mover cada nombre a su mejor lugar dados los demás, hasta que no
+  // mejora más.
+  const repasar = () => {
+    for (let vuelta = 0; vuelta < 40; vuelta++) {
+      let mejoro = false;
+      for (const it of turno) {
+        const actual = costo(it, it.elegido);
+        const mejor = it.opciones.reduce((m, op) => costo(it, op) < costo(it, m) ? op : m);
+        if (costo(it, mejor) < actual - 0.01) { it.elegido = mejor; mejoro = true; }
+      }
+      if (!mejoro) break;
+    }
+    return items.reduce((t, it) => t + costo(it, it.elegido), 0);
+  };
+  // Primer intento: cada nombre en su mejor lugar, principales primero.
+  for (const it of turno) it.elegido = it.opciones.reduce((m, op) => costo(it, op) < costo(it, m) ? op : m);
+  let mejorTotal = repasar(), mejorEleccion = items.map(it => it.elegido);
+  // 40 intentos más desde puntos de partida al azar (semilla fija: el
+  // resultado es siempre el mismo); queda el de menor choque total.
+  let semilla = 12345;
+  const azar = () => (semilla = (semilla * 1103515245 + 12345) % 2147483648) / 2147483648;
+  for (let intento = 0; intento < 40 && mejorTotal > 0; intento++) {
+    for (const it of items) it.elegido = it.opciones[Math.floor(azar() * it.opciones.length)];
+    const total = repasar();
+    if (total < mejorTotal) { mejorTotal = total; mejorEleccion = items.map(it => it.elegido); }
   }
+  items.forEach((it, i) => { it.elegido = mejorEleccion[i]; });
+  const lados = {};
+  for (const it of items) lados[it.l.nombre] = { lado: it.elegido.lado, s: costo(it, it.elegido) };
   return lados;
 }
-const ESCRITORIO = 582, CELULAR = 280;
-const ladoD = acomodar(ESCRITORIO, localidades);
-const ladoM = acomodar(CELULAR, localidades.filter(l => principales.has(l.nombre)), true);
+// Escritorio: el mapa mide 582 px desde 1200 de pantalla. Celular: el acomodo
+// se usa de 320 a 1199 px de pantalla, con el mapa entre 280 y ~540 px.
+const ladoD = acomodar([582], localidades);
+const ladoM = acomodar([280, 340, 440, 540], localidades.filter(l => principales.has(l.nombre)), true);
 const choquesD = Object.values(ladoD).filter(v => v.s > 0).length;
+const detalle = l => Object.entries(l).filter(([, v]) => v.s > 0).map(([n, v]) => `${n} (${Math.round(v.s)} px²)`).join(", ");
 const choquesM = Object.values(ladoM).filter(v => v.s > 0).length;
 
 // ── Marcado ─────────────────────────────────────────────────────────────────
@@ -219,12 +234,11 @@ html += `    </g>
   </svg>
   <span class="mapa-norte" style="left:${pct(LADO - 34)};top:${pct(34)}">N</span>
   <span class="mapa-km" style="left:${pct(km80[0])};top:${pct(km80[1])}">${RADIO_KM} km</span>\n`;
-for (const c of carteles) html += `  <span class="mapa-cartel${c.extra ? ' mapa-cartel--extra' : ''}" style="left:${pct(c.p.x)};top:${pct(c.p.y)}" translate="no">${c.texto}</span>\n`;
-if (rioPunto) html += `  <span class="mapa-rio-nombre" style="left:${pct(rioPunto.x)};top:${pct(rioPunto.y)}" translate="no">Río Tercero</span>\n`;
 orden.forEach((l, i) => {
   const [x, y] = pos(l);
   const p = principales.has(l.nombre);
-  html += `  <span class="mapa-et lado-${ladoD[l.nombre].lado}${p ? ` es-principal lado-m-${ladoM[l.nombre].lado}` : ''}" style="--i:${i};left:${pct(x)};top:${pct(y)}" translate="no">${esc(l.nombre)}</span>\n`;
+  const tm = p ? `;--tm:${desplazamiento(ladoM[l.nombre].lado)}` : '';
+  html += `  <span class="mapa-et${p ? ' es-principal' : ''}" style="--i:${i};left:${pct(x)};top:${pct(y)};--td:${desplazamiento(ladoD[l.nombre].lado)}${tm}" translate="no">${esc(l.nombre)}</span>\n`;
 });
 html += `  <small class="mapa-atribucion">© colaboradores de <span translate="no">OpenStreetMap</span></small>
 </div>
@@ -241,5 +255,5 @@ for (const rel of process.argv.slice(2)) {
   fs.writeFileSync(archivo, doc);
   console.log(`Mapa escrito en ${rel}: ${localidades.length} localidades, ${principales.size} principales.`);
 }
-console.log(`Base: ${(svgBase.length / 1000).toFixed(1)} KB de SVG · carteles: ${carteles.map(c => c.texto).join(', ')} · río: ${rioPunto ? 'sí' : 'no'}`);
-console.log(`Nombres con superposición: escritorio ${choquesD} de 42, celular ${choquesM} de 10.`);
+console.log(`Base: ${(svgBase.length / 1000).toFixed(1)} KB de SVG.`);
+console.log(`Nombres con superposición: escritorio ${choquesD} de 42 [${detalle(ladoD)}], celular ${choquesM} de 10 [${detalle(ladoM)}].`);

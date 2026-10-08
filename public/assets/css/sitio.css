@@ -1206,28 +1206,11 @@ footer { background: var(--azul-dark); padding: 60px 0 0; position: relative; ov
 .mapa-ruta-borde.mapa-ruta--troncal { stroke: #b3bfcc; stroke-width: 8; }
 .mapa-ruta.mapa-ruta--troncal { stroke: #fff6d6; stroke-width: 5; }
 .mapa-radio { fill: none; stroke: var(--azul); stroke-width: 2; stroke-dasharray: 8 7; opacity: 0.55; }
-.mapa-cartel, .mapa-rio-nombre, .mapa-atribucion { position: absolute; pointer-events: none; white-space: nowrap; }
-.mapa-cartel {
-  transform: translate(-50%, -50%);
-  font: 800 12px/1 'Montserrat', sans-serif;
-  color: var(--blanco);
-  background: var(--azul-dark);
-  border: 2px solid var(--blanco);
-  padding: 3px 6px;
-  border-radius: 3px;
-}
-.mapa-rio-nombre {
-  transform: translate(-50%, -150%);
-  font: italic 500 12px/1 'Roboto', sans-serif;
-  color: #1f5f9e;
-  text-shadow: 0 0 3px #eef1f4, 0 0 3px #eef1f4;
-}
-.mapa-atribucion { right: 46px; bottom: 6px; font-size: 12px; color: var(--gris-medio); }
+.mapa-atribucion { position: absolute; right: 46px; bottom: 6px; pointer-events: none; white-space: nowrap; font-size: 12px; color: var(--gris-medio); }
 .mapa-norte { width: 30px; height: 30px; display: flex; align-items: center; justify-content: center; background: var(--blanco); border: 1.5px solid var(--gris-claro); border-radius: 50%; }
-@media (max-width: 1199px) { .mapa-cartel--extra { display: none; } }
 @keyframes pulso-mapa { from { opacity: 0.5; transform: scale(1); } to { opacity: 0; transform: scale(3.2); } }
 /* Nombres en HTML sobre el mapa, de tamaño fijo: nunca bajan de 12 px.
-   El lado (lado-…) lo eligió el generador para que no se pisen. */
+   El lugar de cada uno lo eligió el generador para que no se pisen. */
 .mapa-et, .mapa-km, .mapa-norte {
   position: absolute;
   white-space: nowrap;
@@ -1240,14 +1223,9 @@ footer { background: var(--azul-dark); padding: 60px 0 0; position: relative; ov
 .mapa-et.es-principal { font: 800 13px/17px 'Montserrat', sans-serif; color: var(--azul-dark); }
 .mapa-km { font: 600 12px/1 'Roboto', sans-serif; color: var(--azul); transform: translate(-50%, -50%); }
 .mapa-norte { font: 800 14px/1 'Montserrat', sans-serif; color: var(--azul); transform: translate(-50%, -50%); }
-.lado-d   { transform: translate(9px, -50%); }
-.lado-i   { transform: translate(calc(-100% - 9px), -50%); }
-.lado-ar  { transform: translate(-50%, calc(-100% - 9px)); }
-.lado-ab  { transform: translate(-50%, 9px); }
-.lado-ard { transform: translate(5px, calc(-100% - 5px)); }
-.lado-ari { transform: translate(calc(-100% - 5px), calc(-100% - 5px)); }
-.lado-abd { transform: translate(5px, 5px); }
-.lado-abi { transform: translate(calc(-100% - 5px), 5px); }
+/* El generador pone el desplazamiento de cada nombre: --td en escritorio y
+   --tm (solo las principales) en pantallas más angostas. */
+.mapa-et { transform: var(--td); }
 /* La lista completa: en escritorio solo para lectores de pantalla (el
    mapa ya muestra los 42 nombres); en pantallas más angostas, visible. */
 .mapa-lista {
@@ -1272,14 +1250,7 @@ footer { background: var(--azul-dark); padding: 60px 0 0; position: relative; ov
 @media (max-width: 1199px) {
   .mapa-et:not(.es-principal) { display: none; }
   .mapa-et.es-principal { font: 700 12px/15px 'Roboto', sans-serif; }
-  .lado-m-d   { transform: translate(9px, -50%); }
-  .lado-m-i   { transform: translate(calc(-100% - 9px), -50%); }
-  .lado-m-ar  { transform: translate(-50%, calc(-100% - 9px)); }
-  .lado-m-ab  { transform: translate(-50%, 9px); }
-  .lado-m-ard { transform: translate(5px, calc(-100% - 5px)); }
-  .lado-m-ari { transform: translate(calc(-100% - 5px), calc(-100% - 5px)); }
-  .lado-m-abd { transform: translate(5px, 5px); }
-  .lado-m-abi { transform: translate(calc(-100% - 5px), 5px); }
+  .mapa-et.es-principal { transform: var(--tm); }
   .mapa-lista {
     position: static;
     width: auto;
@@ -1777,7 +1748,9 @@ footer { background: var(--azul-dark); padding: 60px 0 0; position: relative; ov
   .hero-panel, .hero-franja, .hero-bg img, .hero-badge, .hero h1, .hero p, .hero-ctas, .pagina-hero h1 { animation: none; }
   .productos-pista { scroll-behavior: auto; }
   .mapa-taller .mapa-pulso { animation: none; opacity: 0; }
-  :where(.js) .coverage-mapa .mapa-punto, :where(.js) .coverage-mapa .mapa-et { opacity: 1; transform: none; transition: none; }
+  :where(.js) .coverage-mapa .mapa-punto { opacity: 1; transform: none; transition: none; }
+  /* Los nombres conservan su desplazamiento (--td/--tm): solo se anula la entrada. */
+  :where(.js) .coverage-mapa .mapa-et { opacity: 1; transition: none; }
   /* La cinta de marcas queda quieta: logos en filas, sin la copia del
      empalme y sin el botón de pausa, que ya no hace falta. */
   :where(.js) .brands-pista { animation: none; flex-wrap: wrap; width: auto; gap: 18px 40px; }
