@@ -2408,3 +2408,21 @@ referencia por referencia, está en `docs/planes/m3-informe.md`.
   fallas). Ahora saltea los contenedores recortados a 1 px.
 
 ---
+
+### P-067 — Decisión propia: estilos y scripts en archivos compartidos
+- **Estado:** respondida
+- **Decisión propia**, 2026-10-07. Al sumar las páginas de flotas y repuestos
+  (P-059), el CSS y el JavaScript salieron de `index.html` a
+  `public/assets/css/sitio.css` y `public/assets/js/sitio.js`, para que las
+  tres páginas los compartan en vez de copiarlos.
+- **Verificado que la home no cambió:** capturas de página completa antes y
+  después, a 1440 y 390 px: **0 píxeles distintos**. Menú móvil, Escape,
+  pestañas con su dirección, pausa de la cinta y año del pie: funcionan, sin
+  errores en la consola.
+- **Costo medido** (`tools/medir-rendimiento.mjs`, 390 px en 4G lenta): de
+  246 a 256 KB y de 1,28 a 1,77 s de LCP, por la hoja de estilos que ahora se
+  pide aparte. Sigue debajo de 2,5 s (el umbral "bueno" de Google) y de los
+  500 KB. Si Ramiro prefiere el LCP anterior, la alternativa es dejar en
+  línea el CSS del primer pantallazo, a costa de mantener dos copias.
+
+---
