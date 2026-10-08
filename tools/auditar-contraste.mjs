@@ -90,6 +90,14 @@ async function medirEstado(browser, estado, ancho) {
       let opacidad = 1;
       for (let a = el; a; a = a.parentElement) opacidad *= parseFloat(getComputedStyle(a).opacity);
       if (opacidad < 0.01) continue;
+      // Texto solo para lectores de pantalla: un contenedor recortado a 1 px
+      // (patrón "visualmente oculto"). No se ve, así que no se mide.
+      let oculto = false;
+      for (let a = el; a && !oculto; a = a.parentElement) {
+        const r = a.getBoundingClientRect();
+        if (r.width <= 1 && r.height <= 1 && getComputedStyle(a).overflow !== 'visible') oculto = true;
+      }
+      if (oculto) continue;
       const cajas = [];
       for (const n of nodos) {
         const rango = document.createRange(); rango.selectNodeContents(n);

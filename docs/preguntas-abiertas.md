@@ -2380,3 +2380,31 @@ referencia por referencia, está en `docs/planes/m3-informe.md`.
   antes no se veía sobre el fondo nuevo.
 
 ---
+
+### P-066 — Decisiones propias en el mapa de cobertura
+- **Estado:** respondida
+- **Decisión propia**, 2026-10-07. El mapa lo pidió Ramiro (P-059, al estilo
+  de Holt); estas son decisiones de forma.
+- **Lo genera un script** (`tools/generar-mapa-cobertura.mjs`) a partir de
+  `datos-verificados.md` §11 y §2. Si cambia una coordenada, se regenera; no
+  se edita a mano.
+- **Dónde va:** en la home, junto al párrafo de "Clientes de toda la región",
+  que no cambió. Las 10 localidades con más clientes van en verde y con el
+  nombre destacado.
+- **Los nombres son HTML de tamaño fijo** (12-13 px) sobre un SVG que escala.
+  Si fueran parte del SVG, en celular quedaban en unos 6 px, por debajo del
+  mínimo de 12 px de la tarea T5.
+- **Por debajo de 1200 px de ancho** el mapa muestra solo las 10 principales,
+  y debajo aparece la lista de las 42 localidades, de la más cercana a la más
+  lejana. En escritorio la lista queda solo para lectores de pantalla.
+- **Quedan 4 de 42 nombres** con algún roce menor en escritorio (sobre todo
+  contra el borde punteado del anillo de 80 km), y 1 de 10 en celular. Se
+  leen todos; está medido y visto en captura.
+- **Sin textos nuevos:** el mapa no lleva título ni leyenda. Solo usa los
+  nombres de las localidades, "N" y las distancias de los anillos (20, 40, 60
+  y 80 km).
+- **Herramienta de contraste:** `tools/auditar-contraste.mjs` medía el texto
+  de la lista oculta para lectores de pantalla como si se viera (25 falsas
+  fallas). Ahora saltea los contenedores recortados a 1 px.
+
+---
