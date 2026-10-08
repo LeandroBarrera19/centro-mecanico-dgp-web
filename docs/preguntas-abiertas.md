@@ -2426,3 +2426,62 @@ referencia por referencia, está en `docs/planes/m3-informe.md`.
   línea el CSS del primer pantallazo, a costa de mantener dos copias.
 
 ---
+
+### P-068 — Textos de las páginas de Repuestos y Flotas
+- **Estado:** respondida (salvo los sectores de 3 casos)
+- **Bloquea:** solo la línea de sector de los casos 2, 3 y 4 de flotas.
+- **Respuesta (2026-10-07):**
+  - El borrador de `docs/textos-propuestos-paginas.md` queda **aprobado tal
+    cual**.
+  - La página de flotas va **de usted**, como decía la spec de M3. Los textos
+    reusados de la home se adaptan a "usted" sin cambiar los hechos.
+  - Sobre los 3 casos sin sector, Ramiro pidió que le pasen sus datos para
+    identificarlos. Se los pasé (vehículos, marca dominante, cliente desde,
+    órdenes de trabajo).
+- **Qué hice mientras tanto:** la página muestra los 5 casos; en los 3 sin
+  sector esa línea no aparece, y queda `TODO_DATO: sector` en el código.
+
+---
+
+### P-069 — Menú con "Repuestos": el menú móvil pasa a llegar hasta 900 px
+- **Estado:** respondida
+- **Respuesta (2026-10-07), de Ramiro:** el menú móvil llega hasta **900 px**
+  (antes 830, decisión del 2026-09-28). Con 8 ítems, entre 831 y ~860 px el
+  nombre del logo se partía en 5 líneas y se salía del menú.
+- **Lo que se hizo además (decisión propia de forma):** entre 901 y 1200 px el
+  hueco entre enlaces baja de 32 a 22 px, y en el modo compacto de Ramiro
+  (< 1000 px) a 14 px, con la letra en 0,8rem y el botón más angosto. Medido
+  de 901 a 1920 px de a 1 px: el botón nunca se sale del contenedor y el
+  nombre del logo ocupa como máximo 3 líneas, dentro del menú.
+
+---
+
+### P-070 — Decisiones propias en las páginas de Repuestos y Flotas
+- **Estado:** respondida
+- **Decisión propia**, 2026-10-07. Textos: los aprobados en P-068. Todo lo
+  demás es forma.
+- **Direcciones:** `repuestos.html` y `flotas.html`, en la raíz, con su
+  `canonical` propio y sumadas a `sitemap.xml`. Sin JSON-LD propio: el del
+  negocio sigue solo en la home.
+- **Menú y pie compartidos:** salen de la home tal cual. "Flotas" abre su
+  página (antes bajaba al bloque de la home) y se suma "Repuestos"; en el pie,
+  "Casa de Repuestos" abre la página nueva. La página actual queda marcada con
+  `aria-current="page"`.
+- **Huecos de foto nuevos:** F-04 en el encabezado de Repuestos, F-08 en el de
+  Flotas (los dos ya estaban en el brief), F-03 en la libreta de Flotas, y uno
+  por producto, `R-<modelo>-<categoría>` (9). Los de producto no figuran
+  todavía en `docs/brief-fotografico.md`.
+- **Cierre de Flotas:** el contacto de la home va de vos ("Pedí tu turno",
+  "Escribinos…"). En Flotas, de usted, se sacó ese encabezado y queda el botón
+  aprobado ("Consultar condiciones para empresas") con los datos de contacto.
+- **Rótulos de Contacto al 80 %** en vez de 64 %: sobre la fachada
+  difuminada, en Repuestos 5 rótulos quedaban debajo de 4,5:1.
+- **Herramientas:** `tools/auditar-contraste.mjs` acepta la página a medir
+  como segundo argumento.
+- **Verificado en las tres páginas:** 0 desbordes (320 a 1920 px de a 1 px,
+  con el menú abierto y cerrado), 0 fallas de contraste, un solo h1 y sin
+  saltos de títulos, 0 enlaces internos rotos, todas las imágenes con alt,
+  todos los `target="_blank"` con `noopener`. Primera carga en celular: 304,
+  202 y 203 KB.
+
+---

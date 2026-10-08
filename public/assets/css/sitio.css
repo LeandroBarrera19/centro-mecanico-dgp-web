@@ -132,7 +132,7 @@ a, button { touch-action: manipulation; -webkit-tap-highlight-color: rgba(18, 75
   display: block;
   margin-bottom: 10px;
 }
-.contact-cta .eyebrow-label { color: rgba(255,255,255,0.64); }
+.contact-cta .eyebrow-label { color: rgba(255,255,255,0.8); }
 
 /* ── NAVBAR ── */
 .navbar {
@@ -1053,7 +1053,9 @@ a, button { touch-action: manipulation; -webkit-tap-highlight-color: rgba(18, 75
   font-size: 0.75rem;
   letter-spacing: 0.08em;
   text-transform: uppercase;
-  color: rgba(255,255,255,0.64);
+  /* 80 %: sobre la fachada difuminada del cierre, al 64 % algunos rótulos
+     quedaban debajo de 4,5:1 según la parte de la foto que les tocara. */
+  color: rgba(255,255,255,0.8);
   margin-bottom: 2px;
 }
 .contact-item strong { color: var(--blanco); font-weight: 500; font-family: 'Roboto', sans-serif; }
@@ -1409,10 +1411,24 @@ footer { background: var(--azul-dark); padding: 60px 0 0; position: relative; ov
    cosas juntas, el corte del menú móvil hasta 830 px y el espaciado más
    compacto por debajo de 1000 px. Medido de 320 a 1300 px de a 1 px: cero
    desbordes y ningún ancho con el menú sin su aire. */
-@media (max-width: 1000px) {
-  .navbar-links { gap: 20px; }
+/* Paso intermedio hasta 1200 px, por el ítem "Repuestos": el hueco entre
+   enlaces baja de 32 a 22 px antes del modo compacto de Ramiro (< 1000 px). */
+@media (max-width: 1200px) {
+  .navbar-links { gap: 22px; }
 }
-@media (max-width: 830px) {
+/* Con "Repuestos" (P-059) el menú suma un ítem: en el modo compacto de
+   Ramiro, además del hueco menor, la letra baja un poco y el botón se angosta,
+   para que todo entre desde 831 px sin cambiar los cortes. */
+@media (max-width: 1000px) {
+  .navbar-links { gap: 14px; }
+  .navbar-links a { font-size: 0.8rem; }
+  .btn-cta { padding: 10px 16px; }
+}
+/* Menú móvil hasta 900 px: decisión de Ramiro del 2026-10-07 (P-069), al
+   sumar "Repuestos". Con 8 ítems, entre 831 y ~860 px el menú de escritorio
+   no entraba y el nombre del logo se salía del menú. Antes el corte era
+   830 px (2026-09-28). */
+@media (max-width: 900px) {
   .navbar-links { display: none; }
   .navbar-toggle { display: flex; }
 }
@@ -1452,6 +1468,268 @@ footer { background: var(--azul-dark); padding: 60px 0 0; position: relative; ov
   .stat-num { font-size: clamp(1.4rem, 11.43vw - 0.886rem, 1.9rem); }
 }
 
+/* ══════════════════════ PÁGINAS DE REPUESTOS Y FLOTAS ══════════════════════
+   Mismo lenguaje que la home: planos azules, cortes diagonales, mayúsculas
+   contundentes. Cada cambio de color entre secciones lleva su remate
+   diagonal, del color de la sección de abajo (P-025, P-045). */
+
+/* Encabezado de página: plano azul con el borde inferior cortado en
+   diagonal, con el mismo ángulo que los remates. */
+.pagina-hero {
+  background: var(--azul);
+  color: var(--blanco);
+  padding: 80px 0 136px;
+  clip-path: polygon(0 0, 100% 0, 100% calc(100% - 66px), 0 100%);
+}
+.pagina-hero--oscuro { background: var(--azul-dark); }
+.pagina-hero-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1.05fr) minmax(0, 0.95fr);
+  gap: 56px;
+  align-items: center;
+}
+.pagina-hero h1 {
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 900;
+  font-size: clamp(2.3rem, 5vw, 4rem);
+  text-transform: uppercase;
+  letter-spacing: -0.01em;
+  line-height: 0.98;
+  margin-bottom: 26px;
+  animation: sube 0.7s 0.1s ease-out both;
+}
+.pagina-hero p {
+  font-size: 1.05rem;
+  line-height: 1.7;
+  color: rgba(255,255,255,0.88);
+}
+.pagina-hero p + p { margin-top: 14px; }
+.pagina-hero .btn-primary { border: 2px solid var(--blanco); margin-top: 30px; }
+.pagina-hero .img-slot { background: rgba(255,255,255,0.06); border-color: rgba(255,255,255,0.4); }
+.pagina-hero .img-slot span { color: var(--blanco); }
+
+/* Remate genérico: la sección lleva aire abajo y una diagonal del color de
+   la sección siguiente (--remate). */
+.con-remate { position: relative; padding-bottom: 148px; }
+.con-remate::after {
+  content: '';
+  position: absolute;
+  bottom: -2px; left: 0; right: 0;
+  height: 66px;
+  background: var(--remate);
+  clip-path: polygon(0 100%, 100% 0, 100% 100%);
+}
+
+/* ── Repuestos: categorías ── */
+.categorias { background: var(--blanco); padding-top: 40px; }
+.categorias.con-remate { --remate: var(--gris-bg); }
+.categorias-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 20px;
+}
+.categoria {
+  position: relative;
+  background: var(--gris-bg);
+  border-top: 3px solid var(--azul);
+  padding: 32px 28px 30px;
+  clip-path: polygon(0 0, 100% 0, 100% calc(100% - 24px), calc(100% - 24px) 100%, 0 100%);
+}
+.categoria .service-icon { background: var(--blanco); }
+.categoria-num {
+  position: absolute;
+  top: 22px;
+  right: 26px;
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 900;
+  font-size: 2.4rem;
+  line-height: 1;
+  color: rgba(18,75,143,0.12);
+}
+.categoria-titulo {
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 800;
+  font-size: 1.05rem;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+  color: var(--azul-dark);
+  margin-bottom: 10px;
+}
+.categoria p { font-size: 0.95rem; line-height: 1.65; color: var(--gris-medio); }
+
+/* ── Repuestos: deslizante de productos (HB Body) ── */
+.productos { background: var(--gris-bg); padding-top: 72px; --remate: var(--azul); }
+.productos-header {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+  margin-bottom: 32px;
+}
+.productos-header .section-title { flex: 1; margin-bottom: 0; }
+.productos-flechas { display: none; gap: 8px; flex-shrink: 0; }
+:where(.js) .productos-flechas { display: flex; }
+.productos-flecha {
+  width: 48px;
+  height: 48px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--blanco);
+  border: 1.5px solid var(--azul);
+  color: var(--azul);
+  cursor: pointer;
+  transition: background 0.2s, color 0.2s, opacity 0.2s;
+}
+.productos-flecha svg { width: 20px; height: 20px; fill: none; stroke: currentColor; stroke-width: 2.4; stroke-linecap: round; stroke-linejoin: round; }
+.productos-flecha:hover { background: var(--azul); color: var(--blanco); }
+.productos-flecha:focus-visible { outline-color: var(--azul-dark); }
+.productos-flecha[disabled] { opacity: 0.35; cursor: default; background: var(--blanco); color: var(--azul); }
+/* La fila arranca alineada con el contenedor y se va por el borde derecho,
+   para que se note que sigue. */
+.productos-pista {
+  --margen: max(32px, calc((100% - 1200px) / 2 + 32px));
+  list-style: none;
+  display: flex;
+  gap: 20px;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  scroll-padding-inline: var(--margen);
+  padding: 6px var(--margen) 28px;
+  scrollbar-width: thin;
+  scrollbar-color: var(--azul) var(--gris-claro);
+}
+.productos-pista:focus-visible { outline-offset: -3px; }
+.producto {
+  flex: 0 0 clamp(250px, 24vw, 290px);
+  scroll-snap-align: start;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  background: var(--blanco);
+  border-top: 3px solid var(--azul);
+  padding: 18px 18px 22px;
+  clip-path: polygon(0 0, 100% 0, 100% calc(100% - 22px), calc(100% - 22px) 100%, 0 100%);
+}
+.producto .img-slot { margin-bottom: 6px; padding: 10px; }
+.producto-cat {
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 700;
+  font-size: 0.75rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--gris-medio);
+}
+.producto-nombre {
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 800;
+  font-size: 1.02rem;
+  line-height: 1.3;
+  color: var(--azul-dark);
+}
+.producto-num { font-size: 0.75rem; color: var(--gris-medio); font-variant-numeric: tabular-nums; }
+/* El ícono de WhatsApp de los botones de estas páginas viene sin tamaño. */
+.btn-primary svg { width: 18px; height: 18px; flex-shrink: 0; fill: currentColor; }
+.producto-btn {
+  margin-top: auto;
+  justify-content: center;
+  font-size: 0.85rem;
+  padding: 12px 16px;
+}
+.productos-pista + * { margin-top: 0; }
+
+/* ── Flotas: cifras, condiciones y casos ── */
+.flotas-cifras .stat-label { max-width: 26ch; }
+.flotas-cifras-inner { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+.condiciones { background: var(--blanco); padding-top: 88px; --remate: var(--gris-bg); }
+.condiciones-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 20px;
+}
+.condicion {
+  background: var(--blanco);
+  border: 1px solid var(--gris-claro);
+  border-left: 4px solid var(--verde);
+  padding: 28px 26px;
+  clip-path: polygon(0 0, 100% 0, 100% calc(100% - 20px), calc(100% - 20px) 100%, 0 100%);
+}
+.condicion p {
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 700;
+  font-size: 1.02rem;
+  line-height: 1.4;
+  color: var(--azul-dark);
+}
+.casos { background: var(--gris-bg); padding-top: 88px; --remate: var(--azul); }
+.casos-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(min(320px, 100%), 1fr));
+  gap: 20px;
+}
+.caso {
+  background: var(--blanco);
+  border-top: 3px solid var(--azul);
+  padding: 26px 26px 28px;
+  clip-path: polygon(0 0, 100% 0, 100% calc(100% - 22px), calc(100% - 22px) 100%, 0 100%);
+}
+.caso-cabeza {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  margin-bottom: 18px;
+}
+.caso-num { font-family: 'Montserrat', sans-serif; font-weight: 900; font-size: 1.6rem; line-height: 1; color: var(--azul); }
+.caso-sector {
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 700;
+  font-size: 0.75rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--azul);
+  background: var(--gris-bg);
+  padding: 5px 10px;
+}
+.caso-datos { display: grid; gap: 14px; }
+.caso-dato dt {
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 700;
+  font-size: 0.75rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--gris-medio);
+  margin-bottom: 2px;
+}
+.caso-dato dd { font-size: 0.95rem; line-height: 1.45; color: var(--gris); }
+.caso-dato--grande dd {
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 900;
+  font-size: 2.6rem;
+  line-height: 1;
+  color: var(--azul);
+}
+/* En flotas, debajo de la libreta va la zona de cobertura (blanca), no la
+   casa de repuestos como en la home. */
+.pagina-flotas .notebook::after { background: var(--blanco); }
+
+@media (max-width: 900px) {
+  .pagina-hero-grid { grid-template-columns: minmax(0, 1fr); gap: 36px; }
+  .categorias-grid, .condiciones-grid { grid-template-columns: minmax(0, 1fr); }
+  .flotas-cifras-inner { grid-template-columns: minmax(0, 1fr); }
+  .flotas-cifras .stat-item { border-right: none; border-bottom: 1px solid var(--gris-claro); }
+  .flotas-cifras .stat-item:last-child { border-bottom: none; }
+  .flotas-cifras .stat-label { max-width: none; }
+}
+@media (max-width: 600px) {
+  .productos-header { flex-wrap: wrap; }
+  .productos-header .section-title { flex-basis: 100%; }
+  .productos-header .section-title::after { display: none; }
+}
+@media (max-width: 480px) {
+  .pagina-hero { padding-top: 56px; padding-bottom: 112px; }
+  .productos-pista { --margen: 20px; }
+}
+
 /* ── MOVIMIENTO REDUCIDO ──
    Quien pidió reducir el movimiento en su sistema: sin aparición al
    desplazarse, sin desplazamiento suave y sin el levantamiento de botones
@@ -1463,7 +1741,8 @@ footer { background: var(--azul-dark); padding: 60px 0 0; position: relative; ov
   :where(.js) .fade-in.visible { opacity: 1; transform: none; transition: none; }
   .btn-cta:hover, .btn-primary:hover, .btn-wa:hover, .btn-google-review:hover,
   .service-card:hover, .t-card:hover { transform: none; }
-  .hero-panel, .hero-franja, .hero-bg img, .hero-badge, .hero h1, .hero p, .hero-ctas { animation: none; }
+  .hero-panel, .hero-franja, .hero-bg img, .hero-badge, .hero h1, .hero p, .hero-ctas, .pagina-hero h1 { animation: none; }
+  .productos-pista { scroll-behavior: auto; }
   .mapa-taller .mapa-pulso { animation: none; opacity: 0; }
   :where(.js) .coverage-mapa .mapa-punto, :where(.js) .coverage-mapa .mapa-et { opacity: 1; transform: none; transition: none; }
   /* La cinta de marcas queda quieta: logos en filas, sin la copia del

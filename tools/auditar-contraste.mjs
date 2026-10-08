@@ -1,5 +1,7 @@
 // Auditoría de contraste de la página servida por tools/serve.mjs (M2c, Tarea 9).
-// Uso: node tools/auditar-contraste.mjs [salida.md]
+// Uso: node tools/auditar-contraste.mjs [salida.md] [página.html]
+// Sin página, mide la home. Los estados de las pestañas de servicios solo se
+// miden en las páginas que las tienen.
 //
 // Solo mide: no cambia ningún color.
 //
@@ -25,7 +27,7 @@ import path from 'path';
 import { fileURLToPath } from 'url';
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
-const URL_LOCAL = 'http://localhost:3000/';
+const URL_LOCAL = 'http://localhost:3000/' + (process.argv[3] || '');
 const salida = process.argv[2];
 
 function esperar(ms) { return new Promise(r => setTimeout(r, ms)); }
@@ -44,7 +46,7 @@ async function levantarServidor() {
 // cada estado, para no medir dos veces lo mismo.
 const ESTADOS = [
   { id: 'inicial', anchos: [1440, 390], ambito: 'body' },
-  ...[2, 3, 4, 5].map(n => ({ id: `pestaña ${n} de servicios`, anchos: [1440, 390], ambito: '.tab-panel.active', preparar: async page => { await page.evaluate(i => document.querySelectorAll('.tab-btn')[i].click(), n - 1); } })),
+  ...(process.argv[3] ? [] : [2, 3, 4, 5]).map(n => ({ id: `pestaña ${n} de servicios`, anchos: [1440, 390], ambito: '.tab-panel.active', preparar: async page => { await page.evaluate(i => document.querySelectorAll('.tab-btn')[i].click(), n - 1); } })),
   { id: 'menú móvil abierto', anchos: [390], ambito: '#navMobile', preparar: async page => { await page.click('#navToggle'); } },
   { id: 'enlace de salto con foco', anchos: [1440], ambito: '.skip-link', preparar: async page => { await page.evaluate(() => scrollTo(0, 0)); await page.keyboard.press('Tab'); } },
 ];

@@ -163,3 +163,20 @@ if (!menosMovimiento) {
 
 // Año del copyright
 document.getElementById('anio-copyright').textContent = new Date().getFullYear();
+
+// Deslizante de productos (repuestos.html): las flechas corren la fila casi
+// un ancho de pantalla y se desactivan en cada punta.
+const pista = document.getElementById('productosPista');
+if (pista) {
+  const flechas = document.querySelectorAll('.productos-flecha');
+  const actualizarFlechas = () => {
+    const max = pista.scrollWidth - pista.clientWidth - 2;
+    flechas.forEach(b => { b.disabled = b.dataset.dir === '-1' ? pista.scrollLeft <= 2 : pista.scrollLeft >= max; });
+  };
+  flechas.forEach(b => b.addEventListener('click', () => {
+    pista.scrollBy({ left: Number(b.dataset.dir) * pista.clientWidth * 0.8, behavior: menosMovimiento ? 'auto' : 'smooth' });
+  }));
+  pista.addEventListener('scroll', actualizarFlechas, { passive: true });
+  addEventListener('resize', actualizarFlechas, { passive: true });
+  actualizarFlechas();
+}
