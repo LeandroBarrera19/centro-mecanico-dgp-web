@@ -184,6 +184,20 @@ mejora clara. **3** = si se puede.
 
 ---
 
+### R-<modelo>-<categoría> · Productos de la casa de repuestos (9 huecos)
+- **Prioridad:** 2
+- **Dónde:** `public/repuestos.html`, deslizante de productos (P-061).
+- **Huecos:** `R-hilux-filtros`, `R-hilux-frenos`, `R-hilux-distribucion`,
+  `R-amarok-filtros`, `R-amarok-frenos`, `R-amarok-distribucion`,
+  `R-ranger-filtros`, `R-ranger-frenos`, `R-ranger-distribucion`.
+- **Proporción:** 4:3 horizontal · mínimo 1600 px de ancho.
+- **Qué muestra:** el repuesto real del stock, de la categoría y el modelo
+  del hueco. Fondo liso y ordenado.
+- **Cuidado:** fotos propias, nunca fotos de catálogo del fabricante
+  (CLAUDE.md §2). Sin etiquetas de precio ni datos de proveedores.
+
+---
+
 ## Orden sugerido para sacarlas
 
 Una mañana de portón abierto alcanza para las de prioridad 1 y buena parte de

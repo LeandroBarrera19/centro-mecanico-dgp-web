@@ -67,7 +67,11 @@ await generar(FAVICON, path.join(PUBLIC, 'apple-touch-icon.png'),
 
 // ── Fotos del taller (docs/brief-fotografico.md) ─────────────────────────────
 // F-07, frente del taller. Los originales son copias de WhatsApp de 1280 px
-// (P-063): no se agrandan, así que el ancho mayor es 1280.
+// (P-063): no se agrandan, así que el ancho mayor es 1280. Los nombres van en
+// minúsculas (CLAUDE.md §3), aunque el id del brief sea "F-07" (P-071).
+// Solo se publican las fotos que usa alguna página: la 2 (junto al mapa de
+// contacto) y la 4 (el fondo difuminado del cierre).
+const PUBLICADAS = ['f-07-2', 'f-07-4'];
 const FOTOS = path.join(SRC, 'fotos');
 const SALIDA_FOTOS = path.join(ASSETS, 'fotos');
 fs.mkdirSync(SALIDA_FOTOS, { recursive: true });
@@ -78,6 +82,7 @@ const FORMATOS_FOTO = [
 ];
 for (const f of fs.readdirSync(FOTOS).filter(f => /-original-\d+\.jpg$/.test(f)).sort()) {
   const id = f.replace('-original', '').replace('.jpg', '');
+  if (!PUBLICADAS.includes(id)) continue;
   for (const ancho of [480, 800, 1280]) {
     for (const fmt of FORMATOS_FOTO) {
       await generar(path.join(FOTOS, f), path.join(SALIDA_FOTOS, `${id}-${ancho}.${fmt.ext}`),

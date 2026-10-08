@@ -428,11 +428,14 @@ a, button { touch-action: manipulation; -webkit-tap-highlight-color: rgba(18, 75
 @keyframes entra-panel { from { transform: translateX(-12%); } to { transform: none; } }
 @keyframes entra-foto  { from { transform: scale(1.08); } to { transform: none; } }
 @keyframes sube        { from { opacity: 0; transform: translateY(18px); } to { opacity: 1; transform: none; } }
+/* El título es lo primero que se pinta (LCP): solo se desplaza, sin pasar
+   por opacidad 0, para no demorar su aparición (CLAUDE.md §5). */
+@keyframes sube-titulo { from { transform: translateY(14px); } to { transform: none; } }
 .hero-panel  { animation: entra-panel 0.9s cubic-bezier(.2,.7,.2,1) both; }
 .hero-franja { animation: entra-panel 0.9s 0.08s cubic-bezier(.2,.7,.2,1) both; }
 .hero-bg img { animation: entra-foto 1.8s cubic-bezier(.2,.7,.2,1) both; }
 .hero-badge  { animation: sube 0.6s 0.25s ease-out both; }
-.hero h1     { animation: sube 0.7s 0.35s ease-out both; }
+.hero h1     { animation: sube-titulo 0.7s ease-out both; }
 .hero p      { animation: sube 0.7s 0.5s ease-out both; }
 .hero-ctas   { animation: sube 0.7s 0.62s ease-out both; }
 
@@ -1185,15 +1188,43 @@ footer { background: var(--azul-dark); padding: 60px 0 0; position: relative; ov
   align-items: center;
 }
 .coverage-mapa { margin: 0; }
-.mapa-caja { position: relative; }
 .mapa { display: block; width: 100%; height: auto; }
-.mapa-anillos circle { fill: none; stroke: var(--gris-claro); stroke-width: 1.5; }
-.mapa-anillos .mapa-borde { stroke: var(--azul); stroke-width: 2; stroke-dasharray: 6 6; fill: rgba(18,75,143,0.03); }
-.mapa-anillos path { stroke: var(--gris-claro); stroke-width: 1; }
 .mapa-punto { fill: var(--azul); stroke: var(--blanco); stroke-width: 2; }
 .mapa-punto.es-principal { fill: var(--verde); stroke: var(--azul-dark); }
 .mapa-taller circle { fill: var(--azul); stroke: var(--blanco); stroke-width: 3; }
 .mapa-taller .mapa-pulso { fill: var(--azul); stroke: none; transform-box: fill-box; transform-origin: center; animation: pulso-mapa 2.4s ease-out infinite; }
+/* Mapa de cobertura con base geográfica (OpenStreetMap). */
+.mapa-caja { position: relative; clip-path: polygon(0 0, 100% 0, 100% calc(100% - 40px), calc(100% - 40px) 100%, 0 100%); }
+.mapa-tierra { fill: #eef1f4; }
+.mapa-limite-depto { fill: none; stroke: #c3ccd6; stroke-width: 1.2; stroke-dasharray: 5 4; }
+.mapa-limite-prov { fill: none; stroke: #a9b5c3; stroke-width: 2; stroke-dasharray: 10 4 2 4; }
+.mapa-rio { fill: none; stroke: #9cc3e8; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+.mapa-rio--principal { stroke: #7fb0e0; stroke-width: 3.5; }
+.mapa-tren { fill: none; stroke: #9aa4af; stroke-width: 1.3; stroke-dasharray: 2 3; }
+.mapa-ruta-borde { fill: none; stroke: #c5ced9; stroke-width: 5; stroke-linecap: round; stroke-linejoin: round; }
+.mapa-ruta { fill: none; stroke: #ffffff; stroke-width: 3; stroke-linecap: round; stroke-linejoin: round; }
+.mapa-ruta-borde.mapa-ruta--troncal { stroke: #b3bfcc; stroke-width: 8; }
+.mapa-ruta.mapa-ruta--troncal { stroke: #fff6d6; stroke-width: 5; }
+.mapa-radio { fill: none; stroke: var(--azul); stroke-width: 2; stroke-dasharray: 8 7; opacity: 0.55; }
+.mapa-cartel, .mapa-rio-nombre, .mapa-atribucion { position: absolute; pointer-events: none; white-space: nowrap; }
+.mapa-cartel {
+  transform: translate(-50%, -50%);
+  font: 800 12px/1 'Montserrat', sans-serif;
+  color: var(--blanco);
+  background: var(--azul-dark);
+  border: 2px solid var(--blanco);
+  padding: 3px 6px;
+  border-radius: 3px;
+}
+.mapa-rio-nombre {
+  transform: translate(-50%, -150%);
+  font: italic 500 12px/1 'Roboto', sans-serif;
+  color: #1f5f9e;
+  text-shadow: 0 0 3px #eef1f4, 0 0 3px #eef1f4;
+}
+.mapa-atribucion { right: 46px; bottom: 6px; font-size: 12px; color: var(--gris-medio); }
+.mapa-norte { width: 30px; height: 30px; display: flex; align-items: center; justify-content: center; background: var(--blanco); border: 1.5px solid var(--gris-claro); border-radius: 50%; }
+@media (max-width: 1199px) { .mapa-cartel--extra { display: none; } }
 @keyframes pulso-mapa { from { opacity: 0.5; transform: scale(1); } to { opacity: 0; transform: scale(3.2); } }
 /* Nombres en HTML sobre el mapa, de tamaño fijo: nunca bajan de 12 px.
    El lado (lado-…) lo eligió el generador para que no se pisen. */
@@ -1203,9 +1234,11 @@ footer { background: var(--azul-dark); padding: 60px 0 0; position: relative; ov
   pointer-events: none;
   text-shadow: 0 0 3px var(--blanco), 0 0 3px var(--blanco), 0 0 2px var(--blanco);
 }
-.mapa-et { font: 400 12px/15px 'Roboto', sans-serif; color: var(--gris-medio); }
+/* Cada nombre lleva un fondo blanco translúcido de etiqueta: así se lee igual
+   cuando cruza una ruta, un río o un límite de la base. */
+.mapa-et { font: 400 12px/15px 'Roboto', sans-serif; color: #4a4f55; background: rgba(255,255,255,0.82); padding: 0 3px; border-radius: 2px; }
 .mapa-et.es-principal { font: 800 13px/17px 'Montserrat', sans-serif; color: var(--azul-dark); }
-.mapa-km { font: 600 12px/1 'Roboto', sans-serif; color: var(--gris-medio); transform: translate(-50%, -50%); }
+.mapa-km { font: 600 12px/1 'Roboto', sans-serif; color: var(--azul); transform: translate(-50%, -50%); }
 .mapa-norte { font: 800 14px/1 'Montserrat', sans-serif; color: var(--azul); transform: translate(-50%, -50%); }
 .lado-d   { transform: translate(9px, -50%); }
 .lado-i   { transform: translate(calc(-100% - 9px), -50%); }
@@ -1496,7 +1529,7 @@ footer { background: var(--azul-dark); padding: 60px 0 0; position: relative; ov
   letter-spacing: -0.01em;
   line-height: 0.98;
   margin-bottom: 26px;
-  animation: sube 0.7s 0.1s ease-out both;
+  animation: sube-titulo 0.7s ease-out both;
 }
 .pagina-hero p {
   font-size: 1.05rem;

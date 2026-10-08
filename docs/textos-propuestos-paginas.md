@@ -1,7 +1,9 @@
-# Textos propuestos para las páginas de Repuestos y Flotas — BORRADOR
+# Textos de las páginas de Repuestos y Flotas — APROBADOS
 
-Armado por el agente el 2026-10-07 para que Ramiro lo apruebe o lo corrija
-(P-068). **Nada de esto se publica sin su aprobación.**
+Armado por el agente el 2026-10-07. **Ramiro lo aprobó tal cual el mismo día
+(P-068)**, con un cambio: la página de flotas va **de usted**. Los textos
+reusados de la home se adaptaron sin cambiar los hechos ("¿Tiene una flota de
+vehículos?", "Lo escanea con el celular", "su vehículo… su celular").
 
 Cómo leerlo:
 - **[YA APROBADO]** = texto que ya está en la home (aprobado en M3).
@@ -29,8 +31,8 @@ Cómo leerlo:
 
 ## Página Flotas (`flotas.html`)
 
-La spec de M3 dice que la página de flotas va **de usted** (la home, de vos).
-Abajo está de vos, como en la home; si va de usted, se adapta.
+Va **de usted** (P-068). La tabla muestra los textos como se propusieron; en
+la página están adaptados a usted.
 
 | Lugar | Texto | Origen |
 |---|---|---|

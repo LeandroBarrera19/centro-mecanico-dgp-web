@@ -2485,3 +2485,49 @@ referencia por referencia, está en `docs/planes/m3-informe.md`.
   202 y 203 KB.
 
 ---
+
+### P-071 — Mapa con base geográfica y correcciones de la revisión final
+- **Estado:** respondida (salvo lo marcado como "Para Ramiro")
+- **Pedido de Ramiro (2026-10-07):** "que el mapa sea visualmente un mapa, no
+  un radar".
+- **Qué se hizo (decisión propia de forma):**
+  - La base del mapa sale de **OpenStreetMap** (ODbL): rutas troncales y
+    principales, ríos con nombre, vías del tren y límites de departamentos y
+    de provincia. `tools/descargar-base-mapa.mjs` la bajó una vez y la guardó
+    simplificada en `assets-src/mapa/base.json`. El sitio no consulta nada de
+    afuera: el dibujo queda dentro del HTML (~69 KB de SVG por página).
+  - Se sacaron los anillos de 20, 40 y 60 km. Queda solo el radio de 80 km
+    (dato de §11) como línea punteada.
+  - **Textos nuevos que salen de esa fuente, no de datos-verificados:**
+    carteles "RN 9" y "RN 158" (las dos rutas que cruzan la zona y pasan por
+    Villa María) y "Río Tercero" (nombre en OpenStreetMap). Además, la
+    atribución que exige la licencia: "© colaboradores de OpenStreetMap".
+  - **Para Ramiro:** si prefiere sin carteles de rutas o sin el nombre del
+    río (o "Ctalamochita" en vez de "Tercero"), se cambia en el generador.
+- **Correcciones de la revisión (veredicto RECHAZADO, 3 bloqueantes):**
+  1. F-08 pasa a 16:9, como dice el brief.
+  2. **Textos de accesibilidad de las flechas** del deslizante:
+     "Productos anteriores" y "Productos siguientes". Los exige CLAUDE.md §6
+     (`aria-label` en botones que solo tienen ícono). Decisión propia,
+     redacción a revisar por Ramiro.
+  3. **Nombres de las fotos en minúsculas** (`f-07-…`). El brief arma el
+     nombre con el id ("F-07"), y CLAUDE.md §3 pide minúsculas: gana
+     CLAUDE.md. Los ids siguen en mayúscula en el brief y en los marcadores.
+- **Otras correcciones:** se dejan de publicar F-07-1 y F-07-3 (nadie las
+  usaba); el título de cada página ya no aparece desde opacidad 0 (demoraba
+  el primer dibujo, CLAUDE.md §5); la foto provisoria del inicio lleva su
+  marcador `TODO_IMAGEN: F-01`; los 9 huecos de producto entraron al brief;
+  `docs/textos-propuestos-paginas.md` figura como aprobado y de usted.
+- **Numeraciones visuales sin registrar hasta ahora** (decisión propia,
+  `aria-hidden`): "01" a "05" en los casos de flotas, "01" a "03" en las
+  categorías y "01 / 09" a "09 / 09" en los productos.
+- **Para Ramiro:**
+  - La foto F-07-2 (frente, junto al mapa de contacto) muestra el cartel de
+    entrada con "Lun a Vie 08:00-17:00" y un teléfono distinto del
+    verificado (17:30 y +54 9 353 459-3187). Al tamaño en que se ve no se
+    lee, pero conviene saberlo, y quizás corregir el cartel.
+  - La propuesta decía que el inicio tenga un bloque que lleve a Flotas y
+    otro a Repuestos. Hoy esas páginas se alcanzan desde el menú y el pie.
+    Para un botón en los bloques de la home hace falta su texto.
+
+---
