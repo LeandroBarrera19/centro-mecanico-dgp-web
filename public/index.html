@@ -12,7 +12,7 @@
   <meta name="theme-color" content="#124B8F">
 
   <!-- ── RENDIMIENTO ── -->
-  <link rel="preload" as="image" type="image/avif" imagesrcset="assets/hero-bg-768.avif 768w, assets/hero-bg-1280.avif 1280w, assets/hero-bg-1920.avif 1920w" imagesizes="100vw" fetchpriority="high">
+  <link rel="preload" as="image" type="image/avif" imagesrcset="assets/fotos/f-01-1-480.avif 480w, assets/fotos/f-01-1-800.avif 800w, assets/fotos/f-01-1-1280.avif 1280w, assets/fotos/f-01-1-1402.avif 1402w" imagesizes="(min-width: 901px) 60vw, 100vw" fetchpriority="high">
 
   <!-- ── CANONICAL ── -->
   <link rel="canonical" href="https://centromecanicodgp.com.ar/">
@@ -137,13 +137,13 @@
 
 <!-- ═══════════════════════════════ HERO ═══════════════════════════════ -->
 <section class="hero" id="inicio">
-  <!-- TODO_IMAGEN: F-01 — foto provisoria con patente y cara visibles: no se
-       puede publicar (docs/brief-fotografico.md, P-007). -->
+  <!-- F-01 entregada el 2026-10-12 (P-075): el frente del taller, con las
+       patentes y los horarios del cartel desenfocados. Copia de 1402 px; reemplazar por el original. -->
   <div class="hero-bg">
     <picture>
-      <source type="image/avif" srcset="assets/hero-bg-768.avif 768w, assets/hero-bg-1280.avif 1280w, assets/hero-bg-1920.avif 1920w" sizes="100vw">
-      <source type="image/webp" srcset="assets/hero-bg-768.webp 768w, assets/hero-bg-1280.webp 1280w, assets/hero-bg-1920.webp 1920w" sizes="100vw">
-      <img src="assets/hero-bg-1280.jpg" alt="" aria-hidden="true" width="1280" height="714" fetchpriority="high">
+      <source type="image/avif" srcset="assets/fotos/f-01-1-480.avif 480w, assets/fotos/f-01-1-800.avif 800w, assets/fotos/f-01-1-1280.avif 1280w, assets/fotos/f-01-1-1402.avif 1402w" sizes="(min-width: 901px) 60vw, 100vw">
+      <source type="image/webp" srcset="assets/fotos/f-01-1-480.webp 480w, assets/fotos/f-01-1-800.webp 800w, assets/fotos/f-01-1-1280.webp 1280w, assets/fotos/f-01-1-1402.webp 1402w" sizes="(min-width: 901px) 60vw, 100vw">
+      <img src="assets/fotos/f-01-1-1280.jpg" alt="" aria-hidden="true" width="1280" height="1024" fetchpriority="high">
     </picture>
   </div>
   <div class="hero-overlay"></div>
@@ -387,10 +387,11 @@
     </div>
     <div class="how-grid">
 
-      <!-- TODO_IMAGEN: F-02 -->
-      <div class="img-slot fade-in" data-slot="F-02" style="aspect-ratio: 3/2">
-        <span>Foto pendiente · F-02</span>
-      </div>
+      <picture class="foto fade-in" style="aspect-ratio: 3/2">
+        <source type="image/avif" srcset="assets/fotos/f-02-1-480.avif 480w, assets/fotos/f-02-1-800.avif 800w, assets/fotos/f-02-1-1280.avif 1280w, assets/fotos/f-02-1-1448.avif 1448w" sizes="(max-width: 900px) 100vw, 560px">
+        <source type="image/webp" srcset="assets/fotos/f-02-1-480.webp 480w, assets/fotos/f-02-1-800.webp 800w, assets/fotos/f-02-1-1280.webp 1280w, assets/fotos/f-02-1-1448.webp 1448w" sizes="(max-width: 900px) 100vw, 560px">
+        <img src="assets/fotos/f-02-1-800.jpg" alt="Técnico revisando el motor de una Toyota Hilux en el taller" width="800" height="600" loading="lazy" decoding="async">
+      </picture>
 
       <div class="how-steps fade-in delay-1">
 
@@ -453,10 +454,11 @@
         </ul>
       </div>
 
-      <!-- TODO_IMAGEN: F-03 -->
-      <div class="img-slot fade-in delay-1" data-slot="F-03" style="aspect-ratio: 3/2">
-        <span>Foto pendiente · F-03</span>
-      </div>
+      <picture class="foto fade-in delay-1" style="aspect-ratio: 4/5">
+        <source type="image/avif" srcset="assets/fotos/f-03-1-480.avif 480w, assets/fotos/f-03-1-800.avif 800w, assets/fotos/f-03-1-1122.avif 1122w" sizes="(max-width: 900px) 100vw, 560px">
+        <source type="image/webp" srcset="assets/fotos/f-03-1-480.webp 480w, assets/fotos/f-03-1-800.webp 800w, assets/fotos/f-03-1-1122.webp 1122w" sizes="(max-width: 900px) 100vw, 560px">
+        <img src="assets/fotos/f-03-1-800.jpg" alt="Código QR de la libreta digital pegado en el parasol de un vehículo, y una libreta de ejemplo con el historial de servicios" width="800" height="1000" loading="lazy" decoding="async">
+      </picture>
 
     </div>
   </div>
@@ -470,10 +472,11 @@
     </div>
     <div class="parts-grid">
 
-      <!-- TODO_IMAGEN: F-04 -->
-      <div class="img-slot fade-in" data-slot="F-04" style="aspect-ratio: 3/2">
-        <span>Foto pendiente · F-04</span>
-      </div>
+      <picture class="foto fade-in" style="aspect-ratio: 3/2">
+        <source type="image/avif" srcset="assets/fotos/f-04-1-480.avif 480w, assets/fotos/f-04-1-800.avif 800w, assets/fotos/f-04-1-1280.avif 1280w, assets/fotos/f-04-1-1448.avif 1448w" sizes="(max-width: 900px) 100vw, 560px">
+        <source type="image/webp" srcset="assets/fotos/f-04-1-480.webp 480w, assets/fotos/f-04-1-800.webp 800w, assets/fotos/f-04-1-1280.webp 1280w, assets/fotos/f-04-1-1448.webp 1448w" sizes="(max-width: 900px) 100vw, 560px">
+        <img src="assets/fotos/f-04-1-800.jpg" alt="Vehículos en los elevadores del taller" width="800" height="600" loading="lazy" decoding="async">
+      </picture>
 
       <div class="parts-text fade-in delay-1">
         <p>Tenemos casa de repuestos propia, en el mismo lugar que el taller. 3 de cada 4 trabajos del último año se hicieron con repuestos de nuestro stock.</p>

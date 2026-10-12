@@ -96,10 +96,11 @@
       <p>Abierta al público: también vendemos repuestos para que los lleves.</p>
     </div>
     <div class="pagina-hero-foto">
-      <!-- TODO_IMAGEN: F-04 -->
-      <div class="img-slot" data-slot="F-04" style="aspect-ratio: 3/2">
-        <span>Foto pendiente · F-04</span>
-      </div>
+      <picture class="foto" style="aspect-ratio: 3/2">
+        <source type="image/avif" srcset="assets/fotos/f-04-1-480.avif 480w, assets/fotos/f-04-1-800.avif 800w, assets/fotos/f-04-1-1280.avif 1280w, assets/fotos/f-04-1-1448.avif 1448w" sizes="(max-width: 900px) 100vw, 540px">
+        <source type="image/webp" srcset="assets/fotos/f-04-1-480.webp 480w, assets/fotos/f-04-1-800.webp 800w, assets/fotos/f-04-1-1280.webp 1280w, assets/fotos/f-04-1-1448.webp 1448w" sizes="(max-width: 900px) 100vw, 540px">
+        <img src="assets/fotos/f-04-1-800.jpg" alt="Vehículos en los elevadores del taller" width="800" height="600" decoding="async">
+      </picture>
     </div>
   </div>
 </section>

@@ -60,6 +60,8 @@ referencia por referencia, está en `docs/planes/m3-informe.md`.
   versiones de la foto actual.
 - **Nota (2026-09-28):** sigue abierta. Ramiro la repasó al responder el
   resto de las preguntas de M3 y confirmó que depende de la foto F-01.
+- **Nota (2026-10-12):** F-01 llegó y el inicio ya la usa (P-075). Queda
+  borrar las versiones de la foto anterior: se le preguntó a Ramiro en P-078.
 
 ---
 
@@ -81,6 +83,33 @@ referencia por referencia, está en `docs/planes/m3-informe.md`.
   Hoy en el repositorio no hay ninguno: el censo da 21 binarios, los 21
   cubiertos por la lista.
 - **Qué hice mientras tanto:** **nada.** La lista es la que dictó Ramiro.
+
+---
+
+### P-078 — Lo que queda de las fotos de P-075, para Ramiro
+- **Estado:** abierta
+- **Bloquea:** el punto 1 bloquea la publicación (M5), igual que P-007.
+- **Qué falta:**
+  1. ¿Se pueden borrar los 7 archivos `public/assets/hero-bg-*` (768, 1280
+     y 1920 en AVIF y WebP, y 1280 en JPG)? Son la foto del inicio con
+     patente y cara (P-007). Ya no los usa ninguna página, pero si se sube
+     `public/` tal cual, se publican.
+  2. F-04 muestra el taller con los elevadores, no las estanterías de
+     repuestos que pedía el brief, y va en las dos secciones de repuestos.
+     ¿Queda así o se busca otra foto?
+  3. Las cinco fotos llegaron como copias de unos 1400 px (el brief pide
+     2400, 2000 o 1600 según el hueco). ¿Se pueden conseguir los originales
+     del celular, como en F-07?
+  4. En F-04 se ve el número "110" en la luneta de la camioneta cuyo logo se
+     tapó. ¿Puede identificar al cliente? Si sí, se tapa también.
+  5. Los cuatro textos alternativos de las fotos (P-075, decisión 4).
+  6. F-03: si el QR del parasol se puede escanear, ¿abre una libreta de
+     prueba o la de un cliente real? ¿Y la foto del parasol es de un
+     vehículo del taller? Con herramientas no se pudo comprobar ninguna de
+     las dos cosas.
+- **Contexto:** P-075; `docs/revisiones/fotos-r1.md`.
+- **Qué hice mientras tanto:** nada en los puntos 1 a 6: se publican así
+  hasta que Ramiro responda.
 
 ---
 
@@ -2639,3 +2668,56 @@ referencia por referencia, está en `docs/planes/m3-informe.md`.
 - **Verificado:** con Puppeteer, clic en Inicio, Servicios, Reseñas,
   Contacto, Flotas y Repuestos desde las dos páginas: 12 de 12 llegan a
   destino, tanto con `file://` como con `http://localhost:3000`.
+
+---
+
+### P-075 — Fotos F-01, F-02, F-03, F-04 y F-08
+- **Estado:** respondida (lo que queda para Ramiro está en P-078)
+- **Bloquea:** no bloquea.
+- **Pedido de Ramiro (2026-10-12):** "Ya están las fotos necesarias con sus
+  nombres en una nueva carpeta llamada 'fotos'". Carpeta `Fotos/` en la raíz
+  del proyecto: F-01.jpeg, F-02.jpeg, F-03.svg, F-04.jfif, F-08.jfif. Se
+  copiaron a `assets-src/fotos/f-0N-original-1.*`; la carpeta `Fotos/` no se
+  tocó ni se commitea.
+- **Qué se hizo:** `tools/optimizar-imagenes.mjs` genera AVIF, WebP y JPG en
+  480, 800, 1280 px y el ancho del original (sin agrandar). Cada foto va en
+  su hueco: F-01 en el fondo del inicio; F-02 en "Cómo trabajamos"; F-03 en
+  la libreta (home y flotas); F-04 en la casa de repuestos (home) y arriba de
+  repuestos.html; F-08 arriba de flotas.html.
+- **Decisiones propias:**
+  1. **Patentes y logo tapados.** El brief pide patentes fuera de cuadro o
+     tapadas, y §12 de los datos verificados prohíbe logos que identifiquen
+     clientes. Se desenfocaron 8 patentes legibles (F-01: 2; F-04: 4; F-08:
+     2) y el logo de SENASA de la camioneta de F-04, en el archivo publicado
+     (no solo en pantalla). Las zonas están en `TAPAR`, en el script.
+     También se desenfocaron los dos horarios del cartel del frente en F-01
+     ("Lunes a Viernes 7:30 a 18:00 hs" y "8:00 a 18:00 hs"), que no
+     coinciden con el horario verificado (§3: 08:00 – 17:30); las palabras
+     "Repuestos" y "Recepción" siguen legibles. Lo marcó la primera revisión
+     (`docs/revisiones/fotos-r1.md`).
+  2. **F-03 en vertical.** Es una composición de 1122 × 1402 (4:5), no una
+     foto 3:2: se publica entera en 4:5 en vez de recortarla, porque
+     recortada se pierde la hoja de la libreta o el QR.
+  3. **Inicio en escritorio:** F-01 es el frente con el cartel en el centro;
+     con el encuadre anterior el panel azul tapaba el cartel. Desde 901 px la
+     foto ocupa el 60 % derecho del inicio. En celular no cambia nada (la foto
+     ya no se veía detrás del panel). El `sizes` del inicio pasa a
+     `(min-width: 901px) 60vw, 100vw`, para no bajar una foto más grande que
+     el hueco.
+  4. **Textos alternativos** (descriptivos, para lectores de pantalla):
+     F-02 "Técnico revisando el motor de una Toyota Hilux en el taller";
+     F-03 "Código QR de la libreta digital pegado en el parasol de un
+     vehículo, y una libreta de ejemplo con el historial de servicios";
+     F-04 "Vehículos en los elevadores del taller"; F-08 "Camionetas y autos
+     en el taller, vistos desde arriba". F-01 sigue decorativa (`alt=""`).
+     Son texto nuevo: quedan para que Ramiro los vea.
+- **Verificado:** 0 desbordes de 320 a 1920 px de a 1 px en las tres
+  páginas, con menú cerrado y abierto. Peso de la home después del cambio
+  de `sizes` (medido por el revisor): 317 KB en celular, 362 KB en celular
+  de densidad 3 y 403 KB a 1440 px. Las salidas de F-07 no
+  cambiaron (mismo hash md5 antes y después de regenerar).
+- **Revisión:** primera vuelta RECHAZADA (`docs/revisiones/fotos-r1.md`) por
+  el horario legible en el cartel de F-01; corregido como se dice arriba.
+  Segunda vuelta APROBADO CON OBSERVACIONES (`docs/revisiones/fotos-r2.md`):
+  la zona del horario de "Repuestos" cortaba la base de la palabra; se
+  corrió hacia abajo ([772, 685, 62, 11]) y las dos palabras quedan enteras.

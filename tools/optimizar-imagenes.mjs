@@ -71,7 +71,10 @@ await generar(FAVICON, path.join(PUBLIC, 'apple-touch-icon.png'),
 // minúsculas (CLAUDE.md §3), aunque el id del brief sea "F-07" (P-071).
 // Solo se publican las fotos que usa alguna página: la 2 (junto al mapa de
 // contacto) y la 4 (el fondo difuminado del cierre).
-const PUBLICADAS = ['f-07-2', 'f-07-4'];
+// F-01, F-02, F-03, F-04 y F-08 llegaron el 2026-10-12 (P-075), también como
+// copias de unos 1400 px: además de 480, 800 y 1280 se publica el ancho del
+// original, sin agrandarlo.
+const PUBLICADAS = ['f-01-1', 'f-02-1', 'f-03-1', 'f-04-1', 'f-07-2', 'f-07-4', 'f-08-1'];
 const FOTOS = path.join(SRC, 'fotos');
 const SALIDA_FOTOS = path.join(ASSETS, 'fotos');
 fs.mkdirSync(SALIDA_FOTOS, { recursive: true });
@@ -80,13 +83,39 @@ const FORMATOS_FOTO = [
   { ext: 'webp', aplicar: s => s.webp({ quality: 75 }) },
   { ext: 'jpg', aplicar: s => s.jpeg({ quality: 80, mozjpeg: true }) },
 ];
-for (const f of fs.readdirSync(FOTOS).filter(f => /-original-\d+\.jpg$/.test(f)).sort()) {
-  const id = f.replace('-original', '').replace('.jpg', '');
+// Zonas que se desenfocan antes de publicar, en píxeles del original,
+// [x, y, ancho, alto]: patentes legibles y el logo de una empresa cliente
+// (brief, F-02 y F-08; datos verificados §12), y en F-01 los dos horarios
+// del cartel del frente, que no coinciden con el verificado (§3; P-075).
+// Así el archivo publicado ya sale tapado, no solo lo que se ve en pantalla.
+const TAPAR = {
+  'f-01-1': [[765, 975, 40, 27], [895, 852, 37, 24], [772, 685, 62, 11], [842, 673, 86, 11]],
+  'f-04-1': [[780, 648, 35, 24], [1025, 628, 60, 34], [608, 862, 57, 30], [725, 789, 25, 19], [550, 814, 85, 28]],
+  'f-08-1': [[378, 1048, 122, 38], [1370, 568, 40, 32]],
+};
+// Devuelve el original ya girado y tapado, sin pérdida (PNG en memoria).
+// F-03 es una composición en SVG (foto del QR y hoja de la libreta): se
+// rasteriza al tamaño de sus imágenes internas, 1122 px de ancho.
+async function original(f, id) {
+  const entrada = path.join(FOTOS, f);
+  let buf = f.endsWith('.svg')
+    ? await sharp(entrada, { density: 72 }).png().toBuffer()
+    : await sharp(entrada).rotate().png().toBuffer();
+  for (const [left, top, width, height] of TAPAR[id] || []) {
+    const tapa = await sharp(buf).extract({ left, top, width, height }).blur(12).toBuffer();
+    buf = await sharp(buf).composite([{ input: tapa, left, top }]).png().toBuffer();
+  }
+  return buf;
+}
+for (const f of fs.readdirSync(FOTOS).filter(f => /-original-\d+\.(jpg|svg)$/.test(f)).sort()) {
+  const id = f.replace('-original', '').replace(/\.(jpg|svg)$/, '');
   if (!PUBLICADAS.includes(id)) continue;
-  for (const ancho of [480, 800, 1280]) {
+  const buf = await original(f, id);
+  const { width: anchoOriginal } = await sharp(buf).metadata();
+  for (const ancho of [...[480, 800, 1280].filter(a => a < anchoOriginal), anchoOriginal]) {
     for (const fmt of FORMATOS_FOTO) {
-      await generar(path.join(FOTOS, f), path.join(SALIDA_FOTOS, `${id}-${ancho}.${fmt.ext}`),
-        s => fmt.aplicar(s.rotate().resize({ width: ancho, withoutEnlargement: true })));
+      await generar(buf, path.join(SALIDA_FOTOS, `${id}-${ancho}.${fmt.ext}`),
+        s => fmt.aplicar(s.resize({ width: ancho, withoutEnlargement: true })));
     }
   }
 }

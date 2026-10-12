@@ -211,14 +211,14 @@ un mismo cliente, así que es cuestión de estar atento el día que pase.
 
 | Id | Prioridad | Estado |
 |---|---|---|
-| F-01 | requisito | pendiente · bloquea M5 |
-| F-02 | 1 | pendiente |
-| F-03 | 1 | pendiente |
-| F-04 | 2 | pendiente |
+| F-01 | requisito | entregada 2026-10-12 (P-075): el frente del taller (no el interior que pedía el brief), 1402 px, con 2 patentes y los 2 horarios del cartel desenfocados (el del cartel no coincide con el verificado). Ya no está en uso la foto bloqueada; sus archivos `assets/hero-bg-*` siguen en `public/` hasta que Ramiro autorice borrarlos |
+| F-02 | 1 | entregada 2026-10-12 (P-075): Hilux con el capó abierto y un técnico de espaldas, sin elevador; 1448 px |
+| F-03 | 1 | entregada 2026-10-12 (P-075): composición vertical (QR en el parasol y libreta de ejemplo con datos ficticios), 1122 px; se publica en 4:5 |
+| F-04 | 2 | entregada 2026-10-12 (P-075): vehículos en los elevadores (no las estanterías de repuestos que pedía el brief), 1448 px, con 4 patentes y un logo de empresa desenfocados |
 | F-05 | 2 | pendiente |
 | F-06 | 2 | pendiente |
 | F-07 | 2 | entregada 2026-10-07: 4 fotos, copias de WhatsApp de 1280 px (debajo del mínimo; se usan por indicación de Ramiro, P-063). Pedir los originales |
-| F-08 | 2 | pendiente |
+| F-08 | 2 | entregada 2026-10-12 (P-075): el taller visto desde arriba con muchos vehículos, 1448 px, con 2 patentes desenfocadas |
 | F-09 | 3 | pendiente |
 | F-10 | resuelta | resuelta: placa institucional (`og-placa.jpg`) |
 | R-hilux-filtros | 2 | pendiente |
