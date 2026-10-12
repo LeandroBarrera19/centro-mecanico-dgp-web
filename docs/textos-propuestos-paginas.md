@@ -54,3 +54,4 @@ la página están adaptados a usted.
 **Casos con sector sin dato:** 3 de los 5 casos tienen el sector como
 `TODO_DATO` en §13. Opciones: publicar solo los 2 que lo tienen, o los 5 sin
 la línea de sector en esos 3.
+*Resuelto el 2026-10-12 (P-076): Ramiro dio los tres sectores que faltaban.*

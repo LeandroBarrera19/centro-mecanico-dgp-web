@@ -271,10 +271,14 @@ Reglas de redacción:
 | # | Sector (genérico) | Vehículos atendidos | Marca dominante | Cliente desde | Órdenes de trabajo |
 |---|---|---|---|---|---|
 | 1 | Agroindustria | 30 | Toyota (29 de 30), modelo predominante Hilux 4x4 doble cabina 2.4 TDI | 2022 | 174 |
-| 2 | `TODO_DATO: sector` | 35 | Renault (13), modelo predominante Kangoo II Express | 2022 | 226 |
-| 3 | `TODO_DATO: sector` | 77 | Toyota (43), sobre 13 marcas distintas | 2022 | 254 |
-| 4 | `TODO_DATO: sector` | 16 | Toyota (10) | 2022 | 82 |
+| 2 | Alimenticia | 35 | Renault (13), modelo predominante Kangoo II Express | 2022 | 226 |
+| 3 | Aceitera | 77 | Toyota (43), sobre 13 marcas distintas | 2022 | 254 |
+| 4 | Manicera | 16 | Toyota (10) | 2022 | 82 |
 | 5 | Agropecuaria | 14 | Toyota (10) | 2023 | 59 |
+
+Sectores de los casos 2, 3 y 4 declarados por Ramiro el 2026-10-12: "el caso
+de las Renault, es una empresa alimenticia y la más grande de las otras dos,
+empresa aceitera, y la última empresa manicera" (P-076).
 
 ## 14. Libreta del vehículo (activo diferencial)
 

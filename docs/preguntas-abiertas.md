@@ -2465,6 +2465,8 @@ referencia por referencia, está en `docs/planes/m3-informe.md`.
 ### P-068 — Textos de las páginas de Repuestos y Flotas
 - **Estado:** respondida (salvo los sectores de 3 casos)
 - **Bloquea:** solo la línea de sector de los casos 2, 3 y 4 de flotas.
+- **Nota (2026-10-12):** los sectores que faltaban llegaron y se publicaron
+  (P-076). Ya no bloquea nada.
 - **Respuesta (2026-10-07):**
   - El borrador de `docs/textos-propuestos-paginas.md` queda **aprobado tal
     cual**.
@@ -2721,3 +2723,26 @@ referencia por referencia, está en `docs/planes/m3-informe.md`.
   Segunda vuelta APROBADO CON OBSERVACIONES (`docs/revisiones/fotos-r2.md`):
   la zona del horario de "Repuestos" cortaba la base de la palabra; se
   corrió hacia abajo ([772, 685, 62, 11]) y las dos palabras quedan enteras.
+
+---
+
+### P-076 — Sectores de los casos 2, 3 y 4 de flotas
+- **Estado:** respondida
+- **Bloquea:** no bloquea.
+- **Respuesta (2026-10-12), de Ramiro:** "el caso de las Renault, es una
+  empresa alimenticia y la más grande de las otras dos, empresa aceitera, y
+  la última empresa manicera". Caso 2 (35 vehículos, Renault) → alimenticia;
+  caso 3 (77 vehículos, el más grande de los dos restantes) → aceitera;
+  caso 4 (16 vehículos) → manicera.
+- **Qué se hizo:** se cargaron en `docs/datos-verificados.md` §13, con la cita
+  de Ramiro (diff mostrado antes de commitear), y en `flotas.html` los tres
+  `TODO_DATO` de P-068 pasaron a la etiqueta de sector de cada caso.
+- **Decisión propia (forma):** las etiquetas van como adjetivo, "Alimenticia",
+  "Aceitera" y "Manicera", igual que la del caso 5 ("Agropecuaria"), sin la
+  palabra "empresa".
+- **Aviso:** §13 pide sector **genérico**. "Manicera" y "Aceitera" son
+  rubros con pocas empresas en la zona: junto con la cantidad de vehículos
+  (16; 77 sobre 13 marcas) y "cliente desde 2022", podrían alcanzar para
+  reconocer al cliente. Se publicó lo que dijo Ramiro; queda anotado por si
+  prefiere algo más amplio (por ejemplo, "Agroindustria").
+- **Revisión:** APROBADO CON OBSERVACIONES (`docs/revisiones/flotas-sectores-r1.md`).
