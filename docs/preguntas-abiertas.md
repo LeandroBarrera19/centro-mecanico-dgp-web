@@ -2620,3 +2620,22 @@ referencia por referencia, está en `docs/planes/m3-informe.md`.
 - **Revisión, segunda vuelta:** APROBADO CON OBSERVACIONES
   (`docs/revisiones/franja-marcas-r2.md`). Las tres decisiones propias de
   arriba quedan para que Ramiro las vea.
+---
+
+### P-074 — El menú de flotas y repuestos no volvía a la home
+- **Estado:** respondida
+- **Bloquea:** no bloquea.
+- **Pedido de Ramiro (2026-10-12):** "de ninguna de ellas [flotas y
+  repuestos] se puede volver al inicio ni a ningún otro lado usando los
+  botones superiores".
+- **Causa:** los enlaces a la home eran `./#inicio`, `./#servicios`, etc.
+  Con servidor, `./` abre `index.html`; abriendo el archivo con doble clic
+  (`file://`), `./` abre la carpeta y no la página.
+- **Decisión propia (corrección técnica):** en `flotas.html` y
+  `repuestos.html` los 21 enlaces `./#…` de cada página (menú, menú móvil,
+  logo y pie) pasan a `index.html#…`. Funciona igual con servidor y abriendo
+  el archivo. El `canonical` de la home sigue siendo la raíz del dominio,
+  así que `index.html` no compite como URL distinta.
+- **Verificado:** con Puppeteer, clic en Inicio, Servicios, Reseñas,
+  Contacto, Flotas y Repuestos desde las dos páginas: 12 de 12 llegan a
+  destino, tanto con `file://` como con `http://localhost:3000`.
