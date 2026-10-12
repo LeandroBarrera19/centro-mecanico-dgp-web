@@ -184,12 +184,16 @@ mejora clara. **3** = si se puede.
 
 ---
 
-### R-<modelo>-<categoría> · Productos de la casa de repuestos (9 huecos)
+### R-<modelo>-<categoría> · Productos de la casa de repuestos (12 huecos)
 - **Prioridad:** 2
 - **Dónde:** `public/repuestos.html`, deslizante de productos (P-061).
-- **Huecos:** `R-hilux-filtros`, `R-hilux-frenos`, `R-hilux-distribucion`,
-  `R-amarok-filtros`, `R-amarok-frenos`, `R-amarok-distribucion`,
-  `R-ranger-filtros`, `R-ranger-frenos`, `R-ranger-distribucion`.
+- **Huecos:** `R-hilux-filtros`, `R-hilux-frenos`, `R-hilux-suspension`,
+  `R-hilux-distribucion`, `R-amarok-filtros`, `R-amarok-frenos`,
+  `R-amarok-suspension`, `R-amarok-distribucion`, `R-ranger-filtros`,
+  `R-ranger-frenos`, `R-ranger-suspension`, `R-ranger-distribucion`.
+  Frenos y suspensión pasaron a ser rubros separados el 2026-10-12 (P-077):
+  se sumaron los tres huecos de suspensión. Mientras falta la foto, el hueco
+  muestra "Próximamente" en diagonal.
 - **Proporción:** 4:3 horizontal · mínimo 1600 px de ancho.
 - **Qué muestra:** el repuesto real del stock, de la categoría y el modelo
   del hueco. Fondo liso y ordenado.
@@ -223,12 +227,15 @@ un mismo cliente, así que es cuestión de estar atento el día que pase.
 | F-10 | resuelta | resuelta: placa institucional (`og-placa.jpg`) |
 | R-hilux-filtros | 2 | pendiente |
 | R-hilux-frenos | 2 | pendiente |
+| R-hilux-suspension | 2 | pendiente |
 | R-hilux-distribucion | 2 | pendiente |
 | R-amarok-filtros | 2 | pendiente |
 | R-amarok-frenos | 2 | pendiente |
+| R-amarok-suspension | 2 | pendiente |
 | R-amarok-distribucion | 2 | pendiente |
 | R-ranger-filtros | 2 | pendiente |
 | R-ranger-frenos | 2 | pendiente |
+| R-ranger-suspension | 2 | pendiente |
 | R-ranger-distribucion | 2 | pendiente |
 
 El agente actualiza esta tabla cuando un hueco se llena.

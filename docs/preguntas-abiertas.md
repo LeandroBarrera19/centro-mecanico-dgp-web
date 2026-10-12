@@ -2746,3 +2746,49 @@ referencia por referencia, está en `docs/planes/m3-informe.md`.
   reconocer al cliente. Se publicó lo que dijo Ramiro; queda anotado por si
   prefiere algo más amplio (por ejemplo, "Agroindustria").
 - **Revisión:** APROBADO CON OBSERVACIONES (`docs/revisiones/flotas-sectores-r1.md`).
+
+---
+
+### P-077 — Repuestos: "Próximamente" en las fotos de productos, y frenos y suspensión como rubros separados
+- **Estado:** respondida
+- **Bloquea:** no bloquea.
+- **Pedido de Ramiro (2026-10-12):** "haz que donde van las imágenes de los
+  repuestos en el apartado de 'PRODUCTOS DESTACADOS' diga 'PROXIMAMENTE' en
+  diagonal y frenos y suspensión son rubros por separado".
+- **Qué se hizo:**
+  1. En los huecos de foto de los productos, el rótulo "Foto pendiente ·
+     R-…" pasó a "Próximamente" (con tilde, en mayúsculas por CSS), en una
+     faja azul cruzada en diagonal. Los `TODO_IMAGEN` y `TODO_DATO` de cada
+     producto siguen en el código.
+  2. "Frenos & Suspensión" se separó en dos rubros, "Frenos" y "Suspensión",
+     en las categorías de `repuestos.html` (ahora 01 a 04) y en la pestaña
+     Repuestos de los servicios de la home. Las descripciones son las dos
+     mitades de la que ya estaba aprobada: "Pastillas, discos, campanas y
+     cintas de freno." y "Amortiguadores y piezas de recambio de tren
+     delantero y trasero." No se escribió texto nuevo.
+  3. En "Productos destacados", cada modelo (Hilux, Amarok, Ranger) pasó de
+     3 a 4 productos: el de "Frenos & Suspensión" se dividió en "Frenos ·
+     <modelo>" y "Suspensión · <modelo>". Son 12 productos (01 / 12 a
+     12 / 12), con 3 huecos de foto nuevos, `R-<modelo>-suspension`,
+     agregados al brief fotográfico.
+- **Decisiones propias (forma):**
+  1. Sumar los 3 productos de suspensión, para que la lista siga siendo
+     "cada rubro × cada modelo" como la armó P-068. Si Ramiro prefiere solo
+     renombrar los de frenos, se sacan.
+  2. Ícono nuevo para Suspensión (un resorte), dibujado en el mismo estilo de
+     línea que los demás.
+  3. Las categorías van en 4 columnas en escritorio, de a 2 entre 901 y
+     1200 px y en 1 columna en celular. En la pestaña de la home quedan 3 + 1,
+     como la pestaña Mecánica, que ya tiene 5.
+- **Revisión:** APROBADO CON OBSERVACIONES (`docs/revisiones/repuestos-p077-r1.md`).
+  Notas que deja:
+  - `tools/auditar-contraste.mjs` marca "Próximamente" en 1,18:1: es un falso
+    positivo, porque mide el rectángulo que envuelve al texto girado y ahí
+    entran las rayas grises. Medido por píxel, las letras caen todas sobre
+    el azul #124B8F: 8,65:1.
+  - El brief dice "no se publica con huecos visibles". "Próximamente" lo
+    pidió Ramiro, así que se entiende que acepta publicar esos huecos así;
+    si no, hay que decidir antes de M5.
+  - `docs/textos-propuestos-paginas.md` y `docs/spec-m3-home.md` siguen
+    hablando de 3 rubros / 9 productos / "Frenos & Suspensión": son
+    documentos de etapas anteriores y no se reescriben.

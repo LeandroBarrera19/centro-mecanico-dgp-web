@@ -1546,8 +1546,12 @@ footer { background: var(--azul-dark); padding: 60px 0 0; position: relative; ov
 .categorias.con-remate { --remate: var(--gris-bg); }
 .categorias-grid {
   display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
+  grid-template-columns: repeat(4, minmax(0, 1fr));
   gap: 20px;
+}
+/* Cuatro rubros (P-077): en anchos medios van de a dos. */
+@media (max-width: 1200px) {
+  .categorias-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
 }
 .categoria {
   position: relative;
@@ -1631,7 +1635,21 @@ footer { background: var(--azul-dark); padding: 60px 0 0; position: relative; ov
   padding: 18px 18px 22px;
   clip-path: polygon(0 0, 100% 0, 100% calc(100% - 22px), calc(100% - 22px) 100%, 0 100%);
 }
-.producto .img-slot { margin-bottom: 6px; padding: 10px; }
+.producto .img-slot { margin-bottom: 6px; padding: 10px; overflow: hidden; }
+/* Hueco de la foto del producto mientras no llega (P-077): "Próximamente"
+   cruzado en diagonal, como una faja. */
+.producto .img-slot .proximamente {
+  display: block;
+  flex: 0 0 140%;
+  padding: 8px 0;
+  transform: rotate(-24deg);
+  background: var(--azul);
+  color: var(--blanco);
+  font-size: 0.95rem;
+  font-weight: 800;
+  letter-spacing: .22em;
+  text-align: center;
+}
 .producto-cat {
   font-family: 'Montserrat', sans-serif;
   font-weight: 700;
