@@ -2792,3 +2792,25 @@ referencia por referencia, está en `docs/planes/m3-informe.md`.
   - `docs/textos-propuestos-paginas.md` y `docs/spec-m3-home.md` siguen
     hablando de 3 rubros / 9 productos / "Frenos & Suspensión": son
     documentos de etapas anteriores y no se reescriben.
+
+---
+
+### P-079 — Localidades del mapa: solo las de 80 km
+- **Estado:** respondida
+- **Bloquea:** no bloquea.
+- **Pregunta (2026-10-08):** si se exportaban de Anubis todas las
+  localidades con clientes y órdenes, para sumar las de fuera del radio y
+  dimensionar los puntos del mapa por cantidad de clientes.
+- **Respuesta (2026-10-12), de Ramiro:** pidió hacer la consulta con
+  /anubis-connect y después: "para lo de las ubicaciones, solo dejá los que
+  estén a 80 km a la redonda de Villa María".
+- **Qué se hizo:** consulta de solo lectura a Anubis (OT no canceladas,
+  agrupadas por la localidad del cliente): 138 localidades, 2941 clientes,
+  12220 órdenes. Con la respuesta de Ramiro, el mapa queda como está: las 42
+  localidades de §11, todas dentro de los 80 km. No se agregó ninguna
+  localidad ni se cambió el sitio. El export quedó fuera del repositorio.
+- **Aviso:** en Anubis, varias localidades tienen la provincia mal cargada
+  (por ejemplo, Chilibroste figura en Catamarca y Villa Nueva sin
+  provincia), y 66 clientes con órdenes no tienen localidad. Los conteos por
+  localidad de esta consulta no coinciden con la tabla de §11 (del
+  2026-09-21, con otro criterio): §11 no se tocó.
