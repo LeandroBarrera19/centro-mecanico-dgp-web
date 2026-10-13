@@ -75,6 +75,36 @@ referencia por referencia, está en `docs/planes/m3-informe.md`.
 
 ---
 
+### P-084 — Antes de subir el sitio a internet (control final del 2026-10-13)
+- **Estado:** abierta
+- **Bloquea:** el punto 1 bloquea que el sitio funcione en su dominio; el
+  resto no bloquea, pero conviene decidirlo antes de publicar.
+- **Pedido de Ramiro (2026-10-13):** "quiero que quede la ultima version
+  lista para subir a internet".
+- **Qué falta:**
+  1. **Dominio.** `centromecanicodgp.com.ar` todavía no existe (nslookup:
+     "Non-existent domain"). El sitio ya lo usa en canonical, sitemap,
+     imagen para compartir y JSON-LD (§4). Hay que registrarlo y apuntarlo
+     al hosting antes de publicar en él.
+  2. **Hosting** (configuración, le toca a Ramiro): no hay página 404 ni
+     reglas de redirección. En Cloudflare Pages, /flotas.html podría
+     redirigir a /flotas y una dirección inexistente mostraría la portada.
+     Conviene comprobarlo en el primer despliegue.
+  3. **Foto F-07-2** (frente, junto al mapa de contacto): en el tamaño
+     grande se lee el cartel con "Lun a Vie 08:00-17:00" y otro teléfono.
+     En F-01 ese cartel se desenfocó. ¿Se desenfoca también acá?
+  4. **"Próximamente" en los 12 productos de repuestos:** el brief dice que
+     no se publica con huecos visibles. ¿Se publica así?
+  5. **18 JPG sin uso** en `public/assets/fotos/` (2 MB), tamaños que genera
+     el script y ninguna página usa. ¿Se borran?
+  6. **Textos alternativos de las fotos** (P-078, punto 5), sin aprobar.
+- **Verificado en el control final** (`docs/revisiones/publicacion-r1.md`):
+  0 enlaces rotos, 108 archivos con 200, 0 errores de JS, un h1 por página,
+  JSON-LD válido sin reseñas, datos visibles iguales a datos-verificados,
+  nada de desarrollo ni fotos bloqueadas en `public/`.
+
+---
+
 ## Respondidas
 
 ### P-049 — La regla de autonomía nueva choca con §9 y con dos viñetas de §7
