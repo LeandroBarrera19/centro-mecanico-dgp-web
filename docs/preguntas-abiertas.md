@@ -41,30 +41,6 @@ referencia por referencia, está en `docs/planes/m3-informe.md`.
 
 ## Abiertas
 
-### P-007 — BLOQUEANTE DE M5: la foto actual del hero no se puede publicar
-- **Estado:** abierta
-- **Bloquea:** **M5 (publicación).** El sitio no se publica hasta que F-01
-  reemplace la foto actual del hero.
-- **Qué falta:** la foto F-01 (`docs/brief-fotografico.md`), que pasó de
-  prioridad 1 a requisito.
-- **Contexto:** la foto provisoria del hero (`assets-src/hero-bg-original.png`
-  y sus versiones `public/assets/hero-bg-*.avif`, `.webp` y `.jpg`) muestra la
-  patente "AF 456 JL" legible y la cara del conductor. En pantalla quedan bajo
-  la capa oscura, pero cada archivo se sirve limpio y cualquiera puede
-  abrirlo. Decisión del usuario del 2026-09-18, al responder P-003.
-- **Qué hice mientras tanto:** la imagen para compartir ya no usa esta foto
-  (P-003 a, commit `a3e29bd`). El hero la sigue usando hasta que llegue F-01:
-  M2b no crea huecos de imagen, y no hay otra foto del taller en
-  `public/assets/`. Cuando llegue F-01, se reemplaza el original en
-  `assets-src/`, se corre `node tools/optimizar-imagenes.mjs` y se borran las
-  versiones de la foto actual.
-- **Nota (2026-09-28):** sigue abierta. Ramiro la repasó al responder el
-  resto de las preguntas de M3 y confirmó que depende de la foto F-01.
-- **Nota (2026-10-12):** F-01 llegó y el inicio ya la usa (P-075). Queda
-  borrar las versiones de la foto anterior: se le preguntó a Ramiro en P-078.
-
----
-
 ### P-053 — La lista de binarios del `.gitattributes` cubre seis extensiones, no las vecinas
 - **Estado:** abierta
 - **Bloquea:** no bloquea. Hoy no hay ningún archivo afectado.
@@ -88,7 +64,7 @@ referencia por referencia, está en `docs/planes/m3-informe.md`.
 
 ### P-078 — Lo que queda de las fotos de P-075, para Ramiro
 - **Estado:** abierta
-- **Bloquea:** el punto 1 bloquea la publicación (M5), igual que P-007.
+- **Bloquea:** no bloquea (el punto 1, que bloqueaba M5, ya se resolvió).
 - **Qué falta:**
   1. ¿Se pueden borrar los 7 archivos `public/assets/hero-bg-*` (768, 1280
      y 1920 en AVIF y WebP, y 1280 en JPG)? Son la foto del inicio con
@@ -108,8 +84,15 @@ referencia por referencia, está en `docs/planes/m3-informe.md`.
      vehículo del taller? Con herramientas no se pudo comprobar ninguna de
      las dos cosas.
 - **Contexto:** P-075; `docs/revisiones/fotos-r1.md`.
-- **Qué hice mientras tanto:** nada en los puntos 1 a 6: se publican así
-  hasta que Ramiro responda.
+- **Respuestas (Ramiro, 2026-10-12):**
+  1. "sí, borralos": borrados (ver P-007).
+  2. "queda así": F-04 sigue en las dos secciones de repuestos.
+  3. "dejalas así": se publican las copias de unos 1400 px.
+  4. (punto 6) "es todo ilustrativo": el QR y la foto del parasol son de
+     ejemplo, no de un cliente.
+  5. (punto 4) "no": el "110" no se tapa.
+- **Sigue abierto:** solo el punto 5, los textos alternativos (no se le
+  preguntaron en esta vuelta).
 
 ---
 
@@ -2814,3 +2797,33 @@ referencia por referencia, está en `docs/planes/m3-informe.md`.
   provincia), y 66 clientes con órdenes no tienen localidad. Los conteos por
   localidad de esta consulta no coinciden con la tabla de §11 (del
   2026-09-21, con otro criterio): §11 no se tocó.
+
+---
+
+### P-007 — BLOQUEANTE DE M5: la foto actual del hero no se puede publicar
+- **Estado:** respondida
+- **Bloquea:** **M5 (publicación).** El sitio no se publica hasta que F-01
+  reemplace la foto actual del hero.
+  Ya no bloquea desde el 2026-10-12 (ver la respuesta).
+- **Qué falta:** la foto F-01 (`docs/brief-fotografico.md`), que pasó de
+  prioridad 1 a requisito.
+- **Contexto:** la foto provisoria del hero (`assets-src/hero-bg-original.png`
+  y sus versiones `public/assets/hero-bg-*.avif`, `.webp` y `.jpg`) muestra la
+  patente "AF 456 JL" legible y la cara del conductor. En pantalla quedan bajo
+  la capa oscura, pero cada archivo se sirve limpio y cualquiera puede
+  abrirlo. Decisión del usuario del 2026-09-18, al responder P-003.
+- **Qué hice mientras tanto:** la imagen para compartir ya no usa esta foto
+  (P-003 a, commit `a3e29bd`). El hero la sigue usando hasta que llegue F-01:
+  M2b no crea huecos de imagen, y no hay otra foto del taller en
+  `public/assets/`. Cuando llegue F-01, se reemplaza el original en
+  `assets-src/`, se corre `node tools/optimizar-imagenes.mjs` y se borran las
+  versiones de la foto actual.
+- **Nota (2026-09-28):** sigue abierta. Ramiro la repasó al responder el
+  resto de las preguntas de M3 y confirmó que depende de la foto F-01.
+- **Nota (2026-10-12):** F-01 llegó y el inicio ya la usa (P-075). Queda
+  borrar las versiones de la foto anterior: se le preguntó a Ramiro en P-078.
+- **Respuesta (Ramiro, 2026-10-12):** "sí, borralos". Se borraron los 7
+  archivos `public/assets/hero-bg-*` y se sacó de
+  `tools/optimizar-imagenes.mjs` el bloque que los generaba, para que no
+  vuelvan a aparecer al correrlo. El original `assets-src/hero-bg-original.png`
+  queda (no se publica). Ya no bloquea M5.

@@ -215,7 +215,7 @@ un mismo cliente, así que es cuestión de estar atento el día que pase.
 
 | Id | Prioridad | Estado |
 |---|---|---|
-| F-01 | requisito | entregada 2026-10-12 (P-075): el frente del taller (no el interior que pedía el brief), 1402 px, con 2 patentes y los 2 horarios del cartel desenfocados (el del cartel no coincide con el verificado). Ya no está en uso la foto bloqueada; sus archivos `assets/hero-bg-*` siguen en `public/` hasta que Ramiro autorice borrarlos |
+| F-01 | requisito | entregada 2026-10-12 (P-075): el frente del taller (no el interior que pedía el brief), 1402 px, con 2 patentes y los 2 horarios del cartel desenfocados (el del cartel no coincide con el verificado). La foto bloqueada ya no está en uso y sus archivos `assets/hero-bg-*` se borraron (Ramiro, 2026-10-12; P-007) |
 | F-02 | 1 | entregada 2026-10-12 (P-075): Hilux con el capó abierto y un técnico de espaldas, sin elevador; 1448 px |
 | F-03 | 1 | entregada 2026-10-12 (P-075): composición vertical (QR en el parasol y libreta de ejemplo con datos ficticios), 1122 px; se publica en 4:5 |
 | F-04 | 2 | entregada 2026-10-12 (P-075): vehículos en los elevadores (no las estanterías de repuestos que pedía el brief), 1448 px, con 4 patentes y un logo de empresa desenfocados |

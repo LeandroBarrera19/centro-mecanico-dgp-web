@@ -19,21 +19,6 @@ async function generar(entrada, salida, transformar) {
   console.log(`${kb(fs.statSync(salida).size)}  ${info.width}×${info.height}  ${path.relative(RAIZ, salida)}`);
 }
 
-// ── Hero ─────────────────────────────────────────────────────────────────────
-const HERO = path.join(SRC, 'hero-bg-original.png');
-const FORMATOS_HERO = [
-  { ext: 'avif', anchos: [768, 1280, 1920], aplicar: s => s.avif({ quality: 50 }) },
-  { ext: 'webp', anchos: [768, 1280, 1920], aplicar: s => s.webp({ quality: 75 }) },
-  { ext: 'jpg', anchos: [1280], aplicar: s => s.jpeg({ quality: 80 }) },
-];
-
-for (const f of FORMATOS_HERO) {
-  for (const ancho of f.anchos) {
-    await generar(HERO, path.join(ASSETS, `hero-bg-${ancho}.${f.ext}`),
-      s => f.aplicar(s.resize({ width: ancho, withoutEnlargement: true })));
-  }
-}
-
 // ── Logo ─────────────────────────────────────────────────────────────────────
 // El de 428 px solo lo usa el "logo" del JSON-LD (Google pide al menos
 // 112×112); va sin pérdida. La página muestra el de 96 px: el doble de los
