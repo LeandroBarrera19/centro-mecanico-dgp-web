@@ -78,7 +78,7 @@ Commit: `Metadatos de la home para el particular`
 | Elemento | Texto |
 |---|---|
 | Etiqueta (arriba del título) | `Especialistas en pick-ups y utilitarios` |
-| `<h1>` | `Taller mecánico en Villa María` |
+| `<h1>` | `Centro Mecánico DGP` y debajo, más chico, `Taller mecánico en Villa María` (cambio pedido por Ramiro el 2026-10-12, P-080; antes era solo `Taller mecánico en Villa María`) |
 | Bajada | `Service, mecánica y diagnóstico para todas las marcas. Especialistas en Toyota, Ford y Volkswagen.` |
 | Botón principal | `Pedir turno por WhatsApp` → `https://wa.me/5493534593187` |
 | Botón secundario | `Ver servicios` → `#servicios` |

@@ -2835,3 +2835,22 @@ referencia por referencia, está en `docs/planes/m3-informe.md`.
   extensiones, así que no cambia ningún archivo existente. `*.jpeg` y
   `*.jfif` cubren los originales que Ramiro dejó en `Fotos/` (sin versionar),
   por si algún día se suben.
+
+---
+
+### P-080 — Título del inicio: "Centro Mecánico DGP" y debajo "Taller mecánico en Villa María"
+- **Estado:** respondida
+- **Bloquea:** no bloquea.
+- **Pedido de Ramiro (2026-10-12):** "en el inicio donde dice 'Taller
+  mecánico en Villa María' quiero que con ese tamaño de titulo diga 'Centro
+  Mecánico DGP' y abajo si diga 'Taller mecánico en Villa María' pero mas
+  pequeño".
+- **Qué se hizo:** el título grande del inicio dice "Centro Mecánico DGP" y
+  debajo, en un tamaño menor (de 18,4 a 28 px según el ancho), "Taller mecánico
+  en Villa María". La tabla de la Tarea 3 de `docs/spec-m3-home.md` se
+  actualizó para que no se vuelva al h1 anterior.
+- **Decisión propia:** las dos líneas quedan dentro del mismo `<h1>`, cada
+  una en su `<span>`. Así la página sigue teniendo un solo h1 (CLAUDE.md §4)
+  y "Taller mecánico en Villa María", que es lo que busca la gente, sigue en
+  el título principal. El `<title>` y las etiquetas para compartir no se
+  tocaron.
