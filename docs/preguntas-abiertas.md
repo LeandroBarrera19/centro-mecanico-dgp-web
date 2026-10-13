@@ -41,27 +41,6 @@ referencia por referencia, está en `docs/planes/m3-informe.md`.
 
 ## Abiertas
 
-### P-053 — La lista de binarios del `.gitattributes` cubre seis extensiones, no las vecinas
-- **Estado:** abierta
-- **Bloquea:** no bloquea. Hoy no hay ningún archivo afectado.
-- **Qué falta:** decidir si se agregan `*.jpeg` y `*.woff`, que son los vecinos
-  directos de dos extensiones que sí están.
-- **Contexto:** Ramiro dictó seis extensiones —`png`, `jpg`, `webp`, `avif`,
-  `woff2`, `ico`— y se pusieron esas seis y nada más: agregar otras habría sido
-  decidir por él. El revisor comprobó con `git check-attr` que quedan **fuera**
-  `*.jpeg`, `*.woff`, `*.ttf`, `*.otf`, `*.pdf`, `*.zip`, `*.gif` y `*.mp4`,
-  que pasarían por `text=auto`.
-- **Por qué el riesgo es acotado, medido en un repositorio de prueba:**
-  `text=auto` detecta un binario por su contenido, no por su nombre. Un `.pdf`
-  con retornos de carro y bytes nulos **fue detectado como binario y sobrevivió
-  intacto**.
-  Solo se corrompería un binario **sin ningún byte nulo en sus primeros 8 kB**.
-  Hoy en el repositorio no hay ninguno: el censo da 21 binarios, los 21
-  cubiertos por la lista.
-- **Qué hice mientras tanto:** **nada.** La lista es la que dictó Ramiro.
-
----
-
 ### P-078 — Lo que queda de las fotos de P-075, para Ramiro
 - **Estado:** abierta
 - **Bloquea:** no bloquea (el punto 1, que bloqueaba M5, ya se resolvió).
@@ -2530,6 +2509,7 @@ referencia por referencia, está en `docs/planes/m3-informe.md`.
      "Productos anteriores" y "Productos siguientes". Los exige CLAUDE.md §6
      (`aria-label` en botones que solo tienen ícono). Decisión propia,
      redacción a revisar por Ramiro.
+     **Respuesta (Ramiro, 2026-10-12):** "queda así".
   3. **Nombres de las fotos en minúsculas** (`f-07-…`). El brief arma el
      nombre con el id ("F-07"), y CLAUDE.md §3 pide minúsculas: gana
      CLAUDE.md. Los ids siguen en mayúscula en el brief y en los marcadores.
@@ -2827,3 +2807,31 @@ referencia por referencia, está en `docs/planes/m3-informe.md`.
   `tools/optimizar-imagenes.mjs` el bloque que los generaba, para que no
   vuelvan a aparecer al correrlo. El original `assets-src/hero-bg-original.png`
   queda (no se publica). Ya no bloquea M5.
+
+---
+
+### P-053 — La lista de binarios del `.gitattributes` cubre seis extensiones, no las vecinas
+- **Estado:** respondida
+- **Bloquea:** no bloquea. Hoy no hay ningún archivo afectado.
+- **Qué falta:** decidir si se agregan `*.jpeg` y `*.woff`, que son los vecinos
+  directos de dos extensiones que sí están.
+- **Contexto:** Ramiro dictó seis extensiones —`png`, `jpg`, `webp`, `avif`,
+  `woff2`, `ico`— y se pusieron esas seis y nada más: agregar otras habría sido
+  decidir por él. El revisor comprobó con `git check-attr` que quedan **fuera**
+  `*.jpeg`, `*.woff`, `*.ttf`, `*.otf`, `*.pdf`, `*.zip`, `*.gif` y `*.mp4`,
+  que pasarían por `text=auto`.
+- **Por qué el riesgo es acotado, medido en un repositorio de prueba:**
+  `text=auto` detecta un binario por su contenido, no por su nombre. Un `.pdf`
+  con retornos de carro y bytes nulos **fue detectado como binario y sobrevivió
+  intacto**.
+  Solo se corrompería un binario **sin ningún byte nulo en sus primeros 8 kB**.
+  Hoy en el repositorio no hay ninguno: el censo da 21 binarios, los 21
+  cubiertos por la lista.
+- **Qué hice mientras tanto:** **nada.** La lista es la que dictó Ramiro.
+- **Respuesta (Ramiro, 2026-10-12):** "decidilo como tema técnico".
+- **Decisión propia:** se agregaron `*.jpeg`, `*.jfif`, `*.gif`, `*.woff`,
+  `*.ttf`, `*.otf`, `*.pdf`, `*.mp4` y `*.zip` como binarios. Las seis que
+  dictó Ramiro siguen igual. Hoy ningún archivo versionado tiene esas
+  extensiones, así que no cambia ningún archivo existente. `*.jpeg` y
+  `*.jfif` cubren los originales que Ramiro dejó en `Fotos/` (sin versionar),
+  por si algún día se suben.

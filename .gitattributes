@@ -15,3 +15,14 @@
 *.avif  binary
 *.woff2 binary
 *.ico   binary
+# Agregadas por P-053 (decisión técnica que Ramiro delegó el 2026-10-12):
+# las variantes de las mismas imágenes y fuentes, y otros binarios comunes.
+*.jpeg  binary
+*.jfif  binary
+*.gif   binary
+*.woff  binary
+*.ttf   binary
+*.otf   binary
+*.pdf   binary
+*.mp4   binary
+*.zip   binary
