@@ -194,7 +194,7 @@ cinco pasos. Una sola sección nueva.
 
 Cinco bloques, cada uno con `<h3>` y párrafo:
 
-**1. `Turno para service`**
+**1. `Turno para service, revisión general o reparación específica`** (cambio pedido por Ramiro el 2026-10-12, P-081; antes era `Turno para service`)
 Para un service, te pasamos el presupuesto y, si lo aprobás, te damos turno en el momento.
 
 **2. `Presupuesto antes de desarmar`**

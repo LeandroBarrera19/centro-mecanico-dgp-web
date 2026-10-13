@@ -2854,3 +2854,21 @@ referencia por referencia, está en `docs/planes/m3-informe.md`.
   y "Taller mecánico en Villa María", que es lo que busca la gente, sigue en
   el título principal. El `<title>` y las etiquetas para compartir no se
   tocaron.
+
+---
+
+### P-081 — "Cómo trabajamos", paso 1: título más amplio
+- **Estado:** respondida
+- **Bloquea:** no bloquea.
+- **Pedido de Ramiro (2026-10-12):** "en la parte de 'COMO TRBAJAMOS' en el
+  punto numero 1, donde dice 'Turno para service' cambialo por 'Turno para
+  service, revision general o reparacion especifica'".
+- **Qué se hizo:** el título del paso 1 dice "Turno para service, revisión
+  general o reparación específica". También se actualizó la Tarea de "Cómo
+  trabajamos" en `docs/spec-m3-home.md`.
+- **Decisión propia:** se escribió con tildes (revisión, reparación,
+  específica), como el resto del sitio; el pedido llegó sin tildes.
+- **Para Ramiro:** el párrafo de abajo sigue diciendo "Para un service, te
+  pasamos el presupuesto y, si lo aprobás, te damos turno en el momento."
+  Habla solo del service. Si querés que acompañe al título nuevo, hace falta
+  el texto.
