@@ -2900,3 +2900,48 @@ referencia por referencia, está en `docs/planes/m3-informe.md`.
   (densidad 1 y 3) y 900 px no se pide ningún archivo de F-01; a 901 y 1440
   px se pide como antes. Para Ramiro: en celular el inicio queda sin foto
   del taller arriba (ya casi no se veía, P-075).
+
+---
+
+### P-083 — Textos de descripción más grandes y más oscuros
+- **Estado:** respondida
+- **Bloquea:** no bloquea.
+- **Pedido de Ramiro (2026-10-12):** "quiero que todas las letras que no son
+  titulos ni subtitulos, es decir todas las descripciones de las 3 pestañas
+  y en general, las hagas mas grandes y que sean de un color negro mas
+  oscuro para que sean mas legibles".
+- **Qué se hizo:** color nuevo `--texto` (#1a1a1a, antes #6b6b6b o #2d2d2d)
+  para el texto corrido sobre fondo claro, y tamaños mayores en las tres
+  páginas:
+  - tarjetas de servicios 12,8 → 15,2 px; pasos de "Cómo trabajamos"
+    14,9 → 16,8 px; reseñas 14,1 → 16 px; casa de repuestos 15,7 → 17,3 px;
+    categorías de repuestos 15,2 → 17 px; datos de los casos de flotas
+    15,2 → 17 px; rótulos de las cifras 13,6 → 15,2 px; lista de
+    localidades (pantallas angostas) 12,8 → 14,4 px; fecha de las reseñas,
+    número y rubro de los productos y rótulos de los casos 12 → 12,8–13,1 px.
+  - También: "Más de 130 opiniones en Google" 12,8 → 14,4 px; párrafos
+    del encabezado de flotas y repuestos 16,8 → 18,4 px; contacto 16 →
+    17,3 px; texto del bloque de flotas del inicio 15,2 → 16,8 px; línea
+    final del pie 12,8 → 14,1 px.
+  - El color de la página (`body`) pasa a `--texto`; con eso la lista de
+    localidades en pantallas anchas pasa de #2d2d2d a #1a1a1a.
+- **Decisiones propias:**
+  1. **Textos sobre fondo azul** (inicio, libreta, flotas, contacto): el
+     pedido dice "negro más oscuro", que ahí no aplica; se agrandaron (por
+     ejemplo, la bajada del inicio 17,3 → 18,4 px, listas 14,9 → 16,5 px) y
+     siguen en blanco.
+  2. **Pie de página:** se agrandó (14 → 15,5 px) y el blanco pasó de 55–62 %
+     a 75–80 % de opacidad, para que se lea mejor ("y en general").
+  3. **No se tocaron:** títulos, subtítulos de sección (`.section-sub`),
+     rótulos chicos en mayúsculas de color (insignias, "Marcas"), botones,
+     los nombres del mapa ni la frase grande de la zona de cobertura, que
+     funciona como subtítulo. Tampoco: las tres condiciones de flotas
+     ("Cuenta corriente con pago a 30 días.", etc.) y los chips de modelo de
+     repuestos, que ya están en azul oscuro, en negrita y a 16,3 px; el
+     "Villa María, Córdoba" del logo, que es parte de la marca; y la
+     atribución de OpenStreetMap del mapa.
+  4. **Reseñas enteras.** Las reseñas tenían un límite de 6 líneas con
+     "…" al final. Con la letra más grande, entre 481 y 616 px se cortaban
+     (el corte ya pasaba entre 481 y 563 px antes de este cambio). Se sacó
+     el límite: cada reseña es un extracto corto aprobado y se muestra
+     siempre completa.

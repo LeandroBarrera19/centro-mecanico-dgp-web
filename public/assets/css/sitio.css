@@ -24,7 +24,7 @@
    quedar con su parte de arriba tapada; y al recorrer la página con el
    teclado, el elemento enfocado no queda escondido detrás del menú. */
 html { scroll-behavior: smooth; scroll-padding-top: 73px; }
-body { font-family: 'Roboto', sans-serif; color: #2D2D2D; background: #fff; line-height: 1.6; }
+body { font-family: 'Roboto', sans-serif; color: var(--texto); background: #fff; line-height: 1.6; }
 img { max-width: 100%; display: block; }
 a { text-decoration: none; color: inherit; }
 /* Títulos repartidos en líneas parejas, sin una palabra sola al final. */
@@ -75,6 +75,8 @@ a, button { touch-action: manipulation; -webkit-tap-highlight-color: rgba(18, 75
   /* Fondo del encabezado de las tres páginas (P-082): el azul que se veía en
      el panel del inicio, ahora opaco e igual en todas. */
   --azul-hero:  #123e6b;
+  /* Texto corrido: casi negro, más oscuro que --gris (P-083). */
+  --texto:      #1a1a1a;
   --azul-light: #1a5fad;
   --verde:      #7DB919;
   --verde-dark: #5e8d10;
@@ -350,7 +352,7 @@ a, button { touch-action: manipulation; -webkit-tap-highlight-color: rgba(18, 75
   color: rgba(255,255,255,0.92);
 }
 .hero p {
-  font-size: 1.08rem;
+  font-size: 1.15rem;
   color: rgba(255,255,255,0.88);
   margin-bottom: 38px;
   line-height: 1.7;
@@ -435,8 +437,8 @@ a, button { touch-action: manipulation; -webkit-tap-highlight-color: rgba(18, 75
   font-variant-numeric: tabular-nums;
 }
 .stat-label {
-  font-size: 0.85rem;
-  color: var(--gris-medio);
+  font-size: 0.95rem;
+  color: var(--texto);
   overflow-wrap: anywhere;
 }
 
@@ -561,7 +563,7 @@ a, button { touch-action: manipulation; -webkit-tap-highlight-color: rgba(18, 75
   color: var(--azul);
   margin-bottom: 10px;
 }
-.how-step p { font-size: 0.93rem; color: var(--gris-medio); line-height: 1.65; }
+.how-step p { font-size: 1.05rem; color: var(--texto); line-height: 1.65; }
 
 /* ── LIBRETA DIGITAL ──
    Fondo blanco y sin trama: así la diagonal de "Cómo trabajamos"
@@ -616,7 +618,7 @@ a, button { touch-action: manipulation; -webkit-tap-highlight-color: rgba(18, 75
   stroke-linecap: round;
   stroke-linejoin: round;
 }
-.notebook-lead { font-size: 0.98rem; color: rgba(255,255,255,0.88); line-height: 1.7; }
+.notebook-lead { font-size: 1.08rem; color: rgba(255,255,255,0.88); line-height: 1.7; }
 .notebook-list-title {
   font-family: 'Montserrat', sans-serif;
   font-weight: 700;
@@ -628,7 +630,7 @@ a, button { touch-action: manipulation; -webkit-tap-highlight-color: rgba(18, 75
 .notebook-list li {
   position: relative;
   padding-left: 26px;
-  font-size: 0.93rem;
+  font-size: 1.03rem;
   color: rgba(255,255,255,0.88);
   line-height: 1.6;
 }
@@ -676,8 +678,8 @@ a, button { touch-action: manipulation; -webkit-tap-highlight-color: rgba(18, 75
   align-items: start;
 }
 .parts-text p {
-  font-size: 0.98rem;
-  color: var(--gris-medio);
+  font-size: 1.08rem;
+  color: var(--texto);
   line-height: 1.7;
 }
 .parts-text p + p { margin-top: 18px; }
@@ -729,12 +731,12 @@ a, button { touch-action: manipulation; -webkit-tap-highlight-color: rgba(18, 75
 .fleets .btn-primary { border: 2px solid var(--blanco); }
 .fleets-panel .section-title { font-size: clamp(1.5rem, 2.6vw, 2rem); }
 .fleets-panel .section-header { margin-bottom: 22px; }
-.fleets-lead { font-size: 0.95rem; color: rgba(255,255,255,0.88); line-height: 1.7; }
+.fleets-lead { font-size: 1.05rem; color: rgba(255,255,255,0.88); line-height: 1.7; }
 .fleets-list { list-style: none; display: grid; gap: 10px; margin: 20px 0 26px; }
 .fleets-list li {
   position: relative;
   padding-left: 26px;
-  font-size: 0.93rem;
+  font-size: 1.03rem;
   color: rgba(255,255,255,0.88);
   line-height: 1.6;
 }
@@ -812,7 +814,7 @@ a, button { touch-action: manipulation; -webkit-tap-highlight-color: rgba(18, 75
   margin-bottom: 8px;
   line-height: 1.3;
 }
-.service-card p { font-size: 0.8rem; color: var(--gris-medio); line-height: 1.55; }
+.service-card p { font-size: 0.95rem; color: var(--texto); line-height: 1.55; }
 
 /* ── BRANDS STRIP ──
    Rediseño (P-062): logos en el azul de la casa. Las tres marcas foco,
@@ -1048,7 +1050,7 @@ a, button { touch-action: manipulation; -webkit-tap-highlight-color: rgba(18, 75
   margin-bottom: 16px;
   line-height: 1.2;
 }
-.contact-text p { font-size: 1rem; color: rgba(255,255,255,0.8); line-height: 1.75; margin-bottom: 28px; }
+.contact-text p { font-size: 1.08rem; color: rgba(255,255,255,0.8); line-height: 1.75; margin-bottom: 28px; }
 .btn-wa {
   display: inline-flex;
   align-items: center;
@@ -1125,7 +1127,7 @@ footer { background: var(--azul-dark); padding: 60px 0 0; position: relative; ov
   color: var(--blanco);
   margin-bottom: 3px;
 }
-.footer-tagline { font-size: 0.88rem; color: rgba(255,255,255,0.55); font-style: italic; line-height: 1.55; }
+.footer-tagline { font-size: 0.98rem; color: rgba(255,255,255,0.8); font-style: italic; line-height: 1.55; }
 .footer-col-title {
   font-family: 'Montserrat', sans-serif;
   font-weight: 700;
@@ -1136,9 +1138,9 @@ footer { background: var(--azul-dark); padding: 60px 0 0; position: relative; ov
   margin-bottom: 18px;
 }
 .footer-col ul { list-style: none; display: flex; flex-direction: column; gap: 10px; }
-.footer-col li a { font-size: 0.87rem; color: rgba(255,255,255,0.62); transition: color 0.2s; }
+.footer-col li a { font-size: 0.97rem; color: rgba(255,255,255,0.8); transition: color 0.2s; }
 .footer-col li a:hover { color: var(--blanco); }
-.footer-col p { font-size: 0.87rem; color: rgba(255,255,255,0.62); line-height: 1.7; }
+.footer-col p { font-size: 0.97rem; color: rgba(255,255,255,0.8); line-height: 1.7; }
 .footer-bottom {
   border-top: 1px solid rgba(255,255,255,0.1);
   padding-top: 24px;
@@ -1146,7 +1148,7 @@ footer { background: var(--azul-dark); padding: 60px 0 0; position: relative; ov
   align-items: center;
   justify-content: space-between;
 }
-.footer-bottom p { font-size: 0.8rem; color: rgba(255,255,255,0.55); }
+.footer-bottom p { font-size: 0.88rem; color: rgba(255,255,255,0.75); }
 
 /* ── ANIMATIONS ── */
 /* Solo con la clase .js en <html>, que pone el script del <head>: si el
@@ -1292,9 +1294,9 @@ footer { background: var(--azul-dark); padding: 60px 0 0; position: relative; ov
     margin-top: 20px;
     columns: 3 120px;
     column-gap: 16px;
-    font-size: 0.8rem;
+    font-size: 0.9rem;
     line-height: 1.7;
-    color: var(--gris-medio);
+    color: var(--texto);
   }
 }
 @media (max-width: 900px) {
@@ -1325,7 +1327,7 @@ footer { background: var(--azul-dark); padding: 60px 0 0; position: relative; ov
 .g-star { width: 14.671875px; }
 .t-star { width: 13.328125px; }
 .svg-defs { position: absolute; width: 0; height: 0; overflow: hidden; }
-.google-count-text { font-size: 0.8rem; color: var(--gris-medio); white-space: nowrap; }
+.google-count-text { font-size: 0.9rem; color: var(--texto); white-space: nowrap; }
 /* Dos por dos en escritorio (Tarea 10): con cuatro reseñas, tres columnas
    dejaban una tarjeta suelta abajo. */
 .testimonials-grid {
@@ -1358,15 +1360,11 @@ footer { background: var(--azul-dark); padding: 60px 0 0; position: relative; ov
 .t-star { color: #FBBC04; font-size: 1rem; line-height: 1; }
 .t-google-g { opacity: 0.45; flex-shrink: 0; }
 .t-text {
-  font-size: 0.88rem;
-  color: var(--gris-medio);
+  font-size: 1rem;
+  color: var(--texto);
   line-height: 1.72;
   flex: 1;
   font-style: italic;
-  display: -webkit-box;
-  -webkit-line-clamp: 6;
-  -webkit-box-orient: vertical;
-  overflow: hidden;
 }
 .t-footer {
   display: flex;
@@ -1395,7 +1393,7 @@ footer { background: var(--azul-dark); padding: 60px 0 0; position: relative; ov
   color: var(--azul);
   line-height: 1.2;
 }
-.t-date { font-size: 0.75rem; color: var(--gris-medio); }
+.t-date { font-size: 0.82rem; color: var(--texto); }
 .testimonials-actions {
   display: flex;
   justify-content: flex-start;
@@ -1532,7 +1530,7 @@ footer { background: var(--azul-dark); padding: 60px 0 0; position: relative; ov
   animation: sube-titulo 0.7s ease-out both;
 }
 .pagina-hero p {
-  font-size: 1.05rem;
+  font-size: 1.15rem;
   line-height: 1.7;
   color: rgba(255,255,255,0.88);
 }
@@ -1592,7 +1590,7 @@ footer { background: var(--azul-dark); padding: 60px 0 0; position: relative; ov
   color: var(--azul-dark);
   margin-bottom: 10px;
 }
-.categoria p { font-size: 0.95rem; line-height: 1.65; color: var(--gris-medio); }
+.categoria p { font-size: 1.06rem; line-height: 1.65; color: var(--texto); }
 
 /* ── Repuestos: deslizante de productos (HB Body) ── */
 .productos { background: var(--gris-bg); padding-top: 72px; --remate: var(--azul); }
@@ -1665,10 +1663,10 @@ footer { background: var(--azul-dark); padding: 60px 0 0; position: relative; ov
 .producto-cat {
   font-family: 'Montserrat', sans-serif;
   font-weight: 700;
-  font-size: 0.75rem;
+  font-size: 0.8rem;
   letter-spacing: 0.14em;
   text-transform: uppercase;
-  color: var(--gris-medio);
+  color: var(--texto);
 }
 .producto-nombre {
   font-family: 'Montserrat', sans-serif;
@@ -1677,7 +1675,7 @@ footer { background: var(--azul-dark); padding: 60px 0 0; position: relative; ov
   line-height: 1.3;
   color: var(--azul-dark);
 }
-.producto-num { font-size: 0.75rem; color: var(--gris-medio); font-variant-numeric: tabular-nums; }
+.producto-num { font-size: 0.82rem; color: var(--texto); font-variant-numeric: tabular-nums; }
 /* El ícono de WhatsApp de los botones de estas páginas viene sin tamaño. */
 .btn-primary svg { width: 18px; height: 18px; flex-shrink: 0; fill: currentColor; }
 .producto-btn {
@@ -1745,13 +1743,13 @@ footer { background: var(--azul-dark); padding: 60px 0 0; position: relative; ov
 .caso-dato dt {
   font-family: 'Montserrat', sans-serif;
   font-weight: 700;
-  font-size: 0.75rem;
+  font-size: 0.8rem;
   letter-spacing: 0.12em;
   text-transform: uppercase;
-  color: var(--gris-medio);
+  color: var(--texto);
   margin-bottom: 2px;
 }
-.caso-dato dd { font-size: 0.95rem; line-height: 1.45; color: var(--gris); }
+.caso-dato dd { font-size: 1.06rem; line-height: 1.45; color: var(--texto); }
 .caso-dato--grande dd {
   font-family: 'Montserrat', sans-serif;
   font-weight: 900;
