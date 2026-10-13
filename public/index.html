@@ -12,7 +12,7 @@
   <meta name="theme-color" content="#124B8F">
 
   <!-- ── RENDIMIENTO ── -->
-  <link rel="preload" as="image" type="image/avif" imagesrcset="assets/fotos/f-01-1-480.avif 480w, assets/fotos/f-01-1-800.avif 800w, assets/fotos/f-01-1-1280.avif 1280w, assets/fotos/f-01-1-1402.avif 1402w" imagesizes="(min-width: 901px) 60vw, 100vw" fetchpriority="high">
+  <link rel="preload" as="image" type="image/avif" media="(min-width: 901px)" imagesrcset="assets/fotos/f-01-1-480.avif 480w, assets/fotos/f-01-1-800.avif 800w, assets/fotos/f-01-1-1280.avif 1280w, assets/fotos/f-01-1-1402.avif 1402w" imagesizes="(min-width: 901px) 60vw, 100vw" fetchpriority="high">
 
   <!-- ── CANONICAL ── -->
   <link rel="canonical" href="https://centromecanicodgp.com.ar/">
@@ -141,6 +141,9 @@
        patentes y los horarios del cartel desenfocados. Copia de 1402 px: Ramiro decidió publicarla así (P-078). -->
   <div class="hero-bg">
     <picture>
+      <!-- Hasta 900 px el panel azul es opaco y tapa toda la foto (P-082):
+           ahí se sirve un píxel vacío para no bajarla. -->
+      <source media="(max-width: 900px)" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7">
       <source type="image/avif" srcset="assets/fotos/f-01-1-480.avif 480w, assets/fotos/f-01-1-800.avif 800w, assets/fotos/f-01-1-1280.avif 1280w, assets/fotos/f-01-1-1402.avif 1402w" sizes="(min-width: 901px) 60vw, 100vw">
       <source type="image/webp" srcset="assets/fotos/f-01-1-480.webp 480w, assets/fotos/f-01-1-800.webp 800w, assets/fotos/f-01-1-1280.webp 1280w, assets/fotos/f-01-1-1402.webp 1402w" sizes="(min-width: 901px) 60vw, 100vw">
       <img src="assets/fotos/f-01-1-1280.jpg" alt="" aria-hidden="true" width="1280" height="1024" fetchpriority="high">

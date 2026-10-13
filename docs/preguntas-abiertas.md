@@ -2872,3 +2872,31 @@ referencia por referencia, está en `docs/planes/m3-informe.md`.
   pasamos el presupuesto y, si lo aprobás, te damos turno en el momento."
   Habla solo del service. Si querés que acompañe al título nuevo, hace falta
   el texto.
+
+---
+
+### P-082 — El mismo azul de fondo arriba de las tres páginas
+- **Estado:** respondida
+- **Bloquea:** no bloquea.
+- **Pedido de Ramiro (2026-10-12):** "quiero que el color de fondo de la
+  pagina azul sea igual en las otras dos pestañas de flotas y repuestos,
+  actualmente los 3 azules son distintos".
+- **Medido antes del cambio** (píxel de la zona azul, a 1440 y 390 px): inicio
+  #123e6b en escritorio y #184467 en celular; flotas #0d3870; repuestos
+  #124b8f. El del inicio salía de un panel semitransparente (95 % en
+  escritorio, 90 % en celular) por el que se transparentaban la franja verde
+  y la foto.
+- **Decisión propia:** el pedido toma el inicio como referencia, así que se
+  usa el azul que se veía en el inicio en escritorio, #123e6b, como color
+  propio (`--azul-hero`). El panel del inicio pasa a ser opaco (en celular
+  ya no se transparenta la foto) y el encabezado de flotas y de repuestos usa
+  el mismo color. Se borró la regla `.pagina-hero--oscuro`, que solo
+  cambiaba el fondo de flotas; la clase queda en el HTML sin efecto.
+- **Medido después:** #123e6b en las tres páginas, a 1440 y a 390 px.
+- **Corrección por la revisión:** con el panel opaco, en el inicio hasta
+  900 px la foto F-01 ya no se ve, pero se seguía bajando (12 a 59 KB según
+  la densidad). Ahora hasta 900 px el `<picture>` sirve un píxel vacío y la
+  precarga lleva `media="(min-width: 901px)"`. Medido con Puppeteer: a 390
+  (densidad 1 y 3) y 900 px no se pide ningún archivo de F-01; a 901 y 1440
+  px se pide como antes. Para Ramiro: en celular el inicio queda sin foto
+  del taller arriba (ya casi no se veía, P-075).

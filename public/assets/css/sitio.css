@@ -72,6 +72,9 @@ a, button { touch-action: manipulation; -webkit-tap-highlight-color: rgba(18, 75
 :root {
   --azul:       #124B8F;
   --azul-dark:  #0d3870;
+  /* Fondo del encabezado de las tres páginas (P-082): el azul que se veía en
+     el panel del inicio, ahora opaco e igual en todas. */
+  --azul-hero:  #123e6b;
   --azul-light: #1a5fad;
   --verde:      #7DB919;
   --verde-dark: #5e8d10;
@@ -282,7 +285,7 @@ a, button { touch-action: manipulation; -webkit-tap-highlight-color: rgba(18, 75
 }
 .hero-panel {
   z-index: 1;
-  background: rgba(13,56,112,0.95);
+  background: var(--azul-hero);
 }
 /* Asoma 12 px por detrás del panel: la línea verde del cartel. */
 .hero-franja {
@@ -460,7 +463,6 @@ a, button { touch-action: manipulation; -webkit-tap-highlight-color: rgba(18, 75
     width: 100%;
     clip-path: polygon(0 0, 100% 0, 100% calc(100% - 64px), 0 100%);
   }
-  .hero-panel { background: rgba(13,56,112,0.9); }
   .hero-franja { top: 12px; bottom: -12px; width: 100%; }
   .hero-content { padding-bottom: 96px; }
   .hero-content > * { max-width: 620px; }
@@ -1508,12 +1510,11 @@ footer { background: var(--azul-dark); padding: 60px 0 0; position: relative; ov
 /* Encabezado de página: plano azul con el borde inferior cortado en
    diagonal, con el mismo ángulo que los remates. */
 .pagina-hero {
-  background: var(--azul);
+  background: var(--azul-hero);
   color: var(--blanco);
   padding: 80px 0 136px;
   clip-path: polygon(0 0, 100% 0, 100% calc(100% - 66px), 0 100%);
 }
-.pagina-hero--oscuro { background: var(--azul-dark); }
 .pagina-hero-grid {
   display: grid;
   grid-template-columns: minmax(0, 1.05fr) minmax(0, 0.95fr);
